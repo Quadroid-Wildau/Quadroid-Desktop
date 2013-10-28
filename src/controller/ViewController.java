@@ -1,5 +1,7 @@
 package controller;
 
+import java.awt.Component;
+
 public interface ViewController {
-	public view.View getView();
+	public Component getView();
 }
