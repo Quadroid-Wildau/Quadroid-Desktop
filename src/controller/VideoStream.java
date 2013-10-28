@@ -1,12 +1,14 @@
 package controller;
 
-public class VideoStream {
+import java.awt.Component;
+
+public class VideoStream implements ViewController{
 
 	private view.VideoStream view;
 
-	public view.VideoStream getView() {
+	public Component getView() {
 		if (this.view == null) {
-			this.view = new view.VideoStream();
+			this.view = new view.VideoStream(this);
 		}
 		
 		return this.view;

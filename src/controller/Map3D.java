@@ -6,7 +6,7 @@ public class Map3D implements ViewController{
 
 	public view.Map3D getView() {
 		if (this.view == null) {
-			this.view = new view.Map3D();
+			this.view = new view.Map3D(this);
 		}
 		
 		return this.view;

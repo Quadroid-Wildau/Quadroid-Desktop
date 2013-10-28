@@ -1,9 +1,9 @@
 import javax.swing.JFrame;
-
+import controller.ViewController;
 
 public class Main {
 	private static JFrame mainWindow;
-	private static controller.Main mainController;
+	private static ViewController mainController;
 	
 	/**
 	 * @param args
@@ -15,7 +15,7 @@ public class Main {
 		mainWindow.setVisible(true);
 	}
 	
-	public static controller.Main getMainController() {
+	public static ViewController getMainController() {
 		if (mainController == null) {
 			mainController = new controller.Main();
 		}

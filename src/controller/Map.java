@@ -12,7 +12,7 @@ public class Map implements ViewController {
 
 	public view.Map getView() {
 		if (this.view == null) {
-			this.view = new view.Map();
+			this.view = new view.Map(this);
 		}
 		
 		return this.view;

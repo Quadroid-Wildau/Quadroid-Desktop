@@ -3,12 +3,12 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.LayoutManager;
 
 import javax.swing.JPanel;
 
 public class Main extends JPanel {
 
+	@SuppressWarnings("unused")
 	private controller.Main controller;
 	
 	private static final long serialVersionUID = 1L;
@@ -20,12 +20,20 @@ public class Main extends JPanel {
 	private JPanel rightSubPanel; 
 	
 	public Main(controller.Main controller) {
+		this.controller = controller;
 		this.setBackground(Color.red);
 		this.setVisible(true);
 		this.setLayout(new BorderLayout());
-		this.rightSubPanel = new JPanel();
-		this.rightSubPanel.setLayout(new BorderLayout());
-		this.add(this.rightSubPanel, java.awt.BorderLayout.EAST);
+		this.add(this.getRightSubPanel(), java.awt.BorderLayout.EAST);
+	}
+	
+	private JPanel getRightSubPanel() {
+		if (this.rightSubPanel == null) {			
+			this.rightSubPanel = new JPanel();
+			this.rightSubPanel.setLayout(new BorderLayout());
+		}
+		
+		return this.rightSubPanel;
 	}
 	
 	public void setMap(Component view) {

@@ -4,10 +4,10 @@ import java.awt.Component;
 
 public class Main implements ViewController{
 	private view.Main view;
-	private controller.Map mapController;
-	private controller.VideoStream videoStreamController;
-	private controller.Map3D map3DController;
-	private controller.MetaData metaDataController;
+	private controller.ViewController mapController;
+	private controller.ViewController videoStreamController;
+	private controller.ViewController map3DController;
+	private controller.ViewController metaDataController;
 	
 	public Main() {
 	}
@@ -25,7 +25,7 @@ public class Main implements ViewController{
 		return this.view;
 	}
 	
-	public controller.Map getMapController() {
+	public ViewController getMapController() {
 		if (this.mapController == null) {
 			this.mapController = new controller.Map();
 		}
@@ -33,7 +33,7 @@ public class Main implements ViewController{
 		return mapController;
 	}
 
-	public controller.VideoStream getVideoStreamController() {
+	public ViewController getVideoStreamController() {
 		if (this.videoStreamController == null) {
 			this.videoStreamController = new controller.VideoStream();
 		}
@@ -41,7 +41,7 @@ public class Main implements ViewController{
 		return videoStreamController;
 	}
 
-	public controller.Map3D getMap3DController() {
+	public ViewController getMap3DController() {
 		if (this.map3DController == null) {
 			this.map3DController = new controller.Map3D();
 		}
@@ -49,7 +49,7 @@ public class Main implements ViewController{
 		return map3DController;
 	}
 
-	public controller.MetaData getMetaDataController() {
+	public ViewController getMetaDataController() {
 		if (this.metaDataController == null) {
 			this.metaDataController = new controller.MetaData();
 		}
