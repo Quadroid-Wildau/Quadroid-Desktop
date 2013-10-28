@@ -4,7 +4,7 @@ public class PushMessage {
 
 	private String message;
 
-	public void setMessage(String msg) {
+	public void setMessage(String message) {
 
 	}
 

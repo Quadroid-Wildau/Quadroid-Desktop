@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 /**
  * Datenhaltungsmodell für die Geodaten:

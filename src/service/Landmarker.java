@@ -3,9 +3,9 @@ package service;
 import model.Landmark;
 import model.PushMessage;
 
-public class LandmarkerService {
+public class Landmarker {
 
-	public LandmarkerService getInstance() {
+	public Landmarker getInstance() {
 		return null;
 	}
 

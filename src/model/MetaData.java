@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 /**
  * Datenhaltungsmodel für die Telemetriedaten:

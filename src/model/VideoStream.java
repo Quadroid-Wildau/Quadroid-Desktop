@@ -4,17 +4,17 @@ public class VideoStream {
 
 	private Video video;
 
-	private Array waypoints;
+	private Waypoint[] waypoints;
 
 	public Video getVideo() {
 		return null;
 	}
 
-	public void setVideo(Video vd) {
+	public void setVideo(Video video) {
 
 	}
 
-	public Array getWaypoints() {
+	public Waypoint[] getWaypoints() {
 		return null;
 	}
 
