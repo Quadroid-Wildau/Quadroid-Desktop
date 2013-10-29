@@ -17,7 +17,7 @@ public class CommunicationStack {
 
 	private Photo photoPersistance;
 
-	public CommunicationStack getInstance() {
+	public static CommunicationStack getInstance() {
 		if (instance == null) {
 			instance = new CommunicationStack();
 		}

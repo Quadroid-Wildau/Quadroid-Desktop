@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Random;
+
 /**
  * Datenhaltungsmodel für die Telemetriedaten:
  * Zeit, Neigung um X-, Y-, Z- Achse, Batteriestand, Geschwindigkeit und ein GeoDataModel.
@@ -7,83 +9,95 @@ package model;
 public class MetaData {
 
 	private GeoData geodata;
-
 	private Long time;
-
 	private Float yaw;
-
 	private Float roll;
-
 	private Float pitch;
-
 	private Float batteryState;
-
 	private Float speed;
-
 	private Float course;
 
-	public void setGeodata(GeoData geodata) {
+	public Long getTime() {
+		return time;
+	}
 
+
+	public void setTime(Long time) {
+		this.time = time;
+	}
+
+
+	public Float getYaw() {
+		return yaw;
+	}
+
+
+	public void setYaw(Float yaw) {
+		this.yaw = yaw;
+	}
+
+
+	public Float getRoll() {
+		return roll;
+	}
+
+
+	public void setRoll(Float roll) {
+		this.roll = roll;
+	}
+
+
+	public Float getPitch() {
+		return pitch;
+	}
+
+
+	public void setPitch(Float pitch) {
+		this.pitch = pitch;
+	}
+
+
+	public Float getBatteryState() {
+		return batteryState;
+	}
+
+
+	public void setBatteryState(Float batteryState) {
+		this.batteryState = batteryState;
+	}
+
+
+	public Float getSpeed() {
+		return speed;
+	}
+
+
+	public void setSpeed(Float speed) {
+		this.speed = speed;
+	}
+
+
+	public Float getCourse() {
+		return course;
+	}
+
+
+	public void setCourse(Float course) {
+		this.course = course;
+	}
+
+
+	public void setGeodata(GeoData geodata) {
+		this.geodata = geodata;
 	}
 
 	public GeoData getGeodata() {
-		return null;
+		Random rand = new Random();
+		GeoData geoData = new GeoData();
+		geoData.setHeight(rand.nextFloat() * 20);
+		geoData.setLatitude(rand.nextFloat() * 180 - 90);
+		geoData.setLongitude(rand.nextFloat() * 180 - 90);
+		
+		return geoData;
 	}
-
-	public long getTime() {
-		return 0;
-	}
-
-	public void setYaw(float yaw) {
-
-	}
-
-	public float getYaw() {
-		return 0;
-	}
-
-	public void setPitch(float pitch) {
-
-	}
-
-	public float getPitch() {
-		return 0;
-	}
-
-	public void setRoll(float roll) {
-
-	}
-
-	public float getRoll() {
-		return 0;
-	}
-
-	public void setBatteryState(float batteryState) {
-
-	}
-
-	public float getBatteryState() {
-		return 0;
-	}
-
-	public void setTime(long time) {
-
-	}
-
-	public void setSpeed(Float speed) {
-
-	}
-
-	public Float getSpeed() {
-		return null;
-	}
-
-	public void setCourse(Float course) {
-
-	}
-
-	public Float getCourse() {
-		return null;
-	}
-
 }

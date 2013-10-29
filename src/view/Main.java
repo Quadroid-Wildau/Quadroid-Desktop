@@ -3,6 +3,7 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 
 import javax.swing.JPanel;
 
@@ -31,6 +32,7 @@ public class Main extends JPanel {
 		if (this.rightSubPanel == null) {			
 			this.rightSubPanel = new JPanel();
 			this.rightSubPanel.setLayout(new BorderLayout());
+			this.rightSubPanel.setPreferredSize(new Dimension(400, 9000));
 		}
 		
 		return this.rightSubPanel;
@@ -42,7 +44,8 @@ public class Main extends JPanel {
 				this.remove(this.mapView);
 			}
 			
-			this.mapView = view;			
+			this.mapView = view;	
+			this.mapView.setPreferredSize(new Dimension(400, 400));
 		}
 		
 		this.rightSubPanel.add(this.mapView, java.awt.BorderLayout.NORTH);
@@ -54,10 +57,11 @@ public class Main extends JPanel {
 				this.remove(this.map3DView);
 			}
 			
-			this.map3DView = view;			
+			this.map3DView = view;
+			this.map3DView.setPreferredSize(new Dimension(400, 400));
 		}
 		
-		this.rightSubPanel.add(this.map3DView, java.awt.BorderLayout.SOUTH);
+		this.rightSubPanel.add(this.map3DView, java.awt.BorderLayout.CENTER);
 	}
 	
 	public void setMetaData(Component view) {
@@ -66,7 +70,8 @@ public class Main extends JPanel {
 				this.remove(this.metaDataView);
 			}
 			
-			this.metaDataView = view;			
+			this.metaDataView = view;		
+			this.metaDataView.setPreferredSize(new Dimension(900, 160));
 		}
 		
 		this.add(this.metaDataView, java.awt.BorderLayout.SOUTH);
@@ -79,7 +84,7 @@ public class Main extends JPanel {
 			}
 			
 			this.videoStreamView = view;
-			this.videoStreamView.setSize(400, 300);
+			this.videoStreamView.setPreferredSize(new Dimension(600, 400));
 		}
 		
 		this.add(this.videoStreamView, java.awt.BorderLayout.CENTER);
