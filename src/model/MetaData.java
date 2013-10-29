@@ -92,12 +92,6 @@ public class MetaData {
 	}
 
 	public GeoData getGeodata() {
-		Random rand = new Random();
-		GeoData geoData = new GeoData();
-		geoData.setHeight(rand.nextFloat() * 20);
-		geoData.setLatitude(rand.nextFloat() * 180 - 90);
-		geoData.setLongitude(rand.nextFloat() * 180 - 90);
-		
-		return geoData;
+		return this.geodata;
 	}
 }
