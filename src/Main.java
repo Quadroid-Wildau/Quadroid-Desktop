@@ -16,8 +16,8 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		//System.getProperties().put("http.proxyHost", "proxy.th-wildau.de");
-		//System.getProperties().put("http.proxyPort", "8080");
+		System.getProperties().put("http.proxyHost", "proxy.th-wildau.de");
+		System.getProperties().put("http.proxyPort", "8080");
 		
 		mainWindow = new JFrame("Mission Control");
 		mainWindow.setSize(800, 400);

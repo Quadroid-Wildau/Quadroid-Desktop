@@ -4,8 +4,12 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.imageio.ImageIO;
+
+import model.GeoData;
 
 public class GoogleMaps {
 	//config
@@ -14,6 +18,13 @@ public class GoogleMaps {
 	private static int SIZE_HEIGHT = 400;
 	
 	private model.GeoData geoData;
+	private ArrayList<String> points;
+	private ArrayList<String> markers;
+	
+	public GoogleMaps() {
+		this.markers = new ArrayList<String>();
+		this.points = new ArrayList<String>();
+	}
 	
 	public BufferedImage getStaticImage() {
 		BufferedImage image = null;
@@ -32,14 +43,15 @@ public class GoogleMaps {
 	
 	public void setGeoData(model.GeoData geoData) {
 		this.geoData = geoData;
+		this.setMarker(geoData);
+		this.addLine(geoData);
 	}
 	
 	private URL getUrl() {
 		URL url = null;
 		
 		if(this.geoData != null) {
-			String urlString = "http://maps.googleapis.com/maps/api/staticmap?center="+this.getSeperatedLocation()+"&zoom=" + ZOOM_LEVEL + "&size=" + SIZE_WIDTH + "x" + SIZE_HEIGHT + "&maptype=roadmap&markers=color:blue%7Clabel:S%7C"+this.getSeperatedLocation()+"&sensor=false";
-			System.out.println(urlString); 
+			String urlString = "http://maps.googleapis.com/maps/api/staticmap?center="+this.getCenterLocation()+"&zoom=" + ZOOM_LEVEL + "&size=" + SIZE_WIDTH + "x" + SIZE_HEIGHT + "&maptype=roadmap&sensor=false" + this.getMarkersString() + this.getLinesString();
 			try {
 				url = new URL(urlString);
 			} catch (MalformedURLException e) {
@@ -50,7 +62,44 @@ public class GoogleMaps {
 		return url;
 	}
 	
-	private String getSeperatedLocation(){
-		return this.geoData.getLatitude() + "," + this.geoData.getLongitude();
+	private String getMarkersString() {
+		String string = "";
+		
+		for (Iterator iterator = this.markers.iterator(); iterator.hasNext();) {
+			string += iterator.next();
+		}
+		
+		return string;
+	}
+	
+	private String getLinesString() {
+		String string = "&path=color:0xff0000ff|weight:5";
+		
+		for (Iterator iterator = this.points.iterator(); iterator.hasNext();) {
+			string += iterator.next();
+		}
+		
+		return string;
+	}
+	
+	private void addMarker(model.GeoData geoData) {
+		this.markers.add("&markers=color:blue%7Clabel:S%7C"+this.getStringFromGeodata(geoData));
+	}
+	
+	private void setMarker(model.GeoData geoData) {
+		this.markers = new ArrayList<String>();
+		this.markers.add("&markers=color:blue%7Clabel:S%7C"+this.getStringFromGeodata(geoData));
+	}
+	
+	private void addLine(model.GeoData geoData) {
+		this.points.add("|" + this.getStringFromGeodata(geoData));
+	}
+	
+	private String getStringFromGeodata(model.GeoData geoData) {
+		return geoData.getLatitude() + "," + geoData.getLongitude();
+	}
+	
+	private String getCenterLocation(){
+		return getStringFromGeodata(this.geoData);
 	}
 }
