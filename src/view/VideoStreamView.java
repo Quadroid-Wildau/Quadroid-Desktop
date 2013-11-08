@@ -5,14 +5,14 @@ import java.awt.Label;
 
 import javax.swing.JPanel;
 
-public class VideoStream extends JPanel{
+public class VideoStreamView extends JPanel{
 	private static final long serialVersionUID = 1L;
 	
 	
 	@SuppressWarnings("unused")
-	private controller.VideoStream controller;
+	private controller.VideoStreamController controller;
 	
-	public VideoStream(controller.VideoStream controller) {
+	public VideoStreamView(controller.VideoStreamController controller) {
 		this.setBackground(Color.cyan);
 		this.add(new Label("Video Stream"));
 		this.controller = controller;

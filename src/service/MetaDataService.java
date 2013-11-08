@@ -3,26 +3,24 @@ package service;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import communication.CommunicationStack;
-import communication.Flight;
+import communication.FlightControlCommunicator;
 
-public class MetaData extends Observable implements Observer{
+public class MetaDataService extends Observable implements Observer{
 	
-	private static MetaData instance;
+	private static MetaDataService instance;
 	private ArrayList<model.MetaData> metaDataHistory;
 
-	public static MetaData getInstance() {
+	public static MetaDataService getInstance() {
 		if (instance == null) {
-			instance = new MetaData();
+			instance = new MetaDataService();
 		}
 		
 		return instance;
 	}
 	
-	private MetaData() {
+	private MetaDataService() {
 		this.metaDataHistory = new ArrayList<model.MetaData>();
 		this.getFlightCommunication().addObserver(this);
 	}
@@ -42,7 +40,7 @@ public class MetaData extends Observable implements Observer{
 		return this.metaDataHistory;
 	}
 	
-	private Flight getFlightCommunication() {
+	private FlightControlCommunicator getFlightCommunication() {
 		return CommunicationStack.getInstance().getFlightCommunicator();
 	}
 

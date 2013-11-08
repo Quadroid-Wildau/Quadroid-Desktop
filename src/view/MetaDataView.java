@@ -2,17 +2,16 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Label;
 
 import javax.swing.JPanel;
 
-public class MetaData extends JPanel{
+public class MetaDataView extends JPanel{
 	private static final long serialVersionUID = 1L;
 	
 	
 	@SuppressWarnings("unused")
-	private controller.MetaData controller;
+	private controller.MetaDataController controller;
 	private Label position;
 	private Label positionHeadline;
 	private Label powerHeadline;
@@ -27,7 +26,7 @@ public class MetaData extends JPanel{
 	private Label course;
 	private JPanel subPanel;
 	
-	public MetaData(controller.MetaData controller) {
+	public MetaDataView(controller.MetaDataController controller) {
 		this.setBackground(Color.orange);
 		this.controller = controller;
 		

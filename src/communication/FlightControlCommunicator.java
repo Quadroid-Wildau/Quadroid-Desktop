@@ -8,7 +8,7 @@ import model.Landmark;
 import model.Waypoint;
 import model.MetaData;
 
-public class Flight extends Observable{
+public class FlightControlCommunicator extends Observable{
 
 	public void sendWaypoints(Waypoint[] waypoints) {
 

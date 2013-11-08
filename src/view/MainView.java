@@ -7,10 +7,10 @@ import java.awt.Dimension;
 
 import javax.swing.JPanel;
 
-public class Main extends JPanel {
+public class MainView extends JPanel {
 
 	@SuppressWarnings("unused")
-	private controller.Main controller;
+	private controller.MainController controller;
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -20,7 +20,7 @@ public class Main extends JPanel {
 	private Component videoStreamView;
 	private JPanel rightSubPanel; 
 	
-	public Main(controller.Main controller) {
+	public MainView(controller.MainController controller) {
 		this.controller = controller;
 		this.setBackground(Color.red);
 		this.setVisible(true);

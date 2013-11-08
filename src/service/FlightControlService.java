@@ -2,9 +2,9 @@ package service;
 
 import model.Waypoint;
 
-public class FlightControl {
+public class FlightControlService {
 
-	public FlightControl getInstance() {
+	public FlightControlService getInstance() {
 		return null;
 	}
 

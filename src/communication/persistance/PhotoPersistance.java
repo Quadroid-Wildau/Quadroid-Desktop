@@ -2,7 +2,7 @@ package communication.persistance;
 
 import model.Landmark;
 
-public class Photo {
+public class PhotoPersistance {
 	public void save(Landmark landmark) {
 
 	}

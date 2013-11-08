@@ -1,21 +1,21 @@
 package communication;
 
-import communication.persistance.Photo;
-import communication.persistance.Video;
+import communication.persistance.PhotoPersistance;
+import communication.persistance.VideoPersistance;
 
 public class CommunicationStack {
 
 	private static CommunicationStack instance;
 	
-	private Push pushCommunicator;
+	private PushCommunicator pushCommunicator;
 
-	private Flight flightCommunicator;
+	private FlightControlCommunicator flightCommunicator;
 
-	private VideoStream videoStreamCommunicator;
+	private VideoCommunicator videoStreamCommunicator;
 
-	private Video videoPersistance;
+	private VideoPersistance videoPersistance;
 
-	private Photo photoPersistance;
+	private PhotoPersistance photoPersistance;
 
 	public static CommunicationStack getInstance() {
 		if (instance == null) {
@@ -25,41 +25,41 @@ public class CommunicationStack {
 		return instance;
 	}
 
-	public Push getPushCommunicator() {
+	public PushCommunicator getPushCommunicator() {
 		if (this.pushCommunicator == null) {
-			this.pushCommunicator = new Push();
+			this.pushCommunicator = new PushCommunicator();
 		}
 		
 		return this.pushCommunicator;
 	}
 
-	public Flight getFlightCommunicator() {
+	public FlightControlCommunicator getFlightCommunicator() {
 		if (this.flightCommunicator == null) {
-			this.flightCommunicator = new Flight();
+			this.flightCommunicator = new FlightControlCommunicator();
 		}
 		
 		return this.flightCommunicator;
 	}
 
-	public VideoStream getVideoStreamCommunicator() {
+	public VideoCommunicator getVideoStreamCommunicator() {
 		if (this.videoStreamCommunicator == null) {
-			this.videoStreamCommunicator = new VideoStream();
+			this.videoStreamCommunicator = new VideoCommunicator();
 		}
 		
 		return this.videoStreamCommunicator;
 	}
 
-	public Video getVideoPersistance() {
+	public VideoPersistance getVideoPersistance() {
 		if (this.videoPersistance == null) {
-			this.videoPersistance = new Video();
+			this.videoPersistance = new VideoPersistance();
 		}
 		
 		return this.videoPersistance;
 	}
 
-	public Photo getPhotoPersistance() {
+	public PhotoPersistance getPhotoPersistance() {
 		if (this.photoPersistance == null) {
-			this.photoPersistance = new Photo();
+			this.photoPersistance = new PhotoPersistance();
 		}
 		
 		return this.photoPersistance;

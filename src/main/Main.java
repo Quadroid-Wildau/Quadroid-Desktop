@@ -1,3 +1,4 @@
+package main;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -5,7 +6,7 @@ import javax.swing.JFrame;
 
 import communication.CommunicationStack;
 
-import service.MetaData;
+import service.MetaDataService;
 import controller.ViewController;
 
 public class Main {
@@ -42,7 +43,7 @@ public class Main {
 	
 	public static ViewController getMainController() {
 		if (mainController == null) {
-			mainController = new controller.Main();
+			mainController = new controller.MainController();
 		}
 		
 		return mainController;
