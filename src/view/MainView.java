@@ -7,6 +7,8 @@ import java.awt.Dimension;
 
 import javax.swing.JPanel;
 
+import controller.MainController;
+
 public class MainView extends JPanel {
 
 	@SuppressWarnings("unused")
@@ -18,9 +20,9 @@ public class MainView extends JPanel {
 	private Component map3DView;
 	private Component metaDataView;
 	private Component videoStreamView;
-	private JPanel rightSubPanel; 
+	private JPanel rightSubPanel;	
 	
-	public MainView(controller.MainController controller) {
+	public MainView(MainController controller) {
 		this.controller = controller;
 		this.setBackground(Color.red);
 		this.setVisible(true);

@@ -3,6 +3,8 @@ package controller;
 import java.util.Observable;
 import java.util.Observer;
 
+import model.MetaData;
+
 public class MetaDataController implements ViewController, Observer{
 
 	private view.MetaDataView view;
@@ -22,7 +24,7 @@ public class MetaDataController implements ViewController, Observer{
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
-		model.MetaData metaData = this.getService().getMetaData();
+		MetaData metaData = this.getService().getMetaData();
 		this.getView().setMetaData(metaData);
 	}
 }

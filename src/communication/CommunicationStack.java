@@ -1,5 +1,7 @@
 package communication;
 
+import com.googlecode.javacv.FrameGrabber.Exception;
+
 import communication.persistence.PhotoPersistence;
 import communication.persistence.VideoPersistence;
 
@@ -41,9 +43,13 @@ public class CommunicationStack {
 		return this.flightCommunicator;
 	}
 
-	public VideoCommunicator getVideoStreamCommunicator() {
+	public VideoCommunicator getVideoStreamCommunicator(int videoDevicePort) throws Exception {
 		if (this.videoStreamCommunicator == null) {
-			this.videoStreamCommunicator = new VideoCommunicator();
+			this.videoStreamCommunicator = new VideoCommunicator(videoDevicePort);
+		} else {
+			if (this.videoStreamCommunicator.getVideoDevicePort() != videoDevicePort) {
+				this.videoStreamCommunicator = new VideoCommunicator(videoDevicePort);
+			}
 		}
 		
 		return this.videoStreamCommunicator;
