@@ -5,21 +5,21 @@ import java.util.Observer;
 
 import communication.CommunicationStack;
 
-import service.MetaData;
+import service.MetaDataService;
 
 import model.Waypoint;
 
-public class Map implements ViewController, Observer {
+public class MapController implements ViewController, Observer {
 
-	private view.Map view;
+	private view.MapView view;
 	
-	public Map() {
+	public MapController() {
 		this.getService().addObserver(this);
 	}
 
-	public view.Map getView() {
+	public view.MapView getView() {
 		if (this.view == null) {
-			this.view = new view.Map(this);
+			this.view = new view.MapView(this);
 		}
 		
 		return this.view;
@@ -31,7 +31,7 @@ public class Map implements ViewController, Observer {
 		this.view.setGeoData(getService().getMetaData().getGeodata());
 	}
 	
-	private MetaData getService() {
-		return MetaData.getInstance();
+	private MetaDataService getService() {
+		return MetaDataService.getInstance();
 	}
 }

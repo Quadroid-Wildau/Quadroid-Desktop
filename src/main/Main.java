@@ -42,7 +42,7 @@ public class Main {
 	
 	public static ViewController getMainController() {
 		if (mainController == null) {
-			mainController = new controller.Main();
+			mainController = new controller.MainController();
 		}
 		
 		return mainController;

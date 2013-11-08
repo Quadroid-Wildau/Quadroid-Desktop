@@ -1,8 +1,8 @@
-package communication.persistance;
+package communication.persistence;
 
 import model.Landmark;
 
-public class Photo {
+public class PhotoPersistence {
 	public void save(Landmark landmark) {
 
 	}

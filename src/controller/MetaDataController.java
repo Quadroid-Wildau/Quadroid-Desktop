@@ -3,21 +3,21 @@ package controller;
 import java.util.Observable;
 import java.util.Observer;
 
-public class MetaData implements ViewController, Observer{
+public class MetaDataController implements ViewController, Observer{
 
-	private view.MetaData view;
+	private view.MetaDataView view;
 
-	public view.MetaData getView() {
+	public view.MetaDataView getView() {
 		if (this.view == null) {
-			this.view = new view.MetaData(this);
+			this.view = new view.MetaDataView(this);
 			this.getService().addObserver(this);
 		}
 		
 		return this.view;
 	}
 	
-	private service.MetaData getService() {
-		return service.MetaData.getInstance();
+	private service.MetaDataService getService() {
+		return service.MetaDataService.getInstance();
 	}
 
 	@Override

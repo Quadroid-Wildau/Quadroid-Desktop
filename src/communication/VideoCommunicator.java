@@ -1,6 +1,6 @@
 package communication;
 
-public class VideoStream {
+public class VideoCommunicator {
 
 	public model.VideoStream getVideoStream() {
 		return null;

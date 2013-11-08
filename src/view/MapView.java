@@ -8,17 +8,17 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Map extends JPanel{
+public class MapView extends JPanel{
 	private static final long serialVersionUID = 1L;
 	
 	@SuppressWarnings("unused")
-	private controller.Map controller;
+	private controller.MapController controller;
 	private JLabel label;
 	private view.helper.GoogleMaps googleMapsHelper;
 	private BufferedImage map;
 	private JLabel mapLabel;
 
-	public Map(controller.Map controller) {
+	public MapView(controller.MapController controller) {
 		this.setBackground(Color.blue);
 		this.add(new Label("Map"));
 		this.controller = controller;

@@ -1,8 +1,8 @@
-package communication.persistance;
+package communication.persistence;
 
 import model.VideoStream;
 
-public class Video {
+public class VideoPersistence {
 	public void save(VideoStream stream) {
 
 	}
