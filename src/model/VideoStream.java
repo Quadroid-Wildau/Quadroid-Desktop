@@ -1,25 +1,39 @@
 package model;
 
+import java.awt.Dimension;
+
+import com.googlecode.javacv.FrameGrabber;
+import com.googlecode.javacv.FrameGrabber.Exception;
+import com.googlecode.javacv.cpp.opencv_core.IplImage;
+
 public class VideoStream {
 
-	private Video video;
-
-	private Waypoint[] waypoints;
-
-	public Video getVideo() {
-		return null;
+	private FrameGrabber mFrameGrabber;
+	private IplImage currentFrame;
+	private Dimension videoSize;
+	
+	public VideoStream(FrameGrabber frameGrabber) {
+		mFrameGrabber = frameGrabber;
+		mFrameGrabber.setDeinterlace(true);
+		videoSize = new Dimension(mFrameGrabber.getImageWidth(), mFrameGrabber.getImageHeight());
 	}
-
-	public void setVideo(Video video) {
-
+	
+	public IplImage getNextFrame() throws Exception {
+		if (mFrameGrabber != null) {
+			currentFrame = mFrameGrabber.grab();
+		}
+		return currentFrame;
 	}
-
-	public Waypoint[] getWaypoints() {
-		return null;
+	
+	public void startGrab() throws Exception {
+		mFrameGrabber.start();
 	}
-
-	public Waypoint getWaypointBySecond(int sec) {
-		return null;
+	
+	public IplImage getCurrentFrame() {
+		return currentFrame;
 	}
-
+	
+	public Dimension getVideoSize() {
+		return videoSize;
+	}
 }

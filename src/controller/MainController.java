@@ -2,12 +2,14 @@ package controller;
 
 import java.awt.Component;
 
+import view.MainView;
+
 public class MainController implements ViewController{
-	private view.MainView view;
-	private controller.ViewController mapController;
-	private controller.ViewController videoStreamController;
-	private controller.ViewController map3DController;
-	private controller.ViewController metaDataController;
+	private MainView view;
+	private ViewController mapController;
+	private ViewController videoStreamController;
+	private ViewController map3DController;
+	private ViewController metaDataController;
 	
 	public MainController() {
 	}

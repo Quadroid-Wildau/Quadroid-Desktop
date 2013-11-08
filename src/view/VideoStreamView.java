@@ -1,25 +1,33 @@
 package view;
 
-import java.awt.Color;
-import java.awt.Label;
+import javax.swing.SwingUtilities;
 
-import javax.swing.JPanel;
+import view.custom.ImagePanel;
 
-public class VideoStreamView extends JPanel{
+import com.googlecode.javacv.cpp.opencv_core.IplImage;
+
+import controller.VideoStreamController;
+
+public class VideoStreamView extends ImagePanel {
 	private static final long serialVersionUID = 1L;
-	
-	
-	@SuppressWarnings("unused")
-	private controller.VideoStreamController controller;
+		
+	private VideoStreamController controller;
 	
 	public VideoStreamView(controller.VideoStreamController controller) {
-		this.setBackground(Color.cyan);
-		this.add(new Label("Video Stream"));
 		this.controller = controller;
+		this.setSize(800, 600);
+		this.setMaximumSize(getSize());
+		this.setMinimumSize(getSize());
 	}
 
-	public void showVideoStream(model.VideoStream videoStream) {
-
+	public void showNewVideoFrame(final IplImage frame) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				if (frame != null) {
+					displayImage(frame);
+				}
+			}
+		});
 	}
-
 }
