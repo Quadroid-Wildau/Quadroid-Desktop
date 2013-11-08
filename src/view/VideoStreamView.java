@@ -1,9 +1,5 @@
 package view;
 
-import static com.googlecode.javacv.cpp.opencv_core.cvFlip;
-
-import java.awt.Dimension;
-
 import javax.swing.SwingUtilities;
 
 import view.custom.ImagePanel;
@@ -19,6 +15,9 @@ public class VideoStreamView extends ImagePanel {
 	
 	public VideoStreamView(controller.VideoStreamController controller) {
 		this.controller = controller;
+		this.setSize(800, 600);
+		this.setMaximumSize(getSize());
+		this.setMinimumSize(getSize());
 	}
 
 	public void showNewVideoFrame(final IplImage frame) {
@@ -26,7 +25,6 @@ public class VideoStreamView extends ImagePanel {
 			@Override
 			public void run() {
 				if (frame != null) {
-					cvFlip(frame, frame, 1);
 					displayImage(frame);
 				}
 			}

@@ -14,8 +14,10 @@ public class ImagePanel extends JPanel {
 	BufferedImage img = null;
 
 	public void displayImage(IplImage img) {
-		this.img = img.getBufferedImage();
-		repaint();
+		try {
+			this.img = img.getBufferedImage();
+			repaint();
+		} catch (Exception e) {}
 	}
 
 	@Override

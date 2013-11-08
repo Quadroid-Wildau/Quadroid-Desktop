@@ -1,13 +1,12 @@
 package communication;
 
-import com.googlecode.javacv.FrameGrabber;
 import com.googlecode.javacv.FrameGrabber.Exception;
-import com.googlecode.javacv.FrameGrabber.ImageMode;
-import com.googlecode.javacv.OpenCVFrameGrabber;
+import com.googlecode.javacv.cpp.opencv_highgui;
+import com.googlecode.javacv.cpp.opencv_highgui.CvCapture;
 
 public class VideoCommunicator {
 	
-	private FrameGrabber mFrameGrabber = null;
+	private CvCapture mCvCapture;
 	private int videoDevicePort;
 	
 	public VideoCommunicator(int videoDevicePort) throws Exception {
@@ -15,13 +14,15 @@ public class VideoCommunicator {
 			videoDevicePort = 0;
 		
 		this.videoDevicePort = videoDevicePort;
-		mFrameGrabber = new OpenCVFrameGrabber(videoDevicePort);
-		mFrameGrabber.setImageMode(ImageMode.COLOR);
-		mFrameGrabber.setDeinterlace(true);
+		
+		mCvCapture = opencv_highgui.cvCreateCameraCapture(0);
+		opencv_highgui.cvSetCaptureProperty(mCvCapture, opencv_highgui.CV_CAP_PROP_FRAME_HEIGHT, 600);
+        opencv_highgui.cvSetCaptureProperty(mCvCapture, opencv_highgui.CV_CAP_PROP_FRAME_WIDTH, 800);
+        opencv_highgui.cvSetCaptureProperty(mCvCapture, opencv_highgui.CV_CAP_PROP_FPS, 30);
 	}
 	
-	public FrameGrabber getFrameGrabber() {
-		return mFrameGrabber;
+	public CvCapture getCvCapture() {
+		return mCvCapture;
 	}
 	
 	public int getVideoDevicePort() {
