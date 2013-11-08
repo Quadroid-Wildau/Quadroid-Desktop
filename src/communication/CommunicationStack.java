@@ -1,7 +1,7 @@
 package communication;
 
-import communication.persistance.PhotoPersistance;
-import communication.persistance.VideoPersistance;
+import communication.persistence.PhotoPersistence;
+import communication.persistence.VideoPersistence;
 
 public class CommunicationStack {
 
@@ -13,9 +13,9 @@ public class CommunicationStack {
 
 	private VideoCommunicator videoStreamCommunicator;
 
-	private VideoPersistance videoPersistance;
+	private VideoPersistence videoPersistance;
 
-	private PhotoPersistance photoPersistance;
+	private PhotoPersistence photoPersistance;
 
 	public static CommunicationStack getInstance() {
 		if (instance == null) {
@@ -49,17 +49,17 @@ public class CommunicationStack {
 		return this.videoStreamCommunicator;
 	}
 
-	public VideoPersistance getVideoPersistance() {
+	public VideoPersistence getVideoPersistance() {
 		if (this.videoPersistance == null) {
-			this.videoPersistance = new VideoPersistance();
+			this.videoPersistance = new VideoPersistence();
 		}
 		
 		return this.videoPersistance;
 	}
 
-	public PhotoPersistance getPhotoPersistance() {
+	public PhotoPersistence getPhotoPersistance() {
 		if (this.photoPersistance == null) {
-			this.photoPersistance = new PhotoPersistance();
+			this.photoPersistance = new PhotoPersistence();
 		}
 		
 		return this.photoPersistance;
