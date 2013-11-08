@@ -1,3 +1,4 @@
+package main;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -5,7 +6,6 @@ import javax.swing.JFrame;
 
 import communication.CommunicationStack;
 
-import service.MetaData;
 import controller.ViewController;
 
 public class Main {

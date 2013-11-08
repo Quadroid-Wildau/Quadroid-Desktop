@@ -1,8 +1,10 @@
 package service;
 
-public class VideoStream {
+public class VideoStreamService {
+	
+	
 
-	public VideoStream getInstance() {
+	public VideoStreamService getInstance() {
 		return null;
 	}
 
@@ -17,5 +19,4 @@ public class VideoStream {
 	public model.Landmark saveScreenshot() {
 		return null;
 	}
-
 }
