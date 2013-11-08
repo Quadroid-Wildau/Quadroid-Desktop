@@ -3,8 +3,6 @@ package service;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import communication.CommunicationStack;
 import communication.FlightControlCommunicator;

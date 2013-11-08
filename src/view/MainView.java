@@ -6,7 +6,6 @@ import java.awt.Component;
 import java.awt.Dimension;
 
 import javax.swing.JPanel;
-
 import controller.MainController;
 
 public class MainView extends JPanel {

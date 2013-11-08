@@ -2,8 +2,6 @@ package service;
 
 import java.util.Observable;
 
-import model.Landmark;
-
 import com.googlecode.javacv.FrameGrabber.Exception;
 import com.googlecode.javacv.cpp.opencv_core.IplImage;
 import com.googlecode.javacv.cpp.opencv_highgui;
@@ -49,10 +47,6 @@ public class VideoStreamService extends Observable {
 
 	public void saveVideoStream() {
 
-	}
-
-	public Landmark saveScreenshot() {
-		return null;
 	}
 	
 	private class GrabberThread extends Thread {

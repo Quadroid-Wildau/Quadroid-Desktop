@@ -24,7 +24,7 @@ public class Main extends JFrame implements ActionListener {
 	private static MainController mainController;
 	private JMenuBar menuBar;
 	private JMenu menuFile, menuVideo, subMenuVideoDevice;
-	private JMenuItem menuItemVideo0, menuItemVideo1, menuItemVideo2, menuItemVideo3; 
+	private JMenuItem menuItemVideo0, menuItemVideo1, menuItemVideo2, menuItemVideo3;
 	
 	/**
 	 * @param args
@@ -38,7 +38,7 @@ public class Main extends JFrame implements ActionListener {
 		
 		initTestTimer();
 	}
-	
+
 	public Main() {
 		setSize(1024, 768);
 		getContentPane().add(getMainController().getView());
@@ -91,8 +91,7 @@ public class Main extends JFrame implements ActionListener {
 		}
 		
 		return mainController;
-	}
-	
+	}	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
