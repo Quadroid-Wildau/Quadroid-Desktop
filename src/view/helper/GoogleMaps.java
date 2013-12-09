@@ -9,8 +9,6 @@ import java.util.Iterator;
 
 import javax.imageio.ImageIO;
 
-import model.GeoData;
-
 public class GoogleMaps {
 	//config
 	private static int ZOOM_LEVEL = 4;
@@ -34,7 +32,7 @@ public class GoogleMaps {
 			try {
 				image = ImageIO.read(url);
 			} catch (IOException e) {
-				e.printStackTrace();
+				//e.printStackTrace();
 			}
 		}
 		

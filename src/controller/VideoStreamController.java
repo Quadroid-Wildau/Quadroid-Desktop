@@ -8,6 +8,7 @@ import view.VideoStreamView;
 
 import com.googlecode.javacv.FrameGrabber.Exception;
 import com.googlecode.javacv.cpp.opencv_core.IplImage;
+import com.googlecode.javacv.cpp.opencv_highgui;
 
 public class VideoStreamController implements ViewController, Observer {
 
@@ -34,6 +35,23 @@ public class VideoStreamController implements ViewController, Observer {
 	
 	public void stopGrabbingVideoFrames() {
 		getService().stopVideoStream();
+	}
+	
+	public String[] getAvailableCaptureDevices() {
+		return getService().getAvailableCaptureDevices();
+	}
+	
+	public void saveScreenShot(String filepath) {
+		IplImage frame = getService().getCurrentFrame();
+		opencv_highgui.cvSaveImage(filepath, frame);
+	}
+	
+	public void saveVideoStream(String filepath) {
+		getService().saveVideoStream(filepath);
+	}
+	
+	public void stopSavingVideo() {
+		getService().stopSaveVideoStream();
 	}
 
 	@Override

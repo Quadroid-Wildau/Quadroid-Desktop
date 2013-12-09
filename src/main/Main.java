@@ -1,4 +1,6 @@
 package main;
+import helper.FileHelper;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Timer;
@@ -16,22 +18,19 @@ import controller.VideoStreamController;
 import controller.ViewController;
 
 public class Main extends JFrame implements ActionListener {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	
 	private static MainController mainController;
 	private JMenuBar menuBar;
-	private JMenu menuFile, menuVideo, subMenuVideoDevice;
-	private JMenuItem menuItemVideo0, menuItemVideo1, menuItemVideo2, menuItemVideo3;
+	private JMenu menuFile, menuVideo, subMenuVideoDevice, saveScreenshotMenu, saveVideoMenu;
 	
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		System.getProperties().put("http.proxyHost", "proxy.th-wildau.de");
-		System.getProperties().put("http.proxyPort", "8080");
+//		System.getProperties().put("http.proxyHost", "proxy.th-wildau.de");
+//		System.getProperties().put("http.proxyPort", "8080");
 		
 		getMainController();
 		new Main();
@@ -53,23 +52,99 @@ public class Main extends JFrame implements ActionListener {
 		subMenuVideoDevice = new JMenu("Video Device");
 		menuVideo.add(subMenuVideoDevice);
 		
-		menuItemVideo0 = new JMenuItem("Device 1");
-		menuItemVideo0.addActionListener(this);
-		menuItemVideo1 = new JMenuItem("Device 2");
-		menuItemVideo1.addActionListener(this);
-		menuItemVideo2 = new JMenuItem("Device 3");
-		menuItemVideo2.addActionListener(this);
-		menuItemVideo3 = new JMenuItem("Device 4");
-		menuItemVideo3.addActionListener(this);
+		//Add Devices
+		final VideoStreamController videoStreamController = (VideoStreamController) mainController.getVideoStreamController();
+		String[] captureDevices = videoStreamController.getAvailableCaptureDevices();
+		if (captureDevices.length > 0) {
+			for (int i = 0; i < captureDevices.length; i++) {
+				JMenuItem item = new JMenuItem(captureDevices[i]);
+				item.setActionCommand(String.valueOf(i));
+				item.addActionListener(this);
+				subMenuVideoDevice.add(item);
+			}
+		} else {
+			JMenuItem item = new JMenuItem("Keine Geräte gefunden");
+			item.setEnabled(false);
+			subMenuVideoDevice.add(item);
+		}
 		
-		subMenuVideoDevice.add(menuItemVideo0);
-		subMenuVideoDevice.add(menuItemVideo1);
-		subMenuVideoDevice.add(menuItemVideo2);
-		subMenuVideoDevice.add(menuItemVideo3);
+		//create Video Menu
+		saveVideoMenu = new JMenu("Video speichern");
+		
+		//Get users home directory for predefined paths
+		String homeDir = System.getProperty("user.home");
+		
+		//Create save video menu items
+		JMenuItem saveVideoPredefinedPath = new JMenuItem("Speichern in: " + homeDir);
+		saveVideoPredefinedPath.setActionCommand("saveVideoPredefinedPath");
+		saveVideoPredefinedPath.addActionListener(this);
+		JMenuItem saveVideo = new JMenuItem("Pfad angeben");
+		saveVideo.setActionCommand("saveVideo");
+		saveVideo.addActionListener(this);
+		JMenuItem stopSavingVideo = new JMenuItem("Aufnahme stoppen");
+		stopSavingVideo.setActionCommand("stopSavingVideo");
+		stopSavingVideo.addActionListener(this);
+		
+		//add them to the menu
+		saveVideoMenu.add(saveVideoPredefinedPath);
+		saveVideoMenu.add(saveVideo);
+		saveVideoMenu.add(stopSavingVideo);
+		
+		//create save screenshot menu
+		saveScreenshotMenu = new JMenu("Screenshot speichern");
+		
+		//create save screenshot menu items
+		JMenuItem saveScreenshotPredefinedPath = new JMenuItem("Speichern in: " + homeDir);
+		saveScreenshotPredefinedPath.setActionCommand("saveScreenshotPredefinedPath");
+		saveScreenshotPredefinedPath.addActionListener(this);
+		JMenuItem saveScreenshot = new JMenuItem("Pfad angeben");
+		saveScreenshot.setActionCommand("saveScreenshot");
+		saveScreenshot.addActionListener(this);
+		
+		//add them to the menu
+		saveScreenshotMenu.add(saveScreenshotPredefinedPath);
+		saveScreenshotMenu.add(saveScreenshot);
+		
+		//add to root menu
+		menuVideo.add(saveVideoMenu);
+		menuVideo.add(saveScreenshotMenu);
+		
+		//disable the save menus, because after starting the application, we don't have any capture device selected.
+		//The user should not have any possibility to click one of these menu items.
+//		disableSaveMenus();
 		
 		setJMenuBar(menuBar);
 		
 		setVisible(true);
+	}
+	
+	public static ViewController getMainController() {
+		if (mainController == null) {
+			mainController = new MainController();
+		}
+		
+		return mainController;
+	}	
+	
+	
+//***************************************************************************************************************
+//	Helpers
+//***************************************************************************************************************
+	
+	private void disableSaveMenus() {
+		saveScreenshotMenu.setEnabled(false);
+		saveVideoMenu.setEnabled(false);
+	}
+	
+	private void enableSaveMenus() {
+		saveScreenshotMenu.setEnabled(true);
+		saveVideoMenu.setEnabled(true);
+	}
+	
+	private void enableAllCaptureDevices() {
+		for (int i = 0; i < subMenuVideoDevice.getItemCount(); i++) {
+			subMenuVideoDevice.getItem(i).setEnabled(true);
+		}
 	}
 	
 	private static void initTestTimer() {
@@ -85,31 +160,48 @@ public class Main extends JFrame implements ActionListener {
 		timer.scheduleAtFixedRate(task, 0, 1000);
 	}
 	
-	public static ViewController getMainController() {
-		if (mainController == null) {
-			mainController = new MainController();
-		}
-		
-		return mainController;
-	}	
+//***************************************************************************************************************
+//	View Listeners
+//***************************************************************************************************************
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		VideoStreamController videoStreamController = (VideoStreamController) mainController.getVideoStreamController();
+		String command = e.getActionCommand();
 		
-		try {
-			if (e.getSource() == menuItemVideo0) {
-				videoStreamController.startVideoStream(0);
-			} else if (e.getSource() == menuItemVideo1) {
-				videoStreamController.startVideoStream(1);
-			} else if (e.getSource() == menuItemVideo2) {
-				videoStreamController.startVideoStream(2);
-			} else if (e.getSource() == menuItemVideo3) {
-				videoStreamController.startVideoStream(3);
+		if (command.equals("saveVideoPredefinedPath")) {
+			videoStreamController.saveVideoStream(FileHelper.getPredefinedVideoPath(""));
+		} else if (command.equals("saveVideo")) {
+			
+		} else if (command.equals("stopSavingVideo")) {
+			videoStreamController.stopSavingVideo();
+		} else if (command.equals("saveScreenshotPredefinedPath")) {
+			videoStreamController.saveScreenShot(FileHelper.getPredefinedScreenshotPath(""));
+		} else if (command.equals("saveScreenshot")) {
+			
+		} else {
+			try {
+				//disable all save menus in case the device can't be opened
+				disableSaveMenus();
+				
+				//get device index from action command
+				int device = Integer.parseInt(command);
+				
+				//open device
+				videoStreamController.startVideoStream(device);
+				
+				//re-enable all capture devices in device chooser menu
+				enableAllCaptureDevices();
+				
+				//disable the device in device chooser menu so it can't be reselected
+				subMenuVideoDevice.getItem(device).setEnabled(false);
+				
+				//enable the menu items again, if we reach this code the device was opened successfully
+				enableSaveMenus();
+			} catch (Exception ex) {
+				System.err.println("Verdammt n Error man");
+				ex.printStackTrace();
 			}
-		} catch (Exception ex) {
-			System.err.println("Verdammt n Error man");
-			ex.printStackTrace();
 		}
 	}
 }
