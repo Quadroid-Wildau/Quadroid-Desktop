@@ -2,23 +2,25 @@ package service;
 
 import java.util.Observable;
 
+import com.googlecode.javacv.FFmpegFrameRecorder;
 import com.googlecode.javacv.FrameGrabber.Exception;
-import com.googlecode.javacv.cpp.opencv_core.CvSize;
 import com.googlecode.javacv.cpp.opencv_core.IplImage;
 import com.googlecode.javacv.cpp.opencv_highgui;
 import com.googlecode.javacv.cpp.opencv_highgui.CvCapture;
-import com.googlecode.javacv.cpp.opencv_highgui.CvVideoWriter;
 import com.googlecode.javacv.cpp.videoInputLib.videoInput;
 import communication.CommunicationStack;
 import communication.VideoCommunicator;
 
 public class VideoStreamService extends Observable {
+	
+	private static final int BITRATE = 20971520; //20 Mbit/s
 
 	private static VideoStreamService instance;
 	private VideoCommunicator mVideoCommunicator;
 	private CvCapture mCvCapture;
 	private GrabberThread mGrabberThread;
 	private IplImage currentFrame;
+	private FFmpegFrameRecorder rec;
 	
 	public static VideoStreamService getInstance() {
 		if (instance == null)
@@ -50,21 +52,34 @@ public class VideoStreamService extends Observable {
 	}
 
 	public void saveVideoStream(String filepath) {
-		if (mGrabberThread != null && mGrabberThread.isAlive()) {
-			mGrabberThread.stopGrab();
-			mGrabberThread.interrupt();
+		try {
+			int width = (int) opencv_highgui.cvGetCaptureProperty(mCvCapture, opencv_highgui.CV_CAP_PROP_FRAME_WIDTH);
+			int height = (int) opencv_highgui.cvGetCaptureProperty(mCvCapture, opencv_highgui.CV_CAP_PROP_FRAME_HEIGHT);
+			double fps = opencv_highgui.cvGetCaptureProperty(mCvCapture, opencv_highgui.CV_CAP_PROP_FPS);
+			
+			System.out.println(filepath);
+			rec = FFmpegFrameRecorder.createDefault(filepath, width, height);
+			rec.setFrameRate(fps);
+			
+			rec.setVideoBitrate(BITRATE);
+			
+			//MPEG2 Codec
+			rec.setVideoCodec(2);
+			
+			rec.start();
+		} catch (com.googlecode.javacv.FrameRecorder.Exception e) {
+			e.printStackTrace();
 		}
-		
-		mGrabberThread = new GrabberThread(mCvCapture, filepath);
-		mGrabberThread.start();
 	}
 	
 	public void stopSaveVideoStream() {
-		if (mGrabberThread != null) {
-			mGrabberThread.stopGrab();
+		try {
+			rec.stop();
+			rec.release();
+			rec = null;
+		} catch (com.googlecode.javacv.FrameRecorder.Exception e) {
+			e.printStackTrace();
 		}
-		mGrabberThread = new GrabberThread(mCvCapture);
-		mGrabberThread.start();
 	}
 	
 	public IplImage getCurrentFrame() {
@@ -84,40 +99,16 @@ public class VideoStreamService extends Observable {
 	private class GrabberThread extends Thread {
 		
 		private final CvCapture mCvCapture;
-		private boolean canGrab = true;
-		
-		private boolean saveVideo = false;
-		private CvVideoWriter mVideoWriter;
+		private boolean canGrab = true;		
 		
 		public GrabberThread(CvCapture mCvCapture) {
 			this.mCvCapture = mCvCapture;
-			System.out.println("Creating " + getClass());
-		}
-		
-		public GrabberThread(CvCapture mCvCapture, String videoFilePath) {
-			this.mCvCapture = mCvCapture;
-			
-			System.out.println("Creating " + getClass() + " with Saving");
-			
-			saveVideo = true;
-			int width = (int) opencv_highgui.cvGetCaptureProperty(mCvCapture, opencv_highgui.CV_CAP_PROP_FRAME_WIDTH);
-			int height = (int) opencv_highgui.cvGetCaptureProperty(mCvCapture, opencv_highgui.CV_CAP_PROP_FRAME_HEIGHT);
-			mVideoWriter = opencv_highgui.cvCreateVideoWriter(
-					"F:\\lol.avi",//videoFilePath, 
-					-1, 
-					opencv_highgui.cvGetCaptureProperty(mCvCapture, opencv_highgui.CV_CAP_PROP_FPS), 
-					new CvSize(width, height), 
-					1);
-			
-			if (mVideoWriter == null)
-				System.out.println("Cannot create VideoWriter");
 		}
 		
 		public synchronized void stopGrab() {
 			canGrab = false;
-			
-			if (saveVideo) {
-				opencv_highgui.cvReleaseVideoWriter(mVideoWriter);
+			if (rec != null) {
+				stopSaveVideoStream();
 			}
 			opencv_highgui.cvReleaseCapture(mCvCapture);
 		}
@@ -125,14 +116,15 @@ public class VideoStreamService extends Observable {
 		public void run() {
 			while (canGrab) {
 				currentFrame = opencv_highgui.cvQueryFrame(mCvCapture);				
+				if (rec != null) {
+					try {
+						rec.record(currentFrame);
+					} catch (com.googlecode.javacv.FrameRecorder.Exception e) {
+						e.printStackTrace();
+					}
+				}
 				
 				synchronized (this) {
-					if (saveVideo && mVideoWriter != null) {
-						System.out.println("Recording Frame");
-						opencv_highgui.cvWriteFrame(mVideoWriter, currentFrame);
-						System.out.println("Frame recorded");
-					}
-					
 					VideoStreamService.this.setChanged();
 					VideoStreamService.this.notifyObservers(currentFrame);
 				}

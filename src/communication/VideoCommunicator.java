@@ -16,7 +16,7 @@ public class VideoCommunicator {
 		this.videoDevicePort = videoDevicePort;
 		
 		mCvCapture = opencv_highgui.cvCreateCameraCapture(videoDevicePort);
-		opencv_highgui.cvSetCaptureProperty(mCvCapture, opencv_highgui.CV_CAP_PROP_FPS, 25);
+		opencv_highgui.cvSetCaptureProperty(mCvCapture, opencv_highgui.CV_CAP_PROP_FPS, 30);
 		opencv_highgui.cvSetCaptureProperty(mCvCapture, opencv_highgui.CV_CAP_PROP_FRAME_WIDTH, 640);
 		opencv_highgui.cvSetCaptureProperty(mCvCapture, opencv_highgui.CV_CAP_PROP_FRAME_HEIGHT, 480);
 	}

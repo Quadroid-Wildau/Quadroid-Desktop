@@ -12,12 +12,12 @@ public class FileHelper {
 		File folder = new File(baseDir);
 		int i = 0;
 		
-		String filename = "quadroid_video_" + i + ".avi";
+		String filename = "quadroid_video_" + i + ".mpg";
 		File file = new File(folder, filename);
 		
 		while (file.exists()) {
 			i++;
-			filename = "quadroid_video_" + i + ".avi";
+			filename = "quadroid_video_" + i + ".mpg";
 			file = new File(folder, filename);
 		}
 		
@@ -32,12 +32,12 @@ public class FileHelper {
 		File folder = new File(baseDir);
 		int i = 0;
 		
-		String filename = "quadroid_screenshot_" + i + ".bmp";
+		String filename = "quadroid_screenshot_" + i + ".png";
 		File file = new File(folder, filename);
 		
 		while (file.exists()) {
 			i++;
-			filename = "quadroid_screenshot_" + i + ".bmp";
+			filename = "quadroid_screenshot_" + i + ".png";
 			file = new File(folder, filename);
 		}
 				

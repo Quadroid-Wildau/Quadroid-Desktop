@@ -42,6 +42,8 @@ public class Main extends JFrame implements ActionListener {
 		setSize(1024, 768);
 		getContentPane().add(getMainController().getView());
 		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		menuBar = new JMenuBar();
 		menuFile = new JMenu("Datei");
 		menuVideo = new JMenu("Video");
@@ -111,7 +113,12 @@ public class Main extends JFrame implements ActionListener {
 		
 		//disable the save menus, because after starting the application, we don't have any capture device selected.
 		//The user should not have any possibility to click one of these menu items.
-//		disableSaveMenus();
+		disableSaveMenus();
+		
+		JMenuItem menuExit = new JMenuItem("Beenden");
+		menuExit.setActionCommand("exit");
+		menuExit.addActionListener(this);
+		menuFile.add(menuExit);
 		
 		setJMenuBar(menuBar);
 		
@@ -179,6 +186,8 @@ public class Main extends JFrame implements ActionListener {
 			videoStreamController.saveScreenShot(FileHelper.getPredefinedScreenshotPath(""));
 		} else if (command.equals("saveScreenshot")) {
 			
+		} else if (command.equals("exit")) {
+			System.exit(0);
 		} else {
 			try {
 				//disable all save menus in case the device can't be opened

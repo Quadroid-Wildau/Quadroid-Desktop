@@ -3,11 +3,7 @@ package controller;
 import java.util.Observable;
 import java.util.Observer;
 
-import communication.CommunicationStack;
-
 import service.MetaDataService;
-
-import model.Waypoint;
 
 public class MapController implements ViewController, Observer {
 
@@ -27,7 +23,7 @@ public class MapController implements ViewController, Observer {
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
-		System.out.println(getService().getMetaData().getGeodata().getLatitude());
+//		System.out.println(getService().getMetaData().getGeodata().getLatitude());
 		this.view.setGeoData(getService().getMetaData().getGeodata());
 	}
 	
