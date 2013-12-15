@@ -6,10 +6,12 @@ import java.awt.event.ActionListener;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import communication.CommunicationStack;
 
@@ -167,6 +169,20 @@ public class Main extends JFrame implements ActionListener {
 		timer.scheduleAtFixedRate(task, 0, 1000);
 	}
 	
+	private String getFileFromChooser(final String ending) {
+		JFileChooser mFileChooser = new JFileChooser(System.getProperty("user.home"));
+		mFileChooser.setAcceptAllFileFilterUsed(false);
+		mFileChooser.addChoosableFileFilter(new FileNameExtensionFilter(ending, ending));
+		
+		int ret = mFileChooser.showSaveDialog(this);
+		
+		if (ret == JFileChooser.APPROVE_OPTION) {
+			return mFileChooser.getSelectedFile().getPath();
+		}
+		
+		return null;
+	}
+	
 //***************************************************************************************************************
 //	View Listeners
 //***************************************************************************************************************
@@ -179,13 +195,21 @@ public class Main extends JFrame implements ActionListener {
 		if (command.equals("saveVideoPredefinedPath")) {
 			videoStreamController.saveVideoStream(FileHelper.getPredefinedVideoPath(""));
 		} else if (command.equals("saveVideo")) {
-			
+			String videofile = getFileFromChooser("mpg");
+			if (videofile != null) {
+				if (!videofile.endsWith(".mpg")) videofile += ".mpg";
+				videoStreamController.saveVideoStream(videofile);
+			}
 		} else if (command.equals("stopSavingVideo")) {
 			videoStreamController.stopSavingVideo();
 		} else if (command.equals("saveScreenshotPredefinedPath")) {
 			videoStreamController.saveScreenShot(FileHelper.getPredefinedScreenshotPath(""));
 		} else if (command.equals("saveScreenshot")) {
-			
+			String imagefile = getFileFromChooser("png");
+			if (imagefile != null) {
+				if (!imagefile.endsWith(".png")) imagefile += ".png";
+				videoStreamController.saveScreenShot(imagefile);
+			}
 		} else if (command.equals("exit")) {
 			System.exit(0);
 		} else {

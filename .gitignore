@@ -8,7 +8,6 @@ tmp/**/*
 *.swp
 *~.nib
 local.properties
-.classpath
 .settings/
 .loadpath
 
@@ -28,3 +27,5 @@ local.properties
 
 opencv/
 ffmpeg/
+ffmpeg_x86/
+exports/
