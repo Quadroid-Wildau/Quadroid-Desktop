@@ -20,7 +20,7 @@ public class VideoStreamService extends Observable {
 	private CvCapture mCvCapture;
 	private GrabberThread mGrabberThread;
 	private IplImage currentFrame;
-	private FFmpegFrameRecorder rec;
+	private FFmpegFrameRecorder mFrameRecorder;
 	
 	public static VideoStreamService getInstance() {
 		if (instance == null)
@@ -57,16 +57,15 @@ public class VideoStreamService extends Observable {
 			int height = (int) opencv_highgui.cvGetCaptureProperty(mCvCapture, opencv_highgui.CV_CAP_PROP_FRAME_HEIGHT);
 			double fps = opencv_highgui.cvGetCaptureProperty(mCvCapture, opencv_highgui.CV_CAP_PROP_FPS);
 			
-			System.out.println(filepath);
-			rec = FFmpegFrameRecorder.createDefault(filepath, width, height);
-			rec.setFrameRate(fps);
+			mFrameRecorder = FFmpegFrameRecorder.createDefault(filepath, width, height);
+			mFrameRecorder.setFrameRate(fps);
 			
-			rec.setVideoBitrate(BITRATE);
+			mFrameRecorder.setVideoBitrate(BITRATE);
 			
 			//MPEG2 Codec
-			rec.setVideoCodec(2);
+			mFrameRecorder.setVideoCodec(2);
 			
-			rec.start();
+			mFrameRecorder.start();
 		} catch (com.googlecode.javacv.FrameRecorder.Exception e) {
 			e.printStackTrace();
 		}
@@ -74,9 +73,9 @@ public class VideoStreamService extends Observable {
 	
 	public void stopSaveVideoStream() {
 		try {
-			rec.stop();
-			rec.release();
-			rec = null;
+			mFrameRecorder.stop();
+			mFrameRecorder.release();
+			mFrameRecorder = null;
 		} catch (com.googlecode.javacv.FrameRecorder.Exception e) {
 			e.printStackTrace();
 		}
@@ -107,7 +106,7 @@ public class VideoStreamService extends Observable {
 		
 		public synchronized void stopGrab() {
 			canGrab = false;
-			if (rec != null) {
+			if (mFrameRecorder != null) {
 				stopSaveVideoStream();
 			}
 			opencv_highgui.cvReleaseCapture(mCvCapture);
@@ -116,9 +115,9 @@ public class VideoStreamService extends Observable {
 		public void run() {
 			while (canGrab) {
 				currentFrame = opencv_highgui.cvQueryFrame(mCvCapture);				
-				if (rec != null) {
+				if (mFrameRecorder != null) {
 					try {
-						rec.record(currentFrame);
+						mFrameRecorder.record(currentFrame);
 					} catch (com.googlecode.javacv.FrameRecorder.Exception e) {
 						e.printStackTrace();
 					}
