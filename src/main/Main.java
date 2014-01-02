@@ -26,6 +26,7 @@ public class Main extends JFrame implements ActionListener {
 	private static MainController mainController;
 	private JMenuBar menuBar;
 	private JMenu menuFile, menuVideo, subMenuVideoDevice, saveScreenshotMenu, saveVideoMenu;
+	private JMenuItem saveVideoPredefinedPath, saveVideo, stopSavingVideo;
 	
 	/**
 	 * @param args
@@ -79,15 +80,16 @@ public class Main extends JFrame implements ActionListener {
 		String homeDir = System.getProperty("user.home");
 		
 		//Create save video menu items
-		JMenuItem saveVideoPredefinedPath = new JMenuItem("Speichern in: " + homeDir);
+		saveVideoPredefinedPath = new JMenuItem("Speichern in: " + homeDir);
 		saveVideoPredefinedPath.setActionCommand("saveVideoPredefinedPath");
 		saveVideoPredefinedPath.addActionListener(this);
-		JMenuItem saveVideo = new JMenuItem("Pfad angeben");
+		saveVideo = new JMenuItem("Pfad angeben");
 		saveVideo.setActionCommand("saveVideo");
 		saveVideo.addActionListener(this);
-		JMenuItem stopSavingVideo = new JMenuItem("Aufnahme stoppen");
+		stopSavingVideo = new JMenuItem("Aufnahme stoppen");
 		stopSavingVideo.setActionCommand("stopSavingVideo");
 		stopSavingVideo.addActionListener(this);
+		stopSavingVideo.setEnabled(false);
 		
 		//add them to the menu
 		saveVideoMenu.add(saveVideoPredefinedPath);
@@ -156,6 +158,12 @@ public class Main extends JFrame implements ActionListener {
 		}
 	}
 	
+	private void configureVideoRecordingOptions(boolean isRecording) {
+		saveVideo.setEnabled(!isRecording);
+		saveVideoPredefinedPath.setEnabled(!isRecording);
+		stopSavingVideo.setEnabled(isRecording);
+	}
+	
 	private static void initTestTimer() {
 		TimerTask task = new TimerTask() {
 			@Override
@@ -194,14 +202,17 @@ public class Main extends JFrame implements ActionListener {
 		
 		if (command.equals("saveVideoPredefinedPath")) {
 			videoStreamController.saveVideoStream(FileHelper.getPredefinedVideoPath(""));
+			configureVideoRecordingOptions(true);
 		} else if (command.equals("saveVideo")) {
 			String videofile = getFileFromChooser("mpg");
 			if (videofile != null) {
 				if (!videofile.endsWith(".mpg")) videofile += ".mpg";
 				videoStreamController.saveVideoStream(videofile);
 			}
+			configureVideoRecordingOptions(true);
 		} else if (command.equals("stopSavingVideo")) {
 			videoStreamController.stopSavingVideo();
+			configureVideoRecordingOptions(false);
 		} else if (command.equals("saveScreenshotPredefinedPath")) {
 			videoStreamController.saveScreenShot(FileHelper.getPredefinedScreenshotPath(""));
 		} else if (command.equals("saveScreenshot")) {

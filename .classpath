@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="libs/javacpp.jar"/>
 	<classpathentry kind="lib" path="libs/javacv-android-arm.jar"/>
 	<classpathentry kind="lib" path="libs/javacv-linux-x86_64.jar"/>
 	<classpathentry kind="lib" path="libs/javacv-linux-x86.jar"/>
 	<classpathentry kind="lib" path="libs/javacv-macosx-x86_64.jar"/>
-	<classpathentry kind="lib" path="libs/javacv-windows-x86_64.jar"/>
-	<classpathentry kind="lib" path="libs/javacv-windows-x86.jar"/>
+	<classpathentry kind="lib" path="libs/javacv-windows-x86_64.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="D:/opencv/build/x64/vc11/bin"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="libs/javacv-windows-x86.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="D:/opencv/build/x86/vc11/bin"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="libs/javacv.jar"/>
 	<classpathentry kind="lib" path="libs/ffmpeg-20130915-git-7ac6c63-windows-x86_64.jar"/>
 	<classpathentry kind="lib" path="libs/ffmpeg-20130915-git-7ac6c63-windows-x86.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre7"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
