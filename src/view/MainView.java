@@ -33,7 +33,7 @@ public class MainView extends JPanel {
 		if (this.rightSubPanel == null) {			
 			this.rightSubPanel = new JPanel();
 			this.rightSubPanel.setLayout(new BorderLayout());
-			this.rightSubPanel.setPreferredSize(new Dimension(400, 9000));
+			this.rightSubPanel.setPreferredSize(new Dimension(580, 9000));
 		}
 		
 		return this.rightSubPanel;
@@ -59,7 +59,7 @@ public class MainView extends JPanel {
 			}
 			
 			this.map3DView = view;
-			this.map3DView.setPreferredSize(new Dimension(400, 400));
+			this.map3DView.setPreferredSize(new Dimension(580, 480));
 		}
 		
 		this.rightSubPanel.add(this.map3DView, java.awt.BorderLayout.PAGE_END);
@@ -72,7 +72,7 @@ public class MainView extends JPanel {
 			}
 			
 			this.metaDataView = view;		
-			this.metaDataView.setPreferredSize(new Dimension(900, 120));
+			this.metaDataView.setPreferredSize(new Dimension(1280, 120));
 		}
 		
 		this.add(this.metaDataView, java.awt.BorderLayout.SOUTH);
