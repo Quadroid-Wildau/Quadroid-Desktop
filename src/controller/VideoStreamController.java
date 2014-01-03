@@ -8,7 +8,6 @@ import view.VideoStreamView;
 
 import com.googlecode.javacv.FrameGrabber.Exception;
 import com.googlecode.javacv.cpp.opencv_core.IplImage;
-import com.googlecode.javacv.cpp.opencv_highgui;
 import communication.CommunicationStack;
 
 public class VideoStreamController implements ViewController, Observer {

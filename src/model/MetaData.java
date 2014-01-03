@@ -1,6 +1,5 @@
 package model;
 
-import java.util.Random;
 
 /**
  * Datenhaltungsmodel für die Telemetriedaten:

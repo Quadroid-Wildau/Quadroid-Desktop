@@ -1,6 +1,12 @@
 package model;
 
-import model.BufferedImage;
+import helper.FileHelper;
+
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 /**
  * Datenhaltungsmodell für Landmarkenalarme:
@@ -10,16 +16,29 @@ public class Landmark {
 
 	private MetaData tdata;
 
-	private BufferedImage lmPic;
+	private BufferedImage landmarkPicture;
+	
+	private File imageFile = null;
 
 	public void setLmpic(BufferedImage lmpic) {
-
+		this.landmarkPicture = lmpic;
 	}
 
-	public BufferedImage getLmpic() {
-		return null;
+	public BufferedImage getLandmarkPicture() {
+		return landmarkPicture;
 	}
 
+	public File getLandmarkPictureAsFile() {
+		if (imageFile != null)
+			imageFile = new File(FileHelper.getPendingAlertPath(""));
+		try {
+			ImageIO.write(landmarkPicture, "png", imageFile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return imageFile;
+	}
+	
 	public void setTdata(MetaData tdata) {
 
 	}

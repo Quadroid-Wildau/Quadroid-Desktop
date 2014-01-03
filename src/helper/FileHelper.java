@@ -44,5 +44,23 @@ public class FileHelper {
 		return file.getAbsolutePath();
 	}
 	
-	
+	public static String getPendingAlertPath(String baseDir) {
+		if (baseDir == null || baseDir.equals("")) {
+			baseDir = System.getProperty("user.home");
+		}
+		
+		File folder = new File(baseDir);
+		int i = 0;
+		
+		String filename = "quadroid_pending_alert_" + i + ".png";
+		File file = new File(folder, filename);
+		
+		while (file.exists()) {
+			i++;
+			filename = "quadroid_pending_alert_" + i + ".png";
+			file = new File(folder, filename);
+		}
+				
+		return file.getAbsolutePath();
+	}
 }
