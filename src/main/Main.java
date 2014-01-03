@@ -56,7 +56,7 @@ public class Main extends JFrame implements ActionListener, WindowListener {
 	}
 
 	public Main() {
-		setSize(1024, 768);
+		setSize(1280, 800);
 		getContentPane().add(getMainController().getView());
 		addWindowListener(this);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);

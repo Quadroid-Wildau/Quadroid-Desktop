@@ -2,9 +2,18 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.ComponentOrientation;
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.Label;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.MatteBorder;
 
 public class MetaDataView extends JPanel{
 	private static final long serialVersionUID = 1L;
@@ -12,55 +21,103 @@ public class MetaDataView extends JPanel{
 	
 	@SuppressWarnings("unused")
 	private controller.MetaDataController controller;
-	private Label position;
-	private Label positionHeadline;
-	private Label powerHeadline;
-	private Label power;
-	private Label heightHeadline;
-	private Label height;
-	private Label timeHeadline;
-	private Label time;
-	private Label speedHeadline;
-	private Label speed;
-	private Label courseHeadline;
-	private Label course;
-	private JPanel subPanel;
+	private JLabel lblMetadaten;
+	private JPanel panel;
+	private JLabel lblPosition;
+	private JLabel lblZeit;
+	private JLabel lblGeschwindigkeit;
+	private JLabel lblAkku;
+	private JLabel lblHoehe;
+	private JLabel lblKurs;
+	private JTextField position;
+	private JTextField time;
+	private JTextField power;
+	private JTextField speed;
+	private JTextField height;
+	private JTextField course;
 	
 	public MetaDataView(controller.MetaDataController controller) {
-		this.setBackground(Color.orange);
+		setFont(new Font("Tahoma", Font.PLAIN, 12));
+		setBorder(new EmptyBorder(10, 10, 10, 10));
 		this.controller = controller;
+		setLayout(new BorderLayout(0, 0));
+		lblMetadaten = new JLabel("Metadaten");
+		lblMetadaten.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(0, 0, 0)));
+		lblMetadaten.setFont(new Font("Tahoma", Font.BOLD, 18));
+		add(lblMetadaten, BorderLayout.NORTH);
 		
-		this.positionHeadline = new Label("Position: ");
-		this.position = new Label();
-		this.add(this.positionHeadline);
-		this.add(this.position);
+		panel = new JPanel();
+		add(panel, BorderLayout.CENTER);
+		panel.setLayout(new GridLayout(2, 3, 10, 0));
 		
-		this.powerHeadline = new Label("Akku: ");
-		this.power = new Label();
-		this.add(this.powerHeadline);
-		this.add(this.power);
+		lblPosition = new JLabel("Position:");
+		lblPosition.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblPosition.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+		lblPosition.setAlignmentX(Component.RIGHT_ALIGNMENT);
+		panel.add(lblPosition);
 		
-		this.heightHeadline = new Label("Hšhe: ");
-		this.height = new Label();
-		this.add(this.heightHeadline);
-		this.add(this.height);
+		position = new JTextField();
+		position.setBackground(Color.WHITE);
+		position.setEditable(false);
+		position.setHorizontalAlignment(SwingConstants.CENTER);
+		panel.add(position);
+		position.setColumns(10);
 		
-		this.timeHeadline = new Label("Zeit: ");
-		this.time = new Label();
-		this.add(this.timeHeadline);
-		this.add(this.time);
+		lblAkku = new JLabel("Akku:");
+		lblAkku.setHorizontalAlignment(SwingConstants.RIGHT);
+		panel.add(lblAkku);
 		
-		this.speedHeadline = new Label("Geschwindigkeit: ");
-		this.speed = new Label();
-		this.add(this.speedHeadline);
-		this.add(this.speed);
+		power = new JTextField();
+		power.setBackground(Color.WHITE);
+		power.setEditable(false);
+		power.setHorizontalAlignment(SwingConstants.CENTER);
+		panel.add(power);
+		power.setColumns(10);
 		
-		this.courseHeadline = new Label("Kurs: ");
-		this.course = new Label();
-		this.add(this.courseHeadline);
-		this.add(this.course);
+		lblHoehe = new JLabel("Hoehe:");
+		lblHoehe.setHorizontalAlignment(SwingConstants.RIGHT);
+		panel.add(lblHoehe);
 		
-		this.subPanel = new JPanel(new BorderLayout());
+		height = new JTextField();
+		height.setBackground(Color.WHITE);
+		height.setEditable(false);
+		height.setHorizontalAlignment(SwingConstants.CENTER);
+		panel.add(height);
+		height.setColumns(10);
+		
+		lblZeit = new JLabel("Zeit:");
+		lblZeit.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblZeit.setAlignmentX(Component.RIGHT_ALIGNMENT);
+		panel.add(lblZeit);
+		
+		time = new JTextField();
+		time.setBackground(Color.WHITE);
+		time.setEditable(false);
+		time.setHorizontalAlignment(SwingConstants.CENTER);
+		panel.add(time);
+		time.setColumns(10);
+		
+		lblGeschwindigkeit = new JLabel("Geschwindigkeit:");
+		lblGeschwindigkeit.setHorizontalAlignment(SwingConstants.RIGHT);
+		panel.add(lblGeschwindigkeit);
+		
+		speed = new JTextField();
+		speed.setBackground(Color.WHITE);
+		speed.setEditable(false);
+		speed.setHorizontalAlignment(SwingConstants.CENTER);
+		panel.add(speed);
+		speed.setColumns(10);
+		
+		lblKurs = new JLabel("Kurs:");
+		lblKurs.setHorizontalAlignment(SwingConstants.RIGHT);
+		panel.add(lblKurs);
+		
+		course = new JTextField();
+		course.setBackground(Color.WHITE);
+		course.setEditable(false);
+		course.setHorizontalAlignment(SwingConstants.CENTER);
+		panel.add(course);
+		course.setColumns(10);
 	}
 
 	public void setMetaData(model.MetaData metaData) {
@@ -68,7 +125,7 @@ public class MetaDataView extends JPanel{
 		this.power.setText(metaData.getBatteryState() + "% ");
 		this.height.setText(metaData.getGeodata().getHeight() + "m");
 		this.time.setText(metaData.getTime() + "s");
-		this.speedHeadline.setText(metaData.getSpeed() + "km/h");
+		this.speed.setText(metaData.getSpeed() + "km/h");
 		this.course.setText(metaData.getCourse() + "");
 	}
 }
