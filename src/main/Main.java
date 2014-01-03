@@ -3,6 +3,8 @@ import helper.FileHelper;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -19,13 +21,14 @@ import controller.MainController;
 import controller.VideoStreamController;
 import controller.ViewController;
 
-public class Main extends JFrame implements ActionListener {
+public class Main extends JFrame implements ActionListener, WindowListener {
 
 	private static final long serialVersionUID = 1L;
 	
 	private static MainController mainController;
 	private JMenuBar menuBar;
 	private JMenu menuFile, menuVideo, subMenuVideoDevice, saveScreenshotMenu, saveVideoMenu;
+	private JMenuItem saveVideoPredefinedPath, saveVideo, stopSavingVideo;
 	
 	/**
 	 * @param args
@@ -43,8 +46,8 @@ public class Main extends JFrame implements ActionListener {
 	public Main() {
 		setSize(1024, 768);
 		getContentPane().add(getMainController().getView());
-		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		addWindowListener(this);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		menuBar = new JMenuBar();
 		menuFile = new JMenu("Datei");
@@ -79,15 +82,16 @@ public class Main extends JFrame implements ActionListener {
 		String homeDir = System.getProperty("user.home");
 		
 		//Create save video menu items
-		JMenuItem saveVideoPredefinedPath = new JMenuItem("Speichern in: " + homeDir);
+		saveVideoPredefinedPath = new JMenuItem("Speichern in: " + homeDir);
 		saveVideoPredefinedPath.setActionCommand("saveVideoPredefinedPath");
 		saveVideoPredefinedPath.addActionListener(this);
-		JMenuItem saveVideo = new JMenuItem("Pfad angeben");
+		saveVideo = new JMenuItem("Pfad angeben");
 		saveVideo.setActionCommand("saveVideo");
 		saveVideo.addActionListener(this);
-		JMenuItem stopSavingVideo = new JMenuItem("Aufnahme stoppen");
+		stopSavingVideo = new JMenuItem("Aufnahme stoppen");
 		stopSavingVideo.setActionCommand("stopSavingVideo");
 		stopSavingVideo.addActionListener(this);
+		stopSavingVideo.setEnabled(false);
 		
 		//add them to the menu
 		saveVideoMenu.add(saveVideoPredefinedPath);
@@ -156,6 +160,12 @@ public class Main extends JFrame implements ActionListener {
 		}
 	}
 	
+	private void configureVideoRecordingOptions(boolean isRecording) {
+		saveVideo.setEnabled(!isRecording);
+		saveVideoPredefinedPath.setEnabled(!isRecording);
+		stopSavingVideo.setEnabled(isRecording);
+	}
+	
 	private static void initTestTimer() {
 		TimerTask task = new TimerTask() {
 			@Override
@@ -192,16 +202,20 @@ public class Main extends JFrame implements ActionListener {
 		VideoStreamController videoStreamController = (VideoStreamController) mainController.getVideoStreamController();
 		String command = e.getActionCommand();
 		
+		//Check command
 		if (command.equals("saveVideoPredefinedPath")) {
 			videoStreamController.saveVideoStream(FileHelper.getPredefinedVideoPath(""));
+			configureVideoRecordingOptions(true);
 		} else if (command.equals("saveVideo")) {
 			String videofile = getFileFromChooser("mpg");
 			if (videofile != null) {
 				if (!videofile.endsWith(".mpg")) videofile += ".mpg";
 				videoStreamController.saveVideoStream(videofile);
 			}
+			configureVideoRecordingOptions(true);
 		} else if (command.equals("stopSavingVideo")) {
 			videoStreamController.stopSavingVideo();
+			configureVideoRecordingOptions(false);
 		} else if (command.equals("saveScreenshotPredefinedPath")) {
 			videoStreamController.saveScreenShot(FileHelper.getPredefinedScreenshotPath(""));
 		} else if (command.equals("saveScreenshot")) {
@@ -232,9 +246,22 @@ public class Main extends JFrame implements ActionListener {
 				//enable the menu items again, if we reach this code the device was opened successfully
 				enableSaveMenus();
 			} catch (Exception ex) {
-				System.err.println("Verdammt n Error man");
 				ex.printStackTrace();
 			}
 		}
 	}
+
+	public void windowClosing(WindowEvent e) {
+		//When user presses X, stop grabbing frames and release camera
+		VideoStreamController videoStreamController = (VideoStreamController) mainController.getVideoStreamController();
+		videoStreamController.stopGrabbingVideoFrames();
+	}
+
+	//Unused
+	public void windowActivated(WindowEvent e) {}
+	public void windowClosed(WindowEvent e) {}
+	public void windowDeactivated(WindowEvent e) {}
+	public void windowDeiconified(WindowEvent e) {}
+	public void windowIconified(WindowEvent e) {}
+	public void windowOpened(WindowEvent e) {}
 }

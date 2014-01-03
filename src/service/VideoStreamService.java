@@ -13,14 +13,16 @@ import communication.VideoCommunicator;
 
 public class VideoStreamService extends Observable {
 	
-	private static final int BITRATE = 20971520; //20 Mbit/s
+	private static final int BITRATE = 20 * 1024 * 1024; //20 Mbit/s
 
 	private static VideoStreamService instance;
+	
 	private VideoCommunicator mVideoCommunicator;
 	private CvCapture mCvCapture;
 	private GrabberThread mGrabberThread;
 	private IplImage currentFrame;
 	private FFmpegFrameRecorder mFrameRecorder;
+	private volatile boolean canRecord = false;
 	
 	public static VideoStreamService getInstance() {
 		if (instance == null)
@@ -41,6 +43,7 @@ public class VideoStreamService extends Observable {
 	}
 	
 	public void stopVideoStream() {
+		canRecord = false;
 		if (mGrabberThread != null) {
 			mGrabberThread.stopGrab();
 			mGrabberThread.interrupt();
@@ -66,18 +69,21 @@ public class VideoStreamService extends Observable {
 			mFrameRecorder.setVideoCodec(2);
 			
 			mFrameRecorder.start();
+			
+			canRecord = true;
 		} catch (com.googlecode.javacv.FrameRecorder.Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public void stopSaveVideoStream() {
+		canRecord = false;
 		try {
 			mFrameRecorder.stop();
 			mFrameRecorder.release();
+		} catch (com.googlecode.javacv.FrameRecorder.Exception e) {}
+		finally {
 			mFrameRecorder = null;
-		} catch (com.googlecode.javacv.FrameRecorder.Exception e) {
-			e.printStackTrace();
 		}
 	}
 	
@@ -115,12 +121,10 @@ public class VideoStreamService extends Observable {
 		public void run() {
 			while (canGrab) {
 				currentFrame = opencv_highgui.cvQueryFrame(mCvCapture);				
-				if (mFrameRecorder != null) {
+				if (canRecord && mFrameRecorder != null) {
 					try {
 						mFrameRecorder.record(currentFrame);
-					} catch (com.googlecode.javacv.FrameRecorder.Exception e) {
-						e.printStackTrace();
-					}
+					} catch (com.googlecode.javacv.FrameRecorder.Exception e) {}
 				}
 				
 				synchronized (this) {
