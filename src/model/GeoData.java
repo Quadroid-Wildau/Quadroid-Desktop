@@ -6,31 +6,39 @@ package model;
  */
 public class GeoData {
 
-	private Float latitude;
-	private Float longitude;
-	private Float height;
+	private float latitude;
+	private float longitude;
+	private float height;
 	
-	public Float getLatitude() {
+	public GeoData() {}
+	
+	public GeoData(float latitude, float longitude, float height) {
+		this.latitude = latitude;
+		this.longitude = longitude;
+		this.height = height;
+	}
+
+	public float getLatitude() {
 		return latitude;
 	}
 	
-	public void setLatitude(Float latitude) {
+	public void setLatitude(float latitude) {
 		this.latitude = latitude;
 	}
 	
-	public Float getLongitude() {
+	public float getLongitude() {
 		return longitude;
 	}
 	
-	public void setLongitude(Float longitude) {
+	public void setLongitude(float longitude) {
 		this.longitude = longitude;
 	}
 	
-	public Float getHeight() {
+	public float getHeight() {
 		return height;
 	}
 	
-	public void setHeight(Float height) {
+	public void setHeight(float height) {
 		this.height = height;
 	}
 }

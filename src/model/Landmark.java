@@ -14,13 +14,13 @@ import javax.imageio.ImageIO;
  */
 public class Landmark {
 
-	private MetaData tdata;
+	private MetaData metadata;
 
 	private BufferedImage landmarkPicture;
 	
 	private File imageFile = null;
 
-	public void setLmpic(BufferedImage lmpic) {
+	public void setLandmarkPicture(BufferedImage lmpic) {
 		this.landmarkPicture = lmpic;
 	}
 
@@ -29,7 +29,7 @@ public class Landmark {
 	}
 
 	public File getLandmarkPictureAsFile() {
-		if (imageFile != null)
+		if (imageFile == null)
 			imageFile = new File(FileHelper.getPendingAlertPath(""));
 		try {
 			ImageIO.write(landmarkPicture, "png", imageFile);
@@ -39,12 +39,12 @@ public class Landmark {
 		return imageFile;
 	}
 	
-	public void setTdata(MetaData tdata) {
-
+	public void setMetaData(MetaData tdata) {
+		this.metadata = tdata;
 	}
 
-	public MetaData getTdata() {
-		return null;
+	public MetaData getMetaData() {
+		return metadata;
 	}
 
 }

@@ -3,6 +3,9 @@ package communication;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.GeoData;
+import model.Landmark;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -11,10 +14,6 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.async.Callback;
 import com.mashape.unirest.http.exceptions.UnirestException;
-
-import model.GeoData;
-import model.Landmark;
-import model.PushMessage;
 
 /**
  * 
@@ -31,16 +30,17 @@ public class PushCommunicator {
 	private static final String CLIENT_ID = "364330b6fb1a04f9dcb636bbb929d10d78b223f849deca561e3ae2f978fd508d";
 	private static final String CLIENT_SECRET = "53c51cea3ba9ba8ff9206185e2d90fdc954da8736d4966c3b124c010382d4fcb";
 	
-	private static final String BASE_URL = "http://quadroid.dev.wonderweblas.com/";
+	private static final String BASE_URL = "http://quadroid.dev.wonderweblabs.com/";
 	private static final String TOKEN_URL = BASE_URL + "oauth/token";
-	private static final String LANDMARK_URL = BASE_URL + "landmarks";
+	private static final String LANDMARK_URL = BASE_URL + "landmark_alerts";
 	
 	private volatile String ACCESS_TOKEN = "";
 	private volatile List<Landmark> mLandmarkRequestQueue = new ArrayList<Landmark>();
 	private volatile boolean attemptingLogin = false;
 	
-	public void sendMessage(PushMessage message) {
-
+	public PushCommunicator() {
+		Unirest.setDefaultHeader("Accept", "application/vnd.quadroid-server-v1+json");
+		login();
 	}
 	
 	/**
@@ -76,7 +76,6 @@ public class PushCommunicator {
 			return;
 		
 		Unirest.post(TOKEN_URL)
-		.header("Accept", "application/vnd.quadroid-server-v1+json")
 		.field("grant_type", "password")
 		.field("email", EMAIL)
 		.field("password", PASSWORD)
@@ -103,6 +102,7 @@ public class PushCommunicator {
 							
 							//if there are queued landmark push requests, handle them
 							if (!ACCESS_TOKEN.isEmpty() && mLandmarkRequestQueue != null) {
+								System.out.println("Got access token: " + ACCESS_TOKEN);
 								for (Landmark lm : mLandmarkRequestQueue) {
 									pushLandmarkAlarm(lm);
 								}
@@ -127,31 +127,23 @@ public class PushCommunicator {
 	}
 	
 	private void uploadLandmarkAlarm(final Landmark landmark) {
-		GeoData geoData = landmark.getTdata().getGeodata();
-		Unirest.post(LANDMARK_URL)
-		.header("Accept", "application/vnd.quadroid-server-v1+json")
-		.header("Authorization", "Bearer " + ACCESS_TOKEN)
-		.field("landmark_alert[latitude]", String.valueOf(geoData.getLatitude()))
-		.field("landmark_alert[longitude]", String.valueOf(geoData.getLongitude()))
-		.field("landmark_alert[detection_date]", String.valueOf(landmark.getTdata().getTime()))
-		.field("landmark_alert[height]", String.valueOf(geoData.getHeight()))
-		.field("landmark_alert[image]", landmark.getLandmarkPictureAsFile())
-		.asJsonAsync(new Callback<JsonNode>() {
-			@Override
-			public void failed(UnirestException e) {
-				e.printStackTrace();
-				landmark.getLandmarkPictureAsFile().delete();
-			}
+		GeoData geoData = landmark.getMetaData().getGeodata();
+		try {
+			HttpResponse<JsonNode> response = Unirest.post(LANDMARK_URL)
+			.header("Authorization", "Bearer " + ACCESS_TOKEN)
+			.field("landmark_alert[latitude]", String.valueOf(geoData.getLatitude()))
+			.field("landmark_alert[longitude]", String.valueOf(geoData.getLongitude()))
+			.field("landmark_alert[detection_date]", String.valueOf(landmark.getMetaData().getTime()))
+			.field("landmark_alert[height]", String.valueOf(geoData.getHeight()))
+			.field("landmark_alert[image]", landmark.getLandmarkPictureAsFile())
+			.field("content-type", "application/x-www-form-urlencoded")
+			.asJson();
 			
-			@Override
-			public void completed(HttpResponse<JsonNode> response) {
-				landmark.getLandmarkPictureAsFile().delete();
-			}
-			
-			@Override
-			public void cancelled() {
-				landmark.getLandmarkPictureAsFile().delete();
-			}
-		});
+			System.out.println("Response: " + response.getBody().getObject().toString());
+		} catch (UnirestException e) {
+			e.printStackTrace();
+		} finally {
+			landmark.getLandmarkPictureAsFile().delete();
+		}
 	}
 }
