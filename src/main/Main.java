@@ -1,8 +1,15 @@
 package main;
+
+
+import handler.XBeeReceiverHandler;
+import handler.XBeeTransmitterHandler;
 import helper.FileHelper;
+import interfaces.IRxListener;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.awt.image.BufferedImage;
@@ -19,34 +26,50 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import com.mashape.unirest.http.Unirest;
-
 import model.GeoData;
 import model.Landmark;
 import model.MetaData;
+import model.XBeeRxTx;
 
+import org.apache.log4j.PropertyConfigurator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import coder.decoder.ObserverHandler;
+import coder.encoder.TxDataEncoder;
+
+import com.mashape.unirest.http.Unirest;
 import communication.CommunicationStack;
 
+import connection.Connect;
 import controller.MainController;
 import controller.VideoStreamController;
 import controller.ViewController;
+import de.th_wildau.quadroid.models.Course;
+import de.th_wildau.quadroid.models.GNSS;
+import de.th_wildau.quadroid.models.RxData;
+import enums.XBee;
 
-public class Main extends JFrame implements ActionListener, WindowListener {
+public class Main extends JFrame implements ActionListener, WindowListener, MouseListener, IRxListener {
 
 	private static final long serialVersionUID = 1L;
-	
+	private static final String LOGGERPROPERTIES = "log4j.properties";
 	private static MainController mainController;
+	private static Logger logger = LoggerFactory.getLogger(Main.class.getName());
 	private JMenuBar menuBar;
-	private JMenu menuFile, menuVideo, menuLandmarkAlarm, subMenuVideoDevice, saveScreenshotMenu, saveVideoMenu;
-	private JMenuItem itemSaveVideoPredefinedPath, itemSaveVideo, itemStopSavingVideo;
+	private JMenu menuFile, menuVideo, menuLandmarkAlarm, subMenuVideoDevice, saveScreenshotMenu, saveVideoMenu, xbee;
+	private JMenuItem itemSaveVideoPredefinedPath, itemSaveVideo, itemStopSavingVideo, disconnectxbee;
+	private Connect xbeeconnection = null;
+	/**instance for transmission with xbee*/
+	private XBeeTransmitterHandler xbeetransmitter = null;
 	
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-//		System.getProperties().put("http.proxyHost", "proxy.th-wildau.de");
-//		System.getProperties().put("http.proxyPort", "8080");
-		
+		System.getProperties().put("http.proxyHost", "proxy.th-wildau.de");
+		System.getProperties().put("http.proxyPort", "8080");
+		PropertyConfigurator.configure(LOGGERPROPERTIES);
 		getMainController();
 		new Main();
 		
@@ -66,6 +89,15 @@ public class Main extends JFrame implements ActionListener, WindowListener {
 		menuVideo = new JMenu("Video");
 		menuLandmarkAlarm = new JMenu("Landmarkenalarm");
 		
+		xbee = new JMenu("Connect xBee-Pro");
+		xbee.addMouseListener(this);
+		for(String s : Connect.getAvailablePorts())
+		{
+			xbee.add(s);
+		}
+		
+		menuFile.add(xbee);
+		
 		menuBar.add(menuFile);
 		menuBar.add(menuVideo);
 		menuBar.add(menuLandmarkAlarm);
@@ -84,11 +116,11 @@ public class Main extends JFrame implements ActionListener, WindowListener {
 				subMenuVideoDevice.add(item);
 			}
 		} else {
-			JMenuItem item = new JMenuItem("Keine Geräte gefunden");
+			JMenuItem item = new JMenuItem("Keine Geraete gefunden");
 			item.setEnabled(false);
 			subMenuVideoDevice.add(item);
 		}
-		
+	
 		//create Video Menu
 		saveVideoMenu = new JMenu("Video speichern");
 		
@@ -231,7 +263,7 @@ public class Main extends JFrame implements ActionListener, WindowListener {
 	public void actionPerformed(ActionEvent e) {
 		VideoStreamController videoStreamController = (VideoStreamController) mainController.getVideoStreamController();
 		String command = e.getActionCommand();
-		
+		logger.info(command);
 		//Check command
 		if (command.equals("saveVideoPredefinedPath")) {
 			videoStreamController.saveVideoStream(FileHelper.getPredefinedVideoPath(""));
@@ -256,6 +288,58 @@ public class Main extends JFrame implements ActionListener, WindowListener {
 			}
 		} else if (command.equals("exit")) {
 			System.exit(0);
+		} else if(command.equals("connect"))
+		{
+			//if actioncommand is connect it must be an event of 
+			//JMenuItem (only set in JMenuItem) 
+			JMenuItem item = ((JMenuItem)e.getSource());
+			//get selected port 
+			String port = item.getText();
+			//create xbee device
+			XBeeRxTx xbeedevice = new XBeeRxTx();
+			xbeedevice.setBaud(XBee.BAUD.getValue());
+			xbeedevice.setDatabits(XBee.DATABITS.getValue());
+			xbeedevice.setParity(XBee.PARITY.getValue());
+			xbeedevice.setPort(port);//set selected port
+			xbeedevice.setStopbits(XBee.STOPBITS.getValue());
+			xbeedevice.setDevicename(XBee.DEVICENAME.getName());
+			//create connection to xbee device
+			this.xbeeconnection = Connect.getInstance(xbeedevice);
+			//registered observer, transmitter and receiver
+			if(this.xbeeconnection != null)
+			{
+				XBeeReceiverHandler receiver = new XBeeReceiverHandler();
+				xbeetransmitter = new XBeeTransmitterHandler(this.xbeeconnection);
+				ObserverHandler oh = ObserverHandler.getReference();
+				oh.register(this);
+				this.xbeeconnection.addSerialPortEventListener(receiver);
+				
+				menuFile.remove(xbee);
+				xbee.removeMouseListener(this);
+				xbee.removeAll();
+				xbee.setText("xBee-Pro");
+				disconnectxbee = new JMenuItem("Disconnect xBee-Pro");
+				disconnectxbee.setActionCommand("disconnectxbee");
+				disconnectxbee.addActionListener(this);
+				xbee.add(disconnectxbee);
+				menuFile.add(xbee);
+			}	
+			
+			return;
+		}else if(command.equals("disconnectxbee"))
+		{
+			if(this.xbeeconnection != null)
+			{
+				this.xbeeconnection.disconnect();
+				this.xbeeconnection = null;
+				
+				menuFile.remove(xbee);
+				xbee.removeAll();
+				xbee.addMouseListener(this);
+				xbee.setText("Connect xBee-Pro");
+				menuFile.add(xbee);
+			}
+			
 		} else if (command.equals("simulateAlarm")) {
 			String imagefile = openFile();
 			
@@ -301,6 +385,10 @@ public class Main extends JFrame implements ActionListener, WindowListener {
 		//When user presses X, stop grabbing frames and release camera
 		VideoStreamController videoStreamController = (VideoStreamController) mainController.getVideoStreamController();
 		videoStreamController.stopGrabbingVideoFrames();
+
+		//disconnect xBee Device
+		if(this.xbeeconnection != null)
+		   this.xbeeconnection.disconnect();
 		
 		//Stop Unirest threads
 		try {
@@ -310,6 +398,23 @@ public class Main extends JFrame implements ActionListener, WindowListener {
 		}
 	}
 
+	@Override
+	public void mouseEntered(MouseEvent e) 
+	{
+		xbee.removeAll();
+		for(String s : Connect.getAvailablePorts())
+		{
+			JMenuItem jmi = new JMenuItem(s);
+			jmi.addActionListener(this);
+			jmi.setActionCommand("connect");
+			xbee.add(jmi);
+		}
+		
+		menuFile.add(xbee);
+	}
+	
+	
+	
 	//Unused
 	public void windowActivated(WindowEvent e) {}
 	public void windowClosed(WindowEvent e) {}
@@ -317,4 +422,74 @@ public class Main extends JFrame implements ActionListener, WindowListener {
 	public void windowDeiconified(WindowEvent e) {}
 	public void windowIconified(WindowEvent e) {}
 	public void windowOpened(WindowEvent e) {}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+	}
+	@Override
+	public void mousePressed(MouseEvent e) {
+	}
+	@Override
+	public void mouseReleased(MouseEvent e) {
+	}
+	@Override
+	public void mouseExited(MouseEvent e) {
+		
+	}
+
+	@Override
+	public void rx(RxData data) 
+	{
+		logger.info("new data available");
+		//data.getWaypointlist()
+		//data.getAirplanelist()
+		//data.getCourselist()
+		//data.getGnsslist()
+		//data.getLandmarklist()
+		//data.getMetadatalist()
+		
+		GNSS geo = new GNSS();
+		
+		Course course = new Course();
+		
+		geo.setLatitude(52.1245f);
+		geo.setLongitude(13.12345f);
+		geo.setHeight(300.00f);
+		
+		course.setAngleReference(180.0f);
+		course.setSpeed(52.00f);
+		
+		TxDataEncoder encoder = new TxDataEncoder();
+		
+		byte[] buffer = encoder.geodataToBytes(geo);
+		byte[] txdata = encoder.appendBytes(buffer, encoder.courseToBytes(course));
+		
+		this.xbeetransmitter.transmit(txdata);
+		/**
+		 * TODO: remove this example 
+		 * 
+		 * NOTE: Example for rx/tx data
+		 * 
+		 * create connection
+		 * 1.) this.xbeeconnection = Connect.getInstance(IDevice);
+		 * 	
+		 * for transmission
+		 * 2.) xbeetransmitter = new XBeeTransmitterHandler(this.xbeeconnection);
+		 * 
+		 * this.xbeetransmitter.transmit(msg);
+		 * 
+		 * registered observer
+		 * 3.1.) ObserverHandler oh = ObserverHandler.getReference();
+		 * 	   oh.register(this); 
+		 * 
+		 *  All Observer must be implemented IRxListener
+		 * 
+		 * registered receiver
+		 * 3.2.)
+		 * 		XBeeReceiverHandler receiver = new XBeeReceiverHandler();
+		 *		this.xbeeconnection.addSerialPortEventListener(receiver);
+		 * 
+		 * */
+		
+	}
 }

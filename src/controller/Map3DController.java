@@ -98,8 +98,6 @@ public class Map3DController implements ViewController{
 		((Shape3D) objRoot.getChild(6)).setAppearance(metalApperance);
 		((Shape3D) objRoot.getChild(3)).setAppearance(metalApperance);
 		
-		
-		
 		return objRoot;
 	}
 }
