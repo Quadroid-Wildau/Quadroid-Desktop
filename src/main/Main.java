@@ -359,7 +359,7 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 				Landmark landmark = new Landmark();
 				MetaData metadata = new MetaData();
 				metadata.setGeodata(geoData);
-				metadata.setTime(System.currentTimeMillis());
+				metadata.setTime(System.currentTimeMillis()/1000);
 				landmark.setLandmarkPicture(testImage);
 				landmark.setMetaData(metadata);
 				CommunicationStack.getInstance().getPushCommunicator().pushLandmarkAlarm(landmark);

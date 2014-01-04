@@ -13,8 +13,6 @@ import communication.VideoCommunicator;
 
 public class VideoStreamService extends Observable {
 	
-	
-
 	private static VideoStreamService instance;
 	
 	private VideoCommunicator mVideoCommunicator;

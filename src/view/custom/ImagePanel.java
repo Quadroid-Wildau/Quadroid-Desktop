@@ -8,6 +8,13 @@ import javax.swing.JPanel;
 
 import com.googlecode.javacv.cpp.opencv_core.IplImage;
 
+/**
+ * View that can display an {@link IplImage} 
+ * 
+ * 
+ * @author Georg Baumgarten
+ *
+ */
 public class ImagePanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
