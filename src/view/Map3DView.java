@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.io.IOException;
 
 import javax.media.j3d.BoundingSphere;
 import javax.media.j3d.BranchGroup;
@@ -26,14 +27,19 @@ public class Map3DView extends JPanel{
 		add(c);
 		c.setDoubleBufferEnable(true);
 		su = new SimpleUniverse(c);
-		BranchGroup scene = controller.createSceneGraph("C:\\Users\\nithd_000\\Desktop\\Quadcopter.obj");
-		
-		OrbitBehavior orbit = new OrbitBehavior(c, OrbitBehavior.REVERSE_ALL);
-		orbit.setSchedulingBounds(new BoundingSphere());
-		su.getViewingPlatform().setViewPlatformBehavior(orbit);
-		
-		scene.compile();
-		su.addBranchGraph(scene);
+		BranchGroup scene;
+		try {
+			scene = controller.createSceneGraph("./3d/quadrokopter.obj", "./3d/landschaft.jpg");
+			
+			OrbitBehavior orbit = new OrbitBehavior(c, OrbitBehavior.REVERSE_ALL);
+			orbit.setSchedulingBounds(new BoundingSphere());
+			su.getViewingPlatform().setViewPlatformBehavior(orbit);
+			
+			scene.compile();
+			su.addBranchGraph(scene);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void setMetaData(model.MetaData metaData) {
