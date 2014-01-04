@@ -1,9 +1,11 @@
 package communication.persistence;
 
-import model.Landmark;
+import com.googlecode.javacv.cpp.opencv_core.IplImage;
+import com.googlecode.javacv.cpp.opencv_highgui;
 
 public class PhotoPersistence {
-	public void save(Landmark landmark) {
-
+	
+	public void saveScreenShot(String filepath, IplImage frame) {
+		opencv_highgui.cvSaveImage(filepath, frame);
 	}
 }

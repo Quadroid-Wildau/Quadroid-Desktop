@@ -7,6 +7,7 @@ import view.custom.ImagePanel;
 import com.googlecode.javacv.cpp.opencv_core.IplImage;
 
 import controller.VideoStreamController;
+import java.awt.Dimension;
 
 public class VideoStreamView extends ImagePanel {
 	private static final long serialVersionUID = 1L;
@@ -15,9 +16,9 @@ public class VideoStreamView extends ImagePanel {
 	
 	public VideoStreamView(controller.VideoStreamController controller) {
 		this.controller = controller;
-		this.setSize(800, 600);
-		this.setMaximumSize(getSize());
-		this.setMinimumSize(getSize());
+		this.setSize(640, 480);
+		this.setMaximumSize(new Dimension(640, 480));
+		this.setMinimumSize(new Dimension(640, 480));
 	}
 
 	public void showNewVideoFrame(final IplImage frame) {

@@ -12,15 +12,18 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
+import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.filechooser.FileNameExtensionFilter;
-
 import model.XBeeRxTx;
 
 import org.apache.log4j.PropertyConfigurator;
@@ -29,6 +32,13 @@ import org.slf4j.LoggerFactory;
 
 import coder.decoder.ObserverHandler;
 import coder.encoder.TxDataEncoder;
+import com.mashape.unirest.http.Unirest;
+
+import model.GeoData;
+import model.Landmark;
+import model.MetaData;
+
+import communication.CommunicationStack;
 
 import communication.CommunicationStack;
 import connection.Connect;
@@ -64,10 +74,12 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 		new Main();
 		
 		initTestTimer();
+		
+		CommunicationStack.getInstance().getPushCommunicator();
 	}
 
 	public Main() {
-		setSize(1024, 768);
+		setSize(1280, 800);
 		getContentPane().add(getMainController().getView());
 		addWindowListener(this);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -75,6 +87,7 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 		menuBar = new JMenuBar();
 		menuFile = new JMenu("Datei");
 		menuVideo = new JMenu("Video");
+		menuLandmarkAlarm = new JMenu("Landmarkenalarm");
 		
 		xbee = new JMenu("Connect xBee-Pro");
 		xbee.addMouseListener(this);
@@ -87,6 +100,7 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 		
 		menuBar.add(menuFile);
 		menuBar.add(menuVideo);
+		menuBar.add(menuLandmarkAlarm);
 		
 		subMenuVideoDevice = new JMenu("Video Device");
 		menuVideo.add(subMenuVideoDevice);
@@ -114,36 +128,36 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 		String homeDir = System.getProperty("user.home");
 		
 		//Create save video menu items
-		saveVideoPredefinedPath = new JMenuItem("Speichern in: " + homeDir);
-		saveVideoPredefinedPath.setActionCommand("saveVideoPredefinedPath");
-		saveVideoPredefinedPath.addActionListener(this);
-		saveVideo = new JMenuItem("Pfad angeben");
-		saveVideo.setActionCommand("saveVideo");
-		saveVideo.addActionListener(this);
-		stopSavingVideo = new JMenuItem("Aufnahme stoppen");
-		stopSavingVideo.setActionCommand("stopSavingVideo");
-		stopSavingVideo.addActionListener(this);
-		stopSavingVideo.setEnabled(false);
+		itemSaveVideoPredefinedPath = new JMenuItem("Speichern in: " + homeDir);
+		itemSaveVideoPredefinedPath.setActionCommand("saveVideoPredefinedPath");
+		itemSaveVideoPredefinedPath.addActionListener(this);
+		itemSaveVideo = new JMenuItem("Pfad angeben");
+		itemSaveVideo.setActionCommand("saveVideo");
+		itemSaveVideo.addActionListener(this);
+		itemStopSavingVideo = new JMenuItem("Aufnahme stoppen");
+		itemStopSavingVideo.setActionCommand("stopSavingVideo");
+		itemStopSavingVideo.addActionListener(this);
+		itemStopSavingVideo.setEnabled(false);
 		
 		//add them to the menu
-		saveVideoMenu.add(saveVideoPredefinedPath);
-		saveVideoMenu.add(saveVideo);
-		saveVideoMenu.add(stopSavingVideo);
+		saveVideoMenu.add(itemSaveVideoPredefinedPath);
+		saveVideoMenu.add(itemSaveVideo);
+		saveVideoMenu.add(itemStopSavingVideo);
 		
 		//create save screenshot menu
 		saveScreenshotMenu = new JMenu("Screenshot speichern");
 		
 		//create save screenshot menu items
-		JMenuItem saveScreenshotPredefinedPath = new JMenuItem("Speichern in: " + homeDir);
-		saveScreenshotPredefinedPath.setActionCommand("saveScreenshotPredefinedPath");
-		saveScreenshotPredefinedPath.addActionListener(this);
-		JMenuItem saveScreenshot = new JMenuItem("Pfad angeben");
-		saveScreenshot.setActionCommand("saveScreenshot");
-		saveScreenshot.addActionListener(this);
+		JMenuItem itemSaveScreenshotPredefinedPath = new JMenuItem("Speichern in: " + homeDir);
+		itemSaveScreenshotPredefinedPath.setActionCommand("saveScreenshotPredefinedPath");
+		itemSaveScreenshotPredefinedPath.addActionListener(this);
+		JMenuItem itemSaveScreenshot = new JMenuItem("Pfad angeben");
+		itemSaveScreenshot.setActionCommand("saveScreenshot");
+		itemSaveScreenshot.addActionListener(this);
 		
 		//add them to the menu
-		saveScreenshotMenu.add(saveScreenshotPredefinedPath);
-		saveScreenshotMenu.add(saveScreenshot);
+		saveScreenshotMenu.add(itemSaveScreenshotPredefinedPath);
+		saveScreenshotMenu.add(itemSaveScreenshot);
 		
 		//add to root menu
 		menuVideo.add(saveVideoMenu);
@@ -153,10 +167,15 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 		//The user should not have any possibility to click one of these menu items.
 		disableSaveMenus();
 		
-		JMenuItem menuExit = new JMenuItem("Beenden");
-		menuExit.setActionCommand("exit");
-		menuExit.addActionListener(this);
-		menuFile.add(menuExit);
+		JMenuItem itemExit = new JMenuItem("Beenden");
+		itemExit.setActionCommand("exit");
+		itemExit.addActionListener(this);
+		menuFile.add(itemExit);
+		
+		JMenuItem itemSimulateLandmarkAlarm = new JMenuItem("Landmarkenalarm simulieren");
+		itemSimulateLandmarkAlarm.setActionCommand("simulateAlarm");
+		itemSimulateLandmarkAlarm.addActionListener(this);
+		menuLandmarkAlarm.add(itemSimulateLandmarkAlarm);
 		
 		setJMenuBar(menuBar);
 		
@@ -193,9 +212,9 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 	}
 	
 	private void configureVideoRecordingOptions(boolean isRecording) {
-		saveVideo.setEnabled(!isRecording);
-		saveVideoPredefinedPath.setEnabled(!isRecording);
-		stopSavingVideo.setEnabled(isRecording);
+		itemSaveVideo.setEnabled(!isRecording);
+		itemSaveVideoPredefinedPath.setEnabled(!isRecording);
+		itemStopSavingVideo.setEnabled(isRecording);
 	}
 	
 	private static void initTestTimer() {
@@ -217,6 +236,17 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 		mFileChooser.addChoosableFileFilter(new FileNameExtensionFilter(ending, ending));
 		
 		int ret = mFileChooser.showSaveDialog(this);
+		
+		if (ret == JFileChooser.APPROVE_OPTION) {
+			return mFileChooser.getSelectedFile().getPath();
+		}
+		
+		return null;
+	}
+	
+	private String openFile() {
+		JFileChooser mFileChooser = new JFileChooser(System.getProperty("user.home"));
+		int ret = mFileChooser.showOpenDialog(this);
 		
 		if (ret == JFileChooser.APPROVE_OPTION) {
 			return mFileChooser.getSelectedFile().getPath();
@@ -310,7 +340,23 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 				menuFile.add(xbee);
 			}
 			
-		}else {
+		} else if (command.equals("simulateAlarm")) {
+			String imagefile = openFile();
+			
+			try {
+				BufferedImage testImage = ImageIO.read(new File(imagefile));
+				GeoData geoData = new GeoData(54.584f, 14.65f, 20.0f);
+				Landmark landmark = new Landmark();
+				MetaData metadata = new MetaData();
+				metadata.setGeodata(geoData);
+				metadata.setTime(System.currentTimeMillis());
+				landmark.setLandmarkPicture(testImage);
+				landmark.setMetaData(metadata);
+				CommunicationStack.getInstance().getPushCommunicator().pushLandmarkAlarm(landmark);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		} else {
 			try {
 				//disable all save menus in case the device can't be opened
 				disableSaveMenus();
@@ -339,10 +385,17 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 		//When user presses X, stop grabbing frames and release camera
 		VideoStreamController videoStreamController = (VideoStreamController) mainController.getVideoStreamController();
 		videoStreamController.stopGrabbingVideoFrames();
+
 		//disconnect xBee Device
 		if(this.xbeeconnection != null)
 		   this.xbeeconnection.disconnect();
-	
+		
+		//Stop Unirest threads
+		try {
+			Unirest.shutdown();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 	}
 
 	@Override

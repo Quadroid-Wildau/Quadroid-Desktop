@@ -20,6 +20,9 @@ local.properties
 # CDT-specific
 .cproject
 
+# driver
+*.so
+
 # PDT-specific
 .buildpath
 
