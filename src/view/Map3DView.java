@@ -31,7 +31,7 @@ public class Map3DView extends JPanel{
 		try {
 			scene = controller.createSceneGraph("./3d/quadrokopter.obj", "./3d/landschaft.jpg");
 			
-			OrbitBehavior orbit = new OrbitBehavior(c, OrbitBehavior.REVERSE_ALL);
+			OrbitBehavior orbit = new OrbitBehavior(c, OrbitBehavior.DISABLE_ROTATE | OrbitBehavior.DISABLE_TRANSLATE);
 			orbit.setSchedulingBounds(new BoundingSphere());
 			su.getViewingPlatform().setViewPlatformBehavior(orbit);
 			

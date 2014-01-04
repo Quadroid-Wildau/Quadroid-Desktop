@@ -90,3 +90,1476 @@ java.net.SocketTimeoutException
 2014-01-04 11:17:04 INFO  main.Main:266 - stopSavingVideo
 2014-01-04 11:17:07 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:199 - Connection manager is shutting down
 2014-01-04 11:17:07 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:201 - Connection manager shut down
+2014-01-04 12:39:10 DEBUG org.apache.http.impl.nio.client.MainClientExec:133 - [exchange: 1] start execution
+2014-01-04 12:39:10 DEBUG org.apache.http.client.protocol.RequestAddCookies:122 - CookieSpec selected: best-match
+2014-01-04 12:39:10 DEBUG org.apache.http.client.protocol.RequestAuthCache:75 - Auth cache not set in the context
+2014-01-04 12:39:10 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:327 - [exchange: 1] Request connection for {}->http://quadroid.dev.wonderweblabs.com:80
+2014-01-04 12:39:10 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:245 - Connection request: [route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2014-01-04 12:39:10 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:459 - Connection leased: [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+2014-01-04 12:39:10 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:282 - [exchange: 1] Connection allocated: http-outgoing-0 [ACTIVE]
+2014-01-04 12:39:10 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:164 - http-outgoing-0 0:0:0:0:0:0:0:1:63933<->217.6.180.170:80[ACTIVE][r:]: Set attribute http.nio.exchange-handler
+2014-01-04 12:39:10 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:102 - http-outgoing-0 0:0:0:0:0:0:0:1:63933<->217.6.180.170:80[ACTIVE][rw:]: Event set [w]
+2014-01-04 12:39:10 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:58 - http-outgoing-0 [ACTIVE]: Connected
+2014-01-04 12:39:10 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:164 - http-outgoing-0 0:0:0:0:0:0:0:1:63933<->217.6.180.170:80[ACTIVE][rw:]: Set attribute http.nio.http-exchange-state
+2014-01-04 12:39:10 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:75 - http-outgoing-0 [ACTIVE] Request ready
+2014-01-04 12:39:10 DEBUG org.apache.http.impl.nio.client.MainClientExec:168 - Start connection routing
+2014-01-04 12:39:10 DEBUG org.apache.http.impl.nio.client.MainClientExec:212 - Connection route established
+2014-01-04 12:39:10 DEBUG org.apache.http.impl.nio.client.MainClientExec:238 - [exchange: 1] Attempt 1 to execute request
+2014-01-04 12:39:10 DEBUG org.apache.http.impl.nio.client.MainClientExec:245 - Target auth state: UNCHALLENGED
+2014-01-04 12:39:10 DEBUG org.apache.http.impl.nio.client.MainClientExec:252 - Proxy auth state: UNCHALLENGED
+2014-01-04 12:39:10 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:141 - http-outgoing-0 0:0:0:0:0:0:0:1:63933<->217.6.180.170:80[ACTIVE][rw:]: Set timeout 60000
+2014-01-04 12:39:10 DEBUG org.apache.http.headers:133 - http-outgoing-0 >> POST /oauth/token HTTP/1.1
+2014-01-04 12:39:10 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> accept: application/vnd.quadroid-server-v1+json
+2014-01-04 12:39:10 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> user-agent: unirest-java/1.1
+2014-01-04 12:39:10 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> accept-encoding: gzip
+2014-01-04 12:39:10 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Content-Length: 230
+2014-01-04 12:39:10 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+2014-01-04 12:39:10 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Host: quadroid.dev.wonderweblabs.com
+2014-01-04 12:39:10 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Connection: Keep-Alive
+2014-01-04 12:39:10 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:102 - http-outgoing-0 0:0:0:0:0:0:0:1:63933<->217.6.180.170:80[ACTIVE][rw:]: Event set [w]
+2014-01-04 12:39:10 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:98 - http-outgoing-0 [ACTIVE] Output ready
+2014-01-04 12:39:10 DEBUG org.apache.http.impl.nio.client.MainClientExec:279 - [exchange: 1] produce content
+2014-01-04 12:39:10 DEBUG org.apache.http.impl.nio.client.MainClientExec:291 - [exchange: 1] Request completed
+2014-01-04 12:39:10 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:102 - http-outgoing-0 [ACTIVE] [content length: 230; pos: 230; completed: true]
+2014-01-04 12:39:10 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:201 - http-outgoing-0 0:0:0:0:0:0:0:1:63933<->217.6.180.170:80[ACTIVE][rw:w]: 509 bytes written
+2014-01-04 12:39:10 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "POST /oauth/token HTTP/1.1[\r][\n]"
+2014-01-04 12:39:10 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "accept: application/vnd.quadroid-server-v1+json[\r][\n]"
+2014-01-04 12:39:10 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "user-agent: unirest-java/1.1[\r][\n]"
+2014-01-04 12:39:10 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "accept-encoding: gzip[\r][\n]"
+2014-01-04 12:39:10 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Content-Length: 230[\r][\n]"
+2014-01-04 12:39:10 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+2014-01-04 12:39:10 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Host: quadroid.dev.wonderweblabs.com[\r][\n]"
+2014-01-04 12:39:10 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+2014-01-04 12:39:10 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "[\r][\n]"
+2014-01-04 12:39:10 DEBUG org.apache.http.wire:68 - http-outgoing-0 >> "client_secret=53c51cea3ba9ba8ff9206185e2d90fdc954da8736d4966c3b124c010382d4fcb&grant_type=password&email=admin%40quadroid.com&client_id=364330b6fb1a04f9dcb636bbb929d10d78b223f849deca561e3ae2f978fd508d&password=timetosaygoodbye2014"
+2014-01-04 12:39:10 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:109 - http-outgoing-0 0:0:0:0:0:0:0:1:63933<->217.6.180.170:80[ACTIVE][r:w]: Event cleared [w]
+2014-01-04 12:39:10 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:63933<->217.6.180.170:80[ACTIVE][r:r]: 481 bytes read
+2014-01-04 12:39:10 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+2014-01-04 12:39:10 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Server: nginx/1.4.3[\r][\n]"
+2014-01-04 12:39:10 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Date: Sat, 04 Jan 2014 11:40:07 GMT[\r][\n]"
+2014-01-04 12:39:10 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Content-Type: application/json; charset=utf-8[\r][\n]"
+2014-01-04 12:39:10 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Transfer-Encoding: chunked[\r][\n]"
+2014-01-04 12:39:10 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Connection: keep-alive[\r][\n]"
+2014-01-04 12:39:10 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Cache-Control: no-store[\r][\n]"
+2014-01-04 12:39:10 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Pragma: no-cache[\r][\n]"
+2014-01-04 12:39:10 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-UA-Compatible: IE=Edge,chrome=1[\r][\n]"
+2014-01-04 12:39:10 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "ETag: "e149a1d3892b1b4fd3a0cb2ad670cee8"[\r][\n]"
+2014-01-04 12:39:10 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-Request-Id: 0da5ecadcdd9aefd9d9ee87b17b0cfee[\r][\n]"
+2014-01-04 12:39:10 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-Runtime: 0.369646[\r][\n]"
+2014-01-04 12:39:10 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "[\r][\n]"
+2014-01-04 12:39:10 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "69[\r][\n]"
+2014-01-04 12:39:10 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "{"access_token":"aab97512e1728b080d3416bdbba021089f0885aa1a11a801d012023445549507","token_type":"bearer"}[\r][\n]"
+2014-01-04 12:39:10 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "0[\r][\n]"
+2014-01-04 12:39:10 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "[\r][\n]"
+2014-01-04 12:39:10 DEBUG org.apache.http.headers:122 - http-outgoing-0 << HTTP/1.1 200 OK
+2014-01-04 12:39:10 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Server: nginx/1.4.3
+2014-01-04 12:39:10 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Date: Sat, 04 Jan 2014 11:40:07 GMT
+2014-01-04 12:39:10 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Content-Type: application/json; charset=utf-8
+2014-01-04 12:39:10 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Transfer-Encoding: chunked
+2014-01-04 12:39:10 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Connection: keep-alive
+2014-01-04 12:39:10 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Cache-Control: no-store
+2014-01-04 12:39:10 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Pragma: no-cache
+2014-01-04 12:39:10 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-UA-Compatible: IE=Edge,chrome=1
+2014-01-04 12:39:10 DEBUG org.apache.http.headers:125 - http-outgoing-0 << ETag: "e149a1d3892b1b4fd3a0cb2ad670cee8"
+2014-01-04 12:39:10 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-Request-Id: 0da5ecadcdd9aefd9d9ee87b17b0cfee
+2014-01-04 12:39:10 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-Runtime: 0.369646
+2014-01-04 12:39:10 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:110 - http-outgoing-0 [ACTIVE(116)] Response received
+2014-01-04 12:39:10 DEBUG org.apache.http.impl.nio.client.MainClientExec:302 - [exchange: 1] Response received HTTP/1.1 200 OK
+2014-01-04 12:39:10 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:85 - http-outgoing-0 [ACTIVE(116)] Input ready
+2014-01-04 12:39:10 DEBUG org.apache.http.impl.nio.client.MainClientExec:341 - [exchange: 1] Consume content
+2014-01-04 12:39:10 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:63933<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 12:39:10 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:63933<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 12:39:10 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:63933<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 12:39:10 DEBUG org.apache.http.impl.nio.client.MainClientExec:377 - [exchange: 1] Connection can be kept alive indefinitely
+2014-01-04 12:39:10 DEBUG org.apache.http.impl.nio.client.MainClientExec:417 - [exchange: 1] Response processed
+2014-01-04 12:39:10 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:199 - [exchange: 1] releasing connection
+2014-01-04 12:39:10 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:171 - http-outgoing-0 0:0:0:0:0:0:0:1:63933<->217.6.180.170:80[ACTIVE][r:r]: Remove attribute http.nio.exchange-handler
+2014-01-04 12:39:10 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:290 - Connection [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80] can be kept alive indefinitely
+2014-01-04 12:39:10 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:296 - Connection released: [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 1; route allocated: 1 of 2; total allocated: 1 of 20]
+2014-01-04 12:39:10 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:89 - http-outgoing-0 [ACTIVE] [chunk-coded; completed: true]
+2014-01-04 12:39:43 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:199 - Connection manager is shutting down
+2014-01-04 12:39:43 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:115 - http-outgoing-0 0:0:0:0:0:0:0:1:63933<->217.6.180.170:80[ACTIVE][r:r]: Close
+2014-01-04 12:39:43 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:66 - http-outgoing-0 [CLOSED]: Disconnected
+2014-01-04 12:39:43 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:201 - Connection manager shut down
+2014-01-04 12:52:58 DEBUG org.apache.http.impl.nio.client.MainClientExec:133 - [exchange: 1] start execution
+2014-01-04 12:52:58 DEBUG org.apache.http.client.protocol.RequestAddCookies:122 - CookieSpec selected: best-match
+2014-01-04 12:52:58 DEBUG org.apache.http.client.protocol.RequestAuthCache:75 - Auth cache not set in the context
+2014-01-04 12:52:58 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:327 - [exchange: 1] Request connection for {}->http://quadroid.dev.wonderweblabs.com:80
+2014-01-04 12:52:58 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:245 - Connection request: [route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2014-01-04 12:52:58 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:459 - Connection leased: [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+2014-01-04 12:52:58 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:282 - [exchange: 1] Connection allocated: http-outgoing-0 [ACTIVE]
+2014-01-04 12:52:58 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:164 - http-outgoing-0 0:0:0:0:0:0:0:1:65089<->217.6.180.170:80[ACTIVE][r:]: Set attribute http.nio.exchange-handler
+2014-01-04 12:52:58 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:102 - http-outgoing-0 0:0:0:0:0:0:0:1:65089<->217.6.180.170:80[ACTIVE][rw:]: Event set [w]
+2014-01-04 12:52:58 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:58 - http-outgoing-0 [ACTIVE]: Connected
+2014-01-04 12:52:58 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:164 - http-outgoing-0 0:0:0:0:0:0:0:1:65089<->217.6.180.170:80[ACTIVE][rw:]: Set attribute http.nio.http-exchange-state
+2014-01-04 12:52:58 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:75 - http-outgoing-0 [ACTIVE] Request ready
+2014-01-04 12:52:58 DEBUG org.apache.http.impl.nio.client.MainClientExec:168 - Start connection routing
+2014-01-04 12:52:58 DEBUG org.apache.http.impl.nio.client.MainClientExec:212 - Connection route established
+2014-01-04 12:52:58 DEBUG org.apache.http.impl.nio.client.MainClientExec:238 - [exchange: 1] Attempt 1 to execute request
+2014-01-04 12:52:58 DEBUG org.apache.http.impl.nio.client.MainClientExec:245 - Target auth state: UNCHALLENGED
+2014-01-04 12:52:58 DEBUG org.apache.http.impl.nio.client.MainClientExec:252 - Proxy auth state: UNCHALLENGED
+2014-01-04 12:52:58 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:141 - http-outgoing-0 0:0:0:0:0:0:0:1:65089<->217.6.180.170:80[ACTIVE][rw:]: Set timeout 60000
+2014-01-04 12:52:58 DEBUG org.apache.http.headers:133 - http-outgoing-0 >> POST /oauth/token HTTP/1.1
+2014-01-04 12:52:58 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> accept: application/vnd.quadroid-server-v1+json
+2014-01-04 12:52:58 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> user-agent: unirest-java/1.1
+2014-01-04 12:52:58 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> accept-encoding: gzip
+2014-01-04 12:52:58 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Content-Length: 230
+2014-01-04 12:52:58 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+2014-01-04 12:52:58 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Host: quadroid.dev.wonderweblabs.com
+2014-01-04 12:52:58 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Connection: Keep-Alive
+2014-01-04 12:52:58 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:102 - http-outgoing-0 0:0:0:0:0:0:0:1:65089<->217.6.180.170:80[ACTIVE][rw:]: Event set [w]
+2014-01-04 12:52:58 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:98 - http-outgoing-0 [ACTIVE] Output ready
+2014-01-04 12:52:58 DEBUG org.apache.http.impl.nio.client.MainClientExec:279 - [exchange: 1] produce content
+2014-01-04 12:52:58 DEBUG org.apache.http.impl.nio.client.MainClientExec:291 - [exchange: 1] Request completed
+2014-01-04 12:52:58 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:102 - http-outgoing-0 [ACTIVE] [content length: 230; pos: 230; completed: true]
+2014-01-04 12:52:58 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:201 - http-outgoing-0 0:0:0:0:0:0:0:1:65089<->217.6.180.170:80[ACTIVE][rw:w]: 509 bytes written
+2014-01-04 12:52:58 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "POST /oauth/token HTTP/1.1[\r][\n]"
+2014-01-04 12:52:58 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "accept: application/vnd.quadroid-server-v1+json[\r][\n]"
+2014-01-04 12:52:58 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "user-agent: unirest-java/1.1[\r][\n]"
+2014-01-04 12:52:58 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "accept-encoding: gzip[\r][\n]"
+2014-01-04 12:52:58 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Content-Length: 230[\r][\n]"
+2014-01-04 12:52:58 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+2014-01-04 12:52:58 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Host: quadroid.dev.wonderweblabs.com[\r][\n]"
+2014-01-04 12:52:58 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+2014-01-04 12:52:58 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "[\r][\n]"
+2014-01-04 12:52:58 DEBUG org.apache.http.wire:68 - http-outgoing-0 >> "client_secret=53c51cea3ba9ba8ff9206185e2d90fdc954da8736d4966c3b124c010382d4fcb&grant_type=password&email=admin%40quadroid.com&client_id=364330b6fb1a04f9dcb636bbb929d10d78b223f849deca561e3ae2f978fd508d&password=timetosaygoodbye2014"
+2014-01-04 12:52:58 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:109 - http-outgoing-0 0:0:0:0:0:0:0:1:65089<->217.6.180.170:80[ACTIVE][r:w]: Event cleared [w]
+2014-01-04 12:52:59 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:65089<->217.6.180.170:80[ACTIVE][r:r]: 481 bytes read
+2014-01-04 12:52:59 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+2014-01-04 12:52:59 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Server: nginx/1.4.3[\r][\n]"
+2014-01-04 12:52:59 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Date: Sat, 04 Jan 2014 11:53:56 GMT[\r][\n]"
+2014-01-04 12:52:59 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Content-Type: application/json; charset=utf-8[\r][\n]"
+2014-01-04 12:52:59 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Transfer-Encoding: chunked[\r][\n]"
+2014-01-04 12:52:59 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Connection: keep-alive[\r][\n]"
+2014-01-04 12:52:59 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Cache-Control: no-store[\r][\n]"
+2014-01-04 12:52:59 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Pragma: no-cache[\r][\n]"
+2014-01-04 12:52:59 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-UA-Compatible: IE=Edge,chrome=1[\r][\n]"
+2014-01-04 12:52:59 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "ETag: "071b982e8bea1b5a29547141fa9513d7"[\r][\n]"
+2014-01-04 12:52:59 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-Request-Id: ff057ea9746a4649ff4e54c43e84ffaa[\r][\n]"
+2014-01-04 12:52:59 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-Runtime: 0.369012[\r][\n]"
+2014-01-04 12:52:59 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "[\r][\n]"
+2014-01-04 12:52:59 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "69[\r][\n]"
+2014-01-04 12:52:59 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "{"access_token":"c5cbe4ef531704aa6a7eea0ca3af028741d8cbf1f96aedf0b55f99fe9378ef5b","token_type":"bearer"}[\r][\n]"
+2014-01-04 12:52:59 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "0[\r][\n]"
+2014-01-04 12:52:59 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "[\r][\n]"
+2014-01-04 12:52:59 DEBUG org.apache.http.headers:122 - http-outgoing-0 << HTTP/1.1 200 OK
+2014-01-04 12:52:59 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Server: nginx/1.4.3
+2014-01-04 12:52:59 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Date: Sat, 04 Jan 2014 11:53:56 GMT
+2014-01-04 12:52:59 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Content-Type: application/json; charset=utf-8
+2014-01-04 12:52:59 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Transfer-Encoding: chunked
+2014-01-04 12:52:59 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Connection: keep-alive
+2014-01-04 12:52:59 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Cache-Control: no-store
+2014-01-04 12:52:59 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Pragma: no-cache
+2014-01-04 12:52:59 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-UA-Compatible: IE=Edge,chrome=1
+2014-01-04 12:52:59 DEBUG org.apache.http.headers:125 - http-outgoing-0 << ETag: "071b982e8bea1b5a29547141fa9513d7"
+2014-01-04 12:52:59 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-Request-Id: ff057ea9746a4649ff4e54c43e84ffaa
+2014-01-04 12:52:59 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-Runtime: 0.369012
+2014-01-04 12:52:59 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:110 - http-outgoing-0 [ACTIVE(116)] Response received
+2014-01-04 12:52:59 DEBUG org.apache.http.impl.nio.client.MainClientExec:302 - [exchange: 1] Response received HTTP/1.1 200 OK
+2014-01-04 12:52:59 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:85 - http-outgoing-0 [ACTIVE(116)] Input ready
+2014-01-04 12:52:59 DEBUG org.apache.http.impl.nio.client.MainClientExec:341 - [exchange: 1] Consume content
+2014-01-04 12:52:59 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:65089<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 12:52:59 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:65089<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 12:52:59 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:65089<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 12:52:59 DEBUG org.apache.http.impl.nio.client.MainClientExec:377 - [exchange: 1] Connection can be kept alive indefinitely
+2014-01-04 12:52:59 DEBUG org.apache.http.impl.nio.client.MainClientExec:417 - [exchange: 1] Response processed
+2014-01-04 12:52:59 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:199 - [exchange: 1] releasing connection
+2014-01-04 12:52:59 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:171 - http-outgoing-0 0:0:0:0:0:0:0:1:65089<->217.6.180.170:80[ACTIVE][r:r]: Remove attribute http.nio.exchange-handler
+2014-01-04 12:52:59 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:290 - Connection [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80] can be kept alive indefinitely
+2014-01-04 12:52:59 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:296 - Connection released: [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 1; route allocated: 1 of 2; total allocated: 1 of 20]
+2014-01-04 12:52:59 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:89 - http-outgoing-0 [ACTIVE] [chunk-coded; completed: true]
+2014-01-04 12:53:06 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:199 - Connection manager is shutting down
+2014-01-04 12:53:06 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:115 - http-outgoing-0 0:0:0:0:0:0:0:1:65089<->217.6.180.170:80[ACTIVE][r:r]: Close
+2014-01-04 12:53:06 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:66 - http-outgoing-0 [CLOSED]: Disconnected
+2014-01-04 12:53:06 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:201 - Connection manager shut down
+2014-01-04 12:53:56 DEBUG org.apache.http.impl.nio.client.MainClientExec:133 - [exchange: 1] start execution
+2014-01-04 12:53:56 DEBUG org.apache.http.client.protocol.RequestAddCookies:122 - CookieSpec selected: best-match
+2014-01-04 12:53:56 DEBUG org.apache.http.client.protocol.RequestAuthCache:75 - Auth cache not set in the context
+2014-01-04 12:53:56 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:327 - [exchange: 1] Request connection for {}->http://quadroid.dev.wonderweblabs.com:80
+2014-01-04 12:53:56 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:245 - Connection request: [route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2014-01-04 12:53:56 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:459 - Connection leased: [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+2014-01-04 12:53:56 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:282 - [exchange: 1] Connection allocated: http-outgoing-0 [ACTIVE]
+2014-01-04 12:53:56 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:164 - http-outgoing-0 0:0:0:0:0:0:0:1:65118<->217.6.180.170:80[ACTIVE][r:]: Set attribute http.nio.exchange-handler
+2014-01-04 12:53:56 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:102 - http-outgoing-0 0:0:0:0:0:0:0:1:65118<->217.6.180.170:80[ACTIVE][rw:]: Event set [w]
+2014-01-04 12:53:56 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:58 - http-outgoing-0 [ACTIVE]: Connected
+2014-01-04 12:53:56 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:164 - http-outgoing-0 0:0:0:0:0:0:0:1:65118<->217.6.180.170:80[ACTIVE][rw:]: Set attribute http.nio.http-exchange-state
+2014-01-04 12:53:56 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:75 - http-outgoing-0 [ACTIVE] Request ready
+2014-01-04 12:53:56 DEBUG org.apache.http.impl.nio.client.MainClientExec:168 - Start connection routing
+2014-01-04 12:53:56 DEBUG org.apache.http.impl.nio.client.MainClientExec:212 - Connection route established
+2014-01-04 12:53:56 DEBUG org.apache.http.impl.nio.client.MainClientExec:238 - [exchange: 1] Attempt 1 to execute request
+2014-01-04 12:53:56 DEBUG org.apache.http.impl.nio.client.MainClientExec:245 - Target auth state: UNCHALLENGED
+2014-01-04 12:53:56 DEBUG org.apache.http.impl.nio.client.MainClientExec:252 - Proxy auth state: UNCHALLENGED
+2014-01-04 12:53:56 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:141 - http-outgoing-0 0:0:0:0:0:0:0:1:65118<->217.6.180.170:80[ACTIVE][rw:]: Set timeout 60000
+2014-01-04 12:53:56 DEBUG org.apache.http.headers:133 - http-outgoing-0 >> POST /oauth/token HTTP/1.1
+2014-01-04 12:53:56 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> accept: application/vnd.quadroid-server-v1+json
+2014-01-04 12:53:56 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> user-agent: unirest-java/1.1
+2014-01-04 12:53:56 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> accept-encoding: gzip
+2014-01-04 12:53:56 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Content-Length: 230
+2014-01-04 12:53:56 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+2014-01-04 12:53:56 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Host: quadroid.dev.wonderweblabs.com
+2014-01-04 12:53:56 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Connection: Keep-Alive
+2014-01-04 12:53:56 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:102 - http-outgoing-0 0:0:0:0:0:0:0:1:65118<->217.6.180.170:80[ACTIVE][rw:]: Event set [w]
+2014-01-04 12:53:56 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:98 - http-outgoing-0 [ACTIVE] Output ready
+2014-01-04 12:53:56 DEBUG org.apache.http.impl.nio.client.MainClientExec:279 - [exchange: 1] produce content
+2014-01-04 12:53:56 DEBUG org.apache.http.impl.nio.client.MainClientExec:291 - [exchange: 1] Request completed
+2014-01-04 12:53:56 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:102 - http-outgoing-0 [ACTIVE] [content length: 230; pos: 230; completed: true]
+2014-01-04 12:53:56 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:201 - http-outgoing-0 0:0:0:0:0:0:0:1:65118<->217.6.180.170:80[ACTIVE][rw:w]: 509 bytes written
+2014-01-04 12:53:56 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "POST /oauth/token HTTP/1.1[\r][\n]"
+2014-01-04 12:53:56 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "accept: application/vnd.quadroid-server-v1+json[\r][\n]"
+2014-01-04 12:53:56 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "user-agent: unirest-java/1.1[\r][\n]"
+2014-01-04 12:53:56 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "accept-encoding: gzip[\r][\n]"
+2014-01-04 12:53:56 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Content-Length: 230[\r][\n]"
+2014-01-04 12:53:56 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+2014-01-04 12:53:56 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Host: quadroid.dev.wonderweblabs.com[\r][\n]"
+2014-01-04 12:53:56 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+2014-01-04 12:53:56 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "[\r][\n]"
+2014-01-04 12:53:56 DEBUG org.apache.http.wire:68 - http-outgoing-0 >> "client_secret=53c51cea3ba9ba8ff9206185e2d90fdc954da8736d4966c3b124c010382d4fcb&grant_type=password&email=admin%40quadroid.com&client_id=364330b6fb1a04f9dcb636bbb929d10d78b223f849deca561e3ae2f978fd508d&password=timetosaygoodbye2014"
+2014-01-04 12:53:56 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:109 - http-outgoing-0 0:0:0:0:0:0:0:1:65118<->217.6.180.170:80[ACTIVE][r:w]: Event cleared [w]
+2014-01-04 12:53:56 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:65118<->217.6.180.170:80[ACTIVE][r:r]: 481 bytes read
+2014-01-04 12:53:56 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+2014-01-04 12:53:56 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Server: nginx/1.4.3[\r][\n]"
+2014-01-04 12:53:56 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Date: Sat, 04 Jan 2014 11:54:54 GMT[\r][\n]"
+2014-01-04 12:53:56 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Content-Type: application/json; charset=utf-8[\r][\n]"
+2014-01-04 12:53:56 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Transfer-Encoding: chunked[\r][\n]"
+2014-01-04 12:53:56 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Connection: keep-alive[\r][\n]"
+2014-01-04 12:53:56 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Cache-Control: no-store[\r][\n]"
+2014-01-04 12:53:56 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Pragma: no-cache[\r][\n]"
+2014-01-04 12:53:56 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-UA-Compatible: IE=Edge,chrome=1[\r][\n]"
+2014-01-04 12:53:56 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "ETag: "c8250f76a05eab1ea4bce9db0220bcd9"[\r][\n]"
+2014-01-04 12:53:56 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-Request-Id: ed29a26df921d657a9568124bae57684[\r][\n]"
+2014-01-04 12:53:56 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-Runtime: 0.368595[\r][\n]"
+2014-01-04 12:53:56 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "[\r][\n]"
+2014-01-04 12:53:56 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "69[\r][\n]"
+2014-01-04 12:53:56 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "{"access_token":"4d4a64f36624e284404bea7d851977699ac4e2ae404df0cde06d5599e26cc556","token_type":"bearer"}[\r][\n]"
+2014-01-04 12:53:56 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "0[\r][\n]"
+2014-01-04 12:53:56 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "[\r][\n]"
+2014-01-04 12:53:56 DEBUG org.apache.http.headers:122 - http-outgoing-0 << HTTP/1.1 200 OK
+2014-01-04 12:53:56 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Server: nginx/1.4.3
+2014-01-04 12:53:56 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Date: Sat, 04 Jan 2014 11:54:54 GMT
+2014-01-04 12:53:56 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Content-Type: application/json; charset=utf-8
+2014-01-04 12:53:56 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Transfer-Encoding: chunked
+2014-01-04 12:53:56 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Connection: keep-alive
+2014-01-04 12:53:56 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Cache-Control: no-store
+2014-01-04 12:53:56 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Pragma: no-cache
+2014-01-04 12:53:56 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-UA-Compatible: IE=Edge,chrome=1
+2014-01-04 12:53:56 DEBUG org.apache.http.headers:125 - http-outgoing-0 << ETag: "c8250f76a05eab1ea4bce9db0220bcd9"
+2014-01-04 12:53:56 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-Request-Id: ed29a26df921d657a9568124bae57684
+2014-01-04 12:53:56 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-Runtime: 0.368595
+2014-01-04 12:53:56 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:110 - http-outgoing-0 [ACTIVE(116)] Response received
+2014-01-04 12:53:56 DEBUG org.apache.http.impl.nio.client.MainClientExec:302 - [exchange: 1] Response received HTTP/1.1 200 OK
+2014-01-04 12:53:56 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:85 - http-outgoing-0 [ACTIVE(116)] Input ready
+2014-01-04 12:53:56 DEBUG org.apache.http.impl.nio.client.MainClientExec:341 - [exchange: 1] Consume content
+2014-01-04 12:53:56 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:65118<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 12:53:56 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:65118<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 12:53:56 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:65118<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 12:53:56 DEBUG org.apache.http.impl.nio.client.MainClientExec:377 - [exchange: 1] Connection can be kept alive indefinitely
+2014-01-04 12:53:56 DEBUG org.apache.http.impl.nio.client.MainClientExec:417 - [exchange: 1] Response processed
+2014-01-04 12:53:56 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:199 - [exchange: 1] releasing connection
+2014-01-04 12:53:56 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:171 - http-outgoing-0 0:0:0:0:0:0:0:1:65118<->217.6.180.170:80[ACTIVE][r:r]: Remove attribute http.nio.exchange-handler
+2014-01-04 12:53:56 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:290 - Connection [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80] can be kept alive indefinitely
+2014-01-04 12:53:56 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:296 - Connection released: [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 1; route allocated: 1 of 2; total allocated: 1 of 20]
+2014-01-04 12:53:56 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:89 - http-outgoing-0 [ACTIVE] [chunk-coded; completed: true]
+2014-01-04 12:53:57 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:199 - Connection manager is shutting down
+2014-01-04 12:53:57 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:115 - http-outgoing-0 0:0:0:0:0:0:0:1:65118<->217.6.180.170:80[ACTIVE][r:r]: Close
+2014-01-04 12:53:57 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:66 - http-outgoing-0 [CLOSED]: Disconnected
+2014-01-04 12:53:57 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:201 - Connection manager shut down
+2014-01-04 12:54:21 DEBUG org.apache.http.impl.nio.client.MainClientExec:133 - [exchange: 1] start execution
+2014-01-04 12:54:21 DEBUG org.apache.http.client.protocol.RequestAddCookies:122 - CookieSpec selected: best-match
+2014-01-04 12:54:21 DEBUG org.apache.http.client.protocol.RequestAuthCache:75 - Auth cache not set in the context
+2014-01-04 12:54:21 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:327 - [exchange: 1] Request connection for {}->http://quadroid.dev.wonderweblabs.com:80
+2014-01-04 12:54:21 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:245 - Connection request: [route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2014-01-04 12:54:21 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:459 - Connection leased: [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+2014-01-04 12:54:21 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:282 - [exchange: 1] Connection allocated: http-outgoing-0 [ACTIVE]
+2014-01-04 12:54:21 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:164 - http-outgoing-0 0:0:0:0:0:0:0:1:65146<->217.6.180.170:80[ACTIVE][r:]: Set attribute http.nio.exchange-handler
+2014-01-04 12:54:21 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:102 - http-outgoing-0 0:0:0:0:0:0:0:1:65146<->217.6.180.170:80[ACTIVE][rw:]: Event set [w]
+2014-01-04 12:54:21 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:58 - http-outgoing-0 [ACTIVE]: Connected
+2014-01-04 12:54:21 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:164 - http-outgoing-0 0:0:0:0:0:0:0:1:65146<->217.6.180.170:80[ACTIVE][rw:]: Set attribute http.nio.http-exchange-state
+2014-01-04 12:54:21 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:75 - http-outgoing-0 [ACTIVE] Request ready
+2014-01-04 12:54:21 DEBUG org.apache.http.impl.nio.client.MainClientExec:168 - Start connection routing
+2014-01-04 12:54:21 DEBUG org.apache.http.impl.nio.client.MainClientExec:212 - Connection route established
+2014-01-04 12:54:21 DEBUG org.apache.http.impl.nio.client.MainClientExec:238 - [exchange: 1] Attempt 1 to execute request
+2014-01-04 12:54:21 DEBUG org.apache.http.impl.nio.client.MainClientExec:245 - Target auth state: UNCHALLENGED
+2014-01-04 12:54:21 DEBUG org.apache.http.impl.nio.client.MainClientExec:252 - Proxy auth state: UNCHALLENGED
+2014-01-04 12:54:21 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:141 - http-outgoing-0 0:0:0:0:0:0:0:1:65146<->217.6.180.170:80[ACTIVE][rw:]: Set timeout 60000
+2014-01-04 12:54:21 DEBUG org.apache.http.headers:133 - http-outgoing-0 >> POST /oauth/token HTTP/1.1
+2014-01-04 12:54:21 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> accept: application/vnd.quadroid-server-v1+json
+2014-01-04 12:54:21 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> user-agent: unirest-java/1.1
+2014-01-04 12:54:21 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> accept-encoding: gzip
+2014-01-04 12:54:21 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Content-Length: 230
+2014-01-04 12:54:21 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+2014-01-04 12:54:21 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Host: quadroid.dev.wonderweblabs.com
+2014-01-04 12:54:21 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Connection: Keep-Alive
+2014-01-04 12:54:21 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:102 - http-outgoing-0 0:0:0:0:0:0:0:1:65146<->217.6.180.170:80[ACTIVE][rw:]: Event set [w]
+2014-01-04 12:54:21 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:98 - http-outgoing-0 [ACTIVE] Output ready
+2014-01-04 12:54:21 DEBUG org.apache.http.impl.nio.client.MainClientExec:279 - [exchange: 1] produce content
+2014-01-04 12:54:21 DEBUG org.apache.http.impl.nio.client.MainClientExec:291 - [exchange: 1] Request completed
+2014-01-04 12:54:21 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:102 - http-outgoing-0 [ACTIVE] [content length: 230; pos: 230; completed: true]
+2014-01-04 12:54:21 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:201 - http-outgoing-0 0:0:0:0:0:0:0:1:65146<->217.6.180.170:80[ACTIVE][rw:w]: 509 bytes written
+2014-01-04 12:54:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "POST /oauth/token HTTP/1.1[\r][\n]"
+2014-01-04 12:54:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "accept: application/vnd.quadroid-server-v1+json[\r][\n]"
+2014-01-04 12:54:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "user-agent: unirest-java/1.1[\r][\n]"
+2014-01-04 12:54:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "accept-encoding: gzip[\r][\n]"
+2014-01-04 12:54:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Content-Length: 230[\r][\n]"
+2014-01-04 12:54:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+2014-01-04 12:54:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Host: quadroid.dev.wonderweblabs.com[\r][\n]"
+2014-01-04 12:54:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+2014-01-04 12:54:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "[\r][\n]"
+2014-01-04 12:54:21 DEBUG org.apache.http.wire:68 - http-outgoing-0 >> "client_secret=53c51cea3ba9ba8ff9206185e2d90fdc954da8736d4966c3b124c010382d4fcb&grant_type=password&email=admin%40quadroid.com&client_id=364330b6fb1a04f9dcb636bbb929d10d78b223f849deca561e3ae2f978fd508d&password=timetosaygoodbye2014"
+2014-01-04 12:54:21 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:109 - http-outgoing-0 0:0:0:0:0:0:0:1:65146<->217.6.180.170:80[ACTIVE][r:w]: Event cleared [w]
+2014-01-04 12:54:21 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:65146<->217.6.180.170:80[ACTIVE][r:r]: 481 bytes read
+2014-01-04 12:54:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+2014-01-04 12:54:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Server: nginx/1.4.3[\r][\n]"
+2014-01-04 12:54:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Date: Sat, 04 Jan 2014 11:55:19 GMT[\r][\n]"
+2014-01-04 12:54:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Content-Type: application/json; charset=utf-8[\r][\n]"
+2014-01-04 12:54:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Transfer-Encoding: chunked[\r][\n]"
+2014-01-04 12:54:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Connection: keep-alive[\r][\n]"
+2014-01-04 12:54:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Cache-Control: no-store[\r][\n]"
+2014-01-04 12:54:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Pragma: no-cache[\r][\n]"
+2014-01-04 12:54:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-UA-Compatible: IE=Edge,chrome=1[\r][\n]"
+2014-01-04 12:54:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "ETag: "1c88a99d7642f9aa0103675ae4e18162"[\r][\n]"
+2014-01-04 12:54:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-Request-Id: f71fbb4da412c6f541e58fda806ce2da[\r][\n]"
+2014-01-04 12:54:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-Runtime: 0.013766[\r][\n]"
+2014-01-04 12:54:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "[\r][\n]"
+2014-01-04 12:54:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "69[\r][\n]"
+2014-01-04 12:54:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "{"access_token":"e5a6698009133ca157f6ab1de4989914fc9e1f5df994aba28d91f961fe0309d3","token_type":"bearer"}[\r][\n]"
+2014-01-04 12:54:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "0[\r][\n]"
+2014-01-04 12:54:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "[\r][\n]"
+2014-01-04 12:54:21 DEBUG org.apache.http.headers:122 - http-outgoing-0 << HTTP/1.1 200 OK
+2014-01-04 12:54:21 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Server: nginx/1.4.3
+2014-01-04 12:54:21 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Date: Sat, 04 Jan 2014 11:55:19 GMT
+2014-01-04 12:54:21 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Content-Type: application/json; charset=utf-8
+2014-01-04 12:54:21 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Transfer-Encoding: chunked
+2014-01-04 12:54:21 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Connection: keep-alive
+2014-01-04 12:54:21 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Cache-Control: no-store
+2014-01-04 12:54:21 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Pragma: no-cache
+2014-01-04 12:54:21 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-UA-Compatible: IE=Edge,chrome=1
+2014-01-04 12:54:21 DEBUG org.apache.http.headers:125 - http-outgoing-0 << ETag: "1c88a99d7642f9aa0103675ae4e18162"
+2014-01-04 12:54:21 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-Request-Id: f71fbb4da412c6f541e58fda806ce2da
+2014-01-04 12:54:21 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-Runtime: 0.013766
+2014-01-04 12:54:21 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:110 - http-outgoing-0 [ACTIVE(116)] Response received
+2014-01-04 12:54:21 DEBUG org.apache.http.impl.nio.client.MainClientExec:302 - [exchange: 1] Response received HTTP/1.1 200 OK
+2014-01-04 12:54:21 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:85 - http-outgoing-0 [ACTIVE(116)] Input ready
+2014-01-04 12:54:21 DEBUG org.apache.http.impl.nio.client.MainClientExec:341 - [exchange: 1] Consume content
+2014-01-04 12:54:21 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:65146<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 12:54:21 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:65146<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 12:54:21 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:65146<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 12:54:21 DEBUG org.apache.http.impl.nio.client.MainClientExec:377 - [exchange: 1] Connection can be kept alive indefinitely
+2014-01-04 12:54:21 DEBUG org.apache.http.impl.nio.client.MainClientExec:417 - [exchange: 1] Response processed
+2014-01-04 12:54:21 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:199 - [exchange: 1] releasing connection
+2014-01-04 12:54:21 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:171 - http-outgoing-0 0:0:0:0:0:0:0:1:65146<->217.6.180.170:80[ACTIVE][r:r]: Remove attribute http.nio.exchange-handler
+2014-01-04 12:54:21 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:290 - Connection [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80] can be kept alive indefinitely
+2014-01-04 12:54:21 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:296 - Connection released: [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 1; route allocated: 1 of 2; total allocated: 1 of 20]
+2014-01-04 12:54:21 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:89 - http-outgoing-0 [ACTIVE] [chunk-coded; completed: true]
+2014-01-04 12:54:23 INFO  main.Main:266 - 0
+2014-01-04 12:54:42 INFO  main.Main:266 - saveVideoPredefinedPath
+2014-01-04 12:54:53 INFO  main.Main:266 - stopSavingVideo
+2014-01-04 12:55:01 INFO  main.Main:266 - saveScreenshotPredefinedPath
+2014-01-04 12:55:21 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:118 - http-outgoing-0 [ACTIVE] Timeout
+2014-01-04 12:55:21 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:115 - http-outgoing-0 0:0:0:0:0:0:0:1:65146<->217.6.180.170:80[ACTIVE][r:r]: Close
+2014-01-04 12:55:21 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:66 - http-outgoing-0 [CLOSED]: Disconnected
+2014-01-04 12:55:24 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:199 - Connection manager is shutting down
+2014-01-04 12:55:24 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:201 - Connection manager shut down
+2014-01-04 12:56:52 DEBUG org.apache.http.impl.nio.client.MainClientExec:133 - [exchange: 1] start execution
+2014-01-04 12:56:52 DEBUG org.apache.http.client.protocol.RequestAddCookies:122 - CookieSpec selected: best-match
+2014-01-04 12:56:52 DEBUG org.apache.http.client.protocol.RequestAuthCache:75 - Auth cache not set in the context
+2014-01-04 12:56:52 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:327 - [exchange: 1] Request connection for {}->http://quadroid.dev.wonderweblabs.com:80
+2014-01-04 12:56:52 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:245 - Connection request: [route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2014-01-04 12:56:52 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:459 - Connection leased: [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+2014-01-04 12:56:52 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:282 - [exchange: 1] Connection allocated: http-outgoing-0 [ACTIVE]
+2014-01-04 12:56:52 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:164 - http-outgoing-0 0:0:0:0:0:0:0:1:65203<->217.6.180.170:80[ACTIVE][r:]: Set attribute http.nio.exchange-handler
+2014-01-04 12:56:52 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:102 - http-outgoing-0 0:0:0:0:0:0:0:1:65203<->217.6.180.170:80[ACTIVE][rw:]: Event set [w]
+2014-01-04 12:56:52 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:58 - http-outgoing-0 [ACTIVE]: Connected
+2014-01-04 12:56:52 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:164 - http-outgoing-0 0:0:0:0:0:0:0:1:65203<->217.6.180.170:80[ACTIVE][rw:]: Set attribute http.nio.http-exchange-state
+2014-01-04 12:56:52 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:75 - http-outgoing-0 [ACTIVE] Request ready
+2014-01-04 12:56:52 DEBUG org.apache.http.impl.nio.client.MainClientExec:168 - Start connection routing
+2014-01-04 12:56:52 DEBUG org.apache.http.impl.nio.client.MainClientExec:212 - Connection route established
+2014-01-04 12:56:52 DEBUG org.apache.http.impl.nio.client.MainClientExec:238 - [exchange: 1] Attempt 1 to execute request
+2014-01-04 12:56:52 DEBUG org.apache.http.impl.nio.client.MainClientExec:245 - Target auth state: UNCHALLENGED
+2014-01-04 12:56:52 DEBUG org.apache.http.impl.nio.client.MainClientExec:252 - Proxy auth state: UNCHALLENGED
+2014-01-04 12:56:52 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:141 - http-outgoing-0 0:0:0:0:0:0:0:1:65203<->217.6.180.170:80[ACTIVE][rw:]: Set timeout 60000
+2014-01-04 12:56:52 DEBUG org.apache.http.headers:133 - http-outgoing-0 >> POST /oauth/token HTTP/1.1
+2014-01-04 12:56:52 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> accept: application/vnd.quadroid-server-v1+json
+2014-01-04 12:56:52 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> user-agent: unirest-java/1.1
+2014-01-04 12:56:52 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> accept-encoding: gzip
+2014-01-04 12:56:52 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Content-Length: 230
+2014-01-04 12:56:52 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+2014-01-04 12:56:52 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Host: quadroid.dev.wonderweblabs.com
+2014-01-04 12:56:52 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Connection: Keep-Alive
+2014-01-04 12:56:52 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:102 - http-outgoing-0 0:0:0:0:0:0:0:1:65203<->217.6.180.170:80[ACTIVE][rw:]: Event set [w]
+2014-01-04 12:56:52 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:98 - http-outgoing-0 [ACTIVE] Output ready
+2014-01-04 12:56:52 DEBUG org.apache.http.impl.nio.client.MainClientExec:279 - [exchange: 1] produce content
+2014-01-04 12:56:52 DEBUG org.apache.http.impl.nio.client.MainClientExec:291 - [exchange: 1] Request completed
+2014-01-04 12:56:52 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:102 - http-outgoing-0 [ACTIVE] [content length: 230; pos: 230; completed: true]
+2014-01-04 12:56:52 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:201 - http-outgoing-0 0:0:0:0:0:0:0:1:65203<->217.6.180.170:80[ACTIVE][rw:w]: 509 bytes written
+2014-01-04 12:56:52 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "POST /oauth/token HTTP/1.1[\r][\n]"
+2014-01-04 12:56:52 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "accept: application/vnd.quadroid-server-v1+json[\r][\n]"
+2014-01-04 12:56:52 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "user-agent: unirest-java/1.1[\r][\n]"
+2014-01-04 12:56:52 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "accept-encoding: gzip[\r][\n]"
+2014-01-04 12:56:52 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Content-Length: 230[\r][\n]"
+2014-01-04 12:56:52 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+2014-01-04 12:56:52 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Host: quadroid.dev.wonderweblabs.com[\r][\n]"
+2014-01-04 12:56:52 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+2014-01-04 12:56:52 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "[\r][\n]"
+2014-01-04 12:56:52 DEBUG org.apache.http.wire:68 - http-outgoing-0 >> "client_secret=53c51cea3ba9ba8ff9206185e2d90fdc954da8736d4966c3b124c010382d4fcb&grant_type=password&email=admin%40quadroid.com&client_id=364330b6fb1a04f9dcb636bbb929d10d78b223f849deca561e3ae2f978fd508d&password=timetosaygoodbye2014"
+2014-01-04 12:56:52 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:109 - http-outgoing-0 0:0:0:0:0:0:0:1:65203<->217.6.180.170:80[ACTIVE][r:w]: Event cleared [w]
+2014-01-04 12:56:52 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:65203<->217.6.180.170:80[ACTIVE][r:r]: 481 bytes read
+2014-01-04 12:56:52 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+2014-01-04 12:56:52 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Server: nginx/1.4.3[\r][\n]"
+2014-01-04 12:56:52 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Date: Sat, 04 Jan 2014 11:57:50 GMT[\r][\n]"
+2014-01-04 12:56:52 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Content-Type: application/json; charset=utf-8[\r][\n]"
+2014-01-04 12:56:52 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Transfer-Encoding: chunked[\r][\n]"
+2014-01-04 12:56:52 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Connection: keep-alive[\r][\n]"
+2014-01-04 12:56:52 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Cache-Control: no-store[\r][\n]"
+2014-01-04 12:56:52 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Pragma: no-cache[\r][\n]"
+2014-01-04 12:56:52 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-UA-Compatible: IE=Edge,chrome=1[\r][\n]"
+2014-01-04 12:56:52 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "ETag: "db405cf7d0a63a6735874916d781693b"[\r][\n]"
+2014-01-04 12:56:52 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-Request-Id: e1b1983de6d3c8fc7d03d2d55313c597[\r][\n]"
+2014-01-04 12:56:52 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-Runtime: 0.011581[\r][\n]"
+2014-01-04 12:56:52 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "[\r][\n]"
+2014-01-04 12:56:52 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "69[\r][\n]"
+2014-01-04 12:56:52 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "{"access_token":"2a9383604e8cfffbba9f2f948f59c3e687729567c598102f5abd091f99c4b6f4","token_type":"bearer"}[\r][\n]"
+2014-01-04 12:56:52 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "0[\r][\n]"
+2014-01-04 12:56:52 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "[\r][\n]"
+2014-01-04 12:56:52 DEBUG org.apache.http.headers:122 - http-outgoing-0 << HTTP/1.1 200 OK
+2014-01-04 12:56:52 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Server: nginx/1.4.3
+2014-01-04 12:56:52 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Date: Sat, 04 Jan 2014 11:57:50 GMT
+2014-01-04 12:56:52 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Content-Type: application/json; charset=utf-8
+2014-01-04 12:56:52 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Transfer-Encoding: chunked
+2014-01-04 12:56:52 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Connection: keep-alive
+2014-01-04 12:56:52 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Cache-Control: no-store
+2014-01-04 12:56:52 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Pragma: no-cache
+2014-01-04 12:56:52 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-UA-Compatible: IE=Edge,chrome=1
+2014-01-04 12:56:52 DEBUG org.apache.http.headers:125 - http-outgoing-0 << ETag: "db405cf7d0a63a6735874916d781693b"
+2014-01-04 12:56:52 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-Request-Id: e1b1983de6d3c8fc7d03d2d55313c597
+2014-01-04 12:56:52 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-Runtime: 0.011581
+2014-01-04 12:56:52 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:110 - http-outgoing-0 [ACTIVE(116)] Response received
+2014-01-04 12:56:52 DEBUG org.apache.http.impl.nio.client.MainClientExec:302 - [exchange: 1] Response received HTTP/1.1 200 OK
+2014-01-04 12:56:52 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:85 - http-outgoing-0 [ACTIVE(116)] Input ready
+2014-01-04 12:56:52 DEBUG org.apache.http.impl.nio.client.MainClientExec:341 - [exchange: 1] Consume content
+2014-01-04 12:56:52 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:65203<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 12:56:52 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:65203<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 12:56:52 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:65203<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 12:56:52 DEBUG org.apache.http.impl.nio.client.MainClientExec:377 - [exchange: 1] Connection can be kept alive indefinitely
+2014-01-04 12:56:52 DEBUG org.apache.http.impl.nio.client.MainClientExec:417 - [exchange: 1] Response processed
+2014-01-04 12:56:52 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:199 - [exchange: 1] releasing connection
+2014-01-04 12:56:52 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:171 - http-outgoing-0 0:0:0:0:0:0:0:1:65203<->217.6.180.170:80[ACTIVE][r:r]: Remove attribute http.nio.exchange-handler
+2014-01-04 12:56:52 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:290 - Connection [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80] can be kept alive indefinitely
+2014-01-04 12:56:52 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:296 - Connection released: [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 1; route allocated: 1 of 2; total allocated: 1 of 20]
+2014-01-04 12:56:52 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:89 - http-outgoing-0 [ACTIVE] [chunk-coded; completed: true]
+2014-01-04 12:56:54 INFO  main.Main:266 - 0
+2014-01-04 12:57:00 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:199 - Connection manager is shutting down
+2014-01-04 12:57:00 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:115 - http-outgoing-0 0:0:0:0:0:0:0:1:65203<->217.6.180.170:80[ACTIVE][r:r]: Close
+2014-01-04 12:57:00 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:66 - http-outgoing-0 [CLOSED]: Disconnected
+2014-01-04 12:57:00 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:201 - Connection manager shut down
+2014-01-04 12:57:37 DEBUG org.apache.http.impl.nio.client.MainClientExec:133 - [exchange: 1] start execution
+2014-01-04 12:57:37 DEBUG org.apache.http.client.protocol.RequestAddCookies:122 - CookieSpec selected: best-match
+2014-01-04 12:57:37 DEBUG org.apache.http.client.protocol.RequestAuthCache:75 - Auth cache not set in the context
+2014-01-04 12:57:37 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:327 - [exchange: 1] Request connection for {}->http://quadroid.dev.wonderweblabs.com:80
+2014-01-04 12:57:37 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:245 - Connection request: [route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2014-01-04 12:57:37 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:459 - Connection leased: [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+2014-01-04 12:57:37 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:282 - [exchange: 1] Connection allocated: http-outgoing-0 [ACTIVE]
+2014-01-04 12:57:37 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:164 - http-outgoing-0 0:0:0:0:0:0:0:1:65241<->217.6.180.170:80[ACTIVE][r:]: Set attribute http.nio.exchange-handler
+2014-01-04 12:57:37 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:102 - http-outgoing-0 0:0:0:0:0:0:0:1:65241<->217.6.180.170:80[ACTIVE][rw:]: Event set [w]
+2014-01-04 12:57:37 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:58 - http-outgoing-0 [ACTIVE]: Connected
+2014-01-04 12:57:37 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:164 - http-outgoing-0 0:0:0:0:0:0:0:1:65241<->217.6.180.170:80[ACTIVE][rw:]: Set attribute http.nio.http-exchange-state
+2014-01-04 12:57:37 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:75 - http-outgoing-0 [ACTIVE] Request ready
+2014-01-04 12:57:37 DEBUG org.apache.http.impl.nio.client.MainClientExec:168 - Start connection routing
+2014-01-04 12:57:37 DEBUG org.apache.http.impl.nio.client.MainClientExec:212 - Connection route established
+2014-01-04 12:57:37 DEBUG org.apache.http.impl.nio.client.MainClientExec:238 - [exchange: 1] Attempt 1 to execute request
+2014-01-04 12:57:37 DEBUG org.apache.http.impl.nio.client.MainClientExec:245 - Target auth state: UNCHALLENGED
+2014-01-04 12:57:37 DEBUG org.apache.http.impl.nio.client.MainClientExec:252 - Proxy auth state: UNCHALLENGED
+2014-01-04 12:57:37 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:141 - http-outgoing-0 0:0:0:0:0:0:0:1:65241<->217.6.180.170:80[ACTIVE][rw:]: Set timeout 60000
+2014-01-04 12:57:37 DEBUG org.apache.http.headers:133 - http-outgoing-0 >> POST /oauth/token HTTP/1.1
+2014-01-04 12:57:37 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> accept: application/vnd.quadroid-server-v1+json
+2014-01-04 12:57:37 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> user-agent: unirest-java/1.1
+2014-01-04 12:57:37 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> accept-encoding: gzip
+2014-01-04 12:57:37 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Content-Length: 230
+2014-01-04 12:57:37 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+2014-01-04 12:57:37 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Host: quadroid.dev.wonderweblabs.com
+2014-01-04 12:57:37 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Connection: Keep-Alive
+2014-01-04 12:57:37 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:102 - http-outgoing-0 0:0:0:0:0:0:0:1:65241<->217.6.180.170:80[ACTIVE][rw:]: Event set [w]
+2014-01-04 12:57:37 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:98 - http-outgoing-0 [ACTIVE] Output ready
+2014-01-04 12:57:37 DEBUG org.apache.http.impl.nio.client.MainClientExec:279 - [exchange: 1] produce content
+2014-01-04 12:57:37 DEBUG org.apache.http.impl.nio.client.MainClientExec:291 - [exchange: 1] Request completed
+2014-01-04 12:57:37 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:102 - http-outgoing-0 [ACTIVE] [content length: 230; pos: 230; completed: true]
+2014-01-04 12:57:37 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:201 - http-outgoing-0 0:0:0:0:0:0:0:1:65241<->217.6.180.170:80[ACTIVE][rw:w]: 509 bytes written
+2014-01-04 12:57:37 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "POST /oauth/token HTTP/1.1[\r][\n]"
+2014-01-04 12:57:37 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "accept: application/vnd.quadroid-server-v1+json[\r][\n]"
+2014-01-04 12:57:37 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "user-agent: unirest-java/1.1[\r][\n]"
+2014-01-04 12:57:37 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "accept-encoding: gzip[\r][\n]"
+2014-01-04 12:57:37 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Content-Length: 230[\r][\n]"
+2014-01-04 12:57:37 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+2014-01-04 12:57:37 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Host: quadroid.dev.wonderweblabs.com[\r][\n]"
+2014-01-04 12:57:37 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+2014-01-04 12:57:37 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "[\r][\n]"
+2014-01-04 12:57:37 DEBUG org.apache.http.wire:68 - http-outgoing-0 >> "client_secret=53c51cea3ba9ba8ff9206185e2d90fdc954da8736d4966c3b124c010382d4fcb&grant_type=password&email=admin%40quadroid.com&client_id=364330b6fb1a04f9dcb636bbb929d10d78b223f849deca561e3ae2f978fd508d&password=timetosaygoodbye2014"
+2014-01-04 12:57:37 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:109 - http-outgoing-0 0:0:0:0:0:0:0:1:65241<->217.6.180.170:80[ACTIVE][r:w]: Event cleared [w]
+2014-01-04 12:57:37 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:65241<->217.6.180.170:80[ACTIVE][r:r]: 481 bytes read
+2014-01-04 12:57:37 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+2014-01-04 12:57:37 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Server: nginx/1.4.3[\r][\n]"
+2014-01-04 12:57:37 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Date: Sat, 04 Jan 2014 11:58:34 GMT[\r][\n]"
+2014-01-04 12:57:37 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Content-Type: application/json; charset=utf-8[\r][\n]"
+2014-01-04 12:57:37 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Transfer-Encoding: chunked[\r][\n]"
+2014-01-04 12:57:37 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Connection: keep-alive[\r][\n]"
+2014-01-04 12:57:37 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Cache-Control: no-store[\r][\n]"
+2014-01-04 12:57:37 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Pragma: no-cache[\r][\n]"
+2014-01-04 12:57:37 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-UA-Compatible: IE=Edge,chrome=1[\r][\n]"
+2014-01-04 12:57:37 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "ETag: "9160b37e352b1f3d77329398ca4cb87d"[\r][\n]"
+2014-01-04 12:57:37 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-Request-Id: ecb78d1133811912b1b2b48ef756c5b3[\r][\n]"
+2014-01-04 12:57:37 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-Runtime: 0.011576[\r][\n]"
+2014-01-04 12:57:37 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "[\r][\n]"
+2014-01-04 12:57:37 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "69[\r][\n]"
+2014-01-04 12:57:37 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "{"access_token":"9c50e31b3d299decc05c04de1ff0be8795bb8864ccaf14b9e77bb30ae406aefd","token_type":"bearer"}[\r][\n]"
+2014-01-04 12:57:37 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "0[\r][\n]"
+2014-01-04 12:57:37 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "[\r][\n]"
+2014-01-04 12:57:37 DEBUG org.apache.http.headers:122 - http-outgoing-0 << HTTP/1.1 200 OK
+2014-01-04 12:57:37 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Server: nginx/1.4.3
+2014-01-04 12:57:37 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Date: Sat, 04 Jan 2014 11:58:34 GMT
+2014-01-04 12:57:37 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Content-Type: application/json; charset=utf-8
+2014-01-04 12:57:37 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Transfer-Encoding: chunked
+2014-01-04 12:57:37 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Connection: keep-alive
+2014-01-04 12:57:37 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Cache-Control: no-store
+2014-01-04 12:57:37 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Pragma: no-cache
+2014-01-04 12:57:37 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-UA-Compatible: IE=Edge,chrome=1
+2014-01-04 12:57:37 DEBUG org.apache.http.headers:125 - http-outgoing-0 << ETag: "9160b37e352b1f3d77329398ca4cb87d"
+2014-01-04 12:57:37 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-Request-Id: ecb78d1133811912b1b2b48ef756c5b3
+2014-01-04 12:57:37 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-Runtime: 0.011576
+2014-01-04 12:57:37 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:110 - http-outgoing-0 [ACTIVE(116)] Response received
+2014-01-04 12:57:37 DEBUG org.apache.http.impl.nio.client.MainClientExec:302 - [exchange: 1] Response received HTTP/1.1 200 OK
+2014-01-04 12:57:37 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:85 - http-outgoing-0 [ACTIVE(116)] Input ready
+2014-01-04 12:57:37 DEBUG org.apache.http.impl.nio.client.MainClientExec:341 - [exchange: 1] Consume content
+2014-01-04 12:57:37 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:65241<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 12:57:37 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:65241<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 12:57:37 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:65241<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 12:57:37 DEBUG org.apache.http.impl.nio.client.MainClientExec:377 - [exchange: 1] Connection can be kept alive indefinitely
+2014-01-04 12:57:37 DEBUG org.apache.http.impl.nio.client.MainClientExec:417 - [exchange: 1] Response processed
+2014-01-04 12:57:37 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:199 - [exchange: 1] releasing connection
+2014-01-04 12:57:37 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:171 - http-outgoing-0 0:0:0:0:0:0:0:1:65241<->217.6.180.170:80[ACTIVE][r:r]: Remove attribute http.nio.exchange-handler
+2014-01-04 12:57:37 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:290 - Connection [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80] can be kept alive indefinitely
+2014-01-04 12:57:37 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:296 - Connection released: [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 1; route allocated: 1 of 2; total allocated: 1 of 20]
+2014-01-04 12:57:37 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:89 - http-outgoing-0 [ACTIVE] [chunk-coded; completed: true]
+2014-01-04 12:57:39 INFO  main.Main:266 - 0
+2014-01-04 12:57:43 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:199 - Connection manager is shutting down
+2014-01-04 12:57:43 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:115 - http-outgoing-0 0:0:0:0:0:0:0:1:65241<->217.6.180.170:80[ACTIVE][r:r]: Close
+2014-01-04 12:57:43 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:66 - http-outgoing-0 [CLOSED]: Disconnected
+2014-01-04 12:57:43 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:201 - Connection manager shut down
+2014-01-04 12:58:15 DEBUG org.apache.http.impl.nio.client.MainClientExec:133 - [exchange: 1] start execution
+2014-01-04 12:58:15 DEBUG org.apache.http.client.protocol.RequestAddCookies:122 - CookieSpec selected: best-match
+2014-01-04 12:58:15 DEBUG org.apache.http.client.protocol.RequestAuthCache:75 - Auth cache not set in the context
+2014-01-04 12:58:15 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:327 - [exchange: 1] Request connection for {}->http://quadroid.dev.wonderweblabs.com:80
+2014-01-04 12:58:15 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:245 - Connection request: [route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2014-01-04 12:58:15 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:459 - Connection leased: [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+2014-01-04 12:58:15 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:282 - [exchange: 1] Connection allocated: http-outgoing-0 [ACTIVE]
+2014-01-04 12:58:15 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:164 - http-outgoing-0 0:0:0:0:0:0:0:1:65267<->217.6.180.170:80[ACTIVE][r:]: Set attribute http.nio.exchange-handler
+2014-01-04 12:58:15 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:102 - http-outgoing-0 0:0:0:0:0:0:0:1:65267<->217.6.180.170:80[ACTIVE][rw:]: Event set [w]
+2014-01-04 12:58:15 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:58 - http-outgoing-0 [ACTIVE]: Connected
+2014-01-04 12:58:15 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:164 - http-outgoing-0 0:0:0:0:0:0:0:1:65267<->217.6.180.170:80[ACTIVE][rw:]: Set attribute http.nio.http-exchange-state
+2014-01-04 12:58:15 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:75 - http-outgoing-0 [ACTIVE] Request ready
+2014-01-04 12:58:15 DEBUG org.apache.http.impl.nio.client.MainClientExec:168 - Start connection routing
+2014-01-04 12:58:15 DEBUG org.apache.http.impl.nio.client.MainClientExec:212 - Connection route established
+2014-01-04 12:58:15 DEBUG org.apache.http.impl.nio.client.MainClientExec:238 - [exchange: 1] Attempt 1 to execute request
+2014-01-04 12:58:15 DEBUG org.apache.http.impl.nio.client.MainClientExec:245 - Target auth state: UNCHALLENGED
+2014-01-04 12:58:15 DEBUG org.apache.http.impl.nio.client.MainClientExec:252 - Proxy auth state: UNCHALLENGED
+2014-01-04 12:58:15 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:141 - http-outgoing-0 0:0:0:0:0:0:0:1:65267<->217.6.180.170:80[ACTIVE][rw:]: Set timeout 60000
+2014-01-04 12:58:15 DEBUG org.apache.http.headers:133 - http-outgoing-0 >> POST /oauth/token HTTP/1.1
+2014-01-04 12:58:15 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> accept: application/vnd.quadroid-server-v1+json
+2014-01-04 12:58:15 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> user-agent: unirest-java/1.1
+2014-01-04 12:58:15 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> accept-encoding: gzip
+2014-01-04 12:58:15 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Content-Length: 230
+2014-01-04 12:58:15 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+2014-01-04 12:58:15 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Host: quadroid.dev.wonderweblabs.com
+2014-01-04 12:58:15 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Connection: Keep-Alive
+2014-01-04 12:58:15 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:102 - http-outgoing-0 0:0:0:0:0:0:0:1:65267<->217.6.180.170:80[ACTIVE][rw:]: Event set [w]
+2014-01-04 12:58:15 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:98 - http-outgoing-0 [ACTIVE] Output ready
+2014-01-04 12:58:15 DEBUG org.apache.http.impl.nio.client.MainClientExec:279 - [exchange: 1] produce content
+2014-01-04 12:58:15 DEBUG org.apache.http.impl.nio.client.MainClientExec:291 - [exchange: 1] Request completed
+2014-01-04 12:58:15 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:102 - http-outgoing-0 [ACTIVE] [content length: 230; pos: 230; completed: true]
+2014-01-04 12:58:15 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:201 - http-outgoing-0 0:0:0:0:0:0:0:1:65267<->217.6.180.170:80[ACTIVE][rw:w]: 509 bytes written
+2014-01-04 12:58:15 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "POST /oauth/token HTTP/1.1[\r][\n]"
+2014-01-04 12:58:15 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "accept: application/vnd.quadroid-server-v1+json[\r][\n]"
+2014-01-04 12:58:15 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "user-agent: unirest-java/1.1[\r][\n]"
+2014-01-04 12:58:15 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "accept-encoding: gzip[\r][\n]"
+2014-01-04 12:58:15 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Content-Length: 230[\r][\n]"
+2014-01-04 12:58:15 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+2014-01-04 12:58:15 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Host: quadroid.dev.wonderweblabs.com[\r][\n]"
+2014-01-04 12:58:15 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+2014-01-04 12:58:15 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "[\r][\n]"
+2014-01-04 12:58:15 DEBUG org.apache.http.wire:68 - http-outgoing-0 >> "client_secret=53c51cea3ba9ba8ff9206185e2d90fdc954da8736d4966c3b124c010382d4fcb&grant_type=password&email=admin%40quadroid.com&client_id=364330b6fb1a04f9dcb636bbb929d10d78b223f849deca561e3ae2f978fd508d&password=timetosaygoodbye2014"
+2014-01-04 12:58:15 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:109 - http-outgoing-0 0:0:0:0:0:0:0:1:65267<->217.6.180.170:80[ACTIVE][r:w]: Event cleared [w]
+2014-01-04 12:58:15 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:65267<->217.6.180.170:80[ACTIVE][r:r]: 481 bytes read
+2014-01-04 12:58:15 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+2014-01-04 12:58:15 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Server: nginx/1.4.3[\r][\n]"
+2014-01-04 12:58:15 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Date: Sat, 04 Jan 2014 11:59:13 GMT[\r][\n]"
+2014-01-04 12:58:15 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Content-Type: application/json; charset=utf-8[\r][\n]"
+2014-01-04 12:58:15 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Transfer-Encoding: chunked[\r][\n]"
+2014-01-04 12:58:15 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Connection: keep-alive[\r][\n]"
+2014-01-04 12:58:15 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Cache-Control: no-store[\r][\n]"
+2014-01-04 12:58:15 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Pragma: no-cache[\r][\n]"
+2014-01-04 12:58:15 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-UA-Compatible: IE=Edge,chrome=1[\r][\n]"
+2014-01-04 12:58:15 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "ETag: "d951043a13854bd56081fcc1df67651f"[\r][\n]"
+2014-01-04 12:58:15 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-Request-Id: 8f5e2685f1a8209c6acf5e7b9c659794[\r][\n]"
+2014-01-04 12:58:15 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-Runtime: 0.011795[\r][\n]"
+2014-01-04 12:58:15 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "[\r][\n]"
+2014-01-04 12:58:15 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "69[\r][\n]"
+2014-01-04 12:58:15 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "{"access_token":"2ebac7bf6f211158510472d5f23b3b10fd1764a791dac9ffd823a7d2af553992","token_type":"bearer"}[\r][\n]"
+2014-01-04 12:58:15 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "0[\r][\n]"
+2014-01-04 12:58:15 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "[\r][\n]"
+2014-01-04 12:58:15 DEBUG org.apache.http.headers:122 - http-outgoing-0 << HTTP/1.1 200 OK
+2014-01-04 12:58:15 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Server: nginx/1.4.3
+2014-01-04 12:58:15 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Date: Sat, 04 Jan 2014 11:59:13 GMT
+2014-01-04 12:58:15 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Content-Type: application/json; charset=utf-8
+2014-01-04 12:58:15 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Transfer-Encoding: chunked
+2014-01-04 12:58:15 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Connection: keep-alive
+2014-01-04 12:58:15 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Cache-Control: no-store
+2014-01-04 12:58:15 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Pragma: no-cache
+2014-01-04 12:58:15 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-UA-Compatible: IE=Edge,chrome=1
+2014-01-04 12:58:15 DEBUG org.apache.http.headers:125 - http-outgoing-0 << ETag: "d951043a13854bd56081fcc1df67651f"
+2014-01-04 12:58:15 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-Request-Id: 8f5e2685f1a8209c6acf5e7b9c659794
+2014-01-04 12:58:15 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-Runtime: 0.011795
+2014-01-04 12:58:15 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:110 - http-outgoing-0 [ACTIVE(116)] Response received
+2014-01-04 12:58:15 DEBUG org.apache.http.impl.nio.client.MainClientExec:302 - [exchange: 1] Response received HTTP/1.1 200 OK
+2014-01-04 12:58:15 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:85 - http-outgoing-0 [ACTIVE(116)] Input ready
+2014-01-04 12:58:15 DEBUG org.apache.http.impl.nio.client.MainClientExec:341 - [exchange: 1] Consume content
+2014-01-04 12:58:15 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:65267<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 12:58:15 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:65267<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 12:58:15 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:65267<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 12:58:15 DEBUG org.apache.http.impl.nio.client.MainClientExec:377 - [exchange: 1] Connection can be kept alive indefinitely
+2014-01-04 12:58:15 DEBUG org.apache.http.impl.nio.client.MainClientExec:417 - [exchange: 1] Response processed
+2014-01-04 12:58:15 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:199 - [exchange: 1] releasing connection
+2014-01-04 12:58:15 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:171 - http-outgoing-0 0:0:0:0:0:0:0:1:65267<->217.6.180.170:80[ACTIVE][r:r]: Remove attribute http.nio.exchange-handler
+2014-01-04 12:58:15 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:290 - Connection [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80] can be kept alive indefinitely
+2014-01-04 12:58:15 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:296 - Connection released: [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 1; route allocated: 1 of 2; total allocated: 1 of 20]
+2014-01-04 12:58:15 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:89 - http-outgoing-0 [ACTIVE] [chunk-coded; completed: true]
+2014-01-04 12:58:17 INFO  main.Main:266 - 0
+2014-01-04 12:58:25 INFO  main.Main:266 - saveVideoPredefinedPath
+2014-01-04 12:58:29 INFO  main.Main:266 - stopSavingVideo
+2014-01-04 12:58:32 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:199 - Connection manager is shutting down
+2014-01-04 12:58:32 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:115 - http-outgoing-0 0:0:0:0:0:0:0:1:65267<->217.6.180.170:80[ACTIVE][r:r]: Close
+2014-01-04 12:58:32 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:66 - http-outgoing-0 [CLOSED]: Disconnected
+2014-01-04 12:58:32 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:201 - Connection manager shut down
+2014-01-04 12:58:53 DEBUG org.apache.http.impl.nio.client.MainClientExec:133 - [exchange: 1] start execution
+2014-01-04 12:58:53 DEBUG org.apache.http.client.protocol.RequestAddCookies:122 - CookieSpec selected: best-match
+2014-01-04 12:58:53 DEBUG org.apache.http.client.protocol.RequestAuthCache:75 - Auth cache not set in the context
+2014-01-04 12:58:53 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:327 - [exchange: 1] Request connection for {}->http://quadroid.dev.wonderweblabs.com:80
+2014-01-04 12:58:53 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:245 - Connection request: [route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2014-01-04 12:58:53 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:459 - Connection leased: [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+2014-01-04 12:58:53 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:282 - [exchange: 1] Connection allocated: http-outgoing-0 [ACTIVE]
+2014-01-04 12:58:53 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:164 - http-outgoing-0 0:0:0:0:0:0:0:1:65316<->217.6.180.170:80[ACTIVE][r:]: Set attribute http.nio.exchange-handler
+2014-01-04 12:58:53 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:102 - http-outgoing-0 0:0:0:0:0:0:0:1:65316<->217.6.180.170:80[ACTIVE][rw:]: Event set [w]
+2014-01-04 12:58:53 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:58 - http-outgoing-0 [ACTIVE]: Connected
+2014-01-04 12:58:53 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:164 - http-outgoing-0 0:0:0:0:0:0:0:1:65316<->217.6.180.170:80[ACTIVE][rw:]: Set attribute http.nio.http-exchange-state
+2014-01-04 12:58:53 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:75 - http-outgoing-0 [ACTIVE] Request ready
+2014-01-04 12:58:53 DEBUG org.apache.http.impl.nio.client.MainClientExec:168 - Start connection routing
+2014-01-04 12:58:53 DEBUG org.apache.http.impl.nio.client.MainClientExec:212 - Connection route established
+2014-01-04 12:58:53 DEBUG org.apache.http.impl.nio.client.MainClientExec:238 - [exchange: 1] Attempt 1 to execute request
+2014-01-04 12:58:53 DEBUG org.apache.http.impl.nio.client.MainClientExec:245 - Target auth state: UNCHALLENGED
+2014-01-04 12:58:53 DEBUG org.apache.http.impl.nio.client.MainClientExec:252 - Proxy auth state: UNCHALLENGED
+2014-01-04 12:58:53 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:141 - http-outgoing-0 0:0:0:0:0:0:0:1:65316<->217.6.180.170:80[ACTIVE][rw:]: Set timeout 60000
+2014-01-04 12:58:53 DEBUG org.apache.http.headers:133 - http-outgoing-0 >> POST /oauth/token HTTP/1.1
+2014-01-04 12:58:53 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> accept: application/vnd.quadroid-server-v1+json
+2014-01-04 12:58:53 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> user-agent: unirest-java/1.1
+2014-01-04 12:58:53 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> accept-encoding: gzip
+2014-01-04 12:58:53 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Content-Length: 230
+2014-01-04 12:58:53 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+2014-01-04 12:58:53 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Host: quadroid.dev.wonderweblabs.com
+2014-01-04 12:58:53 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Connection: Keep-Alive
+2014-01-04 12:58:53 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:102 - http-outgoing-0 0:0:0:0:0:0:0:1:65316<->217.6.180.170:80[ACTIVE][rw:]: Event set [w]
+2014-01-04 12:58:53 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:98 - http-outgoing-0 [ACTIVE] Output ready
+2014-01-04 12:58:53 DEBUG org.apache.http.impl.nio.client.MainClientExec:279 - [exchange: 1] produce content
+2014-01-04 12:58:53 DEBUG org.apache.http.impl.nio.client.MainClientExec:291 - [exchange: 1] Request completed
+2014-01-04 12:58:53 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:102 - http-outgoing-0 [ACTIVE] [content length: 230; pos: 230; completed: true]
+2014-01-04 12:58:53 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:201 - http-outgoing-0 0:0:0:0:0:0:0:1:65316<->217.6.180.170:80[ACTIVE][rw:w]: 509 bytes written
+2014-01-04 12:58:53 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "POST /oauth/token HTTP/1.1[\r][\n]"
+2014-01-04 12:58:53 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "accept: application/vnd.quadroid-server-v1+json[\r][\n]"
+2014-01-04 12:58:53 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "user-agent: unirest-java/1.1[\r][\n]"
+2014-01-04 12:58:53 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "accept-encoding: gzip[\r][\n]"
+2014-01-04 12:58:53 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Content-Length: 230[\r][\n]"
+2014-01-04 12:58:53 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+2014-01-04 12:58:53 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Host: quadroid.dev.wonderweblabs.com[\r][\n]"
+2014-01-04 12:58:53 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+2014-01-04 12:58:53 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "[\r][\n]"
+2014-01-04 12:58:53 DEBUG org.apache.http.wire:68 - http-outgoing-0 >> "client_secret=53c51cea3ba9ba8ff9206185e2d90fdc954da8736d4966c3b124c010382d4fcb&grant_type=password&email=admin%40quadroid.com&client_id=364330b6fb1a04f9dcb636bbb929d10d78b223f849deca561e3ae2f978fd508d&password=timetosaygoodbye2014"
+2014-01-04 12:58:53 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:109 - http-outgoing-0 0:0:0:0:0:0:0:1:65316<->217.6.180.170:80[ACTIVE][r:w]: Event cleared [w]
+2014-01-04 12:58:54 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:65316<->217.6.180.170:80[ACTIVE][r:r]: 481 bytes read
+2014-01-04 12:58:54 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+2014-01-04 12:58:54 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Server: nginx/1.4.3[\r][\n]"
+2014-01-04 12:58:54 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Date: Sat, 04 Jan 2014 11:59:51 GMT[\r][\n]"
+2014-01-04 12:58:54 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Content-Type: application/json; charset=utf-8[\r][\n]"
+2014-01-04 12:58:54 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Transfer-Encoding: chunked[\r][\n]"
+2014-01-04 12:58:54 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Connection: keep-alive[\r][\n]"
+2014-01-04 12:58:54 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Cache-Control: no-store[\r][\n]"
+2014-01-04 12:58:54 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Pragma: no-cache[\r][\n]"
+2014-01-04 12:58:54 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-UA-Compatible: IE=Edge,chrome=1[\r][\n]"
+2014-01-04 12:58:54 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "ETag: "a125432e79ee07b179e4c85402517d30"[\r][\n]"
+2014-01-04 12:58:54 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-Request-Id: b8dc6d4b4657bfae277b504e08a810d9[\r][\n]"
+2014-01-04 12:58:54 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-Runtime: 0.011667[\r][\n]"
+2014-01-04 12:58:54 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "[\r][\n]"
+2014-01-04 12:58:54 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "69[\r][\n]"
+2014-01-04 12:58:54 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "{"access_token":"c61bf58910f2431d40899b666525712a216087cdf2ccc85db1cdcb457c5d2b20","token_type":"bearer"}[\r][\n]"
+2014-01-04 12:58:54 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "0[\r][\n]"
+2014-01-04 12:58:54 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "[\r][\n]"
+2014-01-04 12:58:54 DEBUG org.apache.http.headers:122 - http-outgoing-0 << HTTP/1.1 200 OK
+2014-01-04 12:58:54 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Server: nginx/1.4.3
+2014-01-04 12:58:54 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Date: Sat, 04 Jan 2014 11:59:51 GMT
+2014-01-04 12:58:54 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Content-Type: application/json; charset=utf-8
+2014-01-04 12:58:54 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Transfer-Encoding: chunked
+2014-01-04 12:58:54 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Connection: keep-alive
+2014-01-04 12:58:54 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Cache-Control: no-store
+2014-01-04 12:58:54 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Pragma: no-cache
+2014-01-04 12:58:54 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-UA-Compatible: IE=Edge,chrome=1
+2014-01-04 12:58:54 DEBUG org.apache.http.headers:125 - http-outgoing-0 << ETag: "a125432e79ee07b179e4c85402517d30"
+2014-01-04 12:58:54 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-Request-Id: b8dc6d4b4657bfae277b504e08a810d9
+2014-01-04 12:58:54 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-Runtime: 0.011667
+2014-01-04 12:58:54 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:110 - http-outgoing-0 [ACTIVE(116)] Response received
+2014-01-04 12:58:54 DEBUG org.apache.http.impl.nio.client.MainClientExec:302 - [exchange: 1] Response received HTTP/1.1 200 OK
+2014-01-04 12:58:54 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:85 - http-outgoing-0 [ACTIVE(116)] Input ready
+2014-01-04 12:58:54 DEBUG org.apache.http.impl.nio.client.MainClientExec:341 - [exchange: 1] Consume content
+2014-01-04 12:58:54 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:65316<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 12:58:54 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:65316<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 12:58:54 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:65316<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 12:58:54 DEBUG org.apache.http.impl.nio.client.MainClientExec:377 - [exchange: 1] Connection can be kept alive indefinitely
+2014-01-04 12:58:54 DEBUG org.apache.http.impl.nio.client.MainClientExec:417 - [exchange: 1] Response processed
+2014-01-04 12:58:54 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:199 - [exchange: 1] releasing connection
+2014-01-04 12:58:54 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:171 - http-outgoing-0 0:0:0:0:0:0:0:1:65316<->217.6.180.170:80[ACTIVE][r:r]: Remove attribute http.nio.exchange-handler
+2014-01-04 12:58:54 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:290 - Connection [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80] can be kept alive indefinitely
+2014-01-04 12:58:54 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:296 - Connection released: [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 1; route allocated: 1 of 2; total allocated: 1 of 20]
+2014-01-04 12:58:54 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:89 - http-outgoing-0 [ACTIVE] [chunk-coded; completed: true]
+2014-01-04 12:58:55 INFO  main.Main:266 - 0
+2014-01-04 12:58:58 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:199 - Connection manager is shutting down
+2014-01-04 12:58:58 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:115 - http-outgoing-0 0:0:0:0:0:0:0:1:65316<->217.6.180.170:80[ACTIVE][r:r]: Close
+2014-01-04 12:58:58 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:66 - http-outgoing-0 [CLOSED]: Disconnected
+2014-01-04 12:58:58 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:201 - Connection manager shut down
+2014-01-04 12:59:21 DEBUG org.apache.http.impl.nio.client.MainClientExec:133 - [exchange: 1] start execution
+2014-01-04 12:59:21 DEBUG org.apache.http.client.protocol.RequestAddCookies:122 - CookieSpec selected: best-match
+2014-01-04 12:59:21 DEBUG org.apache.http.client.protocol.RequestAuthCache:75 - Auth cache not set in the context
+2014-01-04 12:59:21 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:327 - [exchange: 1] Request connection for {}->http://quadroid.dev.wonderweblabs.com:80
+2014-01-04 12:59:21 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:245 - Connection request: [route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2014-01-04 12:59:21 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:459 - Connection leased: [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+2014-01-04 12:59:21 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:282 - [exchange: 1] Connection allocated: http-outgoing-0 [ACTIVE]
+2014-01-04 12:59:21 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:164 - http-outgoing-0 0:0:0:0:0:0:0:1:65336<->217.6.180.170:80[ACTIVE][r:]: Set attribute http.nio.exchange-handler
+2014-01-04 12:59:21 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:102 - http-outgoing-0 0:0:0:0:0:0:0:1:65336<->217.6.180.170:80[ACTIVE][rw:]: Event set [w]
+2014-01-04 12:59:21 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:58 - http-outgoing-0 [ACTIVE]: Connected
+2014-01-04 12:59:21 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:164 - http-outgoing-0 0:0:0:0:0:0:0:1:65336<->217.6.180.170:80[ACTIVE][rw:]: Set attribute http.nio.http-exchange-state
+2014-01-04 12:59:21 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:75 - http-outgoing-0 [ACTIVE] Request ready
+2014-01-04 12:59:21 DEBUG org.apache.http.impl.nio.client.MainClientExec:168 - Start connection routing
+2014-01-04 12:59:21 DEBUG org.apache.http.impl.nio.client.MainClientExec:212 - Connection route established
+2014-01-04 12:59:21 DEBUG org.apache.http.impl.nio.client.MainClientExec:238 - [exchange: 1] Attempt 1 to execute request
+2014-01-04 12:59:21 DEBUG org.apache.http.impl.nio.client.MainClientExec:245 - Target auth state: UNCHALLENGED
+2014-01-04 12:59:21 DEBUG org.apache.http.impl.nio.client.MainClientExec:252 - Proxy auth state: UNCHALLENGED
+2014-01-04 12:59:21 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:141 - http-outgoing-0 0:0:0:0:0:0:0:1:65336<->217.6.180.170:80[ACTIVE][rw:]: Set timeout 60000
+2014-01-04 12:59:21 DEBUG org.apache.http.headers:133 - http-outgoing-0 >> POST /oauth/token HTTP/1.1
+2014-01-04 12:59:21 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> accept: application/vnd.quadroid-server-v1+json
+2014-01-04 12:59:21 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> user-agent: unirest-java/1.1
+2014-01-04 12:59:21 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> accept-encoding: gzip
+2014-01-04 12:59:21 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Content-Length: 230
+2014-01-04 12:59:21 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+2014-01-04 12:59:21 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Host: quadroid.dev.wonderweblabs.com
+2014-01-04 12:59:21 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Connection: Keep-Alive
+2014-01-04 12:59:21 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:102 - http-outgoing-0 0:0:0:0:0:0:0:1:65336<->217.6.180.170:80[ACTIVE][rw:]: Event set [w]
+2014-01-04 12:59:21 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:98 - http-outgoing-0 [ACTIVE] Output ready
+2014-01-04 12:59:21 DEBUG org.apache.http.impl.nio.client.MainClientExec:279 - [exchange: 1] produce content
+2014-01-04 12:59:21 DEBUG org.apache.http.impl.nio.client.MainClientExec:291 - [exchange: 1] Request completed
+2014-01-04 12:59:21 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:102 - http-outgoing-0 [ACTIVE] [content length: 230; pos: 230; completed: true]
+2014-01-04 12:59:21 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:201 - http-outgoing-0 0:0:0:0:0:0:0:1:65336<->217.6.180.170:80[ACTIVE][rw:w]: 509 bytes written
+2014-01-04 12:59:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "POST /oauth/token HTTP/1.1[\r][\n]"
+2014-01-04 12:59:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "accept: application/vnd.quadroid-server-v1+json[\r][\n]"
+2014-01-04 12:59:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "user-agent: unirest-java/1.1[\r][\n]"
+2014-01-04 12:59:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "accept-encoding: gzip[\r][\n]"
+2014-01-04 12:59:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Content-Length: 230[\r][\n]"
+2014-01-04 12:59:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+2014-01-04 12:59:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Host: quadroid.dev.wonderweblabs.com[\r][\n]"
+2014-01-04 12:59:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+2014-01-04 12:59:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "[\r][\n]"
+2014-01-04 12:59:21 DEBUG org.apache.http.wire:68 - http-outgoing-0 >> "client_secret=53c51cea3ba9ba8ff9206185e2d90fdc954da8736d4966c3b124c010382d4fcb&grant_type=password&email=admin%40quadroid.com&client_id=364330b6fb1a04f9dcb636bbb929d10d78b223f849deca561e3ae2f978fd508d&password=timetosaygoodbye2014"
+2014-01-04 12:59:21 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:109 - http-outgoing-0 0:0:0:0:0:0:0:1:65336<->217.6.180.170:80[ACTIVE][r:w]: Event cleared [w]
+2014-01-04 12:59:21 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:65336<->217.6.180.170:80[ACTIVE][r:r]: 481 bytes read
+2014-01-04 12:59:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+2014-01-04 12:59:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Server: nginx/1.4.3[\r][\n]"
+2014-01-04 12:59:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Date: Sat, 04 Jan 2014 12:00:19 GMT[\r][\n]"
+2014-01-04 12:59:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Content-Type: application/json; charset=utf-8[\r][\n]"
+2014-01-04 12:59:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Transfer-Encoding: chunked[\r][\n]"
+2014-01-04 12:59:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Connection: keep-alive[\r][\n]"
+2014-01-04 12:59:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Cache-Control: no-store[\r][\n]"
+2014-01-04 12:59:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Pragma: no-cache[\r][\n]"
+2014-01-04 12:59:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-UA-Compatible: IE=Edge,chrome=1[\r][\n]"
+2014-01-04 12:59:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "ETag: "3e1223b043efb82189a70f7a0fb72822"[\r][\n]"
+2014-01-04 12:59:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-Request-Id: 77ac66413ffc4f3f6c40be63200cebba[\r][\n]"
+2014-01-04 12:59:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-Runtime: 0.011462[\r][\n]"
+2014-01-04 12:59:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "[\r][\n]"
+2014-01-04 12:59:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "69[\r][\n]"
+2014-01-04 12:59:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "{"access_token":"debf0dba74e2d942b761c40370c63d8749a3febac80b67df4b72823fc4d5876e","token_type":"bearer"}[\r][\n]"
+2014-01-04 12:59:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "0[\r][\n]"
+2014-01-04 12:59:21 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "[\r][\n]"
+2014-01-04 12:59:21 DEBUG org.apache.http.headers:122 - http-outgoing-0 << HTTP/1.1 200 OK
+2014-01-04 12:59:21 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Server: nginx/1.4.3
+2014-01-04 12:59:21 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Date: Sat, 04 Jan 2014 12:00:19 GMT
+2014-01-04 12:59:21 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Content-Type: application/json; charset=utf-8
+2014-01-04 12:59:21 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Transfer-Encoding: chunked
+2014-01-04 12:59:21 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Connection: keep-alive
+2014-01-04 12:59:21 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Cache-Control: no-store
+2014-01-04 12:59:21 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Pragma: no-cache
+2014-01-04 12:59:21 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-UA-Compatible: IE=Edge,chrome=1
+2014-01-04 12:59:21 DEBUG org.apache.http.headers:125 - http-outgoing-0 << ETag: "3e1223b043efb82189a70f7a0fb72822"
+2014-01-04 12:59:21 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-Request-Id: 77ac66413ffc4f3f6c40be63200cebba
+2014-01-04 12:59:21 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-Runtime: 0.011462
+2014-01-04 12:59:21 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:110 - http-outgoing-0 [ACTIVE(116)] Response received
+2014-01-04 12:59:21 DEBUG org.apache.http.impl.nio.client.MainClientExec:302 - [exchange: 1] Response received HTTP/1.1 200 OK
+2014-01-04 12:59:21 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:85 - http-outgoing-0 [ACTIVE(116)] Input ready
+2014-01-04 12:59:21 DEBUG org.apache.http.impl.nio.client.MainClientExec:341 - [exchange: 1] Consume content
+2014-01-04 12:59:21 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:65336<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 12:59:21 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:65336<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 12:59:21 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:65336<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 12:59:21 DEBUG org.apache.http.impl.nio.client.MainClientExec:377 - [exchange: 1] Connection can be kept alive indefinitely
+2014-01-04 12:59:21 DEBUG org.apache.http.impl.nio.client.MainClientExec:417 - [exchange: 1] Response processed
+2014-01-04 12:59:21 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:199 - [exchange: 1] releasing connection
+2014-01-04 12:59:21 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:171 - http-outgoing-0 0:0:0:0:0:0:0:1:65336<->217.6.180.170:80[ACTIVE][r:r]: Remove attribute http.nio.exchange-handler
+2014-01-04 12:59:21 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:290 - Connection [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80] can be kept alive indefinitely
+2014-01-04 12:59:21 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:296 - Connection released: [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 1; route allocated: 1 of 2; total allocated: 1 of 20]
+2014-01-04 12:59:21 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:89 - http-outgoing-0 [ACTIVE] [chunk-coded; completed: true]
+2014-01-04 12:59:22 INFO  main.Main:266 - 0
+2014-01-04 12:59:26 INFO  main.Main:266 - saveVideoPredefinedPath
+2014-01-04 12:59:31 INFO  main.Main:266 - stopSavingVideo
+2014-01-04 13:00:21 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:118 - http-outgoing-0 [ACTIVE] Timeout
+2014-01-04 13:00:21 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:115 - http-outgoing-0 0:0:0:0:0:0:0:1:65336<->217.6.180.170:80[ACTIVE][r:r]: Close
+2014-01-04 13:00:21 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:66 - http-outgoing-0 [CLOSED]: Disconnected
+2014-01-04 13:11:11 DEBUG org.apache.http.impl.nio.client.MainClientExec:133 - [exchange: 1] start execution
+2014-01-04 13:11:11 DEBUG org.apache.http.client.protocol.RequestAddCookies:122 - CookieSpec selected: best-match
+2014-01-04 13:11:11 DEBUG org.apache.http.client.protocol.RequestAuthCache:75 - Auth cache not set in the context
+2014-01-04 13:11:11 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:327 - [exchange: 1] Request connection for {}->http://quadroid.dev.wonderweblabs.com:80
+2014-01-04 13:11:11 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:245 - Connection request: [route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2014-01-04 13:11:11 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:459 - Connection leased: [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+2014-01-04 13:11:11 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:282 - [exchange: 1] Connection allocated: http-outgoing-0 [ACTIVE]
+2014-01-04 13:11:11 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:164 - http-outgoing-0 0:0:0:0:0:0:0:1:51054<->217.6.180.170:80[ACTIVE][r:]: Set attribute http.nio.exchange-handler
+2014-01-04 13:11:11 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:102 - http-outgoing-0 0:0:0:0:0:0:0:1:51054<->217.6.180.170:80[ACTIVE][rw:]: Event set [w]
+2014-01-04 13:11:11 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:58 - http-outgoing-0 [ACTIVE]: Connected
+2014-01-04 13:11:11 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:164 - http-outgoing-0 0:0:0:0:0:0:0:1:51054<->217.6.180.170:80[ACTIVE][rw:]: Set attribute http.nio.http-exchange-state
+2014-01-04 13:11:11 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:75 - http-outgoing-0 [ACTIVE] Request ready
+2014-01-04 13:11:11 DEBUG org.apache.http.impl.nio.client.MainClientExec:168 - Start connection routing
+2014-01-04 13:11:11 DEBUG org.apache.http.impl.nio.client.MainClientExec:212 - Connection route established
+2014-01-04 13:11:11 DEBUG org.apache.http.impl.nio.client.MainClientExec:238 - [exchange: 1] Attempt 1 to execute request
+2014-01-04 13:11:11 DEBUG org.apache.http.impl.nio.client.MainClientExec:245 - Target auth state: UNCHALLENGED
+2014-01-04 13:11:11 DEBUG org.apache.http.impl.nio.client.MainClientExec:252 - Proxy auth state: UNCHALLENGED
+2014-01-04 13:11:11 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:141 - http-outgoing-0 0:0:0:0:0:0:0:1:51054<->217.6.180.170:80[ACTIVE][rw:]: Set timeout 60000
+2014-01-04 13:11:11 DEBUG org.apache.http.headers:133 - http-outgoing-0 >> POST /oauth/token HTTP/1.1
+2014-01-04 13:11:11 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> accept: application/vnd.quadroid-server-v1+json
+2014-01-04 13:11:11 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> user-agent: unirest-java/1.1
+2014-01-04 13:11:11 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> accept-encoding: gzip
+2014-01-04 13:11:11 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Content-Length: 230
+2014-01-04 13:11:11 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+2014-01-04 13:11:11 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Host: quadroid.dev.wonderweblabs.com
+2014-01-04 13:11:11 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Connection: Keep-Alive
+2014-01-04 13:11:11 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:102 - http-outgoing-0 0:0:0:0:0:0:0:1:51054<->217.6.180.170:80[ACTIVE][rw:]: Event set [w]
+2014-01-04 13:11:11 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:98 - http-outgoing-0 [ACTIVE] Output ready
+2014-01-04 13:11:11 DEBUG org.apache.http.impl.nio.client.MainClientExec:279 - [exchange: 1] produce content
+2014-01-04 13:11:11 DEBUG org.apache.http.impl.nio.client.MainClientExec:291 - [exchange: 1] Request completed
+2014-01-04 13:11:11 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:102 - http-outgoing-0 [ACTIVE] [content length: 230; pos: 230; completed: true]
+2014-01-04 13:11:11 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:201 - http-outgoing-0 0:0:0:0:0:0:0:1:51054<->217.6.180.170:80[ACTIVE][rw:w]: 509 bytes written
+2014-01-04 13:11:11 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "POST /oauth/token HTTP/1.1[\r][\n]"
+2014-01-04 13:11:11 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "accept: application/vnd.quadroid-server-v1+json[\r][\n]"
+2014-01-04 13:11:11 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "user-agent: unirest-java/1.1[\r][\n]"
+2014-01-04 13:11:11 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "accept-encoding: gzip[\r][\n]"
+2014-01-04 13:11:11 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Content-Length: 230[\r][\n]"
+2014-01-04 13:11:11 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+2014-01-04 13:11:11 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Host: quadroid.dev.wonderweblabs.com[\r][\n]"
+2014-01-04 13:11:11 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+2014-01-04 13:11:11 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "[\r][\n]"
+2014-01-04 13:11:11 DEBUG org.apache.http.wire:68 - http-outgoing-0 >> "client_secret=53c51cea3ba9ba8ff9206185e2d90fdc954da8736d4966c3b124c010382d4fcb&grant_type=password&email=admin%40quadroid.com&client_id=364330b6fb1a04f9dcb636bbb929d10d78b223f849deca561e3ae2f978fd508d&password=timetosaygoodbye2014"
+2014-01-04 13:11:11 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:109 - http-outgoing-0 0:0:0:0:0:0:0:1:51054<->217.6.180.170:80[ACTIVE][r:w]: Event cleared [w]
+2014-01-04 13:11:11 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:51054<->217.6.180.170:80[ACTIVE][r:r]: 481 bytes read
+2014-01-04 13:11:11 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+2014-01-04 13:11:11 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Server: nginx/1.4.3[\r][\n]"
+2014-01-04 13:11:11 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Date: Sat, 04 Jan 2014 12:12:09 GMT[\r][\n]"
+2014-01-04 13:11:11 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Content-Type: application/json; charset=utf-8[\r][\n]"
+2014-01-04 13:11:11 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Transfer-Encoding: chunked[\r][\n]"
+2014-01-04 13:11:11 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Connection: keep-alive[\r][\n]"
+2014-01-04 13:11:11 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Cache-Control: no-store[\r][\n]"
+2014-01-04 13:11:11 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Pragma: no-cache[\r][\n]"
+2014-01-04 13:11:11 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-UA-Compatible: IE=Edge,chrome=1[\r][\n]"
+2014-01-04 13:11:11 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "ETag: "c8045a2bf16d80020b63183d9ddd0a97"[\r][\n]"
+2014-01-04 13:11:11 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-Request-Id: 28e334d99d31d58ea0cd64aa48671d72[\r][\n]"
+2014-01-04 13:11:11 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-Runtime: 0.010888[\r][\n]"
+2014-01-04 13:11:11 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "[\r][\n]"
+2014-01-04 13:11:11 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "69[\r][\n]"
+2014-01-04 13:11:11 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "{"access_token":"e7c3ff5e5208aff8d3e75ad237541bcc3f06bd5ab39779eb0a90247b6ddbe005","token_type":"bearer"}[\r][\n]"
+2014-01-04 13:11:11 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "0[\r][\n]"
+2014-01-04 13:11:11 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "[\r][\n]"
+2014-01-04 13:11:11 DEBUG org.apache.http.headers:122 - http-outgoing-0 << HTTP/1.1 200 OK
+2014-01-04 13:11:11 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Server: nginx/1.4.3
+2014-01-04 13:11:11 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Date: Sat, 04 Jan 2014 12:12:09 GMT
+2014-01-04 13:11:11 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Content-Type: application/json; charset=utf-8
+2014-01-04 13:11:11 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Transfer-Encoding: chunked
+2014-01-04 13:11:11 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Connection: keep-alive
+2014-01-04 13:11:11 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Cache-Control: no-store
+2014-01-04 13:11:11 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Pragma: no-cache
+2014-01-04 13:11:11 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-UA-Compatible: IE=Edge,chrome=1
+2014-01-04 13:11:11 DEBUG org.apache.http.headers:125 - http-outgoing-0 << ETag: "c8045a2bf16d80020b63183d9ddd0a97"
+2014-01-04 13:11:11 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-Request-Id: 28e334d99d31d58ea0cd64aa48671d72
+2014-01-04 13:11:11 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-Runtime: 0.010888
+2014-01-04 13:11:11 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:110 - http-outgoing-0 [ACTIVE(116)] Response received
+2014-01-04 13:11:11 DEBUG org.apache.http.impl.nio.client.MainClientExec:302 - [exchange: 1] Response received HTTP/1.1 200 OK
+2014-01-04 13:11:11 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:85 - http-outgoing-0 [ACTIVE(116)] Input ready
+2014-01-04 13:11:11 DEBUG org.apache.http.impl.nio.client.MainClientExec:341 - [exchange: 1] Consume content
+2014-01-04 13:11:11 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:51054<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 13:11:11 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:51054<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 13:11:11 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:51054<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 13:11:11 DEBUG org.apache.http.impl.nio.client.MainClientExec:377 - [exchange: 1] Connection can be kept alive indefinitely
+2014-01-04 13:11:11 DEBUG org.apache.http.impl.nio.client.MainClientExec:417 - [exchange: 1] Response processed
+2014-01-04 13:11:11 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:199 - [exchange: 1] releasing connection
+2014-01-04 13:11:11 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:171 - http-outgoing-0 0:0:0:0:0:0:0:1:51054<->217.6.180.170:80[ACTIVE][r:r]: Remove attribute http.nio.exchange-handler
+2014-01-04 13:11:11 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:290 - Connection [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80] can be kept alive indefinitely
+2014-01-04 13:11:11 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:296 - Connection released: [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 1; route allocated: 1 of 2; total allocated: 1 of 20]
+2014-01-04 13:11:11 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:89 - http-outgoing-0 [ACTIVE] [chunk-coded; completed: true]
+2014-01-04 13:11:19 INFO  main.Main:266 - 0
+2014-01-04 13:11:33 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:199 - Connection manager is shutting down
+2014-01-04 13:11:33 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:115 - http-outgoing-0 0:0:0:0:0:0:0:1:51054<->217.6.180.170:80[ACTIVE][r:r]: Close
+2014-01-04 13:11:33 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:66 - http-outgoing-0 [CLOSED]: Disconnected
+2014-01-04 13:11:33 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:201 - Connection manager shut down
+2014-01-04 13:11:36 DEBUG org.apache.http.impl.nio.client.MainClientExec:133 - [exchange: 1] start execution
+2014-01-04 13:11:36 DEBUG org.apache.http.client.protocol.RequestAddCookies:122 - CookieSpec selected: best-match
+2014-01-04 13:11:36 DEBUG org.apache.http.client.protocol.RequestAuthCache:75 - Auth cache not set in the context
+2014-01-04 13:11:36 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:327 - [exchange: 1] Request connection for {}->http://quadroid.dev.wonderweblabs.com:80
+2014-01-04 13:11:36 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:245 - Connection request: [route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2014-01-04 13:11:36 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:459 - Connection leased: [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+2014-01-04 13:11:36 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:282 - [exchange: 1] Connection allocated: http-outgoing-0 [ACTIVE]
+2014-01-04 13:11:36 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:164 - http-outgoing-0 0:0:0:0:0:0:0:1:51137<->217.6.180.170:80[ACTIVE][r:]: Set attribute http.nio.exchange-handler
+2014-01-04 13:11:36 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:102 - http-outgoing-0 0:0:0:0:0:0:0:1:51137<->217.6.180.170:80[ACTIVE][rw:]: Event set [w]
+2014-01-04 13:11:36 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:58 - http-outgoing-0 [ACTIVE]: Connected
+2014-01-04 13:11:36 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:164 - http-outgoing-0 0:0:0:0:0:0:0:1:51137<->217.6.180.170:80[ACTIVE][rw:]: Set attribute http.nio.http-exchange-state
+2014-01-04 13:11:36 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:75 - http-outgoing-0 [ACTIVE] Request ready
+2014-01-04 13:11:36 DEBUG org.apache.http.impl.nio.client.MainClientExec:168 - Start connection routing
+2014-01-04 13:11:36 DEBUG org.apache.http.impl.nio.client.MainClientExec:212 - Connection route established
+2014-01-04 13:11:36 DEBUG org.apache.http.impl.nio.client.MainClientExec:238 - [exchange: 1] Attempt 1 to execute request
+2014-01-04 13:11:36 DEBUG org.apache.http.impl.nio.client.MainClientExec:245 - Target auth state: UNCHALLENGED
+2014-01-04 13:11:36 DEBUG org.apache.http.impl.nio.client.MainClientExec:252 - Proxy auth state: UNCHALLENGED
+2014-01-04 13:11:36 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:141 - http-outgoing-0 0:0:0:0:0:0:0:1:51137<->217.6.180.170:80[ACTIVE][rw:]: Set timeout 60000
+2014-01-04 13:11:36 DEBUG org.apache.http.headers:133 - http-outgoing-0 >> POST /oauth/token HTTP/1.1
+2014-01-04 13:11:36 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> accept: application/vnd.quadroid-server-v1+json
+2014-01-04 13:11:36 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> user-agent: unirest-java/1.1
+2014-01-04 13:11:36 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> accept-encoding: gzip
+2014-01-04 13:11:36 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Content-Length: 230
+2014-01-04 13:11:36 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+2014-01-04 13:11:36 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Host: quadroid.dev.wonderweblabs.com
+2014-01-04 13:11:36 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Connection: Keep-Alive
+2014-01-04 13:11:36 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:102 - http-outgoing-0 0:0:0:0:0:0:0:1:51137<->217.6.180.170:80[ACTIVE][rw:]: Event set [w]
+2014-01-04 13:11:36 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:98 - http-outgoing-0 [ACTIVE] Output ready
+2014-01-04 13:11:36 DEBUG org.apache.http.impl.nio.client.MainClientExec:279 - [exchange: 1] produce content
+2014-01-04 13:11:36 DEBUG org.apache.http.impl.nio.client.MainClientExec:291 - [exchange: 1] Request completed
+2014-01-04 13:11:36 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:102 - http-outgoing-0 [ACTIVE] [content length: 230; pos: 230; completed: true]
+2014-01-04 13:11:36 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:201 - http-outgoing-0 0:0:0:0:0:0:0:1:51137<->217.6.180.170:80[ACTIVE][rw:w]: 509 bytes written
+2014-01-04 13:11:36 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "POST /oauth/token HTTP/1.1[\r][\n]"
+2014-01-04 13:11:36 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "accept: application/vnd.quadroid-server-v1+json[\r][\n]"
+2014-01-04 13:11:36 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "user-agent: unirest-java/1.1[\r][\n]"
+2014-01-04 13:11:36 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "accept-encoding: gzip[\r][\n]"
+2014-01-04 13:11:36 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Content-Length: 230[\r][\n]"
+2014-01-04 13:11:36 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+2014-01-04 13:11:36 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Host: quadroid.dev.wonderweblabs.com[\r][\n]"
+2014-01-04 13:11:36 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+2014-01-04 13:11:36 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "[\r][\n]"
+2014-01-04 13:11:36 DEBUG org.apache.http.wire:68 - http-outgoing-0 >> "client_secret=53c51cea3ba9ba8ff9206185e2d90fdc954da8736d4966c3b124c010382d4fcb&grant_type=password&email=admin%40quadroid.com&client_id=364330b6fb1a04f9dcb636bbb929d10d78b223f849deca561e3ae2f978fd508d&password=timetosaygoodbye2014"
+2014-01-04 13:11:36 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:109 - http-outgoing-0 0:0:0:0:0:0:0:1:51137<->217.6.180.170:80[ACTIVE][r:w]: Event cleared [w]
+2014-01-04 13:11:36 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:51137<->217.6.180.170:80[ACTIVE][r:r]: 481 bytes read
+2014-01-04 13:11:36 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+2014-01-04 13:11:36 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Server: nginx/1.4.3[\r][\n]"
+2014-01-04 13:11:36 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Date: Sat, 04 Jan 2014 12:12:34 GMT[\r][\n]"
+2014-01-04 13:11:36 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Content-Type: application/json; charset=utf-8[\r][\n]"
+2014-01-04 13:11:36 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Transfer-Encoding: chunked[\r][\n]"
+2014-01-04 13:11:36 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Connection: keep-alive[\r][\n]"
+2014-01-04 13:11:36 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Cache-Control: no-store[\r][\n]"
+2014-01-04 13:11:36 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Pragma: no-cache[\r][\n]"
+2014-01-04 13:11:36 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-UA-Compatible: IE=Edge,chrome=1[\r][\n]"
+2014-01-04 13:11:36 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "ETag: "44752dc2ac7a4158cfe667278e29781e"[\r][\n]"
+2014-01-04 13:11:36 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-Request-Id: 4b1200b351c3147e0abdecc3e1824044[\r][\n]"
+2014-01-04 13:11:36 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-Runtime: 0.013259[\r][\n]"
+2014-01-04 13:11:36 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "[\r][\n]"
+2014-01-04 13:11:36 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "69[\r][\n]"
+2014-01-04 13:11:36 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "{"access_token":"b14d202451266fff5cb59ea8769072bdafa2a8b93e027dda47def565aadce3f0","token_type":"bearer"}[\r][\n]"
+2014-01-04 13:11:36 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "0[\r][\n]"
+2014-01-04 13:11:36 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "[\r][\n]"
+2014-01-04 13:11:36 DEBUG org.apache.http.headers:122 - http-outgoing-0 << HTTP/1.1 200 OK
+2014-01-04 13:11:36 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Server: nginx/1.4.3
+2014-01-04 13:11:36 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Date: Sat, 04 Jan 2014 12:12:34 GMT
+2014-01-04 13:11:36 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Content-Type: application/json; charset=utf-8
+2014-01-04 13:11:36 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Transfer-Encoding: chunked
+2014-01-04 13:11:36 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Connection: keep-alive
+2014-01-04 13:11:36 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Cache-Control: no-store
+2014-01-04 13:11:36 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Pragma: no-cache
+2014-01-04 13:11:36 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-UA-Compatible: IE=Edge,chrome=1
+2014-01-04 13:11:36 DEBUG org.apache.http.headers:125 - http-outgoing-0 << ETag: "44752dc2ac7a4158cfe667278e29781e"
+2014-01-04 13:11:36 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-Request-Id: 4b1200b351c3147e0abdecc3e1824044
+2014-01-04 13:11:36 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-Runtime: 0.013259
+2014-01-04 13:11:36 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:110 - http-outgoing-0 [ACTIVE(116)] Response received
+2014-01-04 13:11:36 DEBUG org.apache.http.impl.nio.client.MainClientExec:302 - [exchange: 1] Response received HTTP/1.1 200 OK
+2014-01-04 13:11:36 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:85 - http-outgoing-0 [ACTIVE(116)] Input ready
+2014-01-04 13:11:36 DEBUG org.apache.http.impl.nio.client.MainClientExec:341 - [exchange: 1] Consume content
+2014-01-04 13:11:36 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:51137<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 13:11:36 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:51137<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 13:11:36 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:51137<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 13:11:36 DEBUG org.apache.http.impl.nio.client.MainClientExec:377 - [exchange: 1] Connection can be kept alive indefinitely
+2014-01-04 13:11:36 DEBUG org.apache.http.impl.nio.client.MainClientExec:417 - [exchange: 1] Response processed
+2014-01-04 13:11:36 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:199 - [exchange: 1] releasing connection
+2014-01-04 13:11:36 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:171 - http-outgoing-0 0:0:0:0:0:0:0:1:51137<->217.6.180.170:80[ACTIVE][r:r]: Remove attribute http.nio.exchange-handler
+2014-01-04 13:11:36 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:290 - Connection [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80] can be kept alive indefinitely
+2014-01-04 13:11:36 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:296 - Connection released: [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 1; route allocated: 1 of 2; total allocated: 1 of 20]
+2014-01-04 13:11:36 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:89 - http-outgoing-0 [ACTIVE] [chunk-coded; completed: true]
+2014-01-04 13:11:38 INFO  main.Main:266 - 0
+2014-01-04 13:11:43 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:199 - Connection manager is shutting down
+2014-01-04 13:11:43 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:115 - http-outgoing-0 0:0:0:0:0:0:0:1:51137<->217.6.180.170:80[ACTIVE][r:r]: Close
+2014-01-04 13:11:43 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:66 - http-outgoing-0 [CLOSED]: Disconnected
+2014-01-04 13:11:43 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:201 - Connection manager shut down
+2014-01-04 13:12:04 DEBUG org.apache.http.impl.nio.client.MainClientExec:133 - [exchange: 1] start execution
+2014-01-04 13:12:04 DEBUG org.apache.http.client.protocol.RequestAddCookies:122 - CookieSpec selected: best-match
+2014-01-04 13:12:04 DEBUG org.apache.http.client.protocol.RequestAuthCache:75 - Auth cache not set in the context
+2014-01-04 13:12:04 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:327 - [exchange: 1] Request connection for {}->http://quadroid.dev.wonderweblabs.com:80
+2014-01-04 13:12:04 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:245 - Connection request: [route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2014-01-04 13:12:04 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:459 - Connection leased: [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+2014-01-04 13:12:04 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:282 - [exchange: 1] Connection allocated: http-outgoing-0 [ACTIVE]
+2014-01-04 13:12:04 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:164 - http-outgoing-0 0:0:0:0:0:0:0:1:51244<->217.6.180.170:80[ACTIVE][r:]: Set attribute http.nio.exchange-handler
+2014-01-04 13:12:04 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:102 - http-outgoing-0 0:0:0:0:0:0:0:1:51244<->217.6.180.170:80[ACTIVE][rw:]: Event set [w]
+2014-01-04 13:12:04 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:58 - http-outgoing-0 [ACTIVE]: Connected
+2014-01-04 13:12:04 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:164 - http-outgoing-0 0:0:0:0:0:0:0:1:51244<->217.6.180.170:80[ACTIVE][rw:]: Set attribute http.nio.http-exchange-state
+2014-01-04 13:12:04 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:75 - http-outgoing-0 [ACTIVE] Request ready
+2014-01-04 13:12:04 DEBUG org.apache.http.impl.nio.client.MainClientExec:168 - Start connection routing
+2014-01-04 13:12:04 DEBUG org.apache.http.impl.nio.client.MainClientExec:212 - Connection route established
+2014-01-04 13:12:04 DEBUG org.apache.http.impl.nio.client.MainClientExec:238 - [exchange: 1] Attempt 1 to execute request
+2014-01-04 13:12:04 DEBUG org.apache.http.impl.nio.client.MainClientExec:245 - Target auth state: UNCHALLENGED
+2014-01-04 13:12:04 DEBUG org.apache.http.impl.nio.client.MainClientExec:252 - Proxy auth state: UNCHALLENGED
+2014-01-04 13:12:04 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:141 - http-outgoing-0 0:0:0:0:0:0:0:1:51244<->217.6.180.170:80[ACTIVE][rw:]: Set timeout 60000
+2014-01-04 13:12:04 DEBUG org.apache.http.headers:133 - http-outgoing-0 >> POST /oauth/token HTTP/1.1
+2014-01-04 13:12:04 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> accept: application/vnd.quadroid-server-v1+json
+2014-01-04 13:12:04 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> user-agent: unirest-java/1.1
+2014-01-04 13:12:04 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> accept-encoding: gzip
+2014-01-04 13:12:04 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Content-Length: 230
+2014-01-04 13:12:04 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+2014-01-04 13:12:04 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Host: quadroid.dev.wonderweblabs.com
+2014-01-04 13:12:04 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Connection: Keep-Alive
+2014-01-04 13:12:04 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:102 - http-outgoing-0 0:0:0:0:0:0:0:1:51244<->217.6.180.170:80[ACTIVE][rw:]: Event set [w]
+2014-01-04 13:12:04 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:98 - http-outgoing-0 [ACTIVE] Output ready
+2014-01-04 13:12:04 DEBUG org.apache.http.impl.nio.client.MainClientExec:279 - [exchange: 1] produce content
+2014-01-04 13:12:04 DEBUG org.apache.http.impl.nio.client.MainClientExec:291 - [exchange: 1] Request completed
+2014-01-04 13:12:04 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:102 - http-outgoing-0 [ACTIVE] [content length: 230; pos: 230; completed: true]
+2014-01-04 13:12:04 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:201 - http-outgoing-0 0:0:0:0:0:0:0:1:51244<->217.6.180.170:80[ACTIVE][rw:w]: 509 bytes written
+2014-01-04 13:12:04 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "POST /oauth/token HTTP/1.1[\r][\n]"
+2014-01-04 13:12:04 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "accept: application/vnd.quadroid-server-v1+json[\r][\n]"
+2014-01-04 13:12:04 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "user-agent: unirest-java/1.1[\r][\n]"
+2014-01-04 13:12:04 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "accept-encoding: gzip[\r][\n]"
+2014-01-04 13:12:04 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Content-Length: 230[\r][\n]"
+2014-01-04 13:12:04 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+2014-01-04 13:12:04 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Host: quadroid.dev.wonderweblabs.com[\r][\n]"
+2014-01-04 13:12:04 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+2014-01-04 13:12:04 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "[\r][\n]"
+2014-01-04 13:12:04 DEBUG org.apache.http.wire:68 - http-outgoing-0 >> "client_secret=53c51cea3ba9ba8ff9206185e2d90fdc954da8736d4966c3b124c010382d4fcb&grant_type=password&email=admin%40quadroid.com&client_id=364330b6fb1a04f9dcb636bbb929d10d78b223f849deca561e3ae2f978fd508d&password=timetosaygoodbye2014"
+2014-01-04 13:12:04 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:109 - http-outgoing-0 0:0:0:0:0:0:0:1:51244<->217.6.180.170:80[ACTIVE][r:w]: Event cleared [w]
+2014-01-04 13:12:04 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:51244<->217.6.180.170:80[ACTIVE][r:r]: 481 bytes read
+2014-01-04 13:12:04 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+2014-01-04 13:12:04 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Server: nginx/1.4.3[\r][\n]"
+2014-01-04 13:12:04 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Date: Sat, 04 Jan 2014 12:13:02 GMT[\r][\n]"
+2014-01-04 13:12:04 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Content-Type: application/json; charset=utf-8[\r][\n]"
+2014-01-04 13:12:04 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Transfer-Encoding: chunked[\r][\n]"
+2014-01-04 13:12:04 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Connection: keep-alive[\r][\n]"
+2014-01-04 13:12:04 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Cache-Control: no-store[\r][\n]"
+2014-01-04 13:12:04 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Pragma: no-cache[\r][\n]"
+2014-01-04 13:12:04 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-UA-Compatible: IE=Edge,chrome=1[\r][\n]"
+2014-01-04 13:12:04 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "ETag: "ef6518fa034fd3a108a5bab7b7564ce4"[\r][\n]"
+2014-01-04 13:12:04 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-Request-Id: 028b5b3a67060235278e466b5596cea0[\r][\n]"
+2014-01-04 13:12:04 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-Runtime: 0.010537[\r][\n]"
+2014-01-04 13:12:04 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "[\r][\n]"
+2014-01-04 13:12:04 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "69[\r][\n]"
+2014-01-04 13:12:04 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "{"access_token":"b6293e60038c6570e2ded46696ade6b1dc3aab08680a3074e574198377ab2b84","token_type":"bearer"}[\r][\n]"
+2014-01-04 13:12:04 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "0[\r][\n]"
+2014-01-04 13:12:04 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "[\r][\n]"
+2014-01-04 13:12:04 DEBUG org.apache.http.headers:122 - http-outgoing-0 << HTTP/1.1 200 OK
+2014-01-04 13:12:04 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Server: nginx/1.4.3
+2014-01-04 13:12:04 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Date: Sat, 04 Jan 2014 12:13:02 GMT
+2014-01-04 13:12:04 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Content-Type: application/json; charset=utf-8
+2014-01-04 13:12:04 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Transfer-Encoding: chunked
+2014-01-04 13:12:04 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Connection: keep-alive
+2014-01-04 13:12:04 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Cache-Control: no-store
+2014-01-04 13:12:04 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Pragma: no-cache
+2014-01-04 13:12:04 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-UA-Compatible: IE=Edge,chrome=1
+2014-01-04 13:12:04 DEBUG org.apache.http.headers:125 - http-outgoing-0 << ETag: "ef6518fa034fd3a108a5bab7b7564ce4"
+2014-01-04 13:12:04 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-Request-Id: 028b5b3a67060235278e466b5596cea0
+2014-01-04 13:12:04 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-Runtime: 0.010537
+2014-01-04 13:12:04 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:110 - http-outgoing-0 [ACTIVE(116)] Response received
+2014-01-04 13:12:04 DEBUG org.apache.http.impl.nio.client.MainClientExec:302 - [exchange: 1] Response received HTTP/1.1 200 OK
+2014-01-04 13:12:04 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:85 - http-outgoing-0 [ACTIVE(116)] Input ready
+2014-01-04 13:12:04 DEBUG org.apache.http.impl.nio.client.MainClientExec:341 - [exchange: 1] Consume content
+2014-01-04 13:12:04 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:51244<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 13:12:04 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:51244<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 13:12:04 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:51244<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 13:12:04 DEBUG org.apache.http.impl.nio.client.MainClientExec:377 - [exchange: 1] Connection can be kept alive indefinitely
+2014-01-04 13:12:04 DEBUG org.apache.http.impl.nio.client.MainClientExec:417 - [exchange: 1] Response processed
+2014-01-04 13:12:04 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:199 - [exchange: 1] releasing connection
+2014-01-04 13:12:04 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:171 - http-outgoing-0 0:0:0:0:0:0:0:1:51244<->217.6.180.170:80[ACTIVE][r:r]: Remove attribute http.nio.exchange-handler
+2014-01-04 13:12:04 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:290 - Connection [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80] can be kept alive indefinitely
+2014-01-04 13:12:04 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:296 - Connection released: [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 1; route allocated: 1 of 2; total allocated: 1 of 20]
+2014-01-04 13:12:04 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:89 - http-outgoing-0 [ACTIVE] [chunk-coded; completed: true]
+2014-01-04 13:12:06 INFO  main.Main:266 - 0
+2014-01-04 13:12:08 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:199 - Connection manager is shutting down
+2014-01-04 13:12:08 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:115 - http-outgoing-0 0:0:0:0:0:0:0:1:51244<->217.6.180.170:80[ACTIVE][r:r]: Close
+2014-01-04 13:12:08 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:66 - http-outgoing-0 [CLOSED]: Disconnected
+2014-01-04 13:12:08 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:201 - Connection manager shut down
+2014-01-04 13:14:23 DEBUG org.apache.http.impl.nio.client.MainClientExec:133 - [exchange: 1] start execution
+2014-01-04 13:14:23 DEBUG org.apache.http.client.protocol.RequestAddCookies:122 - CookieSpec selected: best-match
+2014-01-04 13:14:23 DEBUG org.apache.http.client.protocol.RequestAuthCache:75 - Auth cache not set in the context
+2014-01-04 13:14:23 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:327 - [exchange: 1] Request connection for {}->http://quadroid.dev.wonderweblabs.com:80
+2014-01-04 13:14:23 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:245 - Connection request: [route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2014-01-04 13:14:23 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:459 - Connection leased: [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+2014-01-04 13:14:23 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:282 - [exchange: 1] Connection allocated: http-outgoing-0 [ACTIVE]
+2014-01-04 13:14:23 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:164 - http-outgoing-0 0:0:0:0:0:0:0:1:51580<->217.6.180.170:80[ACTIVE][r:]: Set attribute http.nio.exchange-handler
+2014-01-04 13:14:23 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:102 - http-outgoing-0 0:0:0:0:0:0:0:1:51580<->217.6.180.170:80[ACTIVE][rw:]: Event set [w]
+2014-01-04 13:14:23 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:58 - http-outgoing-0 [ACTIVE]: Connected
+2014-01-04 13:14:23 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:164 - http-outgoing-0 0:0:0:0:0:0:0:1:51580<->217.6.180.170:80[ACTIVE][rw:]: Set attribute http.nio.http-exchange-state
+2014-01-04 13:14:23 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:75 - http-outgoing-0 [ACTIVE] Request ready
+2014-01-04 13:14:23 DEBUG org.apache.http.impl.nio.client.MainClientExec:168 - Start connection routing
+2014-01-04 13:14:23 DEBUG org.apache.http.impl.nio.client.MainClientExec:212 - Connection route established
+2014-01-04 13:14:23 DEBUG org.apache.http.impl.nio.client.MainClientExec:238 - [exchange: 1] Attempt 1 to execute request
+2014-01-04 13:14:23 DEBUG org.apache.http.impl.nio.client.MainClientExec:245 - Target auth state: UNCHALLENGED
+2014-01-04 13:14:23 DEBUG org.apache.http.impl.nio.client.MainClientExec:252 - Proxy auth state: UNCHALLENGED
+2014-01-04 13:14:23 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:141 - http-outgoing-0 0:0:0:0:0:0:0:1:51580<->217.6.180.170:80[ACTIVE][rw:]: Set timeout 60000
+2014-01-04 13:14:23 DEBUG org.apache.http.headers:133 - http-outgoing-0 >> POST /oauth/token HTTP/1.1
+2014-01-04 13:14:23 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> accept: application/vnd.quadroid-server-v1+json
+2014-01-04 13:14:23 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> user-agent: unirest-java/1.1
+2014-01-04 13:14:23 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> accept-encoding: gzip
+2014-01-04 13:14:23 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Content-Length: 230
+2014-01-04 13:14:23 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+2014-01-04 13:14:23 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Host: quadroid.dev.wonderweblabs.com
+2014-01-04 13:14:23 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Connection: Keep-Alive
+2014-01-04 13:14:23 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:102 - http-outgoing-0 0:0:0:0:0:0:0:1:51580<->217.6.180.170:80[ACTIVE][rw:]: Event set [w]
+2014-01-04 13:14:23 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:98 - http-outgoing-0 [ACTIVE] Output ready
+2014-01-04 13:14:23 DEBUG org.apache.http.impl.nio.client.MainClientExec:279 - [exchange: 1] produce content
+2014-01-04 13:14:23 DEBUG org.apache.http.impl.nio.client.MainClientExec:291 - [exchange: 1] Request completed
+2014-01-04 13:14:23 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:102 - http-outgoing-0 [ACTIVE] [content length: 230; pos: 230; completed: true]
+2014-01-04 13:14:23 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:201 - http-outgoing-0 0:0:0:0:0:0:0:1:51580<->217.6.180.170:80[ACTIVE][rw:w]: 509 bytes written
+2014-01-04 13:14:23 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "POST /oauth/token HTTP/1.1[\r][\n]"
+2014-01-04 13:14:23 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "accept: application/vnd.quadroid-server-v1+json[\r][\n]"
+2014-01-04 13:14:23 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "user-agent: unirest-java/1.1[\r][\n]"
+2014-01-04 13:14:23 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "accept-encoding: gzip[\r][\n]"
+2014-01-04 13:14:23 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Content-Length: 230[\r][\n]"
+2014-01-04 13:14:23 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+2014-01-04 13:14:23 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Host: quadroid.dev.wonderweblabs.com[\r][\n]"
+2014-01-04 13:14:23 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+2014-01-04 13:14:23 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "[\r][\n]"
+2014-01-04 13:14:23 DEBUG org.apache.http.wire:68 - http-outgoing-0 >> "client_secret=53c51cea3ba9ba8ff9206185e2d90fdc954da8736d4966c3b124c010382d4fcb&grant_type=password&email=admin%40quadroid.com&client_id=364330b6fb1a04f9dcb636bbb929d10d78b223f849deca561e3ae2f978fd508d&password=timetosaygoodbye2014"
+2014-01-04 13:14:23 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:109 - http-outgoing-0 0:0:0:0:0:0:0:1:51580<->217.6.180.170:80[ACTIVE][r:w]: Event cleared [w]
+2014-01-04 13:14:23 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:51580<->217.6.180.170:80[ACTIVE][r:r]: 481 bytes read
+2014-01-04 13:14:23 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+2014-01-04 13:14:23 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Server: nginx/1.4.3[\r][\n]"
+2014-01-04 13:14:23 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Date: Sat, 04 Jan 2014 12:15:20 GMT[\r][\n]"
+2014-01-04 13:14:23 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Content-Type: application/json; charset=utf-8[\r][\n]"
+2014-01-04 13:14:23 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Transfer-Encoding: chunked[\r][\n]"
+2014-01-04 13:14:23 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Connection: keep-alive[\r][\n]"
+2014-01-04 13:14:23 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Cache-Control: no-store[\r][\n]"
+2014-01-04 13:14:23 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Pragma: no-cache[\r][\n]"
+2014-01-04 13:14:23 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-UA-Compatible: IE=Edge,chrome=1[\r][\n]"
+2014-01-04 13:14:23 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "ETag: "283e29fc96f5842a38b95755ba355cd5"[\r][\n]"
+2014-01-04 13:14:23 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-Request-Id: 743bf4937202a58400a07f9b5f044938[\r][\n]"
+2014-01-04 13:14:23 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-Runtime: 0.011365[\r][\n]"
+2014-01-04 13:14:23 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "[\r][\n]"
+2014-01-04 13:14:23 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "69[\r][\n]"
+2014-01-04 13:14:23 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "{"access_token":"493733be0eb3e5e64e50cc5516c3570ea055cd7358f46fc89da06058fe6933b0","token_type":"bearer"}[\r][\n]"
+2014-01-04 13:14:23 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "0[\r][\n]"
+2014-01-04 13:14:23 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "[\r][\n]"
+2014-01-04 13:14:23 DEBUG org.apache.http.headers:122 - http-outgoing-0 << HTTP/1.1 200 OK
+2014-01-04 13:14:23 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Server: nginx/1.4.3
+2014-01-04 13:14:23 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Date: Sat, 04 Jan 2014 12:15:20 GMT
+2014-01-04 13:14:23 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Content-Type: application/json; charset=utf-8
+2014-01-04 13:14:23 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Transfer-Encoding: chunked
+2014-01-04 13:14:23 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Connection: keep-alive
+2014-01-04 13:14:23 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Cache-Control: no-store
+2014-01-04 13:14:23 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Pragma: no-cache
+2014-01-04 13:14:23 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-UA-Compatible: IE=Edge,chrome=1
+2014-01-04 13:14:23 DEBUG org.apache.http.headers:125 - http-outgoing-0 << ETag: "283e29fc96f5842a38b95755ba355cd5"
+2014-01-04 13:14:23 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-Request-Id: 743bf4937202a58400a07f9b5f044938
+2014-01-04 13:14:23 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-Runtime: 0.011365
+2014-01-04 13:14:23 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:110 - http-outgoing-0 [ACTIVE(116)] Response received
+2014-01-04 13:14:23 DEBUG org.apache.http.impl.nio.client.MainClientExec:302 - [exchange: 1] Response received HTTP/1.1 200 OK
+2014-01-04 13:14:23 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:85 - http-outgoing-0 [ACTIVE(116)] Input ready
+2014-01-04 13:14:23 DEBUG org.apache.http.impl.nio.client.MainClientExec:341 - [exchange: 1] Consume content
+2014-01-04 13:14:23 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:51580<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 13:14:23 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:51580<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 13:14:23 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:51580<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 13:14:23 DEBUG org.apache.http.impl.nio.client.MainClientExec:377 - [exchange: 1] Connection can be kept alive indefinitely
+2014-01-04 13:14:23 DEBUG org.apache.http.impl.nio.client.MainClientExec:417 - [exchange: 1] Response processed
+2014-01-04 13:14:23 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:199 - [exchange: 1] releasing connection
+2014-01-04 13:14:23 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:171 - http-outgoing-0 0:0:0:0:0:0:0:1:51580<->217.6.180.170:80[ACTIVE][r:r]: Remove attribute http.nio.exchange-handler
+2014-01-04 13:14:23 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:290 - Connection [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80] can be kept alive indefinitely
+2014-01-04 13:14:23 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:296 - Connection released: [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 1; route allocated: 1 of 2; total allocated: 1 of 20]
+2014-01-04 13:14:23 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:89 - http-outgoing-0 [ACTIVE] [chunk-coded; completed: true]
+2014-01-04 13:14:28 INFO  main.Main:266 - 0
+2014-01-04 13:14:32 INFO  main.Main:266 - exit
+2014-01-04 13:14:43 DEBUG org.apache.http.impl.nio.client.MainClientExec:133 - [exchange: 1] start execution
+2014-01-04 13:14:43 DEBUG org.apache.http.client.protocol.RequestAddCookies:122 - CookieSpec selected: best-match
+2014-01-04 13:14:43 DEBUG org.apache.http.client.protocol.RequestAuthCache:75 - Auth cache not set in the context
+2014-01-04 13:14:43 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:327 - [exchange: 1] Request connection for {}->http://quadroid.dev.wonderweblabs.com:80
+2014-01-04 13:14:43 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:245 - Connection request: [route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2014-01-04 13:14:43 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:459 - Connection leased: [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+2014-01-04 13:14:43 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:282 - [exchange: 1] Connection allocated: http-outgoing-0 [ACTIVE]
+2014-01-04 13:14:43 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:164 - http-outgoing-0 0:0:0:0:0:0:0:1:51666<->217.6.180.170:80[ACTIVE][r:]: Set attribute http.nio.exchange-handler
+2014-01-04 13:14:43 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:102 - http-outgoing-0 0:0:0:0:0:0:0:1:51666<->217.6.180.170:80[ACTIVE][rw:]: Event set [w]
+2014-01-04 13:14:43 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:58 - http-outgoing-0 [ACTIVE]: Connected
+2014-01-04 13:14:43 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:164 - http-outgoing-0 0:0:0:0:0:0:0:1:51666<->217.6.180.170:80[ACTIVE][rw:]: Set attribute http.nio.http-exchange-state
+2014-01-04 13:14:43 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:75 - http-outgoing-0 [ACTIVE] Request ready
+2014-01-04 13:14:43 DEBUG org.apache.http.impl.nio.client.MainClientExec:168 - Start connection routing
+2014-01-04 13:14:43 DEBUG org.apache.http.impl.nio.client.MainClientExec:212 - Connection route established
+2014-01-04 13:14:43 DEBUG org.apache.http.impl.nio.client.MainClientExec:238 - [exchange: 1] Attempt 1 to execute request
+2014-01-04 13:14:43 DEBUG org.apache.http.impl.nio.client.MainClientExec:245 - Target auth state: UNCHALLENGED
+2014-01-04 13:14:43 DEBUG org.apache.http.impl.nio.client.MainClientExec:252 - Proxy auth state: UNCHALLENGED
+2014-01-04 13:14:43 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:141 - http-outgoing-0 0:0:0:0:0:0:0:1:51666<->217.6.180.170:80[ACTIVE][rw:]: Set timeout 60000
+2014-01-04 13:14:43 DEBUG org.apache.http.headers:133 - http-outgoing-0 >> POST /oauth/token HTTP/1.1
+2014-01-04 13:14:43 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> accept: application/vnd.quadroid-server-v1+json
+2014-01-04 13:14:43 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> user-agent: unirest-java/1.1
+2014-01-04 13:14:43 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> accept-encoding: gzip
+2014-01-04 13:14:43 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Content-Length: 230
+2014-01-04 13:14:43 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+2014-01-04 13:14:43 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Host: quadroid.dev.wonderweblabs.com
+2014-01-04 13:14:43 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Connection: Keep-Alive
+2014-01-04 13:14:43 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:102 - http-outgoing-0 0:0:0:0:0:0:0:1:51666<->217.6.180.170:80[ACTIVE][rw:]: Event set [w]
+2014-01-04 13:14:43 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:98 - http-outgoing-0 [ACTIVE] Output ready
+2014-01-04 13:14:43 DEBUG org.apache.http.impl.nio.client.MainClientExec:279 - [exchange: 1] produce content
+2014-01-04 13:14:43 DEBUG org.apache.http.impl.nio.client.MainClientExec:291 - [exchange: 1] Request completed
+2014-01-04 13:14:43 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:102 - http-outgoing-0 [ACTIVE] [content length: 230; pos: 230; completed: true]
+2014-01-04 13:14:43 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:201 - http-outgoing-0 0:0:0:0:0:0:0:1:51666<->217.6.180.170:80[ACTIVE][rw:w]: 509 bytes written
+2014-01-04 13:14:43 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "POST /oauth/token HTTP/1.1[\r][\n]"
+2014-01-04 13:14:43 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "accept: application/vnd.quadroid-server-v1+json[\r][\n]"
+2014-01-04 13:14:43 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "user-agent: unirest-java/1.1[\r][\n]"
+2014-01-04 13:14:43 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "accept-encoding: gzip[\r][\n]"
+2014-01-04 13:14:43 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Content-Length: 230[\r][\n]"
+2014-01-04 13:14:43 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+2014-01-04 13:14:43 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Host: quadroid.dev.wonderweblabs.com[\r][\n]"
+2014-01-04 13:14:43 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+2014-01-04 13:14:43 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "[\r][\n]"
+2014-01-04 13:14:43 DEBUG org.apache.http.wire:68 - http-outgoing-0 >> "client_secret=53c51cea3ba9ba8ff9206185e2d90fdc954da8736d4966c3b124c010382d4fcb&grant_type=password&email=admin%40quadroid.com&client_id=364330b6fb1a04f9dcb636bbb929d10d78b223f849deca561e3ae2f978fd508d&password=timetosaygoodbye2014"
+2014-01-04 13:14:43 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:109 - http-outgoing-0 0:0:0:0:0:0:0:1:51666<->217.6.180.170:80[ACTIVE][r:w]: Event cleared [w]
+2014-01-04 13:14:43 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:51666<->217.6.180.170:80[ACTIVE][r:r]: 481 bytes read
+2014-01-04 13:14:43 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+2014-01-04 13:14:43 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Server: nginx/1.4.3[\r][\n]"
+2014-01-04 13:14:43 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Date: Sat, 04 Jan 2014 12:15:41 GMT[\r][\n]"
+2014-01-04 13:14:43 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Content-Type: application/json; charset=utf-8[\r][\n]"
+2014-01-04 13:14:43 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Transfer-Encoding: chunked[\r][\n]"
+2014-01-04 13:14:43 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Connection: keep-alive[\r][\n]"
+2014-01-04 13:14:43 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Cache-Control: no-store[\r][\n]"
+2014-01-04 13:14:43 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Pragma: no-cache[\r][\n]"
+2014-01-04 13:14:43 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-UA-Compatible: IE=Edge,chrome=1[\r][\n]"
+2014-01-04 13:14:43 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "ETag: "ae4b5db21834155555bb18cff6907e5e"[\r][\n]"
+2014-01-04 13:14:43 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-Request-Id: 23245b3dea9b53813732ab20d21fec74[\r][\n]"
+2014-01-04 13:14:43 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-Runtime: 0.011387[\r][\n]"
+2014-01-04 13:14:43 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "[\r][\n]"
+2014-01-04 13:14:43 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "69[\r][\n]"
+2014-01-04 13:14:43 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "{"access_token":"348d80e4e82ee6f7f04930f76ad2cc88a198b2440c0c928d5609b2ee4d6c0f7a","token_type":"bearer"}[\r][\n]"
+2014-01-04 13:14:43 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "0[\r][\n]"
+2014-01-04 13:14:43 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "[\r][\n]"
+2014-01-04 13:14:44 DEBUG org.apache.http.headers:122 - http-outgoing-0 << HTTP/1.1 200 OK
+2014-01-04 13:14:44 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Server: nginx/1.4.3
+2014-01-04 13:14:44 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Date: Sat, 04 Jan 2014 12:15:41 GMT
+2014-01-04 13:14:44 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Content-Type: application/json; charset=utf-8
+2014-01-04 13:14:44 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Transfer-Encoding: chunked
+2014-01-04 13:14:44 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Connection: keep-alive
+2014-01-04 13:14:44 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Cache-Control: no-store
+2014-01-04 13:14:44 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Pragma: no-cache
+2014-01-04 13:14:44 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-UA-Compatible: IE=Edge,chrome=1
+2014-01-04 13:14:44 DEBUG org.apache.http.headers:125 - http-outgoing-0 << ETag: "ae4b5db21834155555bb18cff6907e5e"
+2014-01-04 13:14:44 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-Request-Id: 23245b3dea9b53813732ab20d21fec74
+2014-01-04 13:14:44 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-Runtime: 0.011387
+2014-01-04 13:14:44 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:110 - http-outgoing-0 [ACTIVE(116)] Response received
+2014-01-04 13:14:44 DEBUG org.apache.http.impl.nio.client.MainClientExec:302 - [exchange: 1] Response received HTTP/1.1 200 OK
+2014-01-04 13:14:44 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:85 - http-outgoing-0 [ACTIVE(116)] Input ready
+2014-01-04 13:14:44 DEBUG org.apache.http.impl.nio.client.MainClientExec:341 - [exchange: 1] Consume content
+2014-01-04 13:14:44 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:51666<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 13:14:44 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:51666<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 13:14:44 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:51666<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 13:14:44 DEBUG org.apache.http.impl.nio.client.MainClientExec:377 - [exchange: 1] Connection can be kept alive indefinitely
+2014-01-04 13:14:44 DEBUG org.apache.http.impl.nio.client.MainClientExec:417 - [exchange: 1] Response processed
+2014-01-04 13:14:44 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:199 - [exchange: 1] releasing connection
+2014-01-04 13:14:44 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:171 - http-outgoing-0 0:0:0:0:0:0:0:1:51666<->217.6.180.170:80[ACTIVE][r:r]: Remove attribute http.nio.exchange-handler
+2014-01-04 13:14:44 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:290 - Connection [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80] can be kept alive indefinitely
+2014-01-04 13:14:44 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:296 - Connection released: [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 1; route allocated: 1 of 2; total allocated: 1 of 20]
+2014-01-04 13:14:44 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:89 - http-outgoing-0 [ACTIVE] [chunk-coded; completed: true]
+2014-01-04 13:14:45 INFO  main.Main:266 - 0
+2014-01-04 13:14:55 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:199 - Connection manager is shutting down
+2014-01-04 13:14:55 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:115 - http-outgoing-0 0:0:0:0:0:0:0:1:51666<->217.6.180.170:80[ACTIVE][r:r]: Close
+2014-01-04 13:14:55 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:66 - http-outgoing-0 [CLOSED]: Disconnected
+2014-01-04 13:14:55 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:201 - Connection manager shut down
+2014-01-04 13:29:44 DEBUG org.apache.http.impl.nio.client.MainClientExec:133 - [exchange: 1] start execution
+2014-01-04 13:29:44 DEBUG org.apache.http.client.protocol.RequestAddCookies:122 - CookieSpec selected: best-match
+2014-01-04 13:29:44 DEBUG org.apache.http.client.protocol.RequestAuthCache:75 - Auth cache not set in the context
+2014-01-04 13:29:44 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:327 - [exchange: 1] Request connection for {}->http://quadroid.dev.wonderweblabs.com:80
+2014-01-04 13:29:44 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:245 - Connection request: [route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2014-01-04 13:29:44 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:459 - Connection leased: [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+2014-01-04 13:29:44 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:282 - [exchange: 1] Connection allocated: http-outgoing-0 [ACTIVE]
+2014-01-04 13:29:44 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:164 - http-outgoing-0 0:0:0:0:0:0:0:1:52235<->217.6.180.170:80[ACTIVE][r:]: Set attribute http.nio.exchange-handler
+2014-01-04 13:29:44 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:102 - http-outgoing-0 0:0:0:0:0:0:0:1:52235<->217.6.180.170:80[ACTIVE][rw:]: Event set [w]
+2014-01-04 13:29:44 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:58 - http-outgoing-0 [ACTIVE]: Connected
+2014-01-04 13:29:44 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:164 - http-outgoing-0 0:0:0:0:0:0:0:1:52235<->217.6.180.170:80[ACTIVE][rw:]: Set attribute http.nio.http-exchange-state
+2014-01-04 13:29:44 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:75 - http-outgoing-0 [ACTIVE] Request ready
+2014-01-04 13:29:44 DEBUG org.apache.http.impl.nio.client.MainClientExec:168 - Start connection routing
+2014-01-04 13:29:44 DEBUG org.apache.http.impl.nio.client.MainClientExec:212 - Connection route established
+2014-01-04 13:29:44 DEBUG org.apache.http.impl.nio.client.MainClientExec:238 - [exchange: 1] Attempt 1 to execute request
+2014-01-04 13:29:44 DEBUG org.apache.http.impl.nio.client.MainClientExec:245 - Target auth state: UNCHALLENGED
+2014-01-04 13:29:44 DEBUG org.apache.http.impl.nio.client.MainClientExec:252 - Proxy auth state: UNCHALLENGED
+2014-01-04 13:29:44 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:141 - http-outgoing-0 0:0:0:0:0:0:0:1:52235<->217.6.180.170:80[ACTIVE][rw:]: Set timeout 60000
+2014-01-04 13:29:44 DEBUG org.apache.http.headers:133 - http-outgoing-0 >> POST /oauth/token HTTP/1.1
+2014-01-04 13:29:44 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> accept: application/vnd.quadroid-server-v1+json
+2014-01-04 13:29:44 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> user-agent: unirest-java/1.1
+2014-01-04 13:29:44 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> accept-encoding: gzip
+2014-01-04 13:29:44 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Content-Length: 230
+2014-01-04 13:29:44 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+2014-01-04 13:29:44 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Host: quadroid.dev.wonderweblabs.com
+2014-01-04 13:29:44 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Connection: Keep-Alive
+2014-01-04 13:29:44 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:102 - http-outgoing-0 0:0:0:0:0:0:0:1:52235<->217.6.180.170:80[ACTIVE][rw:]: Event set [w]
+2014-01-04 13:29:44 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:98 - http-outgoing-0 [ACTIVE] Output ready
+2014-01-04 13:29:44 DEBUG org.apache.http.impl.nio.client.MainClientExec:279 - [exchange: 1] produce content
+2014-01-04 13:29:44 DEBUG org.apache.http.impl.nio.client.MainClientExec:291 - [exchange: 1] Request completed
+2014-01-04 13:29:44 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:102 - http-outgoing-0 [ACTIVE] [content length: 230; pos: 230; completed: true]
+2014-01-04 13:29:44 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:201 - http-outgoing-0 0:0:0:0:0:0:0:1:52235<->217.6.180.170:80[ACTIVE][rw:w]: 509 bytes written
+2014-01-04 13:29:44 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "POST /oauth/token HTTP/1.1[\r][\n]"
+2014-01-04 13:29:44 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "accept: application/vnd.quadroid-server-v1+json[\r][\n]"
+2014-01-04 13:29:44 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "user-agent: unirest-java/1.1[\r][\n]"
+2014-01-04 13:29:44 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "accept-encoding: gzip[\r][\n]"
+2014-01-04 13:29:44 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Content-Length: 230[\r][\n]"
+2014-01-04 13:29:44 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+2014-01-04 13:29:44 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Host: quadroid.dev.wonderweblabs.com[\r][\n]"
+2014-01-04 13:29:44 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+2014-01-04 13:29:44 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "[\r][\n]"
+2014-01-04 13:29:44 DEBUG org.apache.http.wire:68 - http-outgoing-0 >> "client_secret=53c51cea3ba9ba8ff9206185e2d90fdc954da8736d4966c3b124c010382d4fcb&grant_type=password&email=admin%40quadroid.com&client_id=364330b6fb1a04f9dcb636bbb929d10d78b223f849deca561e3ae2f978fd508d&password=timetosaygoodbye2014"
+2014-01-04 13:29:44 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:109 - http-outgoing-0 0:0:0:0:0:0:0:1:52235<->217.6.180.170:80[ACTIVE][r:w]: Event cleared [w]
+2014-01-04 13:29:44 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:52235<->217.6.180.170:80[ACTIVE][r:r]: 481 bytes read
+2014-01-04 13:29:44 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+2014-01-04 13:29:44 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Server: nginx/1.4.3[\r][\n]"
+2014-01-04 13:29:44 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Date: Sat, 04 Jan 2014 12:30:42 GMT[\r][\n]"
+2014-01-04 13:29:44 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Content-Type: application/json; charset=utf-8[\r][\n]"
+2014-01-04 13:29:44 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Transfer-Encoding: chunked[\r][\n]"
+2014-01-04 13:29:44 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Connection: keep-alive[\r][\n]"
+2014-01-04 13:29:44 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Cache-Control: no-store[\r][\n]"
+2014-01-04 13:29:44 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Pragma: no-cache[\r][\n]"
+2014-01-04 13:29:44 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-UA-Compatible: IE=Edge,chrome=1[\r][\n]"
+2014-01-04 13:29:44 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "ETag: "c720a11c2605901539ac52e9117763be"[\r][\n]"
+2014-01-04 13:29:44 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-Request-Id: 8f5ef6fd27cf9b283ad73edf51b8e095[\r][\n]"
+2014-01-04 13:29:44 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-Runtime: 0.011426[\r][\n]"
+2014-01-04 13:29:44 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "[\r][\n]"
+2014-01-04 13:29:44 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "69[\r][\n]"
+2014-01-04 13:29:44 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "{"access_token":"9f22eecfd845f8050f62e258afaae5826994a4f6a0f1c8faeb1dc4fead460947","token_type":"bearer"}[\r][\n]"
+2014-01-04 13:29:44 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "0[\r][\n]"
+2014-01-04 13:29:44 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "[\r][\n]"
+2014-01-04 13:29:44 DEBUG org.apache.http.headers:122 - http-outgoing-0 << HTTP/1.1 200 OK
+2014-01-04 13:29:44 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Server: nginx/1.4.3
+2014-01-04 13:29:44 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Date: Sat, 04 Jan 2014 12:30:42 GMT
+2014-01-04 13:29:44 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Content-Type: application/json; charset=utf-8
+2014-01-04 13:29:44 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Transfer-Encoding: chunked
+2014-01-04 13:29:44 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Connection: keep-alive
+2014-01-04 13:29:44 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Cache-Control: no-store
+2014-01-04 13:29:44 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Pragma: no-cache
+2014-01-04 13:29:44 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-UA-Compatible: IE=Edge,chrome=1
+2014-01-04 13:29:44 DEBUG org.apache.http.headers:125 - http-outgoing-0 << ETag: "c720a11c2605901539ac52e9117763be"
+2014-01-04 13:29:44 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-Request-Id: 8f5ef6fd27cf9b283ad73edf51b8e095
+2014-01-04 13:29:44 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-Runtime: 0.011426
+2014-01-04 13:29:44 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:110 - http-outgoing-0 [ACTIVE(116)] Response received
+2014-01-04 13:29:44 DEBUG org.apache.http.impl.nio.client.MainClientExec:302 - [exchange: 1] Response received HTTP/1.1 200 OK
+2014-01-04 13:29:44 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:85 - http-outgoing-0 [ACTIVE(116)] Input ready
+2014-01-04 13:29:44 DEBUG org.apache.http.impl.nio.client.MainClientExec:341 - [exchange: 1] Consume content
+2014-01-04 13:29:44 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:52235<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 13:29:44 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:52235<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 13:29:44 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:52235<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 13:29:44 DEBUG org.apache.http.impl.nio.client.MainClientExec:377 - [exchange: 1] Connection can be kept alive indefinitely
+2014-01-04 13:29:44 DEBUG org.apache.http.impl.nio.client.MainClientExec:417 - [exchange: 1] Response processed
+2014-01-04 13:29:44 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:199 - [exchange: 1] releasing connection
+2014-01-04 13:29:44 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:171 - http-outgoing-0 0:0:0:0:0:0:0:1:52235<->217.6.180.170:80[ACTIVE][r:r]: Remove attribute http.nio.exchange-handler
+2014-01-04 13:29:44 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:290 - Connection [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80] can be kept alive indefinitely
+2014-01-04 13:29:44 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:296 - Connection released: [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 1; route allocated: 1 of 2; total allocated: 1 of 20]
+2014-01-04 13:29:44 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:89 - http-outgoing-0 [ACTIVE] [chunk-coded; completed: true]
+2014-01-04 13:29:55 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:199 - Connection manager is shutting down
+2014-01-04 13:29:55 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:115 - http-outgoing-0 0:0:0:0:0:0:0:1:52235<->217.6.180.170:80[ACTIVE][r:r]: Close
+2014-01-04 13:29:55 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:66 - http-outgoing-0 [CLOSED]: Disconnected
+2014-01-04 13:29:55 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:201 - Connection manager shut down
+2014-01-04 13:59:29 DEBUG org.apache.http.impl.nio.client.MainClientExec:133 - [exchange: 1] start execution
+2014-01-04 13:59:29 DEBUG org.apache.http.client.protocol.RequestAddCookies:122 - CookieSpec selected: best-match
+2014-01-04 13:59:29 DEBUG org.apache.http.client.protocol.RequestAuthCache:75 - Auth cache not set in the context
+2014-01-04 13:59:29 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:327 - [exchange: 1] Request connection for {}->http://quadroid.dev.wonderweblabs.com:80
+2014-01-04 13:59:29 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:245 - Connection request: [route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2014-01-04 13:59:29 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:459 - Connection leased: [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+2014-01-04 13:59:29 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:282 - [exchange: 1] Connection allocated: http-outgoing-0 [ACTIVE]
+2014-01-04 13:59:29 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:164 - http-outgoing-0 0:0:0:0:0:0:0:1:54861<->217.6.180.170:80[ACTIVE][r:]: Set attribute http.nio.exchange-handler
+2014-01-04 13:59:29 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:102 - http-outgoing-0 0:0:0:0:0:0:0:1:54861<->217.6.180.170:80[ACTIVE][rw:]: Event set [w]
+2014-01-04 13:59:29 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:58 - http-outgoing-0 [ACTIVE]: Connected
+2014-01-04 13:59:29 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:164 - http-outgoing-0 0:0:0:0:0:0:0:1:54861<->217.6.180.170:80[ACTIVE][rw:]: Set attribute http.nio.http-exchange-state
+2014-01-04 13:59:29 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:75 - http-outgoing-0 [ACTIVE] Request ready
+2014-01-04 13:59:29 DEBUG org.apache.http.impl.nio.client.MainClientExec:168 - Start connection routing
+2014-01-04 13:59:29 DEBUG org.apache.http.impl.nio.client.MainClientExec:212 - Connection route established
+2014-01-04 13:59:29 DEBUG org.apache.http.impl.nio.client.MainClientExec:238 - [exchange: 1] Attempt 1 to execute request
+2014-01-04 13:59:29 DEBUG org.apache.http.impl.nio.client.MainClientExec:245 - Target auth state: UNCHALLENGED
+2014-01-04 13:59:29 DEBUG org.apache.http.impl.nio.client.MainClientExec:252 - Proxy auth state: UNCHALLENGED
+2014-01-04 13:59:29 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:141 - http-outgoing-0 0:0:0:0:0:0:0:1:54861<->217.6.180.170:80[ACTIVE][rw:]: Set timeout 60000
+2014-01-04 13:59:29 DEBUG org.apache.http.headers:133 - http-outgoing-0 >> POST /oauth/token HTTP/1.1
+2014-01-04 13:59:29 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> accept: application/vnd.quadroid-server-v1+json
+2014-01-04 13:59:29 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> user-agent: unirest-java/1.1
+2014-01-04 13:59:29 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> accept-encoding: gzip
+2014-01-04 13:59:29 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Content-Length: 230
+2014-01-04 13:59:29 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+2014-01-04 13:59:29 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Host: quadroid.dev.wonderweblabs.com
+2014-01-04 13:59:29 DEBUG org.apache.http.headers:136 - http-outgoing-0 >> Connection: Keep-Alive
+2014-01-04 13:59:29 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:102 - http-outgoing-0 0:0:0:0:0:0:0:1:54861<->217.6.180.170:80[ACTIVE][rw:]: Event set [w]
+2014-01-04 13:59:29 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:98 - http-outgoing-0 [ACTIVE] Output ready
+2014-01-04 13:59:29 DEBUG org.apache.http.impl.nio.client.MainClientExec:279 - [exchange: 1] produce content
+2014-01-04 13:59:29 DEBUG org.apache.http.impl.nio.client.MainClientExec:291 - [exchange: 1] Request completed
+2014-01-04 13:59:29 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:102 - http-outgoing-0 [ACTIVE] [content length: 230; pos: 230; completed: true]
+2014-01-04 13:59:29 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:201 - http-outgoing-0 0:0:0:0:0:0:0:1:54861<->217.6.180.170:80[ACTIVE][rw:w]: 509 bytes written
+2014-01-04 13:59:29 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "POST /oauth/token HTTP/1.1[\r][\n]"
+2014-01-04 13:59:29 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "accept: application/vnd.quadroid-server-v1+json[\r][\n]"
+2014-01-04 13:59:29 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "user-agent: unirest-java/1.1[\r][\n]"
+2014-01-04 13:59:29 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "accept-encoding: gzip[\r][\n]"
+2014-01-04 13:59:29 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Content-Length: 230[\r][\n]"
+2014-01-04 13:59:29 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Content-Type: application/x-www-form-urlencoded; charset=UTF-8[\r][\n]"
+2014-01-04 13:59:29 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Host: quadroid.dev.wonderweblabs.com[\r][\n]"
+2014-01-04 13:59:29 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+2014-01-04 13:59:29 DEBUG org.apache.http.wire:54 - http-outgoing-0 >> "[\r][\n]"
+2014-01-04 13:59:29 DEBUG org.apache.http.wire:68 - http-outgoing-0 >> "client_secret=53c51cea3ba9ba8ff9206185e2d90fdc954da8736d4966c3b124c010382d4fcb&grant_type=password&email=admin%40quadroid.com&client_id=364330b6fb1a04f9dcb636bbb929d10d78b223f849deca561e3ae2f978fd508d&password=timetosaygoodbye2014"
+2014-01-04 13:59:29 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:109 - http-outgoing-0 0:0:0:0:0:0:0:1:54861<->217.6.180.170:80[ACTIVE][r:w]: Event cleared [w]
+2014-01-04 13:59:29 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:54861<->217.6.180.170:80[ACTIVE][r:r]: 513 bytes read
+2014-01-04 13:59:29 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+2014-01-04 13:59:29 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Server: nginx/1.4.3[\r][\n]"
+2014-01-04 13:59:29 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Date: Sat, 04 Jan 2014 13:00:27 GMT[\r][\n]"
+2014-01-04 13:59:29 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Content-Type: application/json; charset=utf-8[\r][\n]"
+2014-01-04 13:59:29 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Transfer-Encoding: chunked[\r][\n]"
+2014-01-04 13:59:29 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Connection: keep-alive[\r][\n]"
+2014-01-04 13:59:29 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Cache-Control: no-store[\r][\n]"
+2014-01-04 13:59:29 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "Pragma: no-cache[\r][\n]"
+2014-01-04 13:59:29 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-UA-Compatible: IE=Edge,chrome=1[\r][\n]"
+2014-01-04 13:59:29 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "ETag: "f3d52d7332a20ce00a07e585b45a71a7"[\r][\n]"
+2014-01-04 13:59:29 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-Request-Id: 9dfe374590fc073b8a77ee55f85e1a91[\r][\n]"
+2014-01-04 13:59:29 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-Runtime: 0.335535[\r][\n]"
+2014-01-04 13:59:29 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "X-Rack-Cache: invalidate, pass[\r][\n]"
+2014-01-04 13:59:29 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "[\r][\n]"
+2014-01-04 13:59:29 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "69[\r][\n]"
+2014-01-04 13:59:29 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "{"access_token":"8ce143dbf6c5a1e24a5a6a002e2fbeca272db11ba12d7e09267934955e51a352","token_type":"bearer"}[\r][\n]"
+2014-01-04 13:59:29 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "0[\r][\n]"
+2014-01-04 13:59:29 DEBUG org.apache.http.wire:54 - http-outgoing-0 << "[\r][\n]"
+2014-01-04 13:59:29 DEBUG org.apache.http.headers:122 - http-outgoing-0 << HTTP/1.1 200 OK
+2014-01-04 13:59:29 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Server: nginx/1.4.3
+2014-01-04 13:59:29 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Date: Sat, 04 Jan 2014 13:00:27 GMT
+2014-01-04 13:59:29 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Content-Type: application/json; charset=utf-8
+2014-01-04 13:59:29 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Transfer-Encoding: chunked
+2014-01-04 13:59:29 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Connection: keep-alive
+2014-01-04 13:59:29 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Cache-Control: no-store
+2014-01-04 13:59:29 DEBUG org.apache.http.headers:125 - http-outgoing-0 << Pragma: no-cache
+2014-01-04 13:59:29 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-UA-Compatible: IE=Edge,chrome=1
+2014-01-04 13:59:29 DEBUG org.apache.http.headers:125 - http-outgoing-0 << ETag: "f3d52d7332a20ce00a07e585b45a71a7"
+2014-01-04 13:59:29 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-Request-Id: 9dfe374590fc073b8a77ee55f85e1a91
+2014-01-04 13:59:29 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-Runtime: 0.335535
+2014-01-04 13:59:29 DEBUG org.apache.http.headers:125 - http-outgoing-0 << X-Rack-Cache: invalidate, pass
+2014-01-04 13:59:29 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:110 - http-outgoing-0 [ACTIVE(116)] Response received
+2014-01-04 13:59:29 DEBUG org.apache.http.impl.nio.client.MainClientExec:302 - [exchange: 1] Response received HTTP/1.1 200 OK
+2014-01-04 13:59:29 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:85 - http-outgoing-0 [ACTIVE(116)] Input ready
+2014-01-04 13:59:29 DEBUG org.apache.http.impl.nio.client.MainClientExec:341 - [exchange: 1] Consume content
+2014-01-04 13:59:29 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:54861<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 13:59:29 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:54861<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 13:59:29 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:186 - http-outgoing-0 0:0:0:0:0:0:0:1:54861<->217.6.180.170:80[ACTIVE][r:r]: 0 bytes read
+2014-01-04 13:59:29 DEBUG org.apache.http.impl.nio.client.MainClientExec:377 - [exchange: 1] Connection can be kept alive indefinitely
+2014-01-04 13:59:29 DEBUG org.apache.http.impl.nio.client.MainClientExec:417 - [exchange: 1] Response processed
+2014-01-04 13:59:29 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:199 - [exchange: 1] releasing connection
+2014-01-04 13:59:29 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:171 - http-outgoing-0 0:0:0:0:0:0:0:1:54861<->217.6.180.170:80[ACTIVE][r:r]: Remove attribute http.nio.exchange-handler
+2014-01-04 13:59:29 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:290 - Connection [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80] can be kept alive indefinitely
+2014-01-04 13:59:29 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:296 - Connection released: [id: http-outgoing-0][route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 1; route allocated: 1 of 2; total allocated: 1 of 20]
+2014-01-04 13:59:29 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:89 - http-outgoing-0 [ACTIVE] [chunk-coded; completed: true]
+2014-01-04 13:59:35 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:199 - Connection manager is shutting down
+2014-01-04 13:59:35 DEBUG org.apache.http.impl.nio.conn.ManagedNHttpClientConnectionImpl:115 - http-outgoing-0 0:0:0:0:0:0:0:1:54861<->217.6.180.170:80[ACTIVE][r:r]: Close
+2014-01-04 13:59:35 DEBUG org.apache.http.nio.protocol.HttpAsyncRequestExecutor:66 - http-outgoing-0 [CLOSED]: Disconnected
+2014-01-04 13:59:35 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:201 - Connection manager shut down

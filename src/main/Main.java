@@ -31,6 +31,7 @@ import model.Landmark;
 import model.MetaData;
 import model.XBeeRxTx;
 
+import org.apache.commons.lang3.SystemUtils;
 import org.apache.log4j.PropertyConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -105,20 +106,29 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 		subMenuVideoDevice = new JMenu("Video Device");
 		menuVideo.add(subMenuVideoDevice);
 
-		//Add Devices
-		final VideoStreamController videoStreamController = (VideoStreamController) mainController.getVideoStreamController();
-		String[] captureDevices = videoStreamController.getAvailableCaptureDevices();
-		if (captureDevices.length > 0) {
-			for (int i = 0; i < captureDevices.length; i++) {
-				JMenuItem item = new JMenuItem(captureDevices[i]);
+		//Add Devices if Windows
+		if (SystemUtils.IS_OS_WINDOWS) {
+			final VideoStreamController videoStreamController = (VideoStreamController) mainController.getVideoStreamController();
+			String[] captureDevices = videoStreamController.getAvailableCaptureDevices();
+			if (captureDevices.length > 0) {
+				for (int i = 0; i < captureDevices.length; i++) {
+					JMenuItem item = new JMenuItem(captureDevices[i]);
+					item.setActionCommand(String.valueOf(i));
+					item.addActionListener(this);
+					subMenuVideoDevice.add(item);
+				}
+			} else {
+				JMenuItem item = new JMenuItem("Keine Geraete gefunden");
+				item.setEnabled(false);
+				subMenuVideoDevice.add(item);
+			}
+		} else {
+			for (int i = 0; i < 4; i++) {
+				JMenuItem item = new JMenuItem("Device " + i);
 				item.setActionCommand(String.valueOf(i));
 				item.addActionListener(this);
 				subMenuVideoDevice.add(item);
 			}
-		} else {
-			JMenuItem item = new JMenuItem("Keine Geraete gefunden");
-			item.setEnabled(false);
-			subMenuVideoDevice.add(item);
 		}
 		
 		//create Video Menu

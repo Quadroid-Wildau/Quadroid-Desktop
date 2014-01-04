@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="libs/javacv-android-arm.jar"/>
 	<classpathentry kind="lib" path="libs/javacv-linux-x86_64.jar"/>
 	<classpathentry kind="lib" path="libs/javacv-linux-x86.jar"/>
@@ -35,6 +34,16 @@
 	<classpathentry kind="lib" path="libs/slf4j-api-1.7.2.jar"/>
 	<classpathentry kind="lib" path="libs/slf4j-log4j12-1.6.4.jar"/>
 	<classpathentry kind="lib" path="libs/commons-codec-1.8.jar"/>
+	<classpathentry kind="lib" path="libs/opencv-2.4.6.0-windows-x86.jar"/>
+	<classpathentry kind="lib" path="libs/opencv-2.4.6.1-android-arm.jar"/>
+	<classpathentry kind="lib" path="libs/opencv-2.4.6.1-linux-x86_64.jar"/>
+	<classpathentry kind="lib" path="libs/opencv-2.4.6.1-linux-x86.jar"/>
+	<classpathentry kind="lib" path="libs/opencv-2.4.6.1-macosx-x86_64.jar"/>
+	<classpathentry kind="lib" path="libs/ffmpeg-2.0.1-linux-x86_64.jar"/>
+	<classpathentry kind="lib" path="libs/ffmpeg-2.0.1-linux-x86.jar"/>
+	<classpathentry kind="lib" path="libs/ffmpeg-2.0.1-macosx-x86_64.jar"/>
+	<classpathentry kind="lib" path="libs/opencv-2.4.6.0-windows-x86_64.jar"/>
+	<classpathentry kind="lib" path="libs/commons-lang3-3.2.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre7"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
