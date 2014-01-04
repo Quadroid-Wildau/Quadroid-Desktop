@@ -1,0 +1,70 @@
+package interfaces;
+
+import org.slf4j.Logger;
+
+import connection.Connect;
+
+
+/**
+ * This interface manage 
+ * 
+ * @author Thomas Rohde TM-12, trohde(at)th-wildau.de
+ * @version 1.0, 09.12.2013, (JDK 7)
+ * 
+ * */
+
+public abstract class AbstractTransmitter {
+
+	/**save reference of connection*/
+	private Connect connection = null;
+	/**save logger for global logging*/
+	private Logger logger = null;
+	
+	
+	/**
+	 * no public constructor
+	 * */
+	@SuppressWarnings("unused")
+	private AbstractTransmitter()
+	{	
+	}
+	
+	/**
+	 * Getter Function
+	 * 
+	 * @return get reference of {@link Connect}
+	 * */
+	public Connect getConnection()
+	{
+		return this.connection;
+	}
+	
+	
+	/**
+	 * public Constructor 
+	 * 
+	 * @param connection -
+	 * hand over an connection of typ {@link de.th_wildau.quadroid.connection.Connect}
+	 * 
+	 * @throws NullPointerException if connection are <b>null</b> 
+	 * 
+	 * */
+	public AbstractTransmitter(Connect connection) throws NullPointerException
+	{	
+		if(connection == null)//if no usable connection available abort here
+		{	logger.error("Given Reference of \"connection\" are null...");
+			throw new NullPointerException("Hand over null for parameter \"connection\" ");
+		}	
+		this.connection = connection;
+	}
+	
+
+
+	/**
+	 * this function transmit data to connected device
+	 * 
+	 * @param msg - hand over data to transmit it
+	 * */
+	public abstract void transmit(byte[] msg);
+	
+}
