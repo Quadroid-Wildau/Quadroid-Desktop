@@ -65,3 +65,28 @@ java.net.SocketTimeoutException
 2014-01-04 11:04:58 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:305 - [exchange: 1] connection request failed
 2014-01-04 11:05:40 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:199 - Connection manager is shutting down
 2014-01-04 11:05:40 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:201 - Connection manager shut down
+2014-01-04 11:16:33 DEBUG org.apache.http.impl.nio.client.MainClientExec:133 - [exchange: 1] start execution
+2014-01-04 11:16:33 DEBUG org.apache.http.client.protocol.RequestAddCookies:122 - CookieSpec selected: best-match
+2014-01-04 11:16:33 DEBUG org.apache.http.client.protocol.RequestAuthCache:75 - Auth cache not set in the context
+2014-01-04 11:16:33 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:327 - [exchange: 1] Request connection for {}->http://quadroid.dev.wonderweblabs.com:80
+2014-01-04 11:16:33 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:245 - Connection request: [route: {}->http://quadroid.dev.wonderweblabs.com:80][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+2014-01-04 11:16:35 INFO  main.Main:266 - 0
+2014-01-04 11:16:43 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:469 - Connection request failed
+java.net.SocketTimeoutException
+	at org.apache.http.nio.pool.RouteSpecificPool.timeout(RouteSpecificPool.java:170)
+	at org.apache.http.nio.pool.AbstractNIOConnPool.requestTimeout(AbstractNIOConnPool.java:546)
+	at org.apache.http.nio.pool.AbstractNIOConnPool$InternalSessionRequestCallback.timeout(AbstractNIOConnPool.java:764)
+	at org.apache.http.impl.nio.reactor.SessionRequestImpl.timeout(SessionRequestImpl.java:177)
+	at org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor.processTimeouts(DefaultConnectingIOReactor.java:199)
+	at org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor.processEvents(DefaultConnectingIOReactor.java:157)
+	at org.apache.http.impl.nio.reactor.AbstractMultiworkerIOReactor.execute(AbstractMultiworkerIOReactor.java:348)
+	at org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager.execute(PoolingNHttpClientConnectionManager.java:189)
+	at org.apache.http.impl.nio.client.CloseableHttpAsyncClientBase.doExecute(CloseableHttpAsyncClientBase.java:67)
+	at org.apache.http.impl.nio.client.CloseableHttpAsyncClientBase.access$000(CloseableHttpAsyncClientBase.java:38)
+	at org.apache.http.impl.nio.client.CloseableHttpAsyncClientBase$1.run(CloseableHttpAsyncClientBase.java:57)
+	at java.lang.Thread.run(Unknown Source)
+2014-01-04 11:16:43 DEBUG org.apache.http.impl.nio.client.InternalHttpAsyncClient:305 - [exchange: 1] connection request failed
+2014-01-04 11:16:50 INFO  main.Main:266 - saveVideoPredefinedPath
+2014-01-04 11:17:04 INFO  main.Main:266 - stopSavingVideo
+2014-01-04 11:17:07 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:199 - Connection manager is shutting down
+2014-01-04 11:17:07 DEBUG org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager:201 - Connection manager shut down

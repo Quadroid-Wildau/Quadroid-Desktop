@@ -67,8 +67,8 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		System.getProperties().put("http.proxyHost", "proxy.th-wildau.de");
-		System.getProperties().put("http.proxyPort", "8080");
+//		System.getProperties().put("http.proxyHost", "proxy.th-wildau.de");
+//		System.getProperties().put("http.proxyPort", "8080");
 		PropertyConfigurator.configure(LOGGERPROPERTIES);
 		getMainController();
 		new Main();
@@ -104,7 +104,7 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 		
 		subMenuVideoDevice = new JMenu("Video Device");
 		menuVideo.add(subMenuVideoDevice);
-		
+
 		//Add Devices
 		final VideoStreamController videoStreamController = (VideoStreamController) mainController.getVideoStreamController();
 		String[] captureDevices = videoStreamController.getAvailableCaptureDevices();
@@ -120,7 +120,7 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 			item.setEnabled(false);
 			subMenuVideoDevice.add(item);
 		}
-	
+		
 		//create Video Menu
 		saveVideoMenu = new JMenu("Video speichern");
 		
