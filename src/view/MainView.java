@@ -55,7 +55,7 @@ public class MainView extends JPanel {
 		if (this.rightSubPanel == null) {			
 			this.rightSubPanel = new JPanel();
 			this.rightSubPanel.setLayout(new BoxLayout(rightSubPanel, BoxLayout.Y_AXIS));
-			this.rightSubPanel.setPreferredSize(new Dimension(500, 0));
+			this.rightSubPanel.setPreferredSize(new Dimension(600, 0));
 			this.rightSubPanel.setMinimumSize(new Dimension(200, 0));
 		}
 		

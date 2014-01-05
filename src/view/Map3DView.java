@@ -15,7 +15,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
 import javax.vecmath.AxisAngle4d;
-import javax.vecmath.Point3d;
 import javax.vecmath.Vector3d;
 
 import com.sun.j3d.utils.behaviors.vp.OrbitBehavior;
@@ -33,9 +32,9 @@ public class Map3DView extends JPanel{
 	private SimpleUniverse mSimpleUniverse;
 	
 	public Map3DView(controller.Map3DController controller) {
-		setPreferredSize(new Dimension(500, 350));
+		setPreferredSize(new Dimension(600, 350));
 		setMinimumSize(new Dimension(200, 200));
-		setMaximumSize(new Dimension(500, 300));
+		setMaximumSize(new Dimension(600, 300));
 		setLayout(new BorderLayout(0, 0));
 		setBorder(new EmptyBorder(10, 10, 10, 10));
 		setDoubleBuffered(true);
@@ -72,15 +71,7 @@ public class Map3DView extends JPanel{
 			e.printStackTrace();
 		}
 	}
-	
-	public Transform3D lookTowardsOriginFrom(Point3d point) {
-        Transform3D move = new Transform3D();
-        Vector3d up = new Vector3d(point.x, point.y + 1, point.z);
-        move.lookAt(point, new Point3d(0.0d, 0.0d, 0.0d), up);
-
-        return move;
-    }
-	 
+		 
 	private Transform3D getTransform3DTranslation(double x, double y, double z) {
 		Transform3D t = new Transform3D();
 		t.setTranslation(new Vector3d(x, y, z));
@@ -93,6 +84,10 @@ public class Map3DView extends JPanel{
 		return t;
 	}
 
+	/**
+	 * sets the {@link MetaData} for this view.
+	 * This will also update the view and the 3d model.
+	 */
 	public void setMetaData(MetaData metaData) {
 		Attitude att = metaData.getAttitude();
 		

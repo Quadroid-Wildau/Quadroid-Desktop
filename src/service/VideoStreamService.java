@@ -11,6 +11,18 @@ import com.googlecode.javacv.cpp.videoInputLib.videoInput;
 import communication.CommunicationStack;
 import communication.VideoCommunicator;
 
+/**
+ * 
+ * The service class for all video stuff. Grabbing frames, recording frames and so on is taking place
+ * here. 
+ * Singleton implementation
+ * 
+ * @see
+ * 	VideoCommunicator
+ * 
+ * @author Georg Baumgarten
+ *
+ */
 public class VideoStreamService extends Observable {
 	
 	private static VideoStreamService instance;
@@ -22,6 +34,8 @@ public class VideoStreamService extends Observable {
 	private FFmpegFrameRecorder mFrameRecorder;
 	private volatile boolean canRecord = false;
 	
+	private VideoStreamService() {}
+	
 	public static VideoStreamService getInstance() {
 		if (instance == null)
 			instance = new VideoStreamService();
@@ -29,6 +43,12 @@ public class VideoStreamService extends Observable {
 		return instance;
 	}
 	
+	/**
+	 * Start grabbing frames from capture device at device port
+	 * @param videoDevicePort
+	 * 			The device port
+	 * @throws Exception
+	 */
 	public void startVideoStream(int videoDevicePort) throws Exception {
 		mVideoCommunicator = getVideoCommunicator(videoDevicePort);
 		mCvCapture = mVideoCommunicator.getCvCapture();
@@ -40,6 +60,9 @@ public class VideoStreamService extends Observable {
 		mGrabberThread.start();
 	}
 	
+	/**
+	 * This will stop grabbing frames and will stop recording
+	 */
 	public void stopVideoStream() {
 		canRecord = false;
 		if (mGrabberThread != null) {
@@ -52,6 +75,11 @@ public class VideoStreamService extends Observable {
 		return CommunicationStack.getInstance().getVideoStreamCommunicator(videoDevicePort);
 	}
 
+	/**
+	 * Start to save the video stream to a file
+	 * @param filepath
+	 * 			The file to save the video to
+	 */
 	public void saveVideoStream(String filepath) {
 		try {
 			mFrameRecorder = CommunicationStack.getInstance().getVideoPersistance().createRecorder(mCvCapture, filepath);
@@ -63,6 +91,9 @@ public class VideoStreamService extends Observable {
 		}
 	}
 	
+	/**
+	 * Stop saving video stream if recording is enabled at the moment
+	 */
 	public void stopSaveVideoStream() {
 		canRecord = false;
 		try {
@@ -74,10 +105,20 @@ public class VideoStreamService extends Observable {
 		}
 	}
 	
+	/**
+	 * gets the current video frame
+	 * @return
+	 * 		the frame
+	 */
 	public IplImage getCurrentFrame() {
 		return currentFrame;
 	}
 	
+	/**
+	 * Get a list of all available capture devices. This will only work on Windows!
+	 * @return
+	 * 		String array with capture device names. The index in the array is the device port.
+	 */
 	public String[] getAvailableCaptureDevices() {
 		int count = videoInput.listDevices();
 		String[] devices = new String[count];
@@ -107,13 +148,17 @@ public class VideoStreamService extends Observable {
 		
 		public void run() {
 			while (canGrab) {
-				currentFrame = opencv_highgui.cvQueryFrame(mCvCapture);				
+				//get frame from capture device
+				currentFrame = opencv_highgui.cvQueryFrame(mCvCapture);			
+				
+				//record the frame if recording is enabled at the moment
 				if (canRecord && mFrameRecorder != null) {
 					try {
 						mFrameRecorder.record(currentFrame);
 					} catch (com.googlecode.javacv.FrameRecorder.Exception e) {}
 				}
 				
+				//notify all observers about the new frame
 				synchronized (this) {
 					VideoStreamService.this.setChanged();
 					VideoStreamService.this.notifyObservers(currentFrame);

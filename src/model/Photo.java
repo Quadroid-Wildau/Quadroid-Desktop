@@ -2,6 +2,8 @@ package model;
 
 import java.awt.image.BufferedImage;
 
+import de.th_wildau.quadroid.models.Waypoint;
+
 public class Photo {
 
 	private BufferedImage image;

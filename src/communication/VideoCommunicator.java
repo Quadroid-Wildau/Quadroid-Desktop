@@ -4,6 +4,13 @@ import com.googlecode.javacv.FrameGrabber.Exception;
 import com.googlecode.javacv.cpp.opencv_highgui;
 import com.googlecode.javacv.cpp.opencv_highgui.CvCapture;
 
+/**
+ * 
+ * This class represents the communicator for all video stuff. It initializes the capture device.
+ * 
+ * @author Georg Baumgarten
+ *
+ */
 public class VideoCommunicator {
 	
 	private CvCapture mCvCapture;
@@ -21,10 +28,20 @@ public class VideoCommunicator {
 		opencv_highgui.cvSetCaptureProperty(mCvCapture, opencv_highgui.CV_CAP_PROP_FRAME_HEIGHT, 480);
 	}
 	
+	/**
+	 * get the capture device
+	 * @return
+	 * 		the capture
+	 */
 	public CvCapture getCvCapture() {
 		return mCvCapture;
 	}
 	
+	/**
+	 * Returns the current video device port in use
+	 * @return
+	 * 		The port
+	 */
 	public int getVideoDevicePort() {
 		return videoDevicePort;
 	}

@@ -3,13 +3,13 @@ package communication;
 import java.util.Observable;
 import java.util.Random;
 
-import model.Waypoint;
 import de.th_wildau.quadroid.models.Airplane;
 import de.th_wildau.quadroid.models.Attitude;
 import de.th_wildau.quadroid.models.Course;
 import de.th_wildau.quadroid.models.GNSS;
 import de.th_wildau.quadroid.models.Landmark;
 import de.th_wildau.quadroid.models.MetaData;
+import de.th_wildau.quadroid.models.Waypoint;
 
 public class FlightControlCommunicator extends Observable{
 
