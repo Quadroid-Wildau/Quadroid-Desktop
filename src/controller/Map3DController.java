@@ -22,6 +22,7 @@ import javax.vecmath.Color3f;
 import javax.vecmath.Point3d;
 import javax.vecmath.Vector3f;
 
+import service.MetaDataService;
 import view.Map3DView;
 
 import com.sun.j3d.loaders.IncorrectFormatException;
@@ -29,6 +30,8 @@ import com.sun.j3d.loaders.ParsingErrorException;
 import com.sun.j3d.loaders.Scene;
 import com.sun.j3d.loaders.objectfile.ObjectFile;
 import com.sun.j3d.utils.image.TextureLoader;
+
+import de.th_wildau.quadroid.models.MetaData;
 
 public class Map3DController implements ViewController, Observer {
 
@@ -39,6 +42,8 @@ public class Map3DController implements ViewController, Observer {
 			this.view = new Map3DView(this);
 		}
 		
+		//Observer for Metadata to get yaw pitch roll
+		MetaDataService.getInstance().addObserver(this);
 		return this.view;
 	}
 
@@ -106,8 +111,10 @@ public class Map3DController implements ViewController, Observer {
 	}
 
 	@Override
-	public void update(Observable arg0, Object arg1) {
-		// TODO Auto-generated method stub
-		
+	public void update(Observable observable, Object obj) {
+		if (observable instanceof MetaDataService) {
+			MetaData metadata = (MetaData) obj;
+			getView().setMetaData(metadata);
+		}
 	}
 }

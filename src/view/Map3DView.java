@@ -21,6 +21,7 @@ import javax.vecmath.Vector3d;
 import com.sun.j3d.utils.behaviors.vp.OrbitBehavior;
 import com.sun.j3d.utils.universe.SimpleUniverse;
 
+import de.th_wildau.quadroid.models.Attitude;
 import de.th_wildau.quadroid.models.MetaData;
 
 public class Map3DView extends JPanel{
@@ -88,11 +89,24 @@ public class Map3DView extends JPanel{
 	
 	private Transform3D getTransform3DRotation(double x, double y, double z, double angle) {
 		Transform3D t = new Transform3D();
-		t.setRotation(new AxisAngle4d(x, y, z, Math.toRadians(angle)));
+		t.setRotation(new AxisAngle4d(x, y, z, angle));
 		return t;
 	}
 
 	public void setMetaData(MetaData metaData) {
-
+		Attitude att = metaData.getAttitude();
+		
+		Transform3D t = new Transform3D();
+		Transform3D mRollTransform = getTransform3DRotation(0, 0, 1, att.getRoll());
+		Transform3D mYawTransform = getTransform3DRotation(0, 1, 0, att.getYaw());
+		Transform3D mPitchTransform = getTransform3DRotation(1, 0, 0, att.getPitch());
+		Transform3D mZoomOut = getTransform3DTranslation(0, 0, 3.5);
+		
+		t.mul(mRollTransform);
+		t.mul(mYawTransform);
+		t.mul(mPitchTransform);
+		t.mul(mZoomOut);
+		
+		mSimpleUniverse.getViewingPlatform().getViewPlatformTransform().setTransform(t);
 	}
 }

@@ -51,6 +51,6 @@ public class MetaDataService extends Observable implements Observer{
 		MetaData metaData = this.getFlightCommunication().getMetaData();
 		this.metaDataHistory.add(metaData);
 		this.setChanged();
-		this.notifyObservers();
+		this.notifyObservers(metaData);
 	}
 }
