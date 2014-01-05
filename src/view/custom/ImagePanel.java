@@ -26,6 +26,13 @@ public class ImagePanel extends JPanel {
 			repaint();
 		} catch (Exception e) {}
 	}
+	
+	public void displayImage(BufferedImage img) {
+		try {
+			this.img = img;
+			repaint();
+		} catch (Exception e) {}
+	}
 
 	@Override
 	protected void paintComponent(Graphics g) {

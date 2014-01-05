@@ -1,6 +1,6 @@
 package controller;
 
-import java.awt.Component;
+import javax.swing.JComponent;
 
 import view.MainView;
 
@@ -15,7 +15,7 @@ public class MainController implements ViewController{
 	}
 	
 	@Override
-	public Component getView() {
+	public JComponent getView() {
 		if (view == null) {
 			this.view = new view.MainView(this);
 			this.view.setMap(this.getMapController().getView());

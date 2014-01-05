@@ -9,13 +9,15 @@ import java.util.Iterator;
 
 import javax.imageio.ImageIO;
 
+import de.th_wildau.quadroid.models.GNSS;
+
 public class GoogleMaps {
 	//config
 	private static int ZOOM_LEVEL = 4;
 	private static int SIZE_WIDTH = 400;
 	private static int SIZE_HEIGHT = 400;
 	
-	private model.GeoData geoData;
+	private GNSS geoData;
 	private ArrayList<String> points;
 	private ArrayList<String> markers;
 	
@@ -39,7 +41,7 @@ public class GoogleMaps {
 		return image;
 	}
 	
-	public void setGeoData(model.GeoData geoData) {
+	public void setGeoData(GNSS geoData) {
 		this.geoData = geoData;
 		this.setMarker(geoData);
 		this.addLine(geoData);
@@ -80,20 +82,20 @@ public class GoogleMaps {
 		return string;
 	}
 	
-	private void addMarker(model.GeoData geoData) {
+	private void addMarker(GNSS geoData) {
 		this.markers.add("&markers=color:blue%7Clabel:S%7C"+this.getStringFromGeodata(geoData));
 	}
 	
-	private void setMarker(model.GeoData geoData) {
+	private void setMarker(GNSS geoData) {
 		this.markers = new ArrayList<String>();
 		this.markers.add("&markers=color:blue%7Clabel:S%7C"+this.getStringFromGeodata(geoData));
 	}
 	
-	private void addLine(model.GeoData geoData) {
+	private void addLine(GNSS geoData) {
 		this.points.add("|" + this.getStringFromGeodata(geoData));
 	}
 	
-	private String getStringFromGeodata(model.GeoData geoData) {
+	private String getStringFromGeodata(GNSS geoData) {
 		return geoData.getLatitude() + "," + geoData.getLongitude();
 	}
 	

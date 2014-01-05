@@ -1,12 +1,33 @@
 package view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Label;
-import java.awt.image.BufferedImage;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
-import javax.swing.ImageIcon;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.MatteBorder;
+
+import org.jdesktop.swingx.JXMapViewer;
+import org.jdesktop.swingx.OSMTileFactoryInfo;
+import org.jdesktop.swingx.mapviewer.DefaultTileFactory;
+import org.jdesktop.swingx.mapviewer.DefaultWaypoint;
+import org.jdesktop.swingx.mapviewer.GeoPosition;
+import org.jdesktop.swingx.mapviewer.TileFactoryInfo;
+import org.jdesktop.swingx.mapviewer.Waypoint;
+import org.jdesktop.swingx.mapviewer.WaypointPainter;
+import org.jdesktop.swingx.painter.CompoundPainter;
+import org.jdesktop.swingx.painter.Painter;
+
+import view.custom.RoutePainter;
+import de.th_wildau.quadroid.models.GNSS;
 
 public class MapView extends JPanel{
 	private static final long serialVersionUID = 1L;
@@ -14,34 +35,67 @@ public class MapView extends JPanel{
 	@SuppressWarnings("unused")
 	private controller.MapController controller;
 	private JLabel label;
-	private view.helper.GoogleMaps googleMapsHelper;
-	private BufferedImage map;
-	private JLabel mapLabel;
+	private JXMapViewer mapViewer;
+	private JCheckBox cbAutoRefreshMap;
+	
+	private List<GeoPosition> track = new ArrayList<GeoPosition>(); 
+	private Set<Waypoint> waypoints = new HashSet<Waypoint>();
 
 	public MapView(controller.MapController controller) {
-		this.setBackground(Color.blue);
-		this.add(new Label("Map"));
+		setPreferredSize(new Dimension(500, 500));
+		setMinimumSize(new Dimension(200, 200));
+		setMaximumSize(new Dimension(500, 1000));
+		setLayout(new BorderLayout(0, 0));
+		setBorder(new EmptyBorder(10, 10, 10, 10));
+		setDoubleBuffered(true);
+		
 		this.controller = controller;
-		this.googleMapsHelper = new view.helper.GoogleMaps();
 		
-		this.label = new JLabel();
-		this.add(this.label);
+		label = new JLabel("Karte: ");
+		label.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(0, 0, 0)));
+		label.setFont(new Font("Tahoma", Font.BOLD, 18));
+		add(label, BorderLayout.NORTH);
+		
+		mapViewer = new JXMapViewer();
+		add(mapViewer, BorderLayout.CENTER);
+		
+		TileFactoryInfo info = new OSMTileFactoryInfo();
+        DefaultTileFactory tileFactory = new DefaultTileFactory(info);
+        mapViewer.setTileFactory(tileFactory);
+        tileFactory.setThreadPoolSize(8);
+        
+        GeoPosition start = new GeoPosition(50.11, 8.68);
+        
+        mapViewer.setZoom(7);
+        mapViewer.setAddressLocation(start);
+        mapViewer.setDoubleBuffered(true);
+        
+        cbAutoRefreshMap = new JCheckBox("Kartenposition automatisch setzen");
+        add(cbAutoRefreshMap, BorderLayout.SOUTH);
 	}
 	
-	public void setGeoData(model.GeoData geoData) {
-		this.label.setText(geoData.getLatitude() + " | " + geoData.getLongitude());
-		this.googleMapsHelper.setGeoData(geoData);
-		map = this.googleMapsHelper.getStaticImage();
+	public void setGeoData(GNSS geoData) {
+		label.setText("Karte: " + geoData.getLatitude() + " | " + geoData.getLongitude());
+		GeoPosition geoPos = new GeoPosition(geoData.getLatitude(), geoData.getLongitude());
+		track.add(geoPos);
 		
-		if (this.mapLabel != null) {
-			this.remove(this.mapLabel);
-		}
+		waypoints.clear();
+		waypoints.add(new DefaultWaypoint(geoPos));
 		
-		if (map != null) {
-			this.mapLabel = new JLabel(new ImageIcon(map));
-			add(this.mapLabel);
-		}
+		RoutePainter routePainter = new RoutePainter(track);
+				
+		WaypointPainter<Waypoint> waypointPainter = new WaypointPainter<Waypoint>();
+		waypointPainter.setAntialiasing(true);
+        waypointPainter.setWaypoints(waypoints);
+        
+        List<Painter<JXMapViewer>> painters = new ArrayList<Painter<JXMapViewer>>();
+        painters.add(routePainter);
+        painters.add(waypointPainter);
+		
+        CompoundPainter<JXMapViewer> painter = new CompoundPainter<JXMapViewer>(painters);
+        mapViewer.setOverlayPainter(painter);
+        
+        if (cbAutoRefreshMap.isSelected())
+        	mapViewer.setAddressLocation(geoPos);
 	}
-	
-	//http://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=13&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&sensor=false
 }

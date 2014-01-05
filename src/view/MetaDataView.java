@@ -4,9 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.ComponentOrientation;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.Label;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -14,6 +14,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
+
+import de.th_wildau.quadroid.models.MetaData;
 
 public class MetaDataView extends JPanel{
 	private static final long serialVersionUID = 1L;
@@ -37,10 +39,14 @@ public class MetaDataView extends JPanel{
 	private JTextField course;
 	
 	public MetaDataView(controller.MetaDataController controller) {
+		setPreferredSize(new Dimension(1280, 90));
+		setMinimumSize(new Dimension(1280, 90));
+		setMaximumSize(new Dimension(1280, 100));
 		setFont(new Font("Tahoma", Font.PLAIN, 12));
-		setBorder(new EmptyBorder(10, 10, 10, 10));
+		setBorder(new EmptyBorder(10, 10, 00, 10));
 		this.controller = controller;
 		setLayout(new BorderLayout(0, 0));
+		
 		lblMetadaten = new JLabel("Metadaten");
 		lblMetadaten.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(0, 0, 0)));
 		lblMetadaten.setFont(new Font("Tahoma", Font.BOLD, 18));
@@ -120,12 +126,12 @@ public class MetaDataView extends JPanel{
 		course.setColumns(10);
 	}
 
-	public void setMetaData(model.MetaData metaData) {
-		this.position.setText(metaData.getGeodata().getLatitude() + " | " + metaData.getGeodata().getLongitude());
-		this.power.setText(metaData.getBatteryState() + "% ");
-		this.height.setText(metaData.getGeodata().getHeight() + "m");
-		this.time.setText(metaData.getTime() + "s");
-		this.speed.setText(metaData.getSpeed() + "km/h");
+	public void setMetaData(MetaData metaData) {
+		this.position.setText(metaData.getAirplane().GeoData().getLatitude() + " | " + metaData.getAirplane().GeoData().getLongitude());
+		this.power.setText(metaData.getAirplane().getBatteryState() + "% ");
+		this.height.setText(metaData.getAirplane().GeoData().getHeight() + "m");
+		this.time.setText(metaData.getAirplane().getTime() + "s");
+		this.speed.setText(metaData.getCourse().getSpeed() + "km/h");
 		this.course.setText(metaData.getCourse() + "");
 	}
 }

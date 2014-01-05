@@ -3,8 +3,7 @@ package communication;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.GeoData;
-import model.Landmark;
+import model.AdvLandmark;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,6 +13,8 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.async.Callback;
 import com.mashape.unirest.http.exceptions.UnirestException;
+
+import de.th_wildau.quadroid.models.GNSS;
 
 /**
  * 
@@ -35,7 +36,7 @@ public class PushCommunicator {
 	private static final String LANDMARK_URL = BASE_URL + "landmark_alerts";
 	
 	private volatile String ACCESS_TOKEN = "";
-	private volatile List<Landmark> mLandmarkRequestQueue = new ArrayList<Landmark>();
+	private volatile List<AdvLandmark> mLandmarkRequestQueue = new ArrayList<AdvLandmark>();
 	private volatile boolean attemptingLogin = false;
 	
 	public PushCommunicator() {
@@ -54,7 +55,7 @@ public class PushCommunicator {
 	 * This method will upload a landmark alarm to the server
 	 * @param landmark
 	 */
-	public synchronized void pushLandmarkAlarm(Landmark landmark) {
+	public synchronized void pushLandmarkAlarm(AdvLandmark landmark) {
 		if (ACCESS_TOKEN.isEmpty()) {
 			//login first
 			if (!mLandmarkRequestQueue.contains(landmark)) {
@@ -103,7 +104,7 @@ public class PushCommunicator {
 							//if there are queued landmark push requests, handle them
 							if (!ACCESS_TOKEN.isEmpty() && mLandmarkRequestQueue != null) {
 								System.out.println("Got access token: " + ACCESS_TOKEN);
-								for (Landmark lm : mLandmarkRequestQueue) {
+								for (AdvLandmark lm : mLandmarkRequestQueue) {
 									pushLandmarkAlarm(lm);
 								}
 							}
@@ -126,17 +127,16 @@ public class PushCommunicator {
 		});
 	}
 	
-	private void uploadLandmarkAlarm(final Landmark landmark) {
-		GeoData geoData = landmark.getMetaData().getGeodata();
+	private void uploadLandmarkAlarm(final AdvLandmark landmark) {
+		GNSS geoData = landmark.getMetaData().getAirplane().GeoData();
 		try {
 			HttpResponse<JsonNode> response = Unirest.post(LANDMARK_URL)
 			.header("Authorization", "Bearer " + ACCESS_TOKEN)
 			.field("landmark_alert[latitude]", String.valueOf(geoData.getLatitude()))
 			.field("landmark_alert[longitude]", String.valueOf(geoData.getLongitude()))
-			.field("landmark_alert[detection_date]", String.valueOf(landmark.getMetaData().getTime()))
+			.field("landmark_alert[detection_date]", String.valueOf(landmark.getMetaData().getAirplane().getTime()))
 			.field("landmark_alert[height]", String.valueOf(geoData.getHeight()))
 			.field("landmark_alert[image]", landmark.getLandmarkPictureAsFile())
-			.field("content-type", "application/x-www-form-urlencoded")
 			.asJson();
 			
 			System.out.println("Response: " + response.getBody().getObject().toString());

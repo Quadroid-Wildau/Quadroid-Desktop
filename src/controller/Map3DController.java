@@ -5,6 +5,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.imageio.ImageIO;
 import javax.media.j3d.Appearance;
@@ -20,19 +22,21 @@ import javax.vecmath.Color3f;
 import javax.vecmath.Point3d;
 import javax.vecmath.Vector3f;
 
+import view.Map3DView;
+
 import com.sun.j3d.loaders.IncorrectFormatException;
 import com.sun.j3d.loaders.ParsingErrorException;
 import com.sun.j3d.loaders.Scene;
 import com.sun.j3d.loaders.objectfile.ObjectFile;
 import com.sun.j3d.utils.image.TextureLoader;
 
-public class Map3DController implements ViewController{
+public class Map3DController implements ViewController, Observer {
 
-	private view.Map3DView view;
+	private Map3DView view;
 
-	public view.Map3DView getView() {
+	public Map3DView getView() {
 		if (this.view == null) {
-			this.view = new view.Map3DView(this);
+			this.view = new Map3DView(this);
 		}
 		
 		return this.view;
@@ -99,5 +103,11 @@ public class Map3DController implements ViewController{
 		((Shape3D) objRoot.getChild(3)).setAppearance(metalApperance);
 		
 		return objRoot;
+	}
+
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -1,4 +1,4 @@
-package de.th_wildau.quadroid.enums;
+package enums;
 
 /**
  * This enum contains marker for transmissions

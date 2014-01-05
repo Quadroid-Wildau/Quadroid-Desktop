@@ -7,10 +7,12 @@ import java.util.Observer;
 import communication.CommunicationStack;
 import communication.FlightControlCommunicator;
 
+import de.th_wildau.quadroid.models.MetaData;
+
 public class MetaDataService extends Observable implements Observer{
 	
 	private static MetaDataService instance;
-	private ArrayList<model.MetaData> metaDataHistory;
+	private ArrayList<MetaData> metaDataHistory;
 
 	public static MetaDataService getInstance() {
 		if (instance == null) {
@@ -21,12 +23,12 @@ public class MetaDataService extends Observable implements Observer{
 	}
 	
 	private MetaDataService() {
-		this.metaDataHistory = new ArrayList<model.MetaData>();
+		this.metaDataHistory = new ArrayList<MetaData>();
 		this.getFlightCommunication().addObserver(this);
 	}
 	
-	public model.MetaData getMetaData() {
-		model.MetaData metaData = null;
+	public MetaData getMetaData() {
+		MetaData metaData = null;
 		
 		if(this.metaDataHistory.size() > 0) {
 			int index = this.metaDataHistory.size() - 1;
@@ -36,7 +38,7 @@ public class MetaDataService extends Observable implements Observer{
 		return metaData;
 	}
 	
-	public ArrayList<model.MetaData> getMetaDatas() {
+	public ArrayList<MetaData> getMetaDatas() {
 		return this.metaDataHistory;
 	}
 	
@@ -46,7 +48,7 @@ public class MetaDataService extends Observable implements Observer{
 
 	@Override
 	public void update(Observable o, Object arg) {
-		model.MetaData metaData = this.getFlightCommunication().getMetaData();
+		MetaData metaData = this.getFlightCommunication().getMetaData();
 		this.metaDataHistory.add(metaData);
 		this.setChanged();
 		this.notifyObservers();

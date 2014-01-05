@@ -5,7 +5,12 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 
+import javax.swing.BoxLayout;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
 import controller.MainController;
 
 public class MainView extends JPanel {
@@ -27,67 +32,81 @@ public class MainView extends JPanel {
 		this.setVisible(true);
 		this.setLayout(new BorderLayout());
 		this.add(this.getRightSubPanel(), java.awt.BorderLayout.EAST);
+		setDoubleBuffered(true);
+		try {
+			UIManager.setLookAndFeel(
+			        UIManager.getSystemLookAndFeelClassName());
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedLookAndFeelException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	private JPanel getRightSubPanel() {
 		if (this.rightSubPanel == null) {			
 			this.rightSubPanel = new JPanel();
-			this.rightSubPanel.setLayout(new BorderLayout());
-			this.rightSubPanel.setPreferredSize(new Dimension(580, 9000));
+			this.rightSubPanel.setLayout(new BoxLayout(rightSubPanel, BoxLayout.Y_AXIS));
+			this.rightSubPanel.setPreferredSize(new Dimension(500, 0));
+			this.rightSubPanel.setMinimumSize(new Dimension(200, 0));
 		}
 		
 		return this.rightSubPanel;
 	}
 	
-	public void setMap(Component view) {
-		if (this.mapView != view) {
-			if (this.mapView != null) {				
-				this.remove(this.mapView);
-			}
-			
-			this.mapView = view;	
-			this.mapView.setPreferredSize(new Dimension(400, 300));
-		}
-		
-		this.rightSubPanel.add(this.mapView, java.awt.BorderLayout.PAGE_START);
-	}
-	
-	public void setMap3D(Component view) {
-		if (this.map3DView != view) {
-			if(this.map3DView != null) { 
-				this.remove(this.map3DView);
-			}
-			
-			this.map3DView = view;
-			this.map3DView.setPreferredSize(new Dimension(580, 480));
-		}
-		
-		this.rightSubPanel.add(this.map3DView, java.awt.BorderLayout.PAGE_END);
-	}
-	
-	public void setMetaData(Component view) {
-		if (this.metaDataView != view) {
-			if (this.metaDataView != null) {				
-				this.remove(this.metaDataView);
-			}
-			
-			this.metaDataView = view;		
-			this.metaDataView.setPreferredSize(new Dimension(1280, 120));
-		}
-		
-		this.add(this.metaDataView, java.awt.BorderLayout.SOUTH);
-	}
-	
-	public void setVideoStream(Component view) {
+	public void setVideoStream(JComponent view) {
 		if (this.videoStreamView != view) {
 			if (this.videoStreamView != null) {				
 				this.remove(this.videoStreamView);
 			}
 			
 			this.videoStreamView = view;
-			this.videoStreamView.setPreferredSize(new Dimension(640, 480));
 		}
 		
 		this.add(this.videoStreamView, java.awt.BorderLayout.CENTER);
+	}
+	
+	public void setMap(JComponent view) {
+		if (this.mapView != view) {
+			if (this.mapView != null) {				
+				this.remove(this.mapView);
+			}
+			
+			this.mapView = view;
+		}
+		
+		this.rightSubPanel.add(this.mapView, java.awt.BorderLayout.CENTER);
+	}
+	
+	public void setMap3D(JComponent view) {
+		if (this.map3DView != view) {
+			if(this.map3DView != null) { 
+				this.remove(this.map3DView);
+			}
+			
+			this.map3DView = view;
+		}
+		
+		this.rightSubPanel.add(this.map3DView, java.awt.BorderLayout.SOUTH);
+	}
+	
+	public void setMetaData(JComponent view) {
+		if (this.metaDataView != view) {
+			if (this.metaDataView != null) {				
+				this.remove(this.metaDataView);
+			}
+			
+			this.metaDataView = view;
+		}
+		
+		this.add(this.metaDataView, java.awt.BorderLayout.SOUTH);
 	}
 }

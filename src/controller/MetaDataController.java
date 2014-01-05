@@ -2,7 +2,8 @@ package controller;
 
 import java.util.Observable;
 import java.util.Observer;
-import model.MetaData;
+
+import de.th_wildau.quadroid.models.MetaData;
 
 public class MetaDataController implements ViewController, Observer{
 

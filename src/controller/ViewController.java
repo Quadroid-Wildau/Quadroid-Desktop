@@ -1,7 +1,7 @@
 package controller;
 
-import java.awt.Component;
+import javax.swing.JComponent;
 
 public interface ViewController {
-	public Component getView();
+	public JComponent getView();
 }

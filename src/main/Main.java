@@ -24,11 +24,11 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import model.GeoData;
-import model.Landmark;
-import model.MetaData;
+import model.AdvLandmark;
 import model.XBeeRxTx;
 
 import org.apache.commons.lang3.SystemUtils;
@@ -46,8 +46,10 @@ import connection.Connect;
 import controller.MainController;
 import controller.VideoStreamController;
 import controller.ViewController;
+import de.th_wildau.quadroid.models.Airplane;
 import de.th_wildau.quadroid.models.Course;
 import de.th_wildau.quadroid.models.GNSS;
+import de.th_wildau.quadroid.models.MetaData;
 import de.th_wildau.quadroid.models.RxData;
 import enums.XBee;
 
@@ -84,6 +86,23 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 		getContentPane().add(getMainController().getView());
 		addWindowListener(this);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+		try {
+			UIManager.setLookAndFeel(
+			        UIManager.getSystemLookAndFeelClassName());
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedLookAndFeelException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		menuBar = new JMenuBar();
 		menuFile = new JMenu("Datei");
@@ -355,12 +374,23 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 			
 			try {
 				BufferedImage testImage = ImageIO.read(new File(imagefile));
-				GeoData geoData = new GeoData(54.584f, 14.65f, 20.0f);
-				Landmark landmark = new Landmark();
+				
+				GNSS geoData = new GNSS();
+				geoData.setHeight(21);
+				geoData.setLatitude(54.489165f);
+				geoData.setLongitude(14.568f);
+				
+				AdvLandmark landmark = new AdvLandmark();
 				MetaData metadata = new MetaData();
-				metadata.setGeodata(geoData);
-				metadata.setTime(System.currentTimeMillis()/1000);
-				landmark.setLandmarkPicture(testImage);
+				Airplane ap = new Airplane();
+				
+				ap.setGeoData(geoData);
+				ap.setTime(System.currentTimeMillis()/1000);
+				ap.setGeoData(geoData);				
+				
+				metadata.setAirplane(ap);
+				
+				landmark.setPictureoflandmark(testImage);
 				landmark.setMetaData(metadata);
 				CommunicationStack.getInstance().getPushCommunicator().pushLandmarkAlarm(landmark);
 			} catch (IOException e1) {
