@@ -21,10 +21,14 @@ public class MetaDataController implements ViewController, Observer{
 	private service.MetaDataService getService() {
 		return service.MetaDataService.getInstance();
 	}
+	
+	public MetaData getFirstMetaData() {
+		return getService().getFirstMetaData();
+	}
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
-		MetaData metaData = this.getService().getMetaData();
+		MetaData metaData = getService().getMetaData();
 		this.getView().setMetaData(metaData);
 	}
 }

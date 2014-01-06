@@ -45,6 +45,12 @@ public class MetaDataService extends Observable implements Observer{
 	private FlightControlCommunicator getFlightCommunication() {
 		return CommunicationStack.getInstance().getFlightCommunicator();
 	}
+	
+	public MetaData getFirstMetaData() {
+		if (metaDataHistory != null && metaDataHistory.size() > 0)
+			return metaDataHistory.get(0);
+		return null;
+	}
 
 	@Override
 	public void update(Observable o, Object arg) {

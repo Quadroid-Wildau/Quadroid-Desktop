@@ -51,6 +51,7 @@ import de.th_wildau.quadroid.models.GNSS;
 import de.th_wildau.quadroid.models.MetaData;
 import de.th_wildau.quadroid.models.RxData;
 import enums.XBee;
+import java.awt.Toolkit;
 
 public class Main extends JFrame implements ActionListener, WindowListener, MouseListener, IRxListener {
 
@@ -58,8 +59,8 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 	private static MainController mainController;
 	private static Logger logger = LoggerFactory.getLogger(Main.class.getName());
 	private JMenuBar menuBar;
-	private JMenu menuFile, menuVideo, menuLandmarkAlarm, subMenuVideoDevice, saveScreenshotMenu, saveVideoMenu, xbee;
-	private JMenuItem itemSaveVideoPredefinedPath, itemSaveVideo, itemStopSavingVideo, disconnectxbee;
+	private JMenu menuFile, menuVideo, menuLandmarkAlarm, subMenuVideoDevice, saveScreenshotMenu, saveVideoMenu, menuXbee, xbee;
+	private JMenuItem itemSaveVideoPredefinedPath, itemSaveVideo, itemStopSavingVideo;
 	private Connect xbeeconnection = null;
 	/**instance for transmission with xbee*/
 	private XBeeTransmitterHandler xbeetransmitter = null;
@@ -80,6 +81,8 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 	}
 
 	public Main() {
+		setTitle("Quadroid Desktop");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Main.class.getResource("/images/logo.png")));
 		setSize(1280, 800);
 		getContentPane().add(getMainController().getView());
 		addWindowListener(this);
@@ -102,19 +105,27 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 		menuFile = new JMenu("Datei");
 		menuVideo = new JMenu("Video");
 		menuLandmarkAlarm = new JMenu("Landmarkenalarm");
+		menuXbee = new JMenu("XBee");
+		
+		menuBar.add(menuFile);
+		menuBar.add(menuVideo);
+		menuBar.add(menuLandmarkAlarm);
+		menuBar.add(menuXbee);
 		
 		xbee = new JMenu("Connect xBee-Pro");
 		xbee.addMouseListener(this);
 		for(String s : Connect.getAvailablePorts())
 		{
-			xbee.add(s);
+			JMenuItem item = new JMenuItem(s);
+			item.setActionCommand("open_xbee_connection");
+			xbee.add(item);
 		}
-		
-		menuFile.add(xbee);
-		
-		menuBar.add(menuFile);
-		menuBar.add(menuVideo);
-		menuBar.add(menuLandmarkAlarm);
+		menuXbee.add(xbee);
+				
+		JMenuItem itemExit = new JMenuItem("Beenden");
+		itemExit.setActionCommand("exit");
+		itemExit.addActionListener(this);
+		menuFile.add(itemExit);
 		
 		subMenuVideoDevice = new JMenu("Video Device");
 		menuVideo.add(subMenuVideoDevice);
@@ -189,11 +200,6 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 		//disable the save menus, because after starting the application, we don't have any capture device selected.
 		//The user should not have any possibility to click one of these menu items.
 		disableSaveMenus();
-		
-		JMenuItem itemExit = new JMenuItem("Beenden");
-		itemExit.setActionCommand("exit");
-		itemExit.addActionListener(this);
-		menuFile.add(itemExit);
 		
 		JMenuItem itemSimulateLandmarkAlarm = new JMenuItem("Landmarkenalarm simulieren");
 		itemSimulateLandmarkAlarm.setActionCommand("simulateAlarm");
@@ -311,13 +317,13 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 			}
 		} else if (command.equals("exit")) {
 			System.exit(0);
-		} else if(command.equals("connect"))
-		{
+		} else if (command.equals("open_xbee_connection")) {
 			//if actioncommand is connect it must be an event of 
 			//JMenuItem (only set in JMenuItem) 
 			JMenuItem item = ((JMenuItem)e.getSource());
 			//get selected port 
 			String port = item.getText();
+			
 			//create xbee device
 			XBeeRxTx xbeedevice = new XBeeRxTx();
 			xbeedevice.setBaud(XBee.BAUD.getValue());
@@ -337,32 +343,10 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 				oh.register(this);
 				this.xbeeconnection.addSerialPortEventListener(receiver);
 				
-				menuFile.remove(xbee);
-				xbee.removeMouseListener(this);
-				xbee.removeAll();
-				xbee.setText("xBee-Pro");
-				disconnectxbee = new JMenuItem("Disconnect xBee-Pro");
-				disconnectxbee.setActionCommand("disconnectxbee");
-				disconnectxbee.addActionListener(this);
-				xbee.add(disconnectxbee);
-				menuFile.add(xbee);
+				item.setEnabled(false);
 			}	
 			
 			return;
-		}else if(command.equals("disconnectxbee"))
-		{
-			if(this.xbeeconnection != null)
-			{
-				this.xbeeconnection.disconnect();
-				this.xbeeconnection = null;
-				
-				menuFile.remove(xbee);
-				xbee.removeAll();
-				xbee.addMouseListener(this);
-				xbee.setText("Connect xBee-Pro");
-				menuFile.add(xbee);
-			}
-			
 		} else if (command.equals("simulateAlarm")) {
 			String imagefile = openFile();
 			
@@ -431,25 +415,9 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 			e1.printStackTrace();
 		}
 	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) 
-	{
-		xbee.removeAll();
-		for(String s : Connect.getAvailablePorts())
-		{
-			JMenuItem jmi = new JMenuItem(s);
-			jmi.addActionListener(this);
-			jmi.setActionCommand("connect");
-			xbee.add(jmi);
-		}
-		
-		menuFile.add(xbee);
-	}
-	
-	
 	
 	//Unused
+	public void mouseEntered(MouseEvent e) {}
 	public void windowActivated(WindowEvent e) {}
 	public void windowClosed(WindowEvent e) {}
 	public void windowDeactivated(WindowEvent e) {}

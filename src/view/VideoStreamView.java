@@ -16,6 +16,7 @@ import view.custom.ImagePanel;
 import com.googlecode.javacv.cpp.opencv_core.IplImage;
 
 import controller.VideoStreamController;
+import javax.swing.SwingConstants;
 
 public class VideoStreamView extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -24,6 +25,7 @@ public class VideoStreamView extends JPanel {
 	private VideoStreamController controller;
 	
 	private ImagePanel imagePanel;
+	private JLabel lblChooseDevice;
 	
 	public VideoStreamView(controller.VideoStreamController controller) {
 		this.controller = controller;
@@ -37,9 +39,16 @@ public class VideoStreamView extends JPanel {
 		lblMetadaten.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(0, 0, 0)));
 		lblMetadaten.setFont(new Font("Arial", Font.BOLD, 18));
 		add(lblMetadaten, BorderLayout.NORTH);
-		
+				
 		imagePanel = new ImagePanel();
+		imagePanel.setLayout(new BorderLayout());
 		add(imagePanel, BorderLayout.CENTER);
+		
+		lblChooseDevice = new JLabel("W\u00E4hlen Sie ein Video Device aus dem Men\u00FC");
+		lblChooseDevice.setHorizontalAlignment(SwingConstants.CENTER);
+		lblChooseDevice.setFont(new Font("Arial", Font.PLAIN, 18));
+		lblChooseDevice.setForeground(Color.gray);
+		imagePanel.add(lblChooseDevice, BorderLayout.CENTER);
 	}
 
 	public void showNewVideoFrame(final IplImage frame) {
@@ -47,6 +56,8 @@ public class VideoStreamView extends JPanel {
 			@Override
 			public void run() {
 				if (frame != null) {
+					if (lblChooseDevice != null)
+						imagePanel.remove(lblChooseDevice);
 					imagePanel.displayImage(frame);
 				}
 			}

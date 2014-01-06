@@ -15,14 +15,13 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
 
+import controller.MetaDataController;
 import de.th_wildau.quadroid.models.MetaData;
 
 public class MetaDataView extends JPanel{
 	private static final long serialVersionUID = 1L;
 	
-	
-	@SuppressWarnings("unused")
-	private controller.MetaDataController controller;
+	private MetaDataController controller;
 	private JLabel lblMetadaten;
 	private JPanel panel;
 	private JLabel lblPosition;
@@ -37,7 +36,7 @@ public class MetaDataView extends JPanel{
 	private JTextField speed;
 	private JTextField height;
 	private JTextField course;
-	
+		
 	public MetaDataView(controller.MetaDataController controller) {
 		setPreferredSize(new Dimension(1280, 90));
 		setMinimumSize(new Dimension(1280, 90));
