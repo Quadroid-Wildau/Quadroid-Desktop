@@ -51,11 +51,15 @@ public class MapController implements ViewController, Observer {
 	}
 	
 	/**
-	 * Remove a single waypoint
-	 * @param wp
+	 * deletes a single waypoint
+	 * @param index
 	 */
-	public void removeWaypoint(Waypoint wp) {
-		FlightControlService.getInstance().deleteWaypoint(wp);
+	public void removeWaypoint(int index) {
+		FlightControlService.getInstance().deleteWaypoint(index);
+	}
+	
+	public Waypoint[] getWaypointsFromFlightCtrl() {
+		return FlightControlService.getInstance().getWaypoints();
 	}
 			
 	/**

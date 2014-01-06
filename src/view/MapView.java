@@ -52,6 +52,10 @@ import view.helper.QuadroidWaypointRenderer;
 import view.helper.RoutePainter;
 import view.interfaces.WaypointDeletedInterface;
 import de.th_wildau.quadroid.models.GNSS;
+import java.awt.FlowLayout;
+import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 
 public class MapView extends JPanel implements WaypointDeletedInterface {
 	private static final long serialVersionUID = 1L;
@@ -63,7 +67,6 @@ public class MapView extends JPanel implements WaypointDeletedInterface {
 	private MapPopupMenu mpm;
 	private JPanel panel;
 	private JButton btnShowWaypoints;
-	private JLabel labelSeperator;
 	
 	private List<GeoPosition> mQuadroidTrack = new ArrayList<GeoPosition>(); 
 	private Set<Waypoint> mCurrentQuadroidPos = new HashSet<Waypoint>();
@@ -95,7 +98,7 @@ public class MapView extends JPanel implements WaypointDeletedInterface {
 		
 		label = new JLabel("Karte: ");
 		label.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(0, 0, 0)));
-		label.setFont(new Font("Tahoma", Font.BOLD, 18));
+		label.setFont(new Font("Arial", Font.BOLD, 18));
 		add(label, BorderLayout.NORTH);
 		
 		mapViewer = new JXMapViewer();
@@ -120,24 +123,25 @@ public class MapView extends JPanel implements WaypointDeletedInterface {
         
         panel = new JPanel();
         add(panel, BorderLayout.SOUTH);
-        panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
+        panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
         
         cbAutoRefreshMap = new JCheckBox("Kartenposition automatisch setzen");
         panel.add(cbAutoRefreshMap);
         
-        labelSeperator = new JLabel("|");
-        panel.add(labelSeperator);
-        
         btnShowWaypoints = new JButton("Wegpunkte anzeigen");
         btnShowWaypoints.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnShowWaypoints.addActionListener(mButtonListener);
+        
+        lblNewLabel = new JLabel("| ");
+        lblNewLabel.setFont(new Font("Dialog", Font.PLAIN, 12));
+        panel.add(lblNewLabel);
         panel.add(btnShowWaypoints);
         cbAutoRefreshMap.addChangeListener(mCheckBoxChangeListener);
         
         //Configure painters
         currentRoutePosPainter.setAntialiasing(true);
-        waypointPainter.setRenderer(new LabeledWaypointRenderer("./res/waypoint_red.png"));
-        currentRoutePosPainter.setRenderer(new QuadroidWaypointRenderer("./res/quadroid.png"));
+        waypointPainter.setRenderer(new LabeledWaypointRenderer("/images/waypoint_red.png"));
+        currentRoutePosPainter.setRenderer(new QuadroidWaypointRenderer("/images/quadroid.png"));
         painters.add(routePainter);
         painters.add(currentRoutePosPainter);
         painters.add(waypointPainter);
@@ -246,7 +250,7 @@ public class MapView extends JPanel implements WaypointDeletedInterface {
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == btnShowWaypoints) {
 				//show waypoints
-				new WaypointView(MapView.this);
+				new WaypointView(MapView.this, controller);
 			}
 		}
 	};
@@ -260,6 +264,7 @@ public class MapView extends JPanel implements WaypointDeletedInterface {
 			}
 		}
 	};
+	private JLabel lblNewLabel;
 	
 	
 //**********************************************************************************************************************************
@@ -269,6 +274,7 @@ public class MapView extends JPanel implements WaypointDeletedInterface {
 	@Override
 	public void onWaypointDeleted(int index) {
 		removeWaypoint(index);
+		controller.removeWaypoint(index);
 	}
 	
 //**********************************************************************************************************************************

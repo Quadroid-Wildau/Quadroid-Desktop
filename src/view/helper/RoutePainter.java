@@ -13,6 +13,12 @@ import org.jdesktop.swingx.JXMapViewer;
 import org.jdesktop.swingx.mapviewer.GeoPosition;
 import org.jdesktop.swingx.painter.Painter;
 
+/**
+ * This {@link Painter} can be used to draw a route on a {@link JXMapViewer}.
+ * 
+ * @author Georg Baumgarten
+ *
+ */
 public class RoutePainter implements Painter<JXMapViewer> {
 
 	private List<GeoPosition> track;

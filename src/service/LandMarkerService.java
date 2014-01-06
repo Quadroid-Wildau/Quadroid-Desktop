@@ -1,7 +1,6 @@
 package service;
 
 import model.AdvLandmark;
-import model.PushMessage;
 
 public class LandMarkerService {
 
@@ -11,10 +10,6 @@ public class LandMarkerService {
 
 	public AdvLandmark getLandmarkAlarm() {
 		return null;
-	}
-
-	public void sendPushMessage(PushMessage pm) {
-
 	}
 
 }

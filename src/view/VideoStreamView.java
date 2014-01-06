@@ -35,7 +35,7 @@ public class VideoStreamView extends JPanel {
 		
 		JLabel lblMetadaten = new JLabel("Video");
 		lblMetadaten.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(0, 0, 0)));
-		lblMetadaten.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblMetadaten.setFont(new Font("Arial", Font.BOLD, 18));
 		add(lblMetadaten, BorderLayout.NORTH);
 		
 		imagePanel = new ImagePanel();

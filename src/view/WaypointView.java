@@ -4,34 +4,45 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import service.FlightControlService;
 import view.interfaces.WaypointDeletedInterface;
+import controller.MapController;
+import de.th_wildau.quadroid.models.GNSS;
 import de.th_wildau.quadroid.models.Waypoint;
 
 public class WaypointView extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private DefaultListModel<Waypoint> model;
-	private JList<Waypoint> list;
+	private DefaultListModel<String> model;
+	private JList<String> list;
 	private WaypointDeletedInterface deletedListener;
+	private Waypoint[] waypoints;
+	private MapController controller;
 
-	public WaypointView(WaypointDeletedInterface deletedListener) {
+	public WaypointView(WaypointDeletedInterface deletedListener, MapController controller) {
 		setTitle("Wegpunkte");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setSize(640, 480);
 		setPreferredSize(new Dimension(640, 480));
+		setLocationRelativeTo(null);
 		
+		this.controller = controller;
 		this.deletedListener = deletedListener;
 		
-		list = new JList<Waypoint>();
+		waypoints = controller.getWaypointsFromFlightCtrl();
+		
+		list = new JList<String>();
+		list.addKeyListener(mKeyListener);
 		getContentPane().add(list, BorderLayout.CENTER);
 		
 		JPanel panel = new JPanel();
@@ -48,16 +59,34 @@ public class WaypointView extends JFrame {
 		btnDeleteSelected.addActionListener(mButtonListener);
 		panel.add(btnDeleteSelected, BorderLayout.CENTER);
 		
-		loadWaypoints();
+		showWaypoints();
 		setVisible(true);
 	}
 
-	private void loadWaypoints() {
-		model = new DefaultListModel<Waypoint>();
-		for (Waypoint wp : FlightControlService.getInstance().getWaypoints()) {
-			model.addElement(wp);
+	private void showWaypoints() {
+		model = new DefaultListModel<String>();
+		for (int i = 0; i < waypoints.length; i++) {
+			final GNSS gnss = waypoints[i].getPosition();
+			model.addElement("[" + (i+1) + "] Latitude: " + gnss.getLatitude() + ", Longitude: " + gnss.getLongitude() + ", Hoehe: " + gnss.getHeight());
 		}
 		list.setModel(model);
+	}
+	
+	private void deleteSelectedWaypointsWithConfirmation() {
+		int selection = JOptionPane.showConfirmDialog(WaypointView.this, 
+				"Sollen die ausgewählten Wegpunkte wirklich gelöscht werden?", 
+				"Wegpunkte löschen", 
+				JOptionPane.YES_NO_OPTION);
+
+		if (selection == JOptionPane.YES_OPTION) {
+			for (int i : list.getSelectedIndices()) {
+				if (deletedListener != null) deletedListener.onWaypointDeleted(i);
+			}
+			
+			//reload waypoints
+			waypoints = controller.getWaypointsFromFlightCtrl();
+			showWaypoints();
+		}
 	}
 	
 	private ActionListener mButtonListener = new ActionListener() {
@@ -66,13 +95,17 @@ public class WaypointView extends JFrame {
 			if (e.getActionCommand().equals("close")) {
 				dispose();
 			} else if (e.getActionCommand().equals("deleteSelected")) {
-				for (int i : list.getSelectedIndices()) {
-					Waypoint wp = model.get(i);
-					FlightControlService.getInstance().deleteWaypoint(wp);
-					model.removeElement(wp);
-					if (deletedListener != null) deletedListener.onWaypointDeleted(i);
-				}
-				list.setModel(model);
+				deleteSelectedWaypointsWithConfirmation();
+			}
+		}
+	};
+	
+	private KeyListener mKeyListener = new KeyListener() {
+		public void keyTyped(KeyEvent e) {}
+		public void keyReleased(KeyEvent e) {}
+		public void keyPressed(KeyEvent e) {
+			if (e.getKeyCode() == KeyEvent.VK_DELETE) {
+				deleteSelectedWaypointsWithConfirmation();
 			}
 		}
 	};

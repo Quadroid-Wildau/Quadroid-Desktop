@@ -37,8 +37,8 @@ public class FlightControlService extends Observable {
 		waypoints.addAll(cache);
 	}
 
-	public void deleteWaypoint(Waypoint waypoint) {
-		waypoints.remove(waypoint);
+	public void deleteWaypoint(int index) {
+		waypoints.remove(index);
 	}
 	
 	public void clearWaypoints() {

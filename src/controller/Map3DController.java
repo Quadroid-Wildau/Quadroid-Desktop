@@ -2,7 +2,6 @@ package controller;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Observable;
@@ -52,7 +51,7 @@ public class Map3DController implements ViewController, Observer {
 		ObjectFile f = new ObjectFile(ObjectFile.RESIZE);
 		Scene s = null;
 		try {
-			s = f.load(file);
+			s = f.load(getClass().getResource(file));
 		} catch (IncorrectFormatException e) {
 			System.err.println(e);
 		} catch (ParsingErrorException e) {
@@ -64,7 +63,7 @@ public class Map3DController implements ViewController, Observer {
 		BoundingSphere bs = new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 100.0);
 		objRoot = s.getSceneGroup();
 
-		BufferedImage image = ImageIO.read(new File(backgroundFile));
+		BufferedImage image = ImageIO.read(getClass().getResourceAsStream(backgroundFile));
 		ImageComponent2D bgImage = new ImageComponent2D(ImageComponent2D.FORMAT_RGBA8, image);
 		Background bgNode = new Background(bgImage);
 		bgNode.setImageScaleMode(Background.SCALE_FIT_ALL);
@@ -96,7 +95,7 @@ public class Map3DController implements ViewController, Observer {
 		app.setColoringAttributes(color1ca);
 		node.setAppearance(app);
 		 
-		Texture metalTexture = new TextureLoader("./3d/metal.jpg", view).getTexture();
+		Texture metalTexture = new TextureLoader(getClass().getResource("/model3d/metal.jpg"), view).getTexture();
 		Appearance metalApperance = new Appearance();
 		metalApperance.setTexture(metalTexture);
 		

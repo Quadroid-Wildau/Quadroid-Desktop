@@ -5,7 +5,6 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -13,15 +12,23 @@ import javax.imageio.ImageIO;
 import model.CustomWaypoint;
 
 import org.jdesktop.swingx.JXMapViewer;
+import org.jdesktop.swingx.mapviewer.Waypoint;
 import org.jdesktop.swingx.mapviewer.WaypointRenderer;
 
+/**
+ * This class can be used as a renderer for {@link Waypoint} on a {@link JXMapViewer}.
+ * It renders a marker with a small label.
+ * 
+ * @author Georg Baumgarten
+ *
+ */
 public class LabeledWaypointRenderer implements WaypointRenderer<CustomWaypoint> {
 
 	private BufferedImage wpImage;
 	 
 	public LabeledWaypointRenderer(String imagePath) {
 		try {
-			wpImage = ImageIO.read(new File(imagePath));
+			wpImage = ImageIO.read(getClass().getResourceAsStream(imagePath));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

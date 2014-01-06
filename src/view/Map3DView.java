@@ -41,7 +41,7 @@ public class Map3DView extends JPanel{
 		
 		JLabel lblMetadaten = new JLabel("3D Modell");
 		lblMetadaten.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(0, 0, 3)));
-		lblMetadaten.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblMetadaten.setFont(new Font("Arial", Font.BOLD, 18));
 		add(lblMetadaten, BorderLayout.NORTH);
 		
 		this.controller = controller;
@@ -52,7 +52,7 @@ public class Map3DView extends JPanel{
 		mSimpleUniverse = new SimpleUniverse(c);
 		BranchGroup scene;
 		try {
-			scene = controller.createSceneGraph("./3d/quadrokopter.obj", "./3d/landschaft.jpg");
+			scene = controller.createSceneGraph("/model3d/quadrokopter.obj", "/model3d/landschaft.jpg");
 			
 			OrbitBehavior orbit = new OrbitBehavior(c, OrbitBehavior.DISABLE_ROTATE | OrbitBehavior.DISABLE_TRANSLATE);
 			orbit.setSchedulingBounds(new BoundingSphere());

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="res"/>
+	<classpathentry kind="src" path="native_libs"/>
 	<classpathentry kind="lib" path="libs/javacv-android-arm.jar"/>
 	<classpathentry kind="lib" path="libs/javacv-linux-x86_64.jar"/>
 	<classpathentry kind="lib" path="libs/javacv-linux-x86.jar"/>

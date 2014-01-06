@@ -3,7 +3,6 @@ package view.helper;
 import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -12,13 +11,20 @@ import org.jdesktop.swingx.JXMapViewer;
 import org.jdesktop.swingx.mapviewer.Waypoint;
 import org.jdesktop.swingx.mapviewer.WaypointRenderer;
 
+/**
+ * This class can be used as a renderer for {@link Waypoint} on a {@link JXMapViewer}.
+ * It renders a marker using the Quadroid icon.
+ * 
+ * @author Georg Baumgarten
+ *
+ */
 public class QuadroidWaypointRenderer implements WaypointRenderer<Waypoint> {
 
 	private BufferedImage wpImage;
 	 
 	public QuadroidWaypointRenderer(String imagePath) {
 		try {
-			wpImage = ImageIO.read(new File(imagePath));
+			wpImage = ImageIO.read(getClass().getResourceAsStream(imagePath));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

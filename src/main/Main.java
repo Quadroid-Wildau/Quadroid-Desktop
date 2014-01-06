@@ -32,7 +32,6 @@ import model.AdvLandmark;
 import model.XBeeRxTx;
 
 import org.apache.commons.lang3.SystemUtils;
-import org.apache.log4j.PropertyConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -56,7 +55,6 @@ import enums.XBee;
 public class Main extends JFrame implements ActionListener, WindowListener, MouseListener, IRxListener {
 
 	private static final long serialVersionUID = 1L;
-	private static final String LOGGERPROPERTIES = "log4j.properties";
 	private static MainController mainController;
 	private static Logger logger = LoggerFactory.getLogger(Main.class.getName());
 	private JMenuBar menuBar;
@@ -72,7 +70,7 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 	public static void main(String[] args) {
 //		System.getProperties().put("http.proxyHost", "proxy.th-wildau.de");
 //		System.getProperties().put("http.proxyPort", "8080");
-		PropertyConfigurator.configure(LOGGERPROPERTIES);
+		
 		getMainController();
 		new Main();
 		
@@ -91,16 +89,12 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 			UIManager.setLookAndFeel(
 			        UIManager.getSystemLookAndFeelClassName());
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (UnsupportedLookAndFeelException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
