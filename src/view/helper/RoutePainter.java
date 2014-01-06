@@ -16,6 +16,7 @@ import org.jdesktop.swingx.painter.Painter;
 public class RoutePainter implements Painter<JXMapViewer> {
 
 	private List<GeoPosition> track;
+	private Color color;
 
 	/**
 	 * @param track
@@ -26,6 +27,10 @@ public class RoutePainter implements Painter<JXMapViewer> {
 	}
 	
 	public RoutePainter() {}
+	
+	public RoutePainter(Color color) {
+		this.color = color;
+	}
 	
 	public void setTrack(List<GeoPosition> track) {
 		this.track = track;
@@ -46,7 +51,7 @@ public class RoutePainter implements Painter<JXMapViewer> {
 		drawRoute(g, map);
 
 		//draw inner line
-		g.setColor(Color.BLUE);
+		g.setColor(color == null ? Color.BLUE : color);
 		g.setStroke(new BasicStroke(2));
 		drawRoute(g, map);
 
@@ -57,14 +62,16 @@ public class RoutePainter implements Painter<JXMapViewer> {
 		Point2D last = null;
 
 		//draw line for all points
-		for (GeoPosition gp : track) {
-			Point2D pt = map.getTileFactory().geoToPixel(gp, map.getZoom());
-			
-			if (last != null) {
-				g.drawLine((int) last.getX(), (int) last.getY(), (int) pt.getX(), (int) pt.getY());
+		if (track != null) {
+			for (GeoPosition gp : track) {
+				Point2D pt = map.getTileFactory().geoToPixel(gp, map.getZoom());
+				
+				if (last != null) {
+					g.drawLine((int) last.getX(), (int) last.getY(), (int) pt.getX(), (int) pt.getY());
+				}
+	
+				last = pt;
 			}
-
-			last = pt;
 		}
 	}
 }

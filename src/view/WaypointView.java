@@ -12,6 +12,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 
 import service.FlightControlService;
+import view.interfaces.WaypointDeletedInterface;
 import de.th_wildau.quadroid.models.Waypoint;
 
 public class WaypointView extends JFrame {
@@ -20,12 +21,15 @@ public class WaypointView extends JFrame {
 	
 	private DefaultListModel<Waypoint> model;
 	private JList<Waypoint> list;
+	private WaypointDeletedInterface deletedListener;
 
-	public WaypointView() {
+	public WaypointView(WaypointDeletedInterface deletedListener) {
 		setTitle("Wegpunkte");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setSize(640, 480);
 		setPreferredSize(new Dimension(640, 480));
+		
+		this.deletedListener = deletedListener;
 		
 		list = new JList<Waypoint>();
 		getContentPane().add(list, BorderLayout.CENTER);
@@ -62,9 +66,11 @@ public class WaypointView extends JFrame {
 			if (e.getActionCommand().equals("close")) {
 				dispose();
 			} else if (e.getActionCommand().equals("deleteSelected")) {
-				for (Waypoint wp : list.getSelectedValuesList()) {
+				for (int i : list.getSelectedIndices()) {
+					Waypoint wp = model.get(i);
 					FlightControlService.getInstance().deleteWaypoint(wp);
 					model.removeElement(wp);
+					if (deletedListener != null) deletedListener.onWaypointDeleted(i);
 				}
 				list.setModel(model);
 			}

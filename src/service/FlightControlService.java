@@ -2,10 +2,11 @@ package service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 
 import de.th_wildau.quadroid.models.Waypoint;
 
-public class FlightControlService {
+public class FlightControlService extends Observable {
 
 	private static FlightControlService instance;
 	
@@ -28,9 +29,26 @@ public class FlightControlService {
 	public void addWaypoint(Waypoint waypoint) {
 		waypoints.add(waypoint);
 	}
+	
+	public void addWaypointAtTop(Waypoint waypoint) {
+		List<Waypoint> cache = new ArrayList<>(waypoints);
+		waypoints.clear();
+		waypoints.add(waypoint);
+		waypoints.addAll(cache);
+	}
 
 	public void deleteWaypoint(Waypoint waypoint) {
 		waypoints.remove(waypoint);
+	}
+	
+	public void clearWaypoints() {
+		waypoints.clear();
+	}
+	
+	public void waypointReached() {
+		waypoints.remove(0);
+		setChanged();
+		notifyObservers();
 	}
 
 }
