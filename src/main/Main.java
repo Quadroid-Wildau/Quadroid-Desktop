@@ -69,8 +69,8 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 	 * @param args
 	 */
 	public static void main(String[] args) {
-//		System.getProperties().put("http.proxyHost", "proxy.th-wildau.de");
-//		System.getProperties().put("http.proxyPort", "8080");
+		System.getProperties().put("http.proxyHost", "proxy.th-wildau.de");
+		System.getProperties().put("http.proxyPort", "8080");
 		
 		getMainController();
 		new Main();

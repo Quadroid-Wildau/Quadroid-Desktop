@@ -2,6 +2,8 @@ package controller;
 
 import javax.swing.JComponent;
 
+import org.apache.commons.lang3.SystemUtils;
+
 import view.MainView;
 
 public class MainController implements ViewController{
@@ -19,7 +21,12 @@ public class MainController implements ViewController{
 		if (view == null) {
 			this.view = new view.MainView(this);
 			this.view.setMap(this.getMapController().getView());
-			this.view.setMap3D(this.getMap3DController().getView());
+			
+			//Because of incompatibility between Java3D Java 7 and Mac OSX, do not display the 3D view on Mac OSX
+			if (!SystemUtils.IS_OS_MAC_OSX) {
+				this.view.setMap3D(this.getMap3DController().getView());
+			}
+			
 			this.view.setMetaData(this.getMetaDataController().getView());
 			this.view.setVideoStream(this.getVideoStreamController().getView());
 		}
