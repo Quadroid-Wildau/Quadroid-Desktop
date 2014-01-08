@@ -1,6 +1,34 @@
-*.class
+*.pydevproject
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
 
-# Package Files #
-*.jar
-*.war
-*.ear
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# CDT-specific
+.cproject
+
+# driver
+*.so
+
+# PDT-specific
+.buildpath
+
+*.log
+
+opencv/
+ffmpeg/
+ffmpeg_x86/
+exports/
