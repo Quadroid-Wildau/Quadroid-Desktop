@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -16,7 +17,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
@@ -28,6 +28,8 @@ import javax.swing.border.MatteBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.MouseInputListener;
+import javax.swing.event.PopupMenuEvent;
+import javax.swing.event.PopupMenuListener;
 
 import model.CustomWaypoint;
 
@@ -44,19 +46,22 @@ import org.jdesktop.swingx.mapviewer.WaypointPainter;
 import org.jdesktop.swingx.painter.CompoundPainter;
 import org.jdesktop.swingx.painter.Painter;
 
-import controller.MapController;
-
 import view.custom.MapPopupMenu;
 import view.helper.LabeledWaypointRenderer;
 import view.helper.QuadroidWaypointRenderer;
 import view.helper.RoutePainter;
 import view.interfaces.WaypointDeletedInterface;
+import controller.MapController;
 import de.th_wildau.quadroid.models.GNSS;
-import java.awt.FlowLayout;
-import javax.swing.JSeparator;
-import javax.swing.SwingConstants;
-import javax.swing.UIManager;
 
+/**
+ * The map view holds a map where the user can create new waypoints and see the current position
+ * of Quadroid.
+ * 
+ * @author Georg Baumgarten
+ * @version 1.0
+ *
+ */
 public class MapView extends JPanel implements WaypointDeletedInterface {
 	private static final long serialVersionUID = 1L;
 	
@@ -109,9 +114,10 @@ public class MapView extends JPanel implements WaypointDeletedInterface {
         mapViewer.setTileFactory(tileFactory);
         tileFactory.setThreadPoolSize(8);
         
-        GeoPosition start = new GeoPosition(50.11, 8.68);
+        //Wildau
+        GeoPosition start = new GeoPosition(52.3188662, 13.6324615);
         
-        mapViewer.setZoom(7);
+        mapViewer.setZoom(2);
         mapViewer.setAddressLocation(start);
         mapViewer.setDoubleBuffered(true);
         
@@ -132,7 +138,7 @@ public class MapView extends JPanel implements WaypointDeletedInterface {
         btnShowWaypoints.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnShowWaypoints.addActionListener(mButtonListener);
         
-        lblNewLabel = new JLabel("| ");
+        JLabel lblNewLabel = new JLabel("| ");
         lblNewLabel.setFont(new Font("Dialog", Font.PLAIN, 12));
         panel.add(lblNewLabel);
         panel.add(btnShowWaypoints);
@@ -150,6 +156,10 @@ public class MapView extends JPanel implements WaypointDeletedInterface {
         mapPainter.setPainters(painters);
 	}
 	
+	/**
+	 * Set the geo data of Quadroid
+	 * @param geoData
+	 */
 	public void setGeoData(GNSS geoData) {
 		label.setText("Karte: " + geoData.getLatitude() + " | " + geoData.getLongitude());
 		GeoPosition geoPos = new GeoPosition(geoData.getLatitude(), geoData.getLongitude());
@@ -167,6 +177,10 @@ public class MapView extends JPanel implements WaypointDeletedInterface {
         	mapViewer.setAddressLocation(geoPos);
 	}
 	
+	/**
+	 * Remove a Waypoint from queue
+	 * @param index
+	 */
 	public void removeWaypointFromList(int index) {
 		removeWaypoint(index);
 	}
@@ -175,7 +189,7 @@ public class MapView extends JPanel implements WaypointDeletedInterface {
 //	View Listeners
 //**********************************************************************************************************************************
 	
-	private MouseListener mMouseListener = new MouseAdapter() {
+	private MouseListener mMouseListener = new MouseAdapter() {		
 		public void mouseClicked(MouseEvent e) {
 			clearLastMouseMarker();
 			
@@ -183,14 +197,26 @@ public class MapView extends JPanel implements WaypointDeletedInterface {
 			if (SwingUtilities.isRightMouseButton(e)) {
 				cbAutoRefreshMap.setSelected(false);
 				mpm = new MapPopupMenu(e.getX(), e.getY());
-				mpm.addOnActionListener(mPopupMenuListener);
+				mpm.addPopupMenuListener(mPopupMenuListener);
+				mpm.addOnActionListener(mPopupMenuActionListener);
 				mpm.show(e.getComponent(), e.getX(), e.getY());
 				showMarkerAt(e.getX(), e.getY());
 			}
 		}
 	};
 	
-	private ActionListener mPopupMenuListener = new ActionListener() {
+	private PopupMenuListener mPopupMenuListener = new PopupMenuListener() {
+				
+		@Override
+		public void popupMenuWillBecomeInvisible(PopupMenuEvent e) {
+			clearLastMouseMarker();
+		}
+		
+		public void popupMenuWillBecomeVisible(PopupMenuEvent e) {}
+		public void popupMenuCanceled(PopupMenuEvent e) {}
+	};
+	
+	private ActionListener mPopupMenuActionListener = new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			//remove marker at initial click position
@@ -204,7 +230,7 @@ public class MapView extends JPanel implements WaypointDeletedInterface {
 			
 			float height = -1f;
 			try {
-				height = Float.parseFloat(JOptionPane.showInputDialog(MapView.this, "Hoehe in m: "));
+				height = Float.parseFloat(JOptionPane.showInputDialog(MapView.this, "H\u00F6he in m: "));
 			} catch (Exception ex) {}
 			
 			if (height == -1f)
@@ -219,7 +245,7 @@ public class MapView extends JPanel implements WaypointDeletedInterface {
 				if (mWaypointsSet.size() > 0) {
 					int selection = JOptionPane.showConfirmDialog(
 						    MapView.this,
-						    "Gesetzte Waypoints löschen?",
+						    "Gesetzte Waypoints l\u00F6schen?",
 						    "Waypoints",
 						    JOptionPane.YES_NO_CANCEL_OPTION);
 					
@@ -263,9 +289,7 @@ public class MapView extends JPanel implements WaypointDeletedInterface {
 				clearLastMouseMarker();
 			}
 		}
-	};
-	private JLabel lblNewLabel;
-	
+	};	
 	
 //**********************************************************************************************************************************
 //	Callbacks
@@ -281,6 +305,13 @@ public class MapView extends JPanel implements WaypointDeletedInterface {
 //	Helpers
 //**********************************************************************************************************************************
 	
+	/**
+	 * Draws marker on {@link JXMapViewer}
+	 * @param x
+	 * 		x-coordinate in pixels
+	 * @param y
+	 * 		y-coordinate in pixels
+	 */
 	private void showMarkerAt(int x, int y) {
 		GeoPosition pos = mapViewer.convertPointToGeoPosition(new Point(x,y));
 		mLastRightClickPos.add(new DefaultWaypoint(pos));
@@ -288,6 +319,9 @@ public class MapView extends JPanel implements WaypointDeletedInterface {
 		mapViewer.setOverlayPainter(mapPainter);
 	}
 	
+	/**
+	 * deletes the marker drawn with mouse right click from {@link JXMapViewer}
+	 */
 	private void clearLastMouseMarker() {
 		mLastRightClickPos.clear();
 		currentClickPainter.setWaypoints(mLastRightClickPos);
@@ -295,6 +329,11 @@ public class MapView extends JPanel implements WaypointDeletedInterface {
 		mapViewer.setOverlayPainter(mapPainter);
 	}
 	
+	/**
+	 * Add Waypoint to list and {@link JXMapViewer}
+	 * @param pos
+	 * 			The {@link GeoPosition} to add
+	 */
 	private void addWaypoint(GeoPosition pos) {
 		mWaypointsSet.add(new CustomWaypoint(mWaypointsSet.size()+1, Color.BLACK, pos));
 	    waypointPainter.setWaypoints(mWaypointsSet);
@@ -303,6 +342,11 @@ public class MapView extends JPanel implements WaypointDeletedInterface {
 	    mapViewer.setOverlayPainter(mapPainter);
 	}
 	
+	/**
+	 * Add Waypoint at top of the list and update the {@link JXMapViewer}
+	 * @param pos
+	 * 			The {@link GeoPosition} to add
+	 */
 	private void addWaypointAtTop(GeoPosition pos) {
 		CustomWaypoint wp = new CustomWaypoint(1, Color.black, pos);
 		CustomWaypoint[] waypointsArr = new CustomWaypoint[mWaypointsSet.size()];
@@ -323,6 +367,9 @@ public class MapView extends JPanel implements WaypointDeletedInterface {
 		wayPointLinePainter.setTrack(mWaypointsList);
 	}
 	
+	/**
+	 * delete all waypoints and update {@link JXMapViewer}
+	 */
 	private void clearWaypoints() {
 		mWaypointsSet.clear();
 		waypointPainter.setWaypoints(mWaypointsSet);
@@ -331,6 +378,11 @@ public class MapView extends JPanel implements WaypointDeletedInterface {
 		mapViewer.setOverlayPainter(mapPainter);
 	}
 	
+	/**
+	 * remove single waypoint at index and update {@link JXMapViewer}
+	 * @param index
+	 * 			The index to remove
+	 */
 	private void removeWaypoint(int index) {
 		//remove waypoint from list
 		CustomWaypoint[] waypointsArr = new CustomWaypoint[mWaypointsSet.size()];

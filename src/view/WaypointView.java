@@ -74,8 +74,8 @@ public class WaypointView extends JFrame {
 	
 	private void deleteSelectedWaypointsWithConfirmation() {
 		int selection = JOptionPane.showConfirmDialog(WaypointView.this, 
-				"Sollen die ausgewählten Wegpunkte wirklich gelöscht werden?", 
-				"Wegpunkte löschen", 
+				"Sollen die ausgew\u00E4hlten Wegpunkte wirklich gel\u00F6scht werden?", 
+				"Wegpunkte l\u00F6schen", 
 				JOptionPane.YES_NO_OPTION);
 
 		if (selection == JOptionPane.YES_OPTION) {
