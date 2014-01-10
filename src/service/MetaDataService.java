@@ -56,7 +56,7 @@ public class MetaDataService extends Observable implements Observer{
 	public MetaData getLastMetaData() {
 		if (metaDataHistory != null && metaDataHistory.size() > 0)
 			return metaDataHistory.get(metaDataHistory.size() - 1);
-		return null;
+		return getFlightCommunication().getMetaData();
 	}
 
 	@Override

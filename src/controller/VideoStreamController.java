@@ -3,12 +3,16 @@ package controller;
 import java.util.Observable;
 import java.util.Observer;
 
+import service.MetaDataService;
 import service.VideoStreamService;
 import view.VideoStreamView;
 
 import com.googlecode.javacv.FrameGrabber.Exception;
 import com.googlecode.javacv.cpp.opencv_core.IplImage;
 import communication.CommunicationStack;
+
+import de.th_wildau.quadroid.models.GNSS;
+import de.th_wildau.quadroid.models.MetaData;
 
 public class VideoStreamController implements ViewController, Observer {
 
@@ -43,7 +47,12 @@ public class VideoStreamController implements ViewController, Observer {
 	
 	public void saveScreenShot(String filepath) {
 		IplImage frame = getService().getCurrentFrame();
-		CommunicationStack.getInstance().getPhotoPersistance().saveScreenShot(filepath, frame);
+		MetaData metadata = MetaDataService.getInstance().getLastMetaData();
+		GNSS gnss = null;
+		if (metadata != null)
+			gnss = metadata.getAirplane().GeoData();
+		
+		CommunicationStack.getInstance().getPhotoPersistance().saveScreenShot(filepath, frame, gnss);
 	}
 	
 	public void saveVideoStream(String filepath) {

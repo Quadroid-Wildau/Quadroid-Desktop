@@ -6,23 +6,36 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
-import controller.LandmarkController;
-
+import model.AdvLandmark;
 import view.custom.ImagePanel;
+import controller.LandmarkController;
+import de.th_wildau.quadroid.models.GNSS;
 
 /**
  * This view display landmark alerts.
@@ -39,6 +52,13 @@ public class LandmarkAlarmView extends JFrame {
 	private JLabel lblMetadata;
 	private JList<String> list;
 	private LandmarkController controller;
+	private JButton btnSave;
+	
+	private DefaultListModel<String> placeHolderModel;
+	private List<AdvLandmark> currentLandmarks = new ArrayList<AdvLandmark>();
+	
+	private SimpleDateFormat sdf = new SimpleDateFormat("EEE yyyy-MM-dd HH:mm:ss");
+	private Calendar calendar = Calendar.getInstance();
 
 	public LandmarkAlarmView(LandmarkController controller) {
 		setTitle("Landmarkenalarm");
@@ -46,6 +66,19 @@ public class LandmarkAlarmView extends JFrame {
 		setSize(800, 600);
 		setPreferredSize(new Dimension(800, 600));
 		setLocationRelativeTo(null);
+		
+		try {
+			UIManager.setLookAndFeel(
+			        UIManager.getSystemLookAndFeelClassName());
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (UnsupportedLookAndFeelException e) {
+			e.printStackTrace();
+		}
 		
 		this.controller = controller;
 		
@@ -57,12 +90,17 @@ public class LandmarkAlarmView extends JFrame {
 		getContentPane().add(imageContainer, BorderLayout.CENTER);
 		imageContainer.setLayout(new BorderLayout(0, 0));
 		
-		lblMetadata = new JLabel("Lat: 52.18118, Long: 13.1151, Height: 25.0");
+		lblMetadata = new JLabel("");
 		lblMetadata.setBorder(new EmptyBorder(5, 5, 5, 5));
 		imageContainer.add(lblMetadata, BorderLayout.NORTH);
 		
 		imagePanel = new ImagePanel();
 		imageContainer.add(imagePanel);
+		
+		btnSave = new JButton("Speichern");
+		btnSave.setIcon(UIManager.getIcon("FileView.floppyDriveIcon"));
+		btnSave.addActionListener(mActionListener);
+		imageContainer.add(btnSave, BorderLayout.SOUTH);
 		
 		JPanel panel = new JPanel();
 		panel.setSize(new Dimension(192, 0));
@@ -77,16 +115,23 @@ public class LandmarkAlarmView extends JFrame {
 		list.setBorder(listBorder);
 		list.setFixedCellWidth(192);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		list.addListSelectionListener(mListSelectionListener);
 		panel.add(list);
 		
-		DefaultListModel<String> placeHolderModel = new DefaultListModel<>();
+		placeHolderModel = new DefaultListModel<>();
 		placeHolderModel.addElement("Keine");
 		list.setModel(placeHolderModel);
 		
 		addWindowListener(mWindowListener);
 		
+		setLandmarkAlarms(controller.getLandmarkAlarms());
+		
 		setVisible(true);
 	}
+	
+//*************************************************************************************************************************
+//	View Listeners
+//*************************************************************************************************************************	
 	
 	private WindowListener mWindowListener = new WindowAdapter() {
 		@Override
@@ -94,4 +139,77 @@ public class LandmarkAlarmView extends JFrame {
 			controller.notifyViewClosed();
 		}
 	};
+	
+	private ListSelectionListener mListSelectionListener = new ListSelectionListener() {
+		@Override
+		public void valueChanged(ListSelectionEvent e) {
+			if (e.getFirstIndex() < currentLandmarks.size()) {
+				AdvLandmark landmark = currentLandmarks.get(e.getFirstIndex());
+				GNSS gnss = landmark.getMetaData().getAirplane().GeoData();
+				
+				lblMetadata.setText("Latitude: " + gnss.getLatitude() + ", Longitude: " + gnss.getLongitude() + ", Hoehe: " + gnss.getHeight());
+				imagePanel.displayImage(landmark.getPictureoflandmark());
+			}
+		}
+	};
+	
+	private ActionListener mActionListener = new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			String file = getFileFromChooser("png");
+			
+			if (file != null) {
+				if (!file.endsWith(".png")) file += ".png";
+				AdvLandmark landmark = currentLandmarks.get(list.getSelectedIndex());
+				controller.saveToImageFile(landmark, file);
+			}
+		}
+	};
+	
+
+//*************************************************************************************************************************
+//	Public methods (called by controller)
+//*************************************************************************************************************************	
+	
+	public void setLandmarkAlarms(List<AdvLandmark> landmarks) {
+		if (landmarks == null || landmarks.isEmpty()) {
+			list.setModel(placeHolderModel);
+			return;
+		}
+		
+		this.currentLandmarks = landmarks;
+		
+		DefaultListModel<String> model = new DefaultListModel<String>();
+		for (int i = 0; i < landmarks.size(); i++) {
+			AdvLandmark lm = landmarks.get(i);
+			calendar.setTimeInMillis(lm.getMetaData().getAirplane().getTime() * 1000);
+			String description = "[" + (i+1) + "] " + sdf.format(calendar.getTime());
+			model.addElement(description);
+		}
+		
+		list.setModel(model);
+	}
+	
+	public void addLandmarkAlarm(AdvLandmark landmark) {
+		currentLandmarks.add(landmark);
+		setLandmarkAlarms(currentLandmarks);
+	}
+	
+//*************************************************************************************************************************
+//	Helpers
+//*************************************************************************************************************************	
+	
+	private String getFileFromChooser(final String ending) {
+		JFileChooser mFileChooser = new JFileChooser(System.getProperty("user.home"));
+		mFileChooser.setAcceptAllFileFilterUsed(false);
+		mFileChooser.addChoosableFileFilter(new FileNameExtensionFilter(ending, ending));
+		
+		int ret = mFileChooser.showSaveDialog(this);
+		
+		if (ret == JFileChooser.APPROVE_OPTION) {
+			return mFileChooser.getSelectedFile().getPath();
+		}
+		
+		return null;
+	}
 }
