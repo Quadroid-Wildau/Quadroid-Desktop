@@ -140,18 +140,19 @@ public class LandmarkAlarmView extends JFrame {
 	private ListSelectionListener mListSelectionListener = new ListSelectionListener() {
 		@Override
 		public void valueChanged(ListSelectionEvent e) {
-			if (e.getFirstIndex() < currentLandmarks.size()) {
-				AdvLandmark landmark = currentLandmarks.get(e.getFirstIndex());
-				GNSS gnss = landmark.getMetaData().getAirplane().GeoData();
-				
-				lblMetadata.setText("Latitude: " + gnss.getLatitude() + 
-									", Longitude: " + gnss.getLongitude() + 
-									", Hoehe: " + gnss.getHeight() +
-									", Zeit: " + landmark.getMetaData().getAirplane().getTime()
-									
-						);
-				imagePanel.displayImage(landmark.getPictureoflandmark());
-				imagePanel.revalidate();
+			if (!e.getValueIsAdjusting()) {
+				if (list.getSelectedIndex() < currentLandmarks.size()) {
+					AdvLandmark landmark = currentLandmarks.get(list.getSelectedIndex());
+					GNSS gnss = landmark.getMetaData().getAirplane().GeoData();
+					
+					lblMetadata.setText("Latitude: " + gnss.getLatitude() + 
+										", Longitude: " + gnss.getLongitude() + 
+										", Hoehe: " + gnss.getHeight() +
+										", Zeit: " + DateFormatter.formatDate(landmark.getMetaData().getAirplane().getTime() * 1000));
+										
+					imagePanel.displayImage(landmark.getPictureoflandmark());
+					imagePanel.revalidate();
+				}
 			}
 		}
 	};
