@@ -6,6 +6,7 @@ import handler.XBeeTransmitterHandler;
 import helper.FileHelper;
 import interfaces.IRxListener;
 
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -15,10 +16,14 @@ import java.awt.event.WindowListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -36,37 +41,33 @@ import org.apache.log4j.PropertyConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import view.LandmarkView;
 import coder.decoder.ObserverHandler;
-import coder.encoder.TxDataEncoder;
 
 import com.mashape.unirest.http.Unirest;
-
 import communication.CommunicationStack;
+
 import connection.Connect;
 import controller.MainController;
 import controller.VideoStreamController;
 import controller.ViewController;
 import de.th_wildau.quadroid.models.Airplane;
-import de.th_wildau.quadroid.models.Course;
 import de.th_wildau.quadroid.models.GNSS;
 import de.th_wildau.quadroid.models.MetaData;
 import de.th_wildau.quadroid.models.RxData;
 import enums.XBee;
 
-import java.awt.Toolkit;
-
-public class Main extends JFrame implements ActionListener, WindowListener, MouseListener, IRxListener {
+public class Main extends JFrame implements ActionListener, WindowListener, MouseListener, IRxListener, Observer {
 
 	private static final long serialVersionUID = 1L;
 	private static MainController mainController;
 	private static Logger logger = LoggerFactory.getLogger(Main.class.getName());
 	private JMenuBar menuBar;
 	private JMenu menuFile, menuVideo, menuLandmarkAlarm, subMenuVideoDevice, saveScreenshotMenu, saveVideoMenu, menuXbee, xbee;
-	private JMenuItem itemSaveVideoPredefinedPath, itemSaveVideo, itemStopSavingVideo;
+	private JMenuItem itemSaveVideoPredefinedPath, itemSaveVideo, itemStopSavingVideo, itemShowLandmarkAlerts;
 	private Connect xbeeconnection = null;
 	/**instance for transmission with xbee*/
 	private XBeeTransmitterHandler xbeetransmitter = null;
+	private Icon iconNewLandmarkAlert;
 	
 	/**
 	 * @param args
@@ -108,12 +109,13 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 			e.printStackTrace();
 		}
 		
-		new LandmarkView().setVisible(true);
+		iconNewLandmarkAlert = new ImageIcon(getClass().getResource("/images/alert.png"));
 		
 		menuBar = new JMenuBar();
 		menuFile = new JMenu("Datei");
 		menuVideo = new JMenu("Video");
 		menuLandmarkAlarm = new JMenu("Landmarkenalarm");
+		menuLandmarkAlarm.setIcon(iconNewLandmarkAlert);
 		menuXbee = new JMenu("XBee");
 		
 		menuBar.add(menuFile);
@@ -152,7 +154,7 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 					subMenuVideoDevice.add(item);
 				}
 			} else {
-				JMenuItem item = new JMenuItem("Keine Geraete gefunden");
+				JMenuItem item = new JMenuItem("Keine Ger\u00e4te gefunden");
 				item.setEnabled(false);
 				subMenuVideoDevice.add(item);
 			}
@@ -215,6 +217,11 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 		itemSimulateLandmarkAlarm.setActionCommand("simulateAlarm");
 		itemSimulateLandmarkAlarm.addActionListener(this);
 		menuLandmarkAlarm.add(itemSimulateLandmarkAlarm);
+		
+		itemShowLandmarkAlerts = new JMenuItem("Landmarkenalarme anzeigen");
+		itemShowLandmarkAlerts.setActionCommand("showLandmarkAlerts");
+		itemShowLandmarkAlerts.addActionListener(this);
+		menuLandmarkAlarm.add(itemShowLandmarkAlerts);
 		
 		setJMenuBar(menuBar);
 		
@@ -502,6 +509,12 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 		 *		this.xbeeconnection.addSerialPortEventListener(receiver);
 		 * 
 		 * */
+		
+	}
+
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		// TODO Auto-generated method stub
 		
 	}
 }
