@@ -1,5 +1,7 @@
 package view;
 
+import helper.DateFormatter;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -128,10 +130,10 @@ public class MetaDataView extends JPanel{
 
 	public void setMetaData(MetaData metaData) {
 		this.position.setText(metaData.getAirplane().GeoData().getLatitude() + " | " + metaData.getAirplane().GeoData().getLongitude());
-		this.power.setText(metaData.getAirplane().getBatteryState() + "% ");
-		this.height.setText(metaData.getAirplane().GeoData().getHeight() + "m");
-		this.time.setText(metaData.getAirplane().getTime() + "s");
-		this.speed.setText(metaData.getCourse().getSpeed() + "km/h");
-		this.course.setText(metaData.getCourse() + "");
+		this.power.setText(String.format("%d V", metaData.getAirplane().getBatteryState()));
+		this.height.setText(String.format("%.1f m", metaData.getAirplane().GeoData().getHeight()));
+		this.time.setText(DateFormatter.formatDate(metaData.getAirplane().getTime() * 1000));
+		this.speed.setText(String.format("%.2f km/h", metaData.getCourse().getSpeed()));
+		this.course.setText(String.format("%.2f°", metaData.getCourse().getAngleReference()));
 	}
 }

@@ -1,5 +1,7 @@
 package communication.persistence;
 
+import helper.DateFormatter;
+
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -11,24 +13,37 @@ import javax.imageio.ImageIO;
 import com.googlecode.javacv.cpp.opencv_core.IplImage;
 
 import de.th_wildau.quadroid.models.GNSS;
+import de.th_wildau.quadroid.models.MetaData;
 
 public class PhotoPersistence {
 	
-	public void saveScreenShot(String filepath, IplImage frame, GNSS gnss) {
+	public void saveScreenShot(String filepath, IplImage frame, MetaData metadata) {
 		String text = "";
 		
-		if (gnss != null) {
-			text = "Latitude: " + gnss.getLatitude() + ", Longitude: " + gnss.getLongitude() + ", Hoehe: " + gnss.getHeight();
+		if (metadata != null) {
+			GNSS gnss = metadata.getAirplane().GeoData();
+			
+			if (gnss != null)
+				text = "Latitude: " + gnss.getLatitude() + 
+					", Longitude: " + gnss.getLongitude() + 
+					", Hoehe: " + gnss.getHeight() +
+					", Zeit: " + DateFormatter.formatDate(metadata.getAirplane().getTime() * 1000);
 		}
 		
 		saveScreenShot(filepath, frame.getBufferedImage(), text);
 	}
 	
-	public void saveScreenShot(String filepath, BufferedImage image, GNSS gnss) {
+	public void saveScreenShot(String filepath, BufferedImage image, MetaData metadata) {
 		String text = "";
 		
-		if (gnss != null) {
-			text = "Latitude: " + gnss.getLatitude() + ", Longitude: " + gnss.getLongitude() + ", Hoehe: " + gnss.getHeight();
+		if (metadata != null) {
+			GNSS gnss = metadata.getAirplane().GeoData();
+			
+			if (gnss != null)
+				text = "Latitude: " + gnss.getLatitude() + 
+					", Longitude: " + gnss.getLongitude() + 
+					", Hoehe: " + gnss.getHeight() +
+					", Zeit: " + DateFormatter.formatDate(metadata.getAirplane().getTime() * 1000);
 		}
 		
 		saveScreenShot(filepath, image, text);

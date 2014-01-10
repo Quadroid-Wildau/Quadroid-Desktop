@@ -29,6 +29,6 @@ public class MetaDataController implements ViewController, Observer{
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		MetaData metaData = getService().getMetaData();
-		this.getView().setMetaData(metaData);
+		getView().setMetaData(metaData);
 	}
 }

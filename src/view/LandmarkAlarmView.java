@@ -3,6 +3,8 @@
  */
 package view;
 
+import helper.DateFormatter;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -11,9 +13,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import javax.swing.DefaultListModel;
@@ -57,9 +57,6 @@ public class LandmarkAlarmView extends JFrame {
 	private DefaultListModel<String> placeHolderModel;
 	private List<AdvLandmark> currentLandmarks = new ArrayList<AdvLandmark>();
 	
-	private SimpleDateFormat sdf = new SimpleDateFormat("EEE yyyy-MM-dd HH:mm:ss");
-	private Calendar calendar = Calendar.getInstance();
-
 	public LandmarkAlarmView(LandmarkController controller) {
 		setTitle("Landmarkenalarm");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -147,8 +144,14 @@ public class LandmarkAlarmView extends JFrame {
 				AdvLandmark landmark = currentLandmarks.get(e.getFirstIndex());
 				GNSS gnss = landmark.getMetaData().getAirplane().GeoData();
 				
-				lblMetadata.setText("Latitude: " + gnss.getLatitude() + ", Longitude: " + gnss.getLongitude() + ", Hoehe: " + gnss.getHeight());
+				lblMetadata.setText("Latitude: " + gnss.getLatitude() + 
+									", Longitude: " + gnss.getLongitude() + 
+									", Hoehe: " + gnss.getHeight() +
+									", Zeit: " + landmark.getMetaData().getAirplane().getTime()
+									
+						);
 				imagePanel.displayImage(landmark.getPictureoflandmark());
+				imagePanel.revalidate();
 			}
 		}
 	};
@@ -156,12 +159,14 @@ public class LandmarkAlarmView extends JFrame {
 	private ActionListener mActionListener = new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			String file = getFileFromChooser("png");
-			
-			if (file != null) {
-				if (!file.endsWith(".png")) file += ".png";
-				AdvLandmark landmark = currentLandmarks.get(list.getSelectedIndex());
-				controller.saveToImageFile(landmark, file);
+			if (currentLandmarks.size() > 0) {
+				String file = getFileFromChooser("png");
+				
+				if (file != null) {
+					if (!file.endsWith(".png")) file += ".png";
+					AdvLandmark landmark = currentLandmarks.get(list.getSelectedIndex());
+					controller.saveToImageFile(landmark, file);
+				}
 			}
 		}
 	};
@@ -182,8 +187,7 @@ public class LandmarkAlarmView extends JFrame {
 		DefaultListModel<String> model = new DefaultListModel<String>();
 		for (int i = 0; i < landmarks.size(); i++) {
 			AdvLandmark lm = landmarks.get(i);
-			calendar.setTimeInMillis(lm.getMetaData().getAirplane().getTime() * 1000);
-			String description = "[" + (i+1) + "] " + sdf.format(calendar.getTime());
+			String description = "[" + (i+1) + "] " + DateFormatter.formatDate(lm.getMetaData().getAirplane().getTime() * 1000);
 			model.addElement(description);
 		}
 		

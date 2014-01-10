@@ -11,7 +11,6 @@ import com.googlecode.javacv.FrameGrabber.Exception;
 import com.googlecode.javacv.cpp.opencv_core.IplImage;
 import communication.CommunicationStack;
 
-import de.th_wildau.quadroid.models.GNSS;
 import de.th_wildau.quadroid.models.MetaData;
 
 public class VideoStreamController implements ViewController, Observer {
@@ -48,11 +47,7 @@ public class VideoStreamController implements ViewController, Observer {
 	public void saveScreenShot(String filepath) {
 		IplImage frame = getService().getCurrentFrame();
 		MetaData metadata = MetaDataService.getInstance().getLastMetaData();
-		GNSS gnss = null;
-		if (metadata != null)
-			gnss = metadata.getAirplane().GeoData();
-		
-		CommunicationStack.getInstance().getPhotoPersistance().saveScreenShot(filepath, frame, gnss);
+		CommunicationStack.getInstance().getPhotoPersistance().saveScreenShot(filepath, frame, metadata);
 	}
 	
 	public void saveVideoStream(String filepath) {

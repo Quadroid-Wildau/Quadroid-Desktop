@@ -50,6 +50,6 @@ public class LandmarkController implements Observer {
 		CommunicationStack.getInstance().getPhotoPersistance().saveScreenShot(
 										filepath, 
 										landmark.getPictureoflandmark(), 
-										landmark.getMetaData().getAirplane().GeoData());
+										landmark.getMetaData());
 	}
 }
