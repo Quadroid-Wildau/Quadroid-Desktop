@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class DateFormatter {
 
-	private static SimpleDateFormat sdf = new SimpleDateFormat("EEE yyyy-MM-dd HH:mm:ss");
+	private static SimpleDateFormat sdf = new SimpleDateFormat("EEE, dd.MM.yyyy, HH:mm:ss");
 	private static Calendar calendar = Calendar.getInstance();
 	
 	public static String formatDate(Date date) {

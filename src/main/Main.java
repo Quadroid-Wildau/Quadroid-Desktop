@@ -298,6 +298,7 @@ public class Main extends JFrame implements ActionListener, WindowListener {
 	
 	public void newLandMarkAlarm(AdvLandmark landmark) {
 		showAlertIconForLandmark(true);
+		Toolkit.getDefaultToolkit().beep();
 	}
 	
 //***************************************************************************************************************
@@ -427,6 +428,9 @@ public class Main extends JFrame implements ActionListener, WindowListener {
 			//registered observer, transmitter and receiver
 			if(this.xbeeconnection != null) {			
 				item.setEnabled(false);
+				
+				//Set xbee connection
+				CommunicationStack.getInstance().getFlightCommunicator().setXbeeConnection(xbeeconnection);
 			}	
 			
 			return;
@@ -443,8 +447,8 @@ public class Main extends JFrame implements ActionListener, WindowListener {
 			//Show landmark alarms view
 			mainController.getLandmarkController().getView();
 			showAlertIconForLandmark(false);
-			
 		} else {
+			// If none of the actions matched until now, the action command must contain a video device port
 			try {
 				//disable all save menus in case the device can't be opened
 				disableSaveMenus();

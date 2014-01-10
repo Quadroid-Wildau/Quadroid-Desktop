@@ -14,7 +14,7 @@ public class FlightControlService extends Observable {
 	
 	private FlightControlService() {
 	}
-	
+		
 	public static FlightControlService getInstance() {
 		if (instance == null)
 			instance = new FlightControlService();

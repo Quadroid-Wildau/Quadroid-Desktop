@@ -1,7 +1,6 @@
 package communication;
 
 import com.googlecode.javacv.FrameGrabber.Exception;
-
 import communication.persistence.PhotoPersistence;
 import communication.persistence.VideoPersistence;
 
