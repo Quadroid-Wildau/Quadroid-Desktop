@@ -1,20 +1,30 @@
 package communication;
 
+import interfaces.IRxListener;
+
 import java.util.Observable;
 import java.util.Random;
 
+import coder.decoder.ObserverHandler;
 import de.th_wildau.quadroid.models.Airplane;
 import de.th_wildau.quadroid.models.Attitude;
 import de.th_wildau.quadroid.models.Course;
 import de.th_wildau.quadroid.models.GNSS;
 import de.th_wildau.quadroid.models.Landmark;
 import de.th_wildau.quadroid.models.MetaData;
+import de.th_wildau.quadroid.models.RxData;
 import de.th_wildau.quadroid.models.Waypoint;
 
-public class FlightControlCommunicator extends Observable {
+public class FlightControlCommunicator extends Observable implements IRxListener {
+	
+	private RxData data;
+	
+	public FlightControlCommunicator() {
+		ObserverHandler.getReference().register(this);
+	}
 
 	public void sendWaypoints(Waypoint[] waypoints) {
-
+		
 	}
 
 	public Waypoint[] getWaypoints() {
@@ -48,7 +58,11 @@ public class FlightControlCommunicator extends Observable {
 		metaData.setAttitude(att);
 		metaData.setCourse(course);
 		
-		return metaData;
+		return this.getLastMetaData();
+	}
+	
+	private MetaData getLastMetaData() {
+		return data.getMetadatalist().get(data.getMetadatalist().size() - 1);
 	}
 	
 	public void setChangedPublic() {
@@ -57,5 +71,12 @@ public class FlightControlCommunicator extends Observable {
 
 	public Landmark getLandmarkAlarm() {
 		return null;
+	}
+
+	@Override
+	public void rx(RxData data) {
+		this.data = data;
+		this.setChanged();
+		this.notifyObservers();
 	}
 }
