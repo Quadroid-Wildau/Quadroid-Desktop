@@ -48,19 +48,24 @@ public class XBeeReceiverHandler extends AbstractReceiver
 			} catch (IOException e) 
 			{
 				logger.error("Receiver-Exception: ", e);
-			}	
-				byte[] data = rxbase64buffer.toByteArray();
-				if(data.length >= 6)//only do if really data are available no endmarkers
-					new RxDataDecoder(data, ObserverHandler.getReference());//decoded data
-				port.notifyOnDataAvailable(true);
-				try 
-				{
-					rxbase64buffer.close();//close buffer
-				} catch (IOException e)
-				{
-					logger.error("BufferCloseException", e);
-				}
+			}
 			
+			byte[] data = rxbase64buffer.toByteArray();
+			
+			if(data.length >= 6){//only do if really data are available no endmarkers
+				new RxDataDecoder(data, ObserverHandler.getReference());//decoded data
+				System.out.println("new DATA AVAILABLE");
+			}
+			port.notifyOnDataAvailable(true);
+			
+			try 
+			{
+				rxbase64buffer.close();//close buffer
+			} catch (IOException e)
+			{
+				logger.error("BufferCloseException", e);
+			}
+
 		
 		}
 	}

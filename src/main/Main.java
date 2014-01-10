@@ -32,6 +32,7 @@ import model.AdvLandmark;
 import model.XBeeRxTx;
 
 import org.apache.commons.lang3.SystemUtils;
+import org.apache.log4j.PropertyConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -39,8 +40,8 @@ import coder.decoder.ObserverHandler;
 import coder.encoder.TxDataEncoder;
 
 import com.mashape.unirest.http.Unirest;
-import communication.CommunicationStack;
 
+import communication.CommunicationStack;
 import connection.Connect;
 import controller.MainController;
 import controller.VideoStreamController;
@@ -51,6 +52,7 @@ import de.th_wildau.quadroid.models.GNSS;
 import de.th_wildau.quadroid.models.MetaData;
 import de.th_wildau.quadroid.models.RxData;
 import enums.XBee;
+
 import java.awt.Toolkit;
 
 public class Main extends JFrame implements ActionListener, WindowListener, MouseListener, IRxListener {
@@ -71,6 +73,10 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 	public static void main(String[] args) {
 //		System.getProperties().put("http.proxyHost", "proxy.th-wildau.de");
 //		System.getProperties().put("http.proxyPort", "8080");
+		
+		PropertyConfigurator.configure("log4j.properties");
+		logger = LoggerFactory.getLogger(Main.class.getName());
+		logger.info("Init Logger");
 		
 		getMainController();
 		new Main();
@@ -118,6 +124,7 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 		{
 			JMenuItem item = new JMenuItem(s);
 			item.setActionCommand("open_xbee_connection");
+			item.addActionListener(this);
 			xbee.add(item);
 		}
 		menuXbee.add(xbee);
@@ -442,31 +449,31 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 	@Override
 	public void rx(RxData data) 
 	{
-		logger.info("new data available");
-		//data.getWaypointlist()
-		//data.getAirplanelist()
-		//data.getCourselist()
-		//data.getGnsslist()
-		//data.getLandmarklist()
-		//data.getMetadatalist()
-		
-		GNSS geo = new GNSS();
-		
-		Course course = new Course();
-		
-		geo.setLatitude(52.1245f);
-		geo.setLongitude(13.12345f);
-		geo.setHeight(300.00f);
-		
-		course.setAngleReference(180.0f);
-		course.setSpeed(52.00f);
-		
-		TxDataEncoder encoder = new TxDataEncoder();
-		
-		byte[] buffer = encoder.geodataToBytes(geo);
-		byte[] txdata = encoder.appendBytes(buffer, encoder.courseToBytes(course));
-		
-		this.xbeetransmitter.transmit(txdata);
+//		logger.info("new data available");
+//		//data.getWaypointlist()
+//		//data.getAirplanelist()
+//		//data.getCourselist()
+//		//data.getGnsslist()
+//		//data.getLandmarklist()
+//		//data.getMetadatalist()
+//		
+//		GNSS geo = new GNSS();
+//		
+//		Course course = new Course();
+//		
+//		geo.setLatitude(52.1245f);
+//		geo.setLongitude(13.12345f);
+//		geo.setHeight(300.00f);
+//		
+//		course.setAngleReference(180.0f);
+//		course.setSpeed(52.00f);
+//		
+//		TxDataEncoder encoder = new TxDataEncoder();
+//		
+//		byte[] buffer = encoder.geodataToBytes(geo);
+//		byte[] txdata = encoder.appendBytes(buffer, encoder.courseToBytes(course));
+//		
+//		this.xbeetransmitter.transmit(txdata);
 		/**
 		 * TODO: remove this example 
 		 * 
