@@ -27,6 +27,7 @@ local.properties
 .buildpath
 
 *.log
+log.*
 
 opencv/
 ffmpeg/
