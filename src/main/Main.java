@@ -35,12 +35,13 @@ import org.apache.commons.lang3.SystemUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import view.LandmarkView;
 import coder.decoder.ObserverHandler;
 import coder.encoder.TxDataEncoder;
 
 import com.mashape.unirest.http.Unirest;
-import communication.CommunicationStack;
 
+import communication.CommunicationStack;
 import connection.Connect;
 import controller.MainController;
 import controller.VideoStreamController;
@@ -51,6 +52,7 @@ import de.th_wildau.quadroid.models.GNSS;
 import de.th_wildau.quadroid.models.MetaData;
 import de.th_wildau.quadroid.models.RxData;
 import enums.XBee;
+
 import java.awt.Toolkit;
 
 public class Main extends JFrame implements ActionListener, WindowListener, MouseListener, IRxListener {
@@ -100,6 +102,8 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 		} catch (UnsupportedLookAndFeelException e) {
 			e.printStackTrace();
 		}
+		
+		new LandmarkView().setVisible(true);
 		
 		menuBar = new JMenuBar();
 		menuFile = new JMenu("Datei");

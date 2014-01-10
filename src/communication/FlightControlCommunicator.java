@@ -11,7 +11,7 @@ import de.th_wildau.quadroid.models.Landmark;
 import de.th_wildau.quadroid.models.MetaData;
 import de.th_wildau.quadroid.models.Waypoint;
 
-public class FlightControlCommunicator extends Observable{
+public class FlightControlCommunicator extends Observable {
 
 	public void sendWaypoints(Waypoint[] waypoints) {
 
