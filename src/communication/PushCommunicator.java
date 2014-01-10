@@ -128,22 +128,27 @@ public class PushCommunicator {
 	}
 	
 	private void uploadLandmarkAlarm(final AdvLandmark landmark) {
-		GNSS geoData = landmark.getMetaData().getAirplane().GeoData();
-		try {
-			HttpResponse<JsonNode> response = Unirest.post(LANDMARK_URL)
-			.header("Authorization", "Bearer " + ACCESS_TOKEN)
-			.field("landmark_alert[latitude]", String.valueOf(geoData.getLatitude()))
-			.field("landmark_alert[longitude]", String.valueOf(geoData.getLongitude()))
-			.field("landmark_alert[detection_date]", String.valueOf(landmark.getMetaData().getAirplane().getTime()))
-			.field("landmark_alert[height]", String.valueOf(geoData.getHeight()))
-			.field("landmark_alert[image]", landmark.getLandmarkPictureAsFile())
-			.asJson();
-			
-			System.out.println("Response: " + response.getBody().getObject().toString());
-		} catch (UnirestException e) {
-			e.printStackTrace();
-		} finally {
-			landmark.getLandmarkPictureAsFile().delete();
-		}
+		new Thread() {
+			@Override
+			public void run() {
+				GNSS geoData = landmark.getMetaData().getAirplane().GeoData();
+				try {
+					HttpResponse<JsonNode> response = Unirest.post(LANDMARK_URL)
+					.header("Authorization", "Bearer " + ACCESS_TOKEN)
+					.field("landmark_alert[latitude]", String.valueOf(geoData.getLatitude()))
+					.field("landmark_alert[longitude]", String.valueOf(geoData.getLongitude()))
+					.field("landmark_alert[detection_date]", String.valueOf(landmark.getMetaData().getAirplane().getTime()))
+					.field("landmark_alert[height]", String.valueOf(geoData.getHeight()))
+					.field("landmark_alert[image]", landmark.getLandmarkPictureAsFile())
+					.asJson();
+					
+					System.out.println("Response: " + response.getBody().getObject().toString());
+				} catch (UnirestException e) {
+					e.printStackTrace();
+				} finally {
+					landmark.getLandmarkPictureAsFile().delete();
+				}
+			}
+		}.start();
 	}
 }

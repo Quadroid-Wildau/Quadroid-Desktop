@@ -1,11 +1,13 @@
 package communication;
 
+import handler.XBeeReceiverHandler;
 import handler.XBeeTransmitterHandler;
 import interfaces.IRxListener;
 
 import java.util.Observable;
 import java.util.Random;
 
+import model.XBeeRxTx;
 import coder.decoder.ObserverHandler;
 import coder.encoder.TxDataEncoder;
 import connection.Connect;
@@ -16,6 +18,7 @@ import de.th_wildau.quadroid.models.GNSS;
 import de.th_wildau.quadroid.models.MetaData;
 import de.th_wildau.quadroid.models.RxData;
 import de.th_wildau.quadroid.models.Waypoint;
+import enums.XBee;
 
 /**
  * Class for flight control of Quadroid. Used for sending Waypoints.
@@ -32,13 +35,43 @@ public class FlightControlCommunicator extends Observable implements IRxListener
 	private Waypoint[] currentWaypoints;
 	private XBeeTransmitterHandler mTransmitterHandler;
 	private TxDataEncoder encoder = new TxDataEncoder();
+	private Connect xbeeconnection;
 	
 	public FlightControlCommunicator() {
 		ObserverHandler.getReference().register(this);
 	}
 	
-	public void setXbeeConnection(Connect connection) {
-		mTransmitterHandler = new XBeeTransmitterHandler(connection);
+	public void closeXbeeConnection() {
+		if (xbeeconnection != null)
+			xbeeconnection.disconnect();
+	}
+	
+	public boolean openXbeeConnection(String port) {
+		//create xbee device
+		XBeeRxTx xbeedevice = new XBeeRxTx();
+		xbeedevice.setBaud(XBee.BAUD.getValue());
+		xbeedevice.setDatabits(XBee.DATABITS.getValue());
+		xbeedevice.setParity(XBee.PARITY.getValue());
+		xbeedevice.setPort(port);//set selected port
+		xbeedevice.setStopbits(XBee.STOPBITS.getValue());
+		xbeedevice.setDevicename(XBee.DEVICENAME.getName());
+		
+		//create connection to xbee device
+		xbeeconnection = Connect.getInstance(xbeedevice);
+		//registered observer, transmitter and receiver
+		if (xbeeconnection != null) {
+			//Set xbee connection
+			XBeeReceiverHandler receiver = new XBeeReceiverHandler();
+			mTransmitterHandler = new XBeeTransmitterHandler(xbeeconnection);
+			
+	        ObserverHandler oh = ObserverHandler.getReference();
+	        oh.register(this);
+	        xbeeconnection.addSerialPortEventListener(receiver);
+	        
+			return true;
+		}
+		
+		return false;
 	}
 
 	public void sendWaypoints(Waypoint[] waypoints) {

@@ -32,7 +32,6 @@ import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import model.AdvLandmark;
-import model.XBeeRxTx;
 
 import org.apache.commons.lang3.SystemUtils;
 import org.apache.log4j.PropertyConfigurator;
@@ -47,7 +46,6 @@ import communication.CommunicationStack;
 import connection.Connect;
 import controller.MainController;
 import controller.VideoStreamController;
-import enums.XBee;
 
 public class Main extends JFrame implements ActionListener, WindowListener {
 
@@ -59,7 +57,6 @@ public class Main extends JFrame implements ActionListener, WindowListener {
 	private JMenuBar menuBar;
 	private JMenu menuFile, menuVideo, menuLandmarkAlarm, subMenuVideoDevice, saveScreenshotMenu, saveVideoMenu, menuXbee, xbee;
 	private JMenuItem itemSaveVideoPredefinedPath, itemSaveVideo, itemStopSavingVideo, itemShowLandmarkAlerts;
-	private Connect xbeeconnection = null;
 	
 	private Icon iconNewLandmarkAlert;
 	
@@ -415,25 +412,11 @@ public class Main extends JFrame implements ActionListener, WindowListener {
 			//get selected port 
 			String port = item.getText();
 			
-			//create xbee device
-			XBeeRxTx xbeedevice = new XBeeRxTx();
-			xbeedevice.setBaud(XBee.BAUD.getValue());
-			xbeedevice.setDatabits(XBee.DATABITS.getValue());
-			xbeedevice.setParity(XBee.PARITY.getValue());
-			xbeedevice.setPort(port);//set selected port
-			xbeedevice.setStopbits(XBee.STOPBITS.getValue());
-			xbeedevice.setDevicename(XBee.DEVICENAME.getName());
-			//create connection to xbee device
-			this.xbeeconnection = Connect.getInstance(xbeedevice);
-			//registered observer, transmitter and receiver
-			if(this.xbeeconnection != null) {			
-				item.setEnabled(false);
-				
-				//Set xbee connection
-				CommunicationStack.getInstance().getFlightCommunicator().setXbeeConnection(xbeeconnection);
-			}	
+			//pass port to Communicator
+			boolean success = CommunicationStack.getInstance().getFlightCommunicator().openXbeeConnection(port);
 			
-			return;
+			if (success)
+				item.setEnabled(false);
 		} else if (command.equals("simulateAlarm")) {
 			String imagefile = openFile();
 			
@@ -478,9 +461,7 @@ public class Main extends JFrame implements ActionListener, WindowListener {
 		VideoStreamController videoStreamController = (VideoStreamController) mainController.getVideoStreamController();
 		videoStreamController.stopGrabbingVideoFrames();
 
-		//disconnect xBee Device
-		if(this.xbeeconnection != null)
-		   this.xbeeconnection.disconnect();
+		CommunicationStack.getInstance().getFlightCommunicator().closeXbeeConnection();
 		
 		//Stop Unirest threads
 		try {
