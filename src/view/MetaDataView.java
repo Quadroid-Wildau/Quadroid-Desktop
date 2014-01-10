@@ -21,6 +21,7 @@ import de.th_wildau.quadroid.models.MetaData;
 public class MetaDataView extends JPanel{
 	private static final long serialVersionUID = 1L;
 	
+	@SuppressWarnings("unused")
 	private MetaDataController controller;
 	private JLabel lblMetadaten;
 	private JPanel panel;

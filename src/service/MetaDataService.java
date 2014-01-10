@@ -8,6 +8,7 @@ import communication.CommunicationStack;
 import communication.FlightControlCommunicator;
 
 import de.th_wildau.quadroid.models.MetaData;
+import de.th_wildau.quadroid.models.RxData;
 
 public class MetaDataService extends Observable implements Observer{
 	
@@ -51,12 +52,27 @@ public class MetaDataService extends Observable implements Observer{
 			return metaDataHistory.get(0);
 		return null;
 	}
+	
+	public MetaData getLastMetaData() {
+		if (metaDataHistory != null && metaDataHistory.size() > 0)
+			return metaDataHistory.get(metaDataHistory.size() - 1);
+		return null;
+	}
 
 	@Override
-	public void update(Observable o, Object arg) {
-		MetaData metaData = this.getFlightCommunication().getMetaData();
-		this.metaDataHistory.add(metaData);
-		this.setChanged();
-		this.notifyObservers(metaData);
+	public void update(Observable o, Object obj) {
+		if (o instanceof FlightControlCommunicator) {
+			RxData data = (RxData) obj;
+			
+			if (data != null && data.getMetadatalist() != null && data.getMetadatalist().size() > 0) {
+				//has new metadata
+				metaDataHistory.addAll(data.getMetadatalist());
+			} else {
+				metaDataHistory.add(getFlightCommunication().getMetaData());
+			}
+			
+			setChanged();
+			notifyObservers(getLastMetaData());
+		}
 	}
 }

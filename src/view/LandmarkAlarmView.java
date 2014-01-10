@@ -6,6 +6,9 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
@@ -28,7 +31,7 @@ import view.custom.ImagePanel;
  * @version 1.0
  *
  */
-public class LandmarkView extends JFrame {
+public class LandmarkAlarmView extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -37,7 +40,7 @@ public class LandmarkView extends JFrame {
 	private JList<String> list;
 	private LandmarkController controller;
 
-	public LandmarkView(LandmarkController controller) {
+	public LandmarkAlarmView(LandmarkController controller) {
 		setTitle("Landmarkenalarm");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setSize(800, 600);
@@ -80,7 +83,15 @@ public class LandmarkView extends JFrame {
 		placeHolderModel.addElement("Keine");
 		list.setModel(placeHolderModel);
 		
+		addWindowListener(mWindowListener);
+		
 		setVisible(true);
 	}
 	
+	private WindowListener mWindowListener = new WindowAdapter() {
+		@Override
+		public void windowClosed(WindowEvent e) {
+			controller.notifyViewClosed();
+		}
+	};
 }

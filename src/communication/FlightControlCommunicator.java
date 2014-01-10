@@ -10,25 +10,24 @@ import de.th_wildau.quadroid.models.Airplane;
 import de.th_wildau.quadroid.models.Attitude;
 import de.th_wildau.quadroid.models.Course;
 import de.th_wildau.quadroid.models.GNSS;
-import de.th_wildau.quadroid.models.Landmark;
 import de.th_wildau.quadroid.models.MetaData;
 import de.th_wildau.quadroid.models.RxData;
 import de.th_wildau.quadroid.models.Waypoint;
 
 public class FlightControlCommunicator extends Observable implements IRxListener {
-	
-	private RxData data;
+		
+	private Waypoint[] currentWaypoints;
 	
 	public FlightControlCommunicator() {
 		ObserverHandler.getReference().register(this);
 	}
 
 	public void sendWaypoints(Waypoint[] waypoints) {
-		
+		this.currentWaypoints = waypoints;
 	}
 
 	public Waypoint[] getWaypoints() {
-		return null;
+		return currentWaypoints;
 	}
 	
 	public MetaData getMetaData() {
@@ -58,25 +57,19 @@ public class FlightControlCommunicator extends Observable implements IRxListener
 		metaData.setAttitude(att);
 		metaData.setCourse(course);
 		
-		return this.getLastMetaData();
+		return metaData;
 	}
 	
-	private MetaData getLastMetaData() {
-		return data.getMetadatalist().get(data.getMetadatalist().size() - 1);
-	}
-	
+	/**
+	 * just for testing
+	 */
 	public void setChangedPublic() {
-		this.setChanged();
-	}
-
-	public Landmark getLandmarkAlarm() {
-		return null;
+		setChanged();
 	}
 
 	@Override
 	public void rx(RxData data) {
-		this.data = data;
 		this.setChanged();
-		this.notifyObservers();
+		this.notifyObservers(data);
 	}
 }

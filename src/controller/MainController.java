@@ -1,37 +1,42 @@
 package controller;
 
-import javax.swing.JComponent;
+import java.util.Observable;
+import java.util.Observer;
+
+import main.Main;
+import model.AdvLandmark;
 
 import org.apache.commons.lang3.SystemUtils;
 
-import view.MainView;
+import service.LandMarkerService;
 
-public class MainController implements ViewController{
-	private MainView view;
+public class MainController implements Observer {
+	private Main mainView;
 	private ViewController mapController;
 	private ViewController videoStreamController;
 	private ViewController map3DController;
 	private ViewController metaDataController;
+	private LandmarkController landMarkController;
 	
 	public MainController() {
+		LandMarkerService.getInstance().addObserver(this);
 	}
 	
-	@Override
-	public JComponent getView() {
-		if (view == null) {
-			this.view = new view.MainView(this);
-			this.view.setMap(this.getMapController().getView());
+	public Main getView() {
+		if (mainView == null) {
+			this.mainView = new Main();
+			this.mainView.setMap(this.getMapController().getView());
 			
 			//Because of incompatibility between Java3D Java 7 and Mac OSX, do not display the 3D view on Mac OSX
 			if (!SystemUtils.IS_OS_MAC_OSX) {
-				this.view.setMap3D(this.getMap3DController().getView());
+				this.mainView.setMap3D(this.getMap3DController().getView());
 			}
 			
-			this.view.setMetaData(this.getMetaDataController().getView());
-			this.view.setVideoStream(this.getVideoStreamController().getView());
+			this.mainView.setMetaData(this.getMetaDataController().getView());
+			this.mainView.setVideoStream(this.getVideoStreamController().getView());
 		}
 		
-		return this.view;
+		return this.mainView;
 	}
 	
 	public ViewController getMapController() {
@@ -64,5 +69,18 @@ public class MainController implements ViewController{
 		}
 		
 		return metaDataController;
+	}
+	
+	public LandmarkController getLandmarkController() {
+		if (landMarkController == null)
+			landMarkController = new LandmarkController();
+		return landMarkController;
+	}
+
+	@Override
+	public void update(Observable o, Object obj) {
+		if (o instanceof LandMarkerService) {
+			getView().newLandMarkAlarm((AdvLandmark)obj);
+		}
 	}
 }

@@ -12,7 +12,8 @@ public class FlightControlService extends Observable {
 	
 	private List<Waypoint> waypoints = new ArrayList<Waypoint>();
 	
-	private FlightControlService() {}
+	private FlightControlService() {
+	}
 	
 	public static FlightControlService getInstance() {
 		if (instance == null)

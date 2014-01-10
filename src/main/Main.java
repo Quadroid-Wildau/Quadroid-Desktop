@@ -1,34 +1,32 @@
 package main;
 
 
-import handler.XBeeReceiverHandler;
-import handler.XBeeTransmitterHandler;
 import helper.FileHelper;
-import interfaces.IRxListener;
 
+import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.Observable;
-import java.util.Observer;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import javax.imageio.ImageIO;
+import javax.swing.BoxLayout;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -41,7 +39,7 @@ import org.apache.log4j.PropertyConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import coder.decoder.ObserverHandler;
+import service.LandMarkerService;
 
 import com.mashape.unirest.http.Unirest;
 import communication.CommunicationStack;
@@ -49,25 +47,27 @@ import communication.CommunicationStack;
 import connection.Connect;
 import controller.MainController;
 import controller.VideoStreamController;
-import controller.ViewController;
-import de.th_wildau.quadroid.models.Airplane;
-import de.th_wildau.quadroid.models.GNSS;
-import de.th_wildau.quadroid.models.MetaData;
-import de.th_wildau.quadroid.models.RxData;
 import enums.XBee;
 
-public class Main extends JFrame implements ActionListener, WindowListener, MouseListener, IRxListener, Observer {
+public class Main extends JFrame implements ActionListener, WindowListener {
 
 	private static final long serialVersionUID = 1L;
 	private static MainController mainController;
 	private static Logger logger = LoggerFactory.getLogger(Main.class.getName());
+	
+	//Menu
 	private JMenuBar menuBar;
 	private JMenu menuFile, menuVideo, menuLandmarkAlarm, subMenuVideoDevice, saveScreenshotMenu, saveVideoMenu, menuXbee, xbee;
 	private JMenuItem itemSaveVideoPredefinedPath, itemSaveVideo, itemStopSavingVideo, itemShowLandmarkAlerts;
 	private Connect xbeeconnection = null;
-	/**instance for transmission with xbee*/
-	private XBeeTransmitterHandler xbeetransmitter = null;
+	
 	private Icon iconNewLandmarkAlert;
+	
+	private JComponent mapView;
+	private JComponent map3DView;
+	private JComponent metaDataView;
+	private JComponent videoStreamView;
+	private JPanel rightSubPanel;	
 	
 	/**
 	 * @param args
@@ -80,11 +80,12 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 		logger = LoggerFactory.getLogger(Main.class.getName());
 		logger.info("Init Logger");
 		
-		getMainController();
-		new Main();
+		//init and show main window
+		getMainController().getView().setVisible(true);
 		
 		initTestTimer();
 		
+		//Make sure the application gets a login token from Quadroid server by instantiating the communicator
 		CommunicationStack.getInstance().getPushCommunicator();
 	}
 
@@ -92,7 +93,6 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 		setTitle("Quadroid Desktop");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Main.class.getResource("/images/logo.png")));
 		setSize(1280, 800);
-		getContentPane().add(getMainController().getView());
 		addWindowListener(this);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
@@ -115,7 +115,6 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 		menuFile = new JMenu("Datei");
 		menuVideo = new JMenu("Video");
 		menuLandmarkAlarm = new JMenu("Landmarkenalarm");
-		menuLandmarkAlarm.setIcon(iconNewLandmarkAlert);
 		menuXbee = new JMenu("XBee");
 		
 		menuBar.add(menuFile);
@@ -124,7 +123,6 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 		menuBar.add(menuXbee);
 		
 		xbee = new JMenu("Connect xBee-Pro");
-		xbee.addMouseListener(this);
 		for(String s : Connect.getAvailablePorts())
 		{
 			JMenuItem item = new JMenuItem(s);
@@ -225,17 +223,82 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 		
 		setJMenuBar(menuBar);
 		
-		setVisible(true);
+		add(getRightSubPanel(), java.awt.BorderLayout.EAST);
 	}
 	
-	public static ViewController getMainController() {
+	public static MainController getMainController() {
 		if (mainController == null) {
 			mainController = new MainController();
 		}
-		
 		return mainController;
-	}	
+	}
 	
+	private JPanel getRightSubPanel() {
+		if (this.rightSubPanel == null) {			
+			this.rightSubPanel = new JPanel();
+			this.rightSubPanel.setLayout(new BoxLayout(rightSubPanel, BoxLayout.Y_AXIS));
+			this.rightSubPanel.setPreferredSize(new Dimension(600, 0));
+			this.rightSubPanel.setMinimumSize(new Dimension(200, 0));
+		}
+		
+		return this.rightSubPanel;
+	}
+	
+	public void setVideoStream(JComponent view) {
+		if (this.videoStreamView != view) {
+			if (this.videoStreamView != null) {				
+				this.remove(this.videoStreamView);
+			}
+			
+			this.videoStreamView = view;
+		}
+		
+		add(this.videoStreamView, java.awt.BorderLayout.CENTER);
+		revalidate();
+	}
+	
+	public void setMap(JComponent view) {
+		if (this.mapView != view) {
+			if (this.mapView != null) {				
+				this.remove(this.mapView);
+			}
+			
+			this.mapView = view;
+		}
+		
+		getRightSubPanel().add(this.mapView, java.awt.BorderLayout.CENTER);
+		revalidate();
+	}
+	
+	public void setMap3D(JComponent view) {
+		if (this.map3DView != view) {
+			if(this.map3DView != null) { 
+				this.remove(this.map3DView);
+			}
+			
+			this.map3DView = view;
+		}
+		
+		getRightSubPanel().add(this.map3DView, java.awt.BorderLayout.SOUTH);
+		revalidate();
+	}
+	
+	public void setMetaData(JComponent view) {
+		if (this.metaDataView != view) {
+			if (this.metaDataView != null) {				
+				this.remove(this.metaDataView);
+			}
+			
+			this.metaDataView = view;
+		}
+		
+		add(this.metaDataView, java.awt.BorderLayout.SOUTH);
+		revalidate();
+	}
+	
+	public void newLandMarkAlarm(AdvLandmark landmark) {
+		showAlertIconForLandmark(true);
+	}
 	
 //***************************************************************************************************************
 //	Helpers
@@ -301,6 +364,16 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 		return null;
 	}
 	
+	private void showAlertIconForLandmark(boolean show) {
+		if (show) {
+			menuLandmarkAlarm.setIcon(iconNewLandmarkAlert);
+			itemShowLandmarkAlerts.setIcon(iconNewLandmarkAlert);
+		} else {
+			menuLandmarkAlarm.setIcon(null);
+			itemShowLandmarkAlerts.setIcon(null);
+		}
+	}
+	
 //***************************************************************************************************************
 //	View Listeners
 //***************************************************************************************************************
@@ -352,14 +425,7 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 			//create connection to xbee device
 			this.xbeeconnection = Connect.getInstance(xbeedevice);
 			//registered observer, transmitter and receiver
-			if(this.xbeeconnection != null)
-			{
-				XBeeReceiverHandler receiver = new XBeeReceiverHandler();
-				xbeetransmitter = new XBeeTransmitterHandler(this.xbeeconnection);
-				ObserverHandler oh = ObserverHandler.getReference();
-				oh.register(this);
-				this.xbeeconnection.addSerialPortEventListener(receiver);
-				
+			if(this.xbeeconnection != null) {			
 				item.setEnabled(false);
 			}	
 			
@@ -369,28 +435,15 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 			
 			try {
 				BufferedImage testImage = ImageIO.read(new File(imagefile));
-				
-				GNSS geoData = new GNSS();
-				geoData.setHeight(21);
-				geoData.setLatitude(54.489165f);
-				geoData.setLongitude(14.568f);
-				
-				AdvLandmark landmark = new AdvLandmark();
-				MetaData metadata = new MetaData();
-				Airplane ap = new Airplane();
-				
-				ap.setGeoData(geoData);
-				ap.setTime(System.currentTimeMillis()/1000);
-				ap.setGeoData(geoData);				
-				
-				metadata.setAirplane(ap);
-				
-				landmark.setPictureoflandmark(testImage);
-				landmark.setMetaData(metadata);
-				CommunicationStack.getInstance().getPushCommunicator().pushLandmarkAlarm(landmark);
+				LandMarkerService.getInstance().simulateLandmarkAlarm(testImage);
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
+		} else if (command.equals("showLandmarkAlerts")) {
+			//Show landmark alarms view
+			mainController.getLandmarkController().getView();
+			showAlertIconForLandmark(false);
+			
 		} else {
 			try {
 				//disable all save menus in case the device can't be opened
@@ -441,80 +494,4 @@ public class Main extends JFrame implements ActionListener, WindowListener, Mous
 	public void windowDeiconified(WindowEvent e) {}
 	public void windowIconified(WindowEvent e) {}
 	public void windowOpened(WindowEvent e) {}
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-	}
-	@Override
-	public void mousePressed(MouseEvent e) {
-	}
-	@Override
-	public void mouseReleased(MouseEvent e) {
-	}
-	@Override
-	public void mouseExited(MouseEvent e) {
-		
-	}
-
-	@Override
-	public void rx(RxData data) 
-	{
-//		logger.info("new data available");
-//		//data.getWaypointlist()
-//		//data.getAirplanelist()
-//		//data.getCourselist()
-//		//data.getGnsslist()
-//		//data.getLandmarklist()
-//		//data.getMetadatalist()
-//		
-//		GNSS geo = new GNSS();
-//		
-//		Course course = new Course();
-//		
-//		geo.setLatitude(52.1245f);
-//		geo.setLongitude(13.12345f);
-//		geo.setHeight(300.00f);
-//		
-//		course.setAngleReference(180.0f);
-//		course.setSpeed(52.00f);
-//		
-//		TxDataEncoder encoder = new TxDataEncoder();
-//		
-//		byte[] buffer = encoder.geodataToBytes(geo);
-//		byte[] txdata = encoder.appendBytes(buffer, encoder.courseToBytes(course));
-//		
-//		this.xbeetransmitter.transmit(txdata);
-		/**
-		 * TODO: remove this example 
-		 * 
-		 * NOTE: Example for rx/tx data
-		 * 
-		 * create connection
-		 * 1.) this.xbeeconnection = Connect.getInstance(IDevice);
-		 * 	
-		 * for transmission
-		 * 2.) xbeetransmitter = new XBeeTransmitterHandler(this.xbeeconnection);
-		 * 
-		 * this.xbeetransmitter.transmit(msg);
-		 * 
-		 * registered observer
-		 * 3.1.) ObserverHandler oh = ObserverHandler.getReference();
-		 * 	   oh.register(this); 
-		 * 
-		 *  All Observer must be implemented IRxListener
-		 * 
-		 * registered receiver
-		 * 3.2.)
-		 * 		XBeeReceiverHandler receiver = new XBeeReceiverHandler();
-		 *		this.xbeeconnection.addSerialPortEventListener(receiver);
-		 * 
-		 * */
-		
-	}
-
-	@Override
-	public void update(Observable arg0, Object arg1) {
-		// TODO Auto-generated method stub
-		
-	}
 }
