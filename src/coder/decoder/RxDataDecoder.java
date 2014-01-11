@@ -6,6 +6,8 @@ package coder.decoder;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.zip.CRC32;
 import javax.imageio.ImageIO;
 import org.apache.commons.codec.binary.Base64;
@@ -43,6 +45,8 @@ public class RxDataDecoder implements Runnable
 	private static final byte OFFSET = 3;
 	/**reference of observer handler to inform all observer*/
 	private ObserverHandler observers = null;
+	
+	private Calendar cal = Calendar.getInstance();
 	
 	
 	/**
@@ -408,7 +412,19 @@ public class RxDataDecoder implements Runnable
 				int tend = data.indexOf(Marker.TIMEEND.getMarker());
 			
 				//parse and set data from string to long
-				qa.setTime(Long.valueOf(data.substring(tstart, tend)));
+				String time = data.substring(tstart, tend);
+				int hours = Integer.parseInt(time.substring(0, 2));
+				int minutes = Integer.parseInt(time.substring(2, 4));
+				int seconds = Integer.parseInt(time.substring(4, 6));
+				
+				
+				cal.setTime(new Date());
+				cal.set(Calendar.MILLISECOND, 0);
+				cal.set(Calendar.SECOND, seconds);
+				cal.set(Calendar.MINUTE, minutes);
+				cal.set(Calendar.HOUR_OF_DAY, hours);
+				
+				qa.setTime(cal.getTimeInMillis());
 			}catch(Exception e)
 			{
 				logger.error("cant create time");

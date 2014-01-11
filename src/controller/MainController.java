@@ -21,6 +21,7 @@ public class MainController implements Observer {
 	private LandmarkController landMarkController;
 	
 	public MainController() {
+		System.out.println("New MainController");
 		LandMarkerService.getInstance().addObserver(this);
 	}
 	

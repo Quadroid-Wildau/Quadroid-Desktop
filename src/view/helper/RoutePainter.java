@@ -38,8 +38,8 @@ public class RoutePainter implements Painter<JXMapViewer> {
 		this.color = color;
 	}
 	
-	public void setTrack(List<GeoPosition> track) {
-		this.track = track;
+	public synchronized void setTrack(List<GeoPosition> track) {
+		this.track = new ArrayList<>(track);
 	}
 
 	@Override

@@ -5,7 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * Clas for converting date to string
+ * Class for converting date to string
  * @author Georg Baumgarten
  * @version 1.0
  *
@@ -21,7 +21,7 @@ public class DateFormatter {
 	 * @return
 	 */
 	public static String formatDate(Date date) {
-		return sdf.format(date);
+		return sdf.format(date) + " UTC";
 	}
 	
 	/**
@@ -31,6 +31,6 @@ public class DateFormatter {
 	 */
 	public static String formatDate(long millis) {
 		calendar.setTimeInMillis(millis);
-		return sdf.format(calendar.getTime());
+		return sdf.format(calendar.getTime())  + " UTC";
 	}
 }

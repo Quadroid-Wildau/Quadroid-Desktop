@@ -43,7 +43,7 @@ public class ImageHelper {
 				text = "Latitude: " + gnss.getLatitude() + 
 					", Longitude: " + gnss.getLongitude() + 
 					", Hoehe: " + gnss.getHeight() +
-					", Zeit: " + DateFormatter.formatDate(metadata.getAirplane().getTime() * 1000);
+					", Zeit: " + DateFormatter.formatDate(metadata.getAirplane().getTime());
 		}
 		
 		IplImage img = image.clone();
@@ -78,7 +78,7 @@ public class ImageHelper {
 				text = "Latitude: " + gnss.getLatitude() + 
 					", Longitude: " + gnss.getLongitude() + 
 					", Hoehe: " + gnss.getHeight() +
-					", Zeit: " + DateFormatter.formatDate(metadata.getAirplane().getTime() * 1000);
+					", Zeit: " + DateFormatter.formatDate(metadata.getAirplane().getTime());
 		}
 		
 		return drawTextOnImage(image, 10, image.getHeight() - 10, text);

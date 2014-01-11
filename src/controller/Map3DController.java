@@ -35,7 +35,7 @@ import controller.interfaces.ViewController;
 import de.th_wildau.quadroid.models.MetaData;
 
 /**
- * COntroller for the 3D Model view
+ * Controller for the 3D Model view
  * @author Georg Baumgarten
  * @version 1.0
  *
