@@ -101,11 +101,28 @@ public class MetaDataService extends Observable implements Observer{
 			RxData data = (RxData) obj;
 			
 			if (data != null && data.getMetadatalist() != null && data.getMetadatalist().size() > 0) {
+				System.out.println("Data Size: " + data.getMetadatalist().size() + ", History Size: " + metaDataHistory.size());
+				
 				//has new metadata
 				metaDataHistory.addAll(data.getMetadatalist());
 				
+				MetaData last = getLastMetaData();
+				
+				//Use first yaw as reference yaw
+				if (last != null) {
+					float referenceYaw = 0.0f;
+					for (int i = 0; i < metaDataHistory.size(); i++) {
+						referenceYaw = metaDataHistory.get(i).getAttitude().getYaw();
+						if (referenceYaw != 0.0f)
+							break;
+					}
+					float newYaw = (last.getAttitude().getYaw() - referenceYaw) % 360f;
+					System.out.println("Reference: " + referenceYaw + ", NEwYaw: " + newYaw);
+					last.getAttitude().setYaw(newYaw);
+				}
+				
 				setChanged();
-				notifyObservers(getLastMetaData());
+				notifyObservers(last);
 			}
 		}
 	}

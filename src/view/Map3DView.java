@@ -60,7 +60,7 @@ public class Map3DView extends JPanel{
 			
 			Transform3D t = new Transform3D();
 			Transform3D rotate = getTransform3DRotation(0, 1, 0.5, 60);
-			rotate.mul(getTransform3DTranslation(0, 0, 3.5));
+			rotate.mul(getTransform3DTranslation(0, 0, 4));
 			t.mul(rotate);
 			
 			mSimpleUniverse.getViewingPlatform().getViewPlatformTransform().setTransform(t);
@@ -80,7 +80,7 @@ public class Map3DView extends JPanel{
 	
 	private Transform3D getTransform3DRotation(double x, double y, double z, double angle) {
 		Transform3D t = new Transform3D();
-		t.setRotation(new AxisAngle4d(x, y, z, angle));
+		t.setRotation(new AxisAngle4d(x, y, z, Math.toRadians(angle)));
 		return t;
 	}
 
@@ -91,11 +91,13 @@ public class Map3DView extends JPanel{
 	public void setMetaData(MetaData metaData) {
 		Attitude att = metaData.getAttitude();
 		
+		System.out.println("Roll: " + att.getRoll() + ", Yaw: " + att.getYaw() + ", Pitch: " + att.getPitch());
+		
 		Transform3D t = new Transform3D();
-		Transform3D mRollTransform = getTransform3DRotation(0, 0, 1, att.getRoll());
+		Transform3D mRollTransform = getTransform3DRotation(0, 0, 1, -att.getRoll());
 		Transform3D mYawTransform = getTransform3DRotation(0, 1, 0, att.getYaw());
-		Transform3D mPitchTransform = getTransform3DRotation(1, 0, 0, att.getPitch());
-		Transform3D mZoomOut = getTransform3DTranslation(0, 0, 3.5);
+		Transform3D mPitchTransform = getTransform3DRotation(1, 0, 0, -att.getPitch());
+		Transform3D mZoomOut = getTransform3DTranslation(0, 0, 4);
 		
 		t.mul(mRollTransform);
 		t.mul(mYawTransform);

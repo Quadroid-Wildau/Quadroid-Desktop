@@ -50,7 +50,7 @@ public class XBeeReceiverHandler extends AbstractReceiver {
 									// endmarkers
 				new RxDataDecoder(data, ObserverHandler.getReference());// decoded
 																		// data
-				System.out.println("new DATA AVAILABLE");
+//				System.out.println("new DATA AVAILABLE");
 			}
 			port.notifyOnDataAvailable(true);
 

@@ -84,9 +84,9 @@ public class Main extends JFrame implements ActionListener, WindowListener {
 		System.getProperties().put("http.proxyHost", "proxy.th-wildau.de");
 		System.getProperties().put("http.proxyPort", "8080");
 		
-		PropertyConfigurator.configure("log4j.properties");
-		logger = LoggerFactory.getLogger(Main.class.getName());
-		logger.info("Init Logger");
+//		PropertyConfigurator.configure("log4j.properties");
+//		logger = LoggerFactory.getLogger(Main.class.getName());
+//		logger.info("Init Logger");
 		
 		//init and show main window
 		long start = System.currentTimeMillis();
