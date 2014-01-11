@@ -2,9 +2,17 @@ package model;
 
 import java.awt.Color;
 
+import org.jdesktop.swingx.JXMapViewer;
 import org.jdesktop.swingx.mapviewer.DefaultWaypoint;
 import org.jdesktop.swingx.mapviewer.GeoPosition;
 
+/**
+ * Waypoint object to show in {@link JXMapViewer} with label
+ * 
+ * @author Georg Baumgarten
+ * @version 1.0
+ *
+ */
 public class CustomWaypoint extends DefaultWaypoint {
     private int pos;
     private Color textColor;

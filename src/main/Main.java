@@ -51,6 +51,13 @@ import connection.Connect;
 import controller.MainController;
 import controller.VideoStreamController;
 
+/**
+ * This is the main project class and entry point for the application.
+ * 
+ * @author Georg Baumgarten
+ * @version 1.0
+ *
+ */
 public class Main extends JFrame implements ActionListener, WindowListener {
 
 	private static final long serialVersionUID = 1L;

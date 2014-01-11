@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
+import communication.CommunicationStack;
+
 import de.th_wildau.quadroid.models.Waypoint;
 
 /**
@@ -43,15 +45,16 @@ public class FlightControlService extends Observable {
 	}
 
 	/**
-	 * Add new waypoint to list
+	 * Add new waypoint to list and send waypoints to Quadroid quadcopter
 	 * @param waypoint
 	 */
 	public void addWaypoint(Waypoint waypoint) {
 		waypoints.add(waypoint);
+		CommunicationStack.getInstance().getFlightCommunicator().sendWaypoints(getWaypoints());
 	}
 	
 	/**
-	 * Add waypoint at top of the list
+	 * Add waypoint at top of the list and send waypoints to Quadroid quadcopter
 	 * @param waypoint
 	 */
 	public void addWaypointAtTop(Waypoint waypoint) {
@@ -59,14 +62,16 @@ public class FlightControlService extends Observable {
 		waypoints.clear();
 		waypoints.add(waypoint);
 		waypoints.addAll(cache);
+		CommunicationStack.getInstance().getFlightCommunicator().sendWaypoints(getWaypoints());
 	}
 
 	/**
-	 * Delete waypoint at index
+	 * Delete waypoint at index and send remaining waypoints to Quadroid quadcopter
 	 * @param index
 	 */
 	public void deleteWaypoint(int index) {
 		waypoints.remove(index);
+		CommunicationStack.getInstance().getFlightCommunicator().sendWaypoints(getWaypoints());
 	}
 	
 	/**
@@ -74,6 +79,7 @@ public class FlightControlService extends Observable {
 	 */
 	public void clearWaypoints() {
 		waypoints.clear();
+		CommunicationStack.getInstance().getFlightCommunicator().sendWaypoints(getWaypoints());
 	}
 	
 	/**
