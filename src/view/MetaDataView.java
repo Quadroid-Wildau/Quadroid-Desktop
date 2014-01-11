@@ -130,7 +130,7 @@ public class MetaDataView extends JPanel{
 
 	public void setMetaData(MetaData metaData) {
 		this.position.setText(metaData.getAirplane().GeoData().getLatitude() + " | " + metaData.getAirplane().GeoData().getLongitude());
-		this.power.setText(String.format("%d V", metaData.getAirplane().getBatteryState()));
+		this.power.setText(String.format("%.1f V", (float)metaData.getAirplane().getBatteryState() / 10));
 		this.height.setText(String.format("%.1f m", metaData.getAirplane().GeoData().getHeight()));
 		this.time.setText(DateFormatter.formatDate(metaData.getAirplane().getTime() * 1000));
 		this.speed.setText(String.format("%.2f km/h", metaData.getCourse().getSpeed()));

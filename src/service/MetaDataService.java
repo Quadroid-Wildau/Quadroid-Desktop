@@ -67,12 +67,10 @@ public class MetaDataService extends Observable implements Observer{
 			if (data != null && data.getMetadatalist() != null && data.getMetadatalist().size() > 0) {
 				//has new metadata
 				metaDataHistory.addAll(data.getMetadatalist());
-			} else {
-				metaDataHistory.add(getFlightCommunication().getMetaData());
+				
+				setChanged();
+				notifyObservers(getLastMetaData());
 			}
-			
-			setChanged();
-			notifyObservers(getLastMetaData());
 		}
 	}
 }

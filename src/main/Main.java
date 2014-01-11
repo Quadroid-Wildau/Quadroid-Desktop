@@ -13,8 +13,7 @@ import java.awt.event.WindowListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.net.ProxySelector;
 
 import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
@@ -34,6 +33,11 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import model.AdvLandmark;
 
 import org.apache.commons.lang3.SystemUtils;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.impl.conn.SystemDefaultRoutePlanner;
+import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
+import org.apache.http.impl.nio.client.HttpAsyncClients;
 import org.apache.log4j.PropertyConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -70,8 +74,8 @@ public class Main extends JFrame implements ActionListener, WindowListener {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-//		System.getProperties().put("http.proxyHost", "proxy.th-wildau.de");
-//		System.getProperties().put("http.proxyPort", "8080");
+		System.getProperties().put("http.proxyHost", "proxy.th-wildau.de");
+		System.getProperties().put("http.proxyPort", "8080");
 		
 		PropertyConfigurator.configure("log4j.properties");
 		logger = LoggerFactory.getLogger(Main.class.getName());
@@ -80,7 +84,13 @@ public class Main extends JFrame implements ActionListener, WindowListener {
 		//init and show main window
 		getMainController().getView().setVisible(true);
 		
-		initTestTimer();
+		SystemDefaultRoutePlanner routePlanner = new SystemDefaultRoutePlanner(ProxySelector.getDefault());
+		
+		CloseableHttpClient httpclient = HttpClients.custom().setRoutePlanner(routePlanner).build();
+		CloseableHttpAsyncClient asyncClient = HttpAsyncClients.custom().setRoutePlanner(routePlanner).build();
+		
+		Unirest.setHttpClient(httpclient);
+		Unirest.setAsyncHttpClient(asyncClient);
 		
 		//Make sure the application gets a login token from Quadroid server by instantiating the communicator
 		CommunicationStack.getInstance().getPushCommunicator();
@@ -324,19 +334,6 @@ public class Main extends JFrame implements ActionListener, WindowListener {
 		itemStopSavingVideo.setEnabled(isRecording);
 	}
 	
-	private static void initTestTimer() {
-		TimerTask task = new TimerTask() {
-			@Override
-			public void run() {
-				CommunicationStack.getInstance().getFlightCommunicator().setChangedPublic();
-				CommunicationStack.getInstance().getFlightCommunicator().notifyObservers();
-			}
-		};
-		
-		Timer timer = new Timer();
-		timer.scheduleAtFixedRate(task, 0, 1000);
-	}
-	
 	private String getFileFromChooser(final String ending) {
 		JFileChooser mFileChooser = new JFileChooser(System.getProperty("user.home"));
 		mFileChooser.setAcceptAllFileFilterUsed(false);
@@ -420,11 +417,13 @@ public class Main extends JFrame implements ActionListener, WindowListener {
 		} else if (command.equals("simulateAlarm")) {
 			String imagefile = openFile();
 			
-			try {
-				BufferedImage testImage = ImageIO.read(new File(imagefile));
-				LandMarkerService.getInstance().simulateLandmarkAlarm(testImage);
-			} catch (IOException e1) {
-				e1.printStackTrace();
+			if (imagefile != null) {
+				try {
+					BufferedImage testImage = ImageIO.read(new File(imagefile));
+					LandMarkerService.getInstance().simulateLandmarkAlarm(testImage);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
 			}
 		} else if (command.equals("showLandmarkAlerts")) {
 			//Show landmark alarms view

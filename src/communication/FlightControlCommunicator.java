@@ -120,13 +120,6 @@ public class FlightControlCommunicator extends Observable implements IRxListener
 		
 		return metaData;
 	}
-	
-	/**
-	 * just for testing
-	 */
-	public void setChangedPublic() {
-		setChanged();
-	}
 
 	@Override
 	public void rx(RxData data) {

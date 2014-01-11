@@ -2,7 +2,6 @@ package service;
 
 import java.util.Observable;
 
-import com.googlecode.javacv.FFmpegFrameRecorder;
 import com.googlecode.javacv.FrameGrabber.Exception;
 import com.googlecode.javacv.cpp.opencv_core.IplImage;
 import com.googlecode.javacv.cpp.opencv_highgui;
@@ -10,6 +9,7 @@ import com.googlecode.javacv.cpp.opencv_highgui.CvCapture;
 import com.googlecode.javacv.cpp.videoInputLib.videoInput;
 import communication.CommunicationStack;
 import communication.VideoCommunicator;
+import communication.persistence.VideoPersistence;
 
 /**
  * 
@@ -31,7 +31,7 @@ public class VideoStreamService extends Observable {
 	private CvCapture mCvCapture;
 	private GrabberThread mGrabberThread;
 	private IplImage currentFrame;
-	private FFmpegFrameRecorder mFrameRecorder;
+	
 	private volatile boolean canRecord = false;
 	
 	private VideoStreamService() {}
@@ -65,6 +65,7 @@ public class VideoStreamService extends Observable {
 	 */
 	public void stopVideoStream() {
 		canRecord = false;
+		CommunicationStack.getInstance().getVideoPersistance().stopRecord();
 		if (mGrabberThread != null) {
 			mGrabberThread.stopGrab();
 			mGrabberThread.interrupt();
@@ -82,9 +83,7 @@ public class VideoStreamService extends Observable {
 	 */
 	public void saveVideoStream(String filepath) {
 		try {
-			mFrameRecorder = CommunicationStack.getInstance().getVideoPersistance().createRecorder(mCvCapture, filepath);
-			mFrameRecorder.start();
-			
+			CommunicationStack.getInstance().getVideoPersistance().createRecorder(mCvCapture, filepath);
 			canRecord = true;
 		} catch (com.googlecode.javacv.FrameRecorder.Exception e) {
 			e.printStackTrace();
@@ -96,13 +95,7 @@ public class VideoStreamService extends Observable {
 	 */
 	public void stopSaveVideoStream() {
 		canRecord = false;
-		try {
-			mFrameRecorder.stop();
-			mFrameRecorder.release();
-		} catch (com.googlecode.javacv.FrameRecorder.Exception e) {}
-		finally {
-			mFrameRecorder = null;
-		}
+		CommunicationStack.getInstance().getVideoPersistance().stopRecord();
 	}
 	
 	/**
@@ -132,7 +125,9 @@ public class VideoStreamService extends Observable {
 	private class GrabberThread extends Thread {
 		
 		private final CvCapture mCvCapture;
-		private boolean canGrab = true;		
+		private boolean canGrab = true;
+		private VideoPersistence vp = CommunicationStack.getInstance().getVideoPersistance();
+		private MetaDataService metadataService = MetaDataService.getInstance();
 		
 		public GrabberThread(CvCapture mCvCapture) {
 			this.mCvCapture = mCvCapture;
@@ -140,9 +135,6 @@ public class VideoStreamService extends Observable {
 		
 		public synchronized void stopGrab() {
 			canGrab = false;
-			if (mFrameRecorder != null) {
-				stopSaveVideoStream();
-			}
 			opencv_highgui.cvReleaseCapture(mCvCapture);
 		}
 		
@@ -152,9 +144,9 @@ public class VideoStreamService extends Observable {
 				currentFrame = opencv_highgui.cvQueryFrame(mCvCapture);			
 				
 				//record the frame if recording is enabled at the moment
-				if (canRecord && mFrameRecorder != null) {
+				if (canRecord) {
 					try {
-						mFrameRecorder.record(currentFrame);
+						vp.recordFrame(currentFrame, metadataService.getLastMetaData());
 					} catch (com.googlecode.javacv.FrameRecorder.Exception e) {}
 				}
 				
