@@ -12,8 +12,27 @@ import com.googlecode.javacv.cpp.opencv_core.IplImage;
 import de.th_wildau.quadroid.models.GNSS;
 import de.th_wildau.quadroid.models.MetaData;
 
+/**
+ * This class provides some basic methods for image manipulation
+ * @author Georg Baumgarten
+ * @version 1.0
+ *
+ */
 public class ImageHelper {
 	
+	/**
+	 * Draws {@link MetaData} on {@link IplImage}
+	 * @param image
+	 * 			The image
+	 * @param x
+	 * 			Text begin x coord
+	 * @param y
+	 * 			Text begin y coord
+	 * @param metadata
+	 * 			The meta data
+	 * @return
+	 * 			{@link IplImage} with text
+	 */
 	public static IplImage drawMetaDataOnIplImage(IplImage image, int x, int y, MetaData metadata) {
 		String text = "";
 		
@@ -36,6 +55,19 @@ public class ImageHelper {
 		return img;
 	}
 	
+	/**
+	 * Draws {@link MetaData} on {@link BufferedImage}
+	 * @param image
+	 * 			The image
+	 * @param x
+	 * 			Text begin x coord
+	 * @param y
+	 * 			Text begin y coord
+	 * @param metadata
+	 * 			The meta data
+	 * @return
+	 * 			{@link BufferedImage} with text
+	 */
 	public static BufferedImage drawMetaDataOnImage(BufferedImage image, int x, int y, MetaData metadata) {
 		String text = "";
 		
@@ -52,6 +84,19 @@ public class ImageHelper {
 		return drawTextOnImage(image, 10, image.getHeight() - 10, text);
 	}
 
+	/**
+	 * Draws {@link String} on {@link BufferedImage}
+	 * @param image
+	 * 			The image
+	 * @param x
+	 * 			Text begin x coord
+	 * @param y
+	 * 			Text begin y coord
+	 * @param metadata
+	 * 			The meta data
+	 * @return
+	 * 			{@link BufferedImage} with text
+	 */
 	public static BufferedImage drawTextOnImage(BufferedImage image, int x, int y, String text) {
 		int w = image.getWidth();
 		int h = image.getHeight();

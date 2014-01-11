@@ -1,4 +1,4 @@
-package controller;
+package controller.interfaces;
 
 import javax.swing.JComponent;
 

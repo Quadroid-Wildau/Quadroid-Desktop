@@ -7,11 +7,19 @@ import java.util.Observer;
 
 import org.jdesktop.swingx.mapviewer.GeoPosition;
 
+import controller.interfaces.ViewController;
+
 import service.FlightControlService;
 import service.MetaDataService;
 import view.MapView;
 import de.th_wildau.quadroid.models.Waypoint;
 
+/**
+ * Controller for Map view
+ * @author Georg Baumgarten
+ * @version 1.0
+ *
+ */
 public class MapController implements ViewController, Observer {
 
 	private MapView view;

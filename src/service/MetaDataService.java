@@ -10,11 +10,27 @@ import communication.FlightControlCommunicator;
 import de.th_wildau.quadroid.models.MetaData;
 import de.th_wildau.quadroid.models.RxData;
 
+/**
+ * This service is used to manage Metadata
+ * 
+ * @author Georg Baumgarten
+ * @version 1.0
+ *
+ */
 public class MetaDataService extends Observable implements Observer{
 	
 	private static MetaDataService instance;
+	
+	/**
+	 * History of metadatas
+	 */
 	private ArrayList<MetaData> metaDataHistory;
 
+	/**
+	 * Singleton
+	 * @return
+	 * 		the instance
+	 */
 	public static MetaDataService getInstance() {
 		if (instance == null) {
 			instance = new MetaDataService();
@@ -28,6 +44,11 @@ public class MetaDataService extends Observable implements Observer{
 		this.getFlightCommunication().addObserver(this);
 	}
 	
+	/**
+	 * Get the current {@link MetaData} object
+	 * @return
+	 * 		The {@link MetaData} object or null, if no metadata packets were received yet
+	 */
 	public MetaData getMetaData() {
 		MetaData metaData = null;
 		
@@ -39,6 +60,11 @@ public class MetaDataService extends Observable implements Observer{
 		return metaData;
 	}
 	
+	/**
+	 * Get all {@link MetaData}s
+	 * @return
+	 * 		List of {@link MetaData}
+	 */
 	public ArrayList<MetaData> getMetaDatas() {
 		return this.metaDataHistory;
 	}
@@ -47,12 +73,22 @@ public class MetaDataService extends Observable implements Observer{
 		return CommunicationStack.getInstance().getFlightCommunicator();
 	}
 	
+	/**
+	 * Get first {@link MetaData} in list
+	 * @return
+	 * 		first {@link MetaData}
+	 */
 	public MetaData getFirstMetaData() {
 		if (metaDataHistory != null && metaDataHistory.size() > 0)
 			return metaDataHistory.get(0);
 		return null;
 	}
 	
+	/**
+	 * get last {@link MetaData} in List
+	 * @return
+	 * 		last {@link MetaData}
+	 */
 	public MetaData getLastMetaData() {
 		if (metaDataHistory != null && metaDataHistory.size() > 0)
 			return metaDataHistory.get(metaDataHistory.size() - 1);

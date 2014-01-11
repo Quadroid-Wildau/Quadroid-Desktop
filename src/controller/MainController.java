@@ -8,6 +8,8 @@ import model.AdvLandmark;
 
 import org.apache.commons.lang3.SystemUtils;
 
+import controller.interfaces.ViewController;
+
 import service.LandMarkerService;
 
 public class MainController implements Observer {

@@ -17,26 +17,49 @@ import de.th_wildau.quadroid.models.Landmark;
 import de.th_wildau.quadroid.models.MetaData;
 import de.th_wildau.quadroid.models.RxData;
 
+/**
+ * This service is used to manage landmark alarms
+ * @author Georg Baumgarten
+ * @version 1.0
+ *
+ */
 public class LandMarkerService extends Observable implements Observer {
 	
 	private static LandMarkerService instance;
 	
+	/**
+	 * landmark history
+	 */
 	private List<AdvLandmark> landmarkHistory = new ArrayList<AdvLandmark>();
 	
 	private LandMarkerService() {
 		CommunicationStack.getInstance().getFlightCommunicator().addObserver(this);
 	}
 
+	/**
+	 * Singleton
+	 * @return
+	 */
 	public static LandMarkerService getInstance() {
 		if (instance == null)
 			instance = new LandMarkerService();
 		return instance;
 	}
 
+	/**
+	 * get all landmark alarms
+	 * @return
+	 * 		List of {@link AdvLandmark}
+	 */
 	public List<AdvLandmark> getLandmarkAlarms() {
 		return landmarkHistory;
 	}
 	
+	/**
+	 * Gets last Landmar alarm in list
+	 * @return
+	 * 		last {@link AdvLandmark}
+	 */
 	public AdvLandmark getLastLandmarkAlarm() {
 		if (landmarkHistory.size() > 0)
 			return landmarkHistory.get(landmarkHistory.size() - 1);
@@ -44,6 +67,11 @@ public class LandMarkerService extends Observable implements Observer {
 		return null;
 	}
 	
+	/**
+	 * This method can be used to simulate a landmark alarm
+	 * @param image
+	 * 			The landmark image
+	 */
 	public void simulateLandmarkAlarm(BufferedImage image) {
 		GNSS geoData = new GNSS();
 		geoData.setHeight(21);

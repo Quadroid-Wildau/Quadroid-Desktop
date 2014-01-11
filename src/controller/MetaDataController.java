@@ -3,8 +3,20 @@ package controller;
 import java.util.Observable;
 import java.util.Observer;
 
+import com.sun.xml.internal.ws.api.addressing.WSEndpointReference.Metadata;
+
+import controller.interfaces.ViewController;
+
+import service.MetaDataService;
+
 import de.th_wildau.quadroid.models.MetaData;
 
+/**
+ * Controller for Metadata view
+ * @author Georg Baumgarten
+ * @version 1.0
+ *
+ */
 public class MetaDataController implements ViewController, Observer{
 
 	private view.MetaDataView view;
@@ -22,6 +34,11 @@ public class MetaDataController implements ViewController, Observer{
 		return service.MetaDataService.getInstance();
 	}
 	
+	/**
+	 * Gets the first {@link MetaData} object from {@link MetaDataService}
+	 * @return
+	 * 		the {@link Metadata} object
+	 */
 	public MetaData getFirstMetaData() {
 		return getService().getFirstMetaData();
 	}

@@ -6,31 +6,54 @@ import java.util.Observable;
 
 import de.th_wildau.quadroid.models.Waypoint;
 
+/**
+ * This service is used to manage Flight control commands.
+ * 
+ * @author Georg Baumgarten
+ * @version 1.0
+ *
+ */
 public class FlightControlService extends Observable {
 
 	private static FlightControlService instance;
 	
 	private List<Waypoint> waypoints = new ArrayList<Waypoint>();
 	
-	private FlightControlService() {
-	}
-		
+	private FlightControlService() {}
+	
+	/**
+	 * Singleton
+	 * @return
+	 */
 	public static FlightControlService getInstance() {
 		if (instance == null)
 			instance = new FlightControlService();
 		return instance;
 	}
 
+	/**
+	 * Returns the waypoints of Quadroid
+	 * @return
+	 * 		the waypoints
+	 */
 	public Waypoint[] getWaypoints() {
 		Waypoint[] result = new Waypoint[waypoints.size()];
 		waypoints.toArray(result);
 		return result;
 	}
 
+	/**
+	 * Add new waypoint to list
+	 * @param waypoint
+	 */
 	public void addWaypoint(Waypoint waypoint) {
 		waypoints.add(waypoint);
 	}
 	
+	/**
+	 * Add waypoint at top of the list
+	 * @param waypoint
+	 */
 	public void addWaypointAtTop(Waypoint waypoint) {
 		List<Waypoint> cache = new ArrayList<>(waypoints);
 		waypoints.clear();
@@ -38,14 +61,24 @@ public class FlightControlService extends Observable {
 		waypoints.addAll(cache);
 	}
 
+	/**
+	 * Delete waypoint at index
+	 * @param index
+	 */
 	public void deleteWaypoint(int index) {
 		waypoints.remove(index);
 	}
 	
+	/**
+	 * Delete all waypoints
+	 */
 	public void clearWaypoints() {
 		waypoints.clear();
 	}
 	
+	/**
+	 * callback when waypoint was reached
+	 */
 	public void waypointReached() {
 		waypoints.remove(0);
 		setChanged();

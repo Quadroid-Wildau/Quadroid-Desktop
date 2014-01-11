@@ -82,7 +82,10 @@ public class Main extends JFrame implements ActionListener, WindowListener {
 		logger.info("Init Logger");
 		
 		//init and show main window
+		long start = System.currentTimeMillis();
 		getMainController().getView().setVisible(true);
+		long end = System.currentTimeMillis();
+		System.out.println("Start Time: " + (end-start) + "ms");
 		
 		SystemDefaultRoutePlanner routePlanner = new SystemDefaultRoutePlanner(ProxySelector.getDefault());
 		

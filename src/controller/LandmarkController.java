@@ -10,6 +10,12 @@ import model.AdvLandmark;
 import service.LandMarkerService;
 import view.LandmarkAlarmView;
 
+/**
+ * Controller for landmark alarm view
+ * @author Georg Baumgarten
+ * @version 1.0
+ *
+ */
 public class LandmarkController implements Observer {
 	
 	private LandmarkAlarmView view;
@@ -38,14 +44,29 @@ public class LandmarkController implements Observer {
 		return view;
 	}
 	
+	/**
+	 * Notify the controller that the view has been closed. Important call, because otherwise the view won't be
+	 * instantiated again after beeing closed
+	 */
 	public void notifyViewClosed() {
 		view = null;
 	}
 
+	/**
+	 * Get all landmark alarms
+	 * @return
+	 */
 	public List<AdvLandmark> getLandmarkAlarms() {
 		return getService().getLandmarkAlarms();
 	}
 	
+	/**
+	 * Save {@link AdvLandmark} to file
+	 * @param landmark
+	 * 			The landmark to save
+	 * @param filepath
+	 * 			The file to save the landmark to
+	 */
 	public void saveToImageFile(AdvLandmark landmark, String filepath) {
 		CommunicationStack.getInstance().getPhotoPersistance().saveScreenShot(
 										filepath, 

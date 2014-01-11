@@ -30,8 +30,16 @@ import com.sun.j3d.loaders.Scene;
 import com.sun.j3d.loaders.objectfile.ObjectFile;
 import com.sun.j3d.utils.image.TextureLoader;
 
+import controller.interfaces.ViewController;
+
 import de.th_wildau.quadroid.models.MetaData;
 
+/**
+ * COntroller for the 3D Model view
+ * @author Georg Baumgarten
+ * @version 1.0
+ *
+ */
 public class Map3DController implements ViewController, Observer {
 
 	private Map3DView view;
@@ -46,6 +54,16 @@ public class Map3DController implements ViewController, Observer {
 		return this.view;
 	}
 
+	/**
+	 * Create the scene graph for the 3D Model
+	 * @param file
+	 * 			.obj file (model) to load
+	 * @param backgroundFile
+	 * 			Background image file (image file)
+	 * @return
+	 * 			The Scenegraph ( {@link BranchGroup} )
+	 * @throws IOException
+	 */
 	public BranchGroup createSceneGraph(String file, String backgroundFile) throws IOException {
 		BranchGroup objRoot = new BranchGroup();
 		ObjectFile f = new ObjectFile(ObjectFile.RESIZE);
@@ -95,6 +113,8 @@ public class Map3DController implements ViewController, Observer {
 		app.setColoringAttributes(color1ca);
 		node.setAppearance(app);
 		 
+		//Because the texture loader of .obj files, which should load .mtl files in the same directory,
+		//is not working, we have to apply textures and colors manually
 		Texture metalTexture = new TextureLoader(getClass().getResource("/model3d/metal.jpg"), view).getTexture();
 		Appearance metalApperance = new Appearance();
 		metalApperance.setTexture(metalTexture);
