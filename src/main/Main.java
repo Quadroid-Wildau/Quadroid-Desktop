@@ -142,15 +142,15 @@ public class Main extends JFrame implements ActionListener, WindowListener, Item
 			xbee.add(item);
 		}
 		menuXbee.add(xbee);
-				
+			
+		JCheckBoxMenuItem itemProxy = new JCheckBoxMenuItem("Proxy nutzen");
+		itemProxy.addItemListener(this);
+		menuFile.add(itemProxy);
+		
 		JMenuItem itemExit = new JMenuItem("Beenden");
 		itemExit.setActionCommand("exit");
 		itemExit.addActionListener(this);
 		menuFile.add(itemExit);
-		
-		JCheckBoxMenuItem itemProxy = new JCheckBoxMenuItem("Proxy nutzen");
-		itemProxy.addItemListener(this);
-		menuFile.add(itemProxy);
 		
 		subMenuVideoDevice = new JMenu("Video Device");
 		menuVideo.add(subMenuVideoDevice);
