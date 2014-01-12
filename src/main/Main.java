@@ -14,7 +14,9 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.ProxySelector;
 
 import javax.imageio.ImageIO;
@@ -88,7 +90,9 @@ public class Main extends JFrame implements ActionListener, WindowListener, Item
 //		PropertyConfigurator.configure("log4j.properties");
 //		logger = LoggerFactory.getLogger(Main.class.getName());
 //		logger.info("Init Logger");
-				
+		
+		loadOpenGLLibrary();
+		
 		//init and show main window
 		getMainController().getView().setVisible(true);
 		
@@ -389,6 +393,79 @@ public class Main extends JFrame implements ActionListener, WindowListener, Item
 		
 		Unirest.setHttpClient(httpclient);
 		Unirest.setAsyncHttpClient(asyncClient);
+	}
+	
+	/**
+	 * Extracts library (.dll or .so) to filesystem, so the it can be loaded
+	 * @param relPath
+	 * 			The name of the library
+	 * @return
+	 * 			The file path of the extracted library
+	 * @throws IOException
+	 */
+	private static String extractLibrary(String relPath) throws IOException {
+		InputStream in = Main.class.getResourceAsStream(relPath);
+	    byte[] buffer = new byte[1024];
+	    int read = -1;
+	    File temp = File.createTempFile(relPath, "");
+	    FileOutputStream fos = new FileOutputStream(temp);
+
+	    while((read = in.read(buffer)) != -1) {
+	        fos.write(buffer, 0, read);
+	    }
+	    fos.close();
+	    in.close();
+
+	    return temp.getAbsolutePath();
+	}
+	
+	/**
+	 * Loads the opengl render library for specific OS and bitness
+	 */
+	private static void loadOpenGLLibrary() {
+		String bitness = System.getProperty("os.arch");
+		System.out.println("OS Architecture: " + bitness);
+		if (SystemUtils.IS_OS_WINDOWS) {
+			if (bitness.endsWith("86")) {
+				//32 bit
+				try {
+					String path = extractLibrary("/windows/i386/j3dcore-ogl.dll");
+					System.load(path);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+			} else {
+				//64 bit
+				try {
+					String path = extractLibrary("/windows/amd64/j3dcore-ogl.dll");
+					System.load(path);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+			}
+		} else if (SystemUtils.IS_OS_LINUX) {
+			if (bitness.endsWith("86")) {
+				//32 bit
+				try {
+					String path = extractLibrary("/linux/i386/j3dcore-ogl.dll");
+					System.load(path);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+			} else {
+				//64 bit
+				try {
+					String path = extractLibrary("/linux/amd64/j3dcore-ogl.dll");
+					System.load(path);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+			}
+		}
 	}
 	
 //***************************************************************************************************************

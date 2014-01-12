@@ -21,7 +21,6 @@ local.properties
 .cproject
 
 # driver
-*.so
 
 # PDT-specific
 .buildpath

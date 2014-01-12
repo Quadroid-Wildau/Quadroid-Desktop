@@ -21,6 +21,8 @@ public class MetaDataService extends Observable implements Observer{
 	
 	private static MetaDataService instance;
 	
+	private float referenceYaw = -1f;
+	
 	/**
 	 * History of metadatas
 	 */
@@ -106,20 +108,18 @@ public class MetaDataService extends Observable implements Observer{
 				//has new metadata
 				metaDataHistory.addAll(data.getMetadatalist());
 				
-				MetaData last = getLastMetaData();
-				
-				//Use first yaw as reference yaw
-				if (last != null) {
-					float referenceYaw = 0.0f;
-					for (int i = 0; i < metaDataHistory.size(); i++) {
-						referenceYaw = metaDataHistory.get(i).getAttitude().getYaw();
-						if (referenceYaw != 0.0f)
-							break;
+				if (referenceYaw < 0f) {
+					for (MetaData md : data.getMetadatalist()) {
+						if (md.getAttitude().getYaw() > 0f) {
+							referenceYaw = md.getAttitude().getYaw();
+						}
 					}
-					float newYaw = (last.getAttitude().getYaw() - referenceYaw) % 360f;
-					System.out.println("Reference: " + referenceYaw + ", NEwYaw: " + newYaw);
-					last.getAttitude().setYaw(newYaw);
 				}
+				
+				//calculate new yaw by using reference
+				MetaData last = getLastMetaData();
+				float newYaw = (last.getAttitude().getYaw() - referenceYaw) % 360f;
+				last.getAttitude().setYaw(newYaw);
 				
 				setChanged();
 				notifyObservers(last);

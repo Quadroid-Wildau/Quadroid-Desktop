@@ -47,6 +47,6 @@
 	<classpathentry kind="lib" path="libs/opencv-2.4.6.0-windows-x86_64.jar"/>
 	<classpathentry kind="lib" path="libs/commons-lang3-3.2.jar"/>
 	<classpathentry kind="lib" path="libs/jxmapviewer2-1.1.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre7"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
