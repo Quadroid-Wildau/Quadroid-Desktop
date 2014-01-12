@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-import communication.CommunicationStack;
-
 import model.AdvLandmark;
 import service.LandMarkerService;
 import view.LandmarkAlarmView;
+
+import communication.CommunicationStack;
 
 /**
  * Controller for landmark alarm view

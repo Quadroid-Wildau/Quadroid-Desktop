@@ -10,8 +10,8 @@ import view.VideoStreamView;
 import com.googlecode.javacv.FrameGrabber.Exception;
 import com.googlecode.javacv.cpp.opencv_core.IplImage;
 import communication.CommunicationStack;
-import controller.interfaces.ViewController;
 
+import controller.interfaces.ViewController;
 import de.th_wildau.quadroid.models.MetaData;
 
 /**

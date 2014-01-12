@@ -96,7 +96,7 @@ public class Map3DView extends JPanel{
 		Transform3D t = new Transform3D();
 		Transform3D mRollTransform = getTransform3DRotation(0, 0, 1, -att.getRoll());
 		Transform3D mYawTransform = getTransform3DRotation(0, 1, 0, att.getYaw());
-		Transform3D mPitchTransform = getTransform3DRotation(1, 0, 0, -att.getPitch());
+		Transform3D mPitchTransform = getTransform3DRotation(1, 0, 0, att.getPitch());
 		Transform3D mZoomOut = getTransform3DTranslation(0, 0, 4);
 		
 		t.mul(mRollTransform);

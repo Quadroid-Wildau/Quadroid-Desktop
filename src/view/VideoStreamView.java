@@ -7,6 +7,7 @@ import java.awt.Font;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
@@ -16,7 +17,6 @@ import view.custom.ImagePanel;
 import com.googlecode.javacv.cpp.opencv_core.IplImage;
 
 import controller.VideoStreamController;
-import javax.swing.SwingConstants;
 
 public class VideoStreamView extends JPanel {
 	private static final long serialVersionUID = 1L;

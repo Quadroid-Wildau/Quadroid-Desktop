@@ -7,11 +7,10 @@ import java.util.Observer;
 
 import org.jdesktop.swingx.mapviewer.GeoPosition;
 
-import controller.interfaces.ViewController;
-
 import service.FlightControlService;
 import service.MetaDataService;
 import view.MapView;
+import controller.interfaces.ViewController;
 import de.th_wildau.quadroid.models.Waypoint;
 
 /**

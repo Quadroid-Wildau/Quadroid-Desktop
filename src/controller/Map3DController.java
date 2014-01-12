@@ -31,7 +31,6 @@ import com.sun.j3d.loaders.objectfile.ObjectFile;
 import com.sun.j3d.utils.image.TextureLoader;
 
 import controller.interfaces.ViewController;
-
 import de.th_wildau.quadroid.models.MetaData;
 
 /**

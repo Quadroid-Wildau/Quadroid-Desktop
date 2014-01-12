@@ -2,9 +2,11 @@ package interfaces;
 
 import java.io.InputStream;
 import java.io.OutputStream;
-import gnu.io.SerialPort;
-import gnu.io.SerialPortEvent;
+
 import org.slf4j.Logger;
+
+import purejavacomm.SerialPort;
+import purejavacomm.SerialPortEvent;
 
 
 /**

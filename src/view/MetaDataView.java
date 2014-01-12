@@ -135,7 +135,7 @@ public class MetaDataView extends JPanel{
 	public void setMetaData(MetaData metaData) {
 		this.position.setText(metaData.getAirplane().GeoData().getLatitude() + " | " + metaData.getAirplane().GeoData().getLongitude());
 		
-		float battery = (float)(metaData.getAirplane().getBatteryState() / 10);
+		float battery = (float)((float)metaData.getAirplane().getBatteryState() / 10);
 		this.power.setText(String.format("%.1f V", battery));
 		if (battery < 11.3f) {
 			this.power.setBackground(Color.RED);
@@ -146,6 +146,6 @@ public class MetaDataView extends JPanel{
 		this.height.setText(String.format("%.1f m", metaData.getAirplane().GeoData().getHeight()));		
 		this.time.setText(DateFormatter.formatDate(metaData.getAirplane().getTime()));
 		this.speed.setText(String.format("%.2f km/h", metaData.getCourse().getSpeed()));
-		this.course.setText(String.format("%.2f°", metaData.getCourse().getAngleReference()));
+		this.course.setText(String.format("%.2fÂ°", metaData.getCourse().getAngleReference()));
 	}
 }

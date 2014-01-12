@@ -43,6 +43,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.SystemDefaultRoutePlanner;
 import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
 import org.apache.http.impl.nio.client.HttpAsyncClients;
+import org.apache.log4j.PropertyConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -87,11 +88,11 @@ public class Main extends JFrame implements ActionListener, WindowListener, Item
 	 */
 	public static void main(String[] args) {
 		
-//		PropertyConfigurator.configure("log4j.properties");
-//		logger = LoggerFactory.getLogger(Main.class.getName());
-//		logger.info("Init Logger");
+		PropertyConfigurator.configure("log4j.properties");
+		logger = LoggerFactory.getLogger(Main.class.getName());
+		logger.info("Init Logger");
 		
-		loadOpenGLLibrary();
+//		loadOpenGLLibrary();
 		
 		//init and show main window
 		getMainController().getView().setVisible(true);

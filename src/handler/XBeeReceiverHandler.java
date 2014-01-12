@@ -1,14 +1,16 @@
 package handler;
 
-import gnu.io.SerialPort;
-import gnu.io.SerialPortEvent;
 import interfaces.AbstractReceiver;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+
 import org.slf4j.Logger;
 
+import purejavacomm.SerialPort;
+import purejavacomm.SerialPortEvent;
 import coder.decoder.ObserverHandler;
 import coder.decoder.RxDataDecoder;
 

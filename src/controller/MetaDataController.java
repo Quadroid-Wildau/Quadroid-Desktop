@@ -3,12 +3,11 @@ package controller;
 import java.util.Observable;
 import java.util.Observer;
 
+import service.MetaDataService;
+
 import com.sun.xml.internal.ws.api.addressing.WSEndpointReference.Metadata;
 
 import controller.interfaces.ViewController;
-
-import service.MetaDataService;
-
 import de.th_wildau.quadroid.models.MetaData;
 
 /**
