@@ -7,6 +7,8 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -19,6 +21,7 @@ import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -38,7 +41,6 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.SystemDefaultRoutePlanner;
 import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
 import org.apache.http.impl.nio.client.HttpAsyncClients;
-import org.apache.log4j.PropertyConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -58,7 +60,7 @@ import controller.VideoStreamController;
  * @version 1.0
  *
  */
-public class Main extends JFrame implements ActionListener, WindowListener {
+public class Main extends JFrame implements ActionListener, WindowListener, ItemListener {
 
 	private static final long serialVersionUID = 1L;
 	private static MainController mainController;
@@ -66,7 +68,8 @@ public class Main extends JFrame implements ActionListener, WindowListener {
 	
 	//Menu
 	private JMenuBar menuBar;
-	private JMenu menuFile, menuVideo, menuLandmarkAlarm, subMenuVideoDevice, saveScreenshotMenu, saveVideoMenu, menuXbee, xbee;
+	private JMenu menuFile, menuVideo, menuLandmarkAlarm, subMenuVideoDevice;
+	private JMenu saveScreenshotMenu, saveVideoMenu, menuXbee, xbee;
 	private JMenuItem itemSaveVideoPredefinedPath, itemSaveVideo, itemStopSavingVideo, itemShowLandmarkAlerts;
 	
 	private Icon iconNewLandmarkAlert;
@@ -81,26 +84,13 @@ public class Main extends JFrame implements ActionListener, WindowListener {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		System.getProperties().put("http.proxyHost", "proxy.th-wildau.de");
-		System.getProperties().put("http.proxyPort", "8080");
 		
 //		PropertyConfigurator.configure("log4j.properties");
 //		logger = LoggerFactory.getLogger(Main.class.getName());
 //		logger.info("Init Logger");
-		
+				
 		//init and show main window
-		long start = System.currentTimeMillis();
 		getMainController().getView().setVisible(true);
-		long end = System.currentTimeMillis();
-		System.out.println("Start Time: " + (end-start) + "ms");
-		
-		SystemDefaultRoutePlanner routePlanner = new SystemDefaultRoutePlanner(ProxySelector.getDefault());
-		
-		CloseableHttpClient httpclient = HttpClients.custom().setRoutePlanner(routePlanner).build();
-		CloseableHttpAsyncClient asyncClient = HttpAsyncClients.custom().setRoutePlanner(routePlanner).build();
-		
-		Unirest.setHttpClient(httpclient);
-		Unirest.setAsyncHttpClient(asyncClient);
 		
 		//Make sure the application gets a login token from Quadroid server by instantiating the communicator
 		CommunicationStack.getInstance().getPushCommunicator();
@@ -108,7 +98,7 @@ public class Main extends JFrame implements ActionListener, WindowListener {
 
 	public Main() {
 		setTitle("Quadroid Desktop");
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Main.class.getResource("/images/logo.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/logo.png")));
 		setSize(1280, 800);
 		addWindowListener(this);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -153,6 +143,10 @@ public class Main extends JFrame implements ActionListener, WindowListener {
 		itemExit.setActionCommand("exit");
 		itemExit.addActionListener(this);
 		menuFile.add(itemExit);
+		
+		JCheckBoxMenuItem itemProxy = new JCheckBoxMenuItem("Proxy nutzen");
+		itemProxy.addItemListener(this);
+		menuFile.add(itemProxy);
 		
 		subMenuVideoDevice = new JMenu("Video Device");
 		menuVideo.add(subMenuVideoDevice);
@@ -379,6 +373,24 @@ public class Main extends JFrame implements ActionListener, WindowListener {
 		}
 	}
 	
+	private void useProxy(boolean enable) {
+		if (enable) {
+			System.getProperties().put("http.proxyHost", "proxy.th-wildau.de");
+			System.getProperties().put("http.proxyPort", "8080");
+		} else {
+			System.getProperties().put("http.proxyHost", "");
+			System.getProperties().put("http.proxyPort", "");
+		}
+		
+		//reload System proxy for Unirest
+		SystemDefaultRoutePlanner routePlanner = new SystemDefaultRoutePlanner(ProxySelector.getDefault());
+		CloseableHttpClient httpclient = HttpClients.custom().setRoutePlanner(routePlanner).build();
+		CloseableHttpAsyncClient asyncClient = HttpAsyncClients.custom().setRoutePlanner(routePlanner).build();
+		
+		Unirest.setHttpClient(httpclient);
+		Unirest.setAsyncHttpClient(asyncClient);
+	}
+	
 //***************************************************************************************************************
 //	View Listeners
 //***************************************************************************************************************
@@ -478,6 +490,11 @@ public class Main extends JFrame implements ActionListener, WindowListener {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
+	}	
+	
+	public void itemStateChanged(ItemEvent e) {
+		int state = e.getStateChange();
+		useProxy(state == ItemEvent.SELECTED);
 	}
 	
 	//Unused
@@ -488,4 +505,6 @@ public class Main extends JFrame implements ActionListener, WindowListener {
 	public void windowDeiconified(WindowEvent e) {}
 	public void windowIconified(WindowEvent e) {}
 	public void windowOpened(WindowEvent e) {}
+
+	
 }
